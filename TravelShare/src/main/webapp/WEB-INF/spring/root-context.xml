@@ -10,7 +10,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521/XEPDB1"></property>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@3.35.52.40:1521:xe"></property>
 		<property name="username" value="java1"></property>
 		<property name="password" value="1234"></property>
 	</bean>
