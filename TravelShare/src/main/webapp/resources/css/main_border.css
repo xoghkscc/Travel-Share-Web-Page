@@ -75,3 +75,6 @@ select{
     border-radius: 10px;
     /* cursor: pointer; */
 }
+img{
+	size: 234px 234px;
+}
