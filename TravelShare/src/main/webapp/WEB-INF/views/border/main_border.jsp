@@ -17,34 +17,31 @@
 		<div class="sel">
 			<div class="sel_pan">
 				<div class="region_sel">
-					<select class="region_area">
-						<option value="">전체</option>
-						<option value="">종로구</option>
-						<option value="">중구</option>
-						<option value="">용산구</option>
-						<option value="">성동구</option>
-						<option value="">광진구</option>
-						<option value="">동대문구</option>
-						<option value="">중랑구</option>
-						<option value="">성북구</option>
-						<option value="">강북구</option>
-						<option value="">도봉구</option>
-						<option value="">노원구</option>
-						<option value="">은평구</option>
-						<option value="">서대문구</option>
-						<option value="">마포구</option>
-						<option value="">양천구</option>
-						<option value="">강서구</option>
-						<option value="">구로구</option>
-						<option value="">금천구</option>
-						<option value="">강서구</option>
-						<option value="">영등포구</option>
-						<option value="">동작구</option>
-						<option value="">관악구</option>
-						<option value="">서초구</option>
-						<option value="">강남구</option>
-						<option value="">송파구</option>
-						<option value="">강동구</option>
+					<select class="region_area" onchange="cat1_change(this.value)">
+						<option value="0">전체</option>
+						<option value="11">서울</option>
+						<option value="26">부산</option>
+						<option value="27">대구</option>
+						<option value="28">인천</option>
+						<option value="29">광주</option>
+						<option value="30">대전</option>
+						<option value="31">울산</option>
+						<option value="36">세종</option>
+						<option value="41">경기도</option>
+						<option value="47">경상북도</option>
+						<option value="48">경상남도</option>
+						<option value="42">강원도</option>
+						<option value="43">충청북도</option>
+						<option value="44">충청남도</option>
+						<option value="45">전라북도</option>
+						<option value="46">전라남도</option>
+						<option value="50">제주시</option>
+					</select>
+				</div>
+
+				<div class="region_sel2" id="region_sel2">
+					<select id="h_area2">
+						<option>-선택-</option>
 					</select>
 				</div>
 			</div>
@@ -93,7 +90,8 @@
 			</c:forEach>
 		</div>
 		<div class="board_paging">
-			<c:forEach begin="1" end="${boardDB.size()/12+1>=6 ? 5 : boardDB.size()/12+1}" var="i">
+			<c:forEach begin="1"
+				end="${boardDB.size()/12+1>=6 ? 5 : boardDB.size()/12+1}" var="i">
 				<c:choose>
 					<c:when test="${i == 1 }">
 						<div class="board_choose board_paging_number" id="${i }">${i }</div>
@@ -113,6 +111,7 @@
 			</c:choose>
 		</div>
 	</div>
-	<script src="<%= request.getContextPath()%>/resources/js/main_border.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/main_border.js"></script>
 </body>
 </html>
