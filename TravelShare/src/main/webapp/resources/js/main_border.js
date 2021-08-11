@@ -44,7 +44,6 @@ function pagingRest(click_number) {
 					"<span class='material-icons-outlined board_area_img'> location_on </span>" +
 					"<div class='board_area'>" + myobj[key].area + " </div> </div>" +
 					"<div class='board_likePan'> <span class='material-icons-outlined board_like_img'> favorite </span> <div class='like'>0명</div> </div>";
-
 				board_content.appendChild(board_imgContent);
 				board_content.appendChild(board_textContent);
 				board_content.appendChild(board_option);
@@ -82,8 +81,8 @@ function cat1_change(key){
  cat2_name[30] = new Array('대덕구','동구','서구','유성구','중구');
  cat2_num[31] = new Array(86,87,88,89,90);
  cat2_name[31] = new Array('남구','동구','북구','중구','울주군');
- cat2_num[36] = new Array(1186,1187,1188,1189,1190);
- cat2_name[36] = new Array('남구','동구','북구','중구','울주군');
+ cat2_num[36] = new Array(1186);
+ cat2_name[36] = new Array('세종특별자치시');
  cat2_num[42] = new Array(91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108);
  cat2_name[42] = new Array('강릉시','동해시','삼척시','속초시','원주시','춘천시','태백시','고성군','양구군','양양군','영월군','인제군','정선군','철원군','평창군','홍천군','화천군','횡성군');
  cat2_num[41] = new Array(109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148);
@@ -110,17 +109,17 @@ function cat1_change(key){
  var val = cat2_num[key];
 
 var sel = document.getElementById("h_area2");
-console.log(sel);
 
  for(i=sel.length-1; i>=0; i--)
 
   sel.options[i] = null;
 
- sel.options[0] = new Option('-전체-','', '', 'true');
+ sel.options[0] = new Option('-선택-','', '', 'true');
+ sel.options[1] = new Option('전체','0');
 
  for(i=0; i<name.length; i++){
 
-  sel.options[i+1] = new Option(name[i],val[i]);
+  sel.options[i+2] = new Option(name[i],val[i]);
  }
 }
 
