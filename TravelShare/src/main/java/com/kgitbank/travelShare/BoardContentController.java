@@ -20,6 +20,11 @@ public class BoardContentController {
 	public String mainBorder(Model model) {
 		
 		model.addAttribute("boardDB", boardMapper.getBoardsampleAll());
-		return "/border/main_border";
+		return "/board/main_board";
+	}
+	
+	@GetMapping("createBoard")
+	public String createBoard(Model model) {
+		return "/board/create_board";
 	}
 }

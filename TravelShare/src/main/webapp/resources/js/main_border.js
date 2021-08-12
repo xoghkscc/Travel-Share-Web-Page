@@ -94,7 +94,7 @@ function cat1_change(key){
  cat2_num[31] = new Array(86,87,88,89,90);
  cat2_name[31] = new Array('남구','동구','북구','중구','울주군');
 
- cat2_num[36] = new Array(1000);
+ cat2_num[36] = new Array(36110);
  cat2_name[36] = new Array('세종특별자치시');
 
 

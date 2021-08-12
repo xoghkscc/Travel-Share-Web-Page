@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>해먹남녀</title>
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/resources/css/main_border.css">
+	href="<%=request.getContextPath()%>/resources/css/main_board.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
 	rel="stylesheet">
@@ -120,7 +120,7 @@
 			<div class="board_detailPan">
 				<div class="board_left_pan">
 					<iframe
-						src="https://www.google.com/maps?q= 봉천동 1686-19 &output=embed"
+						src="https://www.google.com/maps?q= 서울 관악구 관악로 85 &output=embed"
 						style='border: 0;' allowfullscreen="" aria-hidden="false"
 						tabindex="0" frameborder="0"></iframe>
 					<!-- q= 뒤에 주소를 입력하면 됨 -->
