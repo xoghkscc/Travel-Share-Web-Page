@@ -1,0 +1,86 @@
+@charset "EUC-KR";
+
+#membership_table{
+	
+	margin-left: 35%;
+}
+
+#member_email {
+	width: 500px;
+	height:45px;
+	font-size:20px;
+}
+
+.member_password{
+	width: 500px;
+	height:45px;
+	font-size:20px;
+}
+
+#member_nickname {
+	width: 500px;
+	height:45px;
+	font-size:20px;
+}
+
+#member_name {
+	width: 500px;
+	height:45px;
+	font-size:20px;
+}
+
+#member_phone {
+	width: 500px;
+	height:45px;
+	font-size:20px;
+}
+
+
+
+#member_gender {
+	height:45px;
+	width: 505px;	
+}
+
+.member_text {
+	text-align: left;
+}
+
+#member_sub2 {
+	height:45px;
+	width: 509px;	
+}
+
+#member_year{
+	height:45px;
+	width: 152px;
+	font-size:20px;	
+}
+
+#member_month{
+	text-align: center;
+	height: 50px;
+	width: 152px;	
+	font-size:20px;
+}
+
+#member_day{
+	height:45px;
+	width: 152px;
+	font-size:20px;	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
