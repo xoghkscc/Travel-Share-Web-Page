@@ -13,7 +13,7 @@
 		<h3>Travelers</h3>
 	</div>
 	
-	<form id="membership" action="./membership" method="POST" onsubmit="return false" autocomplete='off'></form>
+	<form id="membership" action="./membership" method="POST" autocomplete='off'></form>
 	<div id="membership_table">
 		
     	<table>

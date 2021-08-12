@@ -5,8 +5,9 @@
 <mapper namespace="com.kgitbank.travelShare.mapper.UserInfoMapper">
         
        
-        <select id="getUserInfo" resultType="list">
-          SELECT * FROM user_info;
+        <select id="getUserInfo" resultType="com.kgitbank.travelShare.model.UserInfo">
+          SELECT member_email FROM user_info 
+          
         </select>
         
 </mapper>

@@ -1,13 +1,19 @@
 package com.kgitbank.travelShare.model;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Data
+@ToString
+@Getter
+@Setter
 public class UserInfo {
 	
 	@NonNull

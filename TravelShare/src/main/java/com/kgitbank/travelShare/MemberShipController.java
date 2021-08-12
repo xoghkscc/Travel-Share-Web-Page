@@ -2,15 +2,17 @@ package com.kgitbank.travelShare;
 
 
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import com.kgitbank.travelShare.mapper.UserInfoMapper;
 import com.kgitbank.travelShare.model.UserInfo;
@@ -29,12 +31,13 @@ public class MemberShipController {
 	@GetMapping("/membership")
 	public String memberShip() {
 		System.out.println("왔음");
-		System.out.println(user_info.getUserInfo());
+	
 		return "/membership/membership";
 	}
 	
 	@PostMapping("/membership")
-	public String memberShipPost() {
+	public String memberShipPost(Model model) {
+		
 		
 		System.out.println("포스트왔다");
 		return "/membership/membership";
