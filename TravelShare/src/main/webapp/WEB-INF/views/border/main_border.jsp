@@ -12,8 +12,8 @@
 	href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
 	rel="stylesheet">
 </head>
-<body class="board_detail_open">
-	<div class="board_main">
+<body>
+	<div id="board_main">
 		<div class="sel">
 			<div class="sel_pan">
 				<div class="region_sel">
@@ -65,7 +65,7 @@
 			<c:forEach items="${boardDB }" var="board" begin="0" end="11">
 				<div class="board_content" id="board_content">
 					<div class="board_imgContent">
-						<img alt=""
+						<img onclick='imgClick()' alt=""
 							src="<%=request.getContextPath()%>/resources/files/1.jpg">
 						<img alt=""
 							src="<%=request.getContextPath()%>/resources/files/2.jpg">
@@ -111,93 +111,134 @@
 			</c:choose>
 		</div>
 	</div>
-	
-	<div id="board_clickPan" class="board_show">
-        <div id="board_detailContent">
-            <div class="board_detailPan">
-                <div class="board_left_pan">
-                    <iframe src="https://www.google.com/maps?q= 봉천동 1686-19 &output=embed" style='border:0;' allowfullscreen="" aria-hidden="false" tabindex="0" width="400" height="400" frameborder="0"></iframe>
-                    <!-- q= 뒤에 주소를 입력하면 됨 -->
-                </div>
 
-                <div class="board_right_pan">
-                    <div class="board_user_info">
-                        <img src="<%=request.getContextPath()%>/resources/files/2.jpg" alt="">
-                    </div>
-                    <div class="board_user_name">
-                        닉네임
-                    </div>
+	<div id="board_clickPan" class="board_hide">
+		<div onclick="imgClickRollback()" class="x_box">
+			<span class="material-icons-outlined "> close </span>
+		</div>
+		<div id="board_detailContent">
+			<div class="board_detailPan">
+				<div class="board_left_pan">
+					<iframe
+						src="https://www.google.com/maps?q= 봉천동 1686-19 &output=embed"
+						style='border: 0;' allowfullscreen="" aria-hidden="false"
+						tabindex="0" frameborder="0"></iframe>
+					<!-- q= 뒤에 주소를 입력하면 됨 -->
+					<hr style="color: black; width: 100%; margin-bottom: 50px;">
+					<div class="board_main_content">
+						<div class="board_img_content">
+							<img src="<%=request.getContextPath()%>/resources/files/1.jpg" alt="">
+						</div>
 
-                    <div class="board_title">
-                        편의점 냉동으로 휘리릭! 동글동글 핫도그피자빵 핫도그피자빵(제목임)
-                    </div>
-                    <div class="board_sub_info">
-                        <div class="board_sub_info2">
-                            <div> <span class="material-icons-outlined board_area_img">
-                                    location_on </span>
-                                <div>추천 명소</div>
-                            </div>
-                            <div>몰라</div>
-                        </div>
-                        <div class="board_sub_info2">
-                            <div>
-                                <span class="material-icons-outlined">
-                                    local_dining</span>
-                                <div>추천 맛집</div>
-                            </div>
-                            <div>몰라</div>
-                        </div>
-                        <div class="board_sub_info2">
-                            <div>
-                                <span class="material-icons-outlined board_like_img">
-                                    favorite </span>
-                                <div>스크랩</div>
-                            </div>
-                            <div>
-                                0
-                            </div>
-                        </div>
-                    </div>
+						<div class="board_text_content">
+							<p>1. 사진 샘플</p>
+						</div>
+						<div class="board_img_content">
+							<img src="<%=request.getContextPath()%>/resources/files/2.jpg" alt="">
+						</div>
 
-                    <div>
-                        <div class="board_scrap_btn">
-                            <span class="material-icons-outlined board_like_img">
-                                favorite </span>
-                            <div>스크랩</div>
-                        </div>
-                    </div>
+						<div class="board_text_content">2. 사진 샘플</div>
+					</div>
 
-                    <div class="board_travelPlans">
-                        <div class="singo">
-                            <span class="material-icons singo_img" >
-                                lightbulb
-                            </span>
-                            <span class="board_singo">신고하기</span>
-                        </div>
+					<div class="board_comment">
+						<div class="board_comment_tit">
+							<p>한줄댓글</p>
+						</div>
+						<div class="board_comment_write">
+							<form action="">
+								<input type="text" name="board_commnet"
+									placeholder="한 줄 댓글을 남겨주세요."> <input type="submit"
+									name="board_commnet_submit" value="댓글남기기">
+							</form>
+						</div>
+						<div class="board_comment_show">
+							<div class="board_comment_see">
+								<div class="board_comment_see_img">
+									<img src="<%=request.getContextPath()%>/resources/files/3.jpg" alt="">
+								</div>
+								<div class="board_comment_see_text">
+									<div>
+										<strong>닉네임</strong> <span class="board_comment_see_text_date">2021.08.12</span>
+									</div>
+									<div>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</div>
+								</div>
+							</div>
+							<hr style="color: black; width: 100%; margin-bottom: 50px;">
+						</div>
+					</div>
+				</div>
 
-                        <!-- <div class="board_Plans">
-                            <div class="board_Plans_tit">여행경로</div>
-                            
-                            <div class="board_Plans_list">
-                                <div>여정1</div>
-                            </div>
-                            <div class="board_Plans_list">
-                                <div>여정2</div>
-                            </div>
-                            <div class="board_Plans_list">
-                                <div>여정3</div>
-                            </div>
-                            <div class="board_Plans_list">
-                                <div>여정4</div>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-	
-	<script
-		src="<%=request.getContextPath()%>/resources/js/main_border.js"></script>
+
+				<div class="board_right_pan">
+					<div class="board_user_info">
+						<img src="<%=request.getContextPath()%>/resources/files/2.jpg"
+							alt="">
+					</div>
+					<div class="board_user_name">닉네임</div>
+
+					<div class="board_title">즐거운 경주 여행</div>
+					<div class="board_sub_info">
+						<div class="board_sub_info2">
+							<div>
+								<span class="material-icons-outlined board_area_img">
+									location_on </span>
+								<div>추천 명소</div>
+							</div>
+							<div>몰라</div>
+						</div>
+						<div class="board_sub_info2">
+							<div>
+								<span class="material-icons-outlined"> local_dining</span>
+								<div>추천 맛집</div>
+							</div>
+							<div>몰라</div>
+						</div>
+						<div class="board_sub_info2">
+							<div>
+								<span class="material-icons-outlined board_like_img">
+									favorite </span>
+								<div>스크랩</div>
+							</div>
+							<div>0</div>
+						</div>
+					</div>
+
+					<div>
+						<div class="board_scrap_btn">
+							<span class="material-icons-outlined board_like_img">
+								favorite </span>
+							<div>스크랩</div>
+						</div>
+					</div>
+
+					<div class="board_travelPlans">
+						<div class="singo">
+							<span class="material-icons singo_img"> lightbulb </span> <span
+								class="board_singo">신고하기</span>
+						</div>
+
+						<div class="board_Plans">
+							<div class="board_Plans_tit">여행경로</div>
+							<div class="board_Plans_list">
+								<div>여정1</div>
+							</div>
+							<div class="board_Plans_list">
+								<div>여정2</div>
+							</div>
+							<div class="board_Plans_list">
+								<div>여정3</div>
+							</div>
+							<div class="board_Plans_list">
+								<div>여정4</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="<%=request.getContextPath()%>/resources/js/main_border.js"
+		charset="UTF-8"></script>
 </body>
 </html>

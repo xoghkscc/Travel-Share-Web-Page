@@ -9,11 +9,12 @@
     overflow: hidden;
 }
 .sel{
+	width: 1030px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
     box-sizing: border-box;
+    padding-left: 10px;
 }
 .travle_board{
     display: flex;
@@ -22,7 +23,9 @@
 }
 
 .sel_pan{
-    width: 1040px;
+    display: flex;
+    width: 100%;
+    align-items: center;
 }
 
 .region_area{
@@ -49,7 +52,7 @@ select{
 }
 
 .board_board_tit{
-    width: 1040px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -57,17 +60,38 @@ select{
 
 .board_tit_area{
     width: 170px;
-    margin-top: 22px;
-    margin-right: 18px;
 }
 
 .board_list_travel{
-    width: 1040px;
     margin-top: 30px;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     row-gap: 25px;
+    column-gap: 12px
 }
+
+
+@media (max-width: 1080px){
+	.board_list_travel {grid-template-columns: 33% 33% 33%;}
+	.sel{width: 770px}
+}
+
+@media (max-width: 780px){
+	.board_list_travel {grid-template-columns: 50% 50%;}
+	.sel{width: 500px}
+	h2{font-size: 18px}
+	.region_area {width: 80px}
+	select{width: 90px}
+}
+@media (max-width: 530px){
+	.board_list_travel {grid-template-columns: 100%;}
+	.sel{width: 244px}
+	.sel_pan{justify-content: center}
+	h2{font-size: 13px}
+	.board_board_tit{flex-direction: column;}
+	
+}
+
 
 .board_content{
     width: 244px;
@@ -244,8 +268,8 @@ select{
     background-color: #383838;
     flex-direction: column;
     align-items: center;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 1vw;
+    padding-right: 1vw;
     box-shadow: 0 0 15px rgb(0 0 0 / 50%)
 }
 
@@ -257,8 +281,8 @@ select{
 }
 
 .board_user_info>*{
-    width: 6vw;
-    height: 6vw;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -290,6 +314,7 @@ select{
     font-size: 1.3vw;
     width: 19vw;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
 }
@@ -302,6 +327,11 @@ select{
 .board_sub_info2>div:nth-child(1)>span{
     color: #bdbdbd;
     margin-right: 0.8vw;
+}
+.board_sub_info2>div:nth-child(1)>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .board_sub_info2>div:nth-child(2){
     color: white;
@@ -384,7 +414,6 @@ select{
     background-color: #4e4e4e;
 }
 
-
 .board_left_pan{
     padding-left: 40px;
     padding-right: 40px;
@@ -392,6 +421,185 @@ select{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: white;
+    box-shadow: 0 0 15px rgb(0 0 0 / 50%);
+    height: 3000px;
+}
+
+.board_left_pan>iframe{
+    width: 50vw;
+    height: 30vw;
+    padding-bottom: 100px;
+}
+
+.x_box{
+    position: fixed;
+    width: 5vw;
+    height: 5vw;
+    top: 20px;
+    right: 2.5vw;
+    background-color: #b1b1b1;
+    color: #383838;
+    opacity: 0.7;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.x_box>span{
+    font-size: 50px;
 }
 
 
+@media (min-width: 641px){
+    .board_Plans_list:nth-child(2n-1){
+        background-color: #474747;
+    }
+    .board_Plans_list:nth-child(2n){
+        background-color: #4e4e4e;
+    }
+}
+
+
+@media (max-width: 640px){
+    .board_scrap_btn>div {display: none;}
+    .chuchun {display: none;}
+    .board_Plans>* {display: none;}
+    .board_Plans_list>* {display: none;}
+    .board_Plans_list{background-color: #383838;}
+    .board_sub_info2>div>div{display: none;}
+    .board_sub_info2>div:nth-child(1)>div{display: none;}
+    .singo{justify-content: center;}
+    .board_scrap_btn{width: 60px;}
+    .board_user_info>*{width: 40px; height: 40px;}
+}
+
+
+@media (max-width: 947px){
+    .x_box{
+        width: 40px;
+        height: 40px;
+        left: 6vw;
+        font-size: 40px;
+    }
+    .board_detailPan{
+      width: 100vw;
+       height: 100vh;
+       background-color: white;
+        display: grid;
+        grid-template-columns: 74% auto;
+    }
+
+}
+
+.board_main_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.board_img_content>img{
+    width: 50vw;
+    padding-bottom: 10px;
+}
+
+.board_text_content>p{
+    padding-bottom: 50px;
+}
+
+.board_comment{
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.board_comment_tit{
+    width: 55vw;
+    text-align: left;
+}
+
+.board_comment_write{
+    width: 55vw;
+    background-color: #f7f7f7;
+    height: 98px;
+    box-sizing: border-box;
+    padding: 13px 18px;
+    border: 1px solid #e6e6e6;
+    margin-bottom: 30px;
+    
+}
+
+.board_comment_write>form{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.board_comment_write>form>input:first-child{
+    width: 535px;
+    height: 71px;
+    box-sizing: border-box;
+    border: 1px solid #e6e6e6;
+    font-size: 16px;
+    text-align: center;
+}
+.board_comment_write>form>input:nth-child(2){
+    height: 71px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: white;
+    background-color: #ff6d00;
+    text-align: center;
+    float: right;
+    border: none;
+    float: right;
+    cursor: pointer;
+}
+
+.board_comment_see{
+    width: 55vw;
+    display: flex;
+    justify-content: left;
+    align-content: center;
+}
+
+.board_comment_see_img>img{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+.board_comment_see_text{
+    margin-left: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.board_comment_see_text_date{
+    margin-left: 1vw;
+
+}
+
+.board_comment_tit>p{
+	display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+@media (max-width: 500px){
+	.board_comment_tit>p{font-size: 15px;}
+	.board_comment_write>form>input:first-child{ width: 150px; font-size: 10px;}
+	.board_comment_write>form>input:nth-child(2){font-size: 10px;}
+	.board_comment_see_text>div:nth-child(2) {font-size: 10px;}
+	.board_comment_see_img>img{width: 50px; height: 50px;}
+}
