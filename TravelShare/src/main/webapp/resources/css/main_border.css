@@ -423,7 +423,6 @@ select{
     align-items: center;
     background-color: white;
     box-shadow: 0 0 15px rgb(0 0 0 / 50%);
-    height: 3000px;
 }
 
 .board_left_pan>iframe{
