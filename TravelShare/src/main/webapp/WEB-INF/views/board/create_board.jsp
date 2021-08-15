@@ -88,28 +88,31 @@
 						</div>
 					</div>
 				</div>
-				<textarea rows="50" cols="50" id="gdsDes" name="gdsDes"></textarea>
+				<textarea rows="50" cols="50" id="gdsDes" name="gdsDes">
+				</textarea>
 				<script>
 					var ckeditor_config = {
 						resize_enaleb : false,
 						enterMode : CKEDITOR.ENTER_BR,
 						shiftEnterMode : CKEDITOR.ENTER_P,
-						filebrowserUploadUrl : "/board/ckUpload"
+						filebrowserUploadUrl : "http://localhost:8080/travelShare/board/ckUpload"
 					};
 					CKEDITOR.replace("gdsDes", ckeditor_config);
+
 					CKEDITOR.on('dialogDefinition', function(ev) {
 						var dialogName = ev.data.name;
 						var dialogDefinition = ev.data.definition;
 
 						switch (dialogName) {
 						case 'image': //Image Properties dialog
-							dialogDefinition.removeContents('info');
+// 							dialogDefinition.removeContents('info');
 							dialogDefinition.removeContents('Link');
 							dialogDefinition.removeContents('advanced');
 							break;
 						}
 					});
 				</script>
+				<button type="submit" class="btn btn-default">저장</button>
 			</form>
 		</div>
 	</div>
