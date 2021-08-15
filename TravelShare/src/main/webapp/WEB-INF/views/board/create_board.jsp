@@ -31,7 +31,7 @@
 						<label>우편번호 </label>
 					</div>
 					<div>
-						<input type="text" id="zipCode" style="width: 80px;" readonly />
+						<input type="text" name="zipCode" id="zipCode" style="width: 80px;" readonly />
 						<button type="button" style="width: 60px; height: 32px;"
 							id="address_kakao">검색</button>
 					</div>
@@ -87,8 +87,14 @@
 								add_circle_outline </span>
 						</div>
 					</div>
+					<div class="board_travel_mainPicture board_img">
+						<label>여행 대표 사진</label>
+					</div>
+					<div class="board_travel_file board_img">
+						<input type="file" id="board_mainImg" style="width: 200px;" />
+					</div>
 				</div>
-				<textarea rows="50" cols="50" id="gdsDes" name="gdsDes">
+				<textarea rows="50" cols="50" id="board_content" name="board_content">
 				</textarea>
 				<script>
 					var ckeditor_config = {
@@ -97,7 +103,7 @@
 						shiftEnterMode : CKEDITOR.ENTER_P,
 						filebrowserUploadUrl : "http://localhost:8080/travelShare/board/ckUpload"
 					};
-					CKEDITOR.replace("gdsDes", ckeditor_config);
+					CKEDITOR.replace("board_content", ckeditor_config);
 
 					CKEDITOR.on('dialogDefinition', function(ev) {
 						var dialogName = ev.data.name;
@@ -112,7 +118,7 @@
 						}
 					});
 				</script>
-				<button type="submit" class="btn btn-default">저장</button>
+				<button type="submit" class="board_btn-default">등록완료</button>
 			</form>
 		</div>
 	</div>

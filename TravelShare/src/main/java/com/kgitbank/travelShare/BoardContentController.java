@@ -55,7 +55,6 @@ public class BoardContentController {
 			
 			byte[] bytes = upload.getBytes();
 			
-			System.out.println("현재 프로젝트 경로 : "+ request.getSession().getServletContext().getRealPath("/resources/ckeditorUploadImg"));
 			
 			String uploadPath = request.getSession().getServletContext().getRealPath("/resources/ckeditorUploadImg")+"/" + fileName;// 저장경로
 			out = new FileOutputStream(new File(uploadPath));
@@ -65,7 +64,6 @@ public class BoardContentController {
 
 			printWriter = response.getWriter();
 			String fileUrl = request.getContextPath()+"/resources/ckeditorUploadImg/" + fileName;// url경로
-			System.out.println("fileUrl : "+fileUrl);
 			JsonObject json = new JsonObject();
 			
 			json.addProperty("uploaded", 1);

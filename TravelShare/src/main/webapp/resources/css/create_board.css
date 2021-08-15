@@ -66,6 +66,7 @@
     margin-top: 15px;
     display: grid;
     grid-template-columns: 100%;
+    margin-bottom: 20px;
 }
 
 .board_travel_route>div{
@@ -78,4 +79,37 @@
     font-size: 40px;
     color: #747373;
     cursor: pointer;
+}
+
+
+.board_travel_mainPicture{
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.board_travel_file{
+    margin-top: 15px;
+}
+
+#board_mainImg{
+	background-color: white;
+	border: none;
+}
+
+.board_btn-default{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e36113;
+    color: #fff;
+    width: 167px;
+    height: 52px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    border: none;
 }
