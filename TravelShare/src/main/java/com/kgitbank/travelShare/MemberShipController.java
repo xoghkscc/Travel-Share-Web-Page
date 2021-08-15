@@ -44,7 +44,15 @@ public class MemberShipController {
 		
 	}
 	
-
+	@GetMapping("/idsearch")
+	public String idSearch() {
+		return "/membership/idSearch";
+	}
+	
+	@GetMapping("/passwordsearch")
+	public String passwordSearch() {
+		return "/membership/passwordSearch";
+	}
 	
 	
 }
