@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kgitbank.travelShare.mapper.SampleBoardMapper;
 import com.kgitbank.travelShare.model.SampleBoardModel;
@@ -26,5 +28,10 @@ public class BoardContentController {
 	@GetMapping("createBoard")
 	public String createBoard(Model model) {
 		return "/board/create_board";
+	}
+	
+	@PostMapping(value = "ckUpload")
+	public void ckUpload(Model model) {
+		System.out.println("ㅎㅇㅎㅇ");
 	}
 }
