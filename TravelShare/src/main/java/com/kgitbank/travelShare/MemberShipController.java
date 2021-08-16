@@ -46,6 +46,7 @@ public class MemberShipController {
 	
 	@GetMapping("/idsearch")
 	public String idSearch() {
+		System.out.println("왔음");
 		return "/membership/idSearch";
 	}
 	
@@ -53,6 +54,12 @@ public class MemberShipController {
 	public String passwordSearch() {
 		return "/membership/passwordSearch";
 	}
+	
+	@GetMapping("/userinfo")
+	public String userinfo() {
+		return "/membership/userinfo";
+	}
+	
 	
 	
 }
