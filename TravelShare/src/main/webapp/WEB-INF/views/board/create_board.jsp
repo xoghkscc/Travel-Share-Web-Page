@@ -15,6 +15,7 @@
 	src="<%=request.getContextPath()%>/resources/ckeditor/ckeditor.js"></script>
 </head>
 <body>
+<jsp:include page="../header/top.jsp"></jsp:include>
 	<div class="board_create">
 		<div class="boardtit">여행지 등록하기</div>
 

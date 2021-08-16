@@ -6,13 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>해먹남녀</title>
+</head>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/css/main_board.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
 	rel="stylesheet">
-</head>
 <body>
+	<jsp:include page="../header/top.jsp"></jsp:include>
 	<div id="board_main">
 		<div class="sel">
 			<div class="sel_pan">

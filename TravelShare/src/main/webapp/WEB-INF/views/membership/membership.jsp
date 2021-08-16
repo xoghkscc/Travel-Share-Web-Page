@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +9,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/membership/membership_main.css">
 </head>
 <body>
-	
-	<div>
-		<h3>Travelers</h3>
-	</div>
-	
+	<jsp:include page="../header/top.jsp"></jsp:include>
 	<form id="membership" action="./membership" method="POST" autocomplete='off'></form>
 	<div id="membership_table">
 		
