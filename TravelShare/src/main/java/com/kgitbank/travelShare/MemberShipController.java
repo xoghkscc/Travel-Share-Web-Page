@@ -30,13 +30,12 @@ public class MemberShipController {
 	
 	@GetMapping("/membership")
 	public String memberShip() {
-		System.out.println("왔음");
 	
 		return "/membership/membership";
 	}
 	
 	@PostMapping("/membership")
-	public String memberShipPost(Model model) {
+	public String memberShipPost() {
 		
 		
 		System.out.println("포스트왔다");
@@ -46,7 +45,6 @@ public class MemberShipController {
 	
 	@GetMapping("/idsearch")
 	public String idSearch() {
-		System.out.println("왔음");
 		return "/membership/idSearch";
 	}
 	
