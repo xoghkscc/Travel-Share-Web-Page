@@ -7,7 +7,7 @@
   <title>네이버 로그인</title>
   <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-  <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/login_start.css?ver=1.3">
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/login_start.css?ver=1.7">
 </head>
 <body>
   <!-- 네이버아이디로로그인 버튼 노출 영역 -->
@@ -15,13 +15,18 @@
       <div id="basic_login">
           <div>Travel<span style="color: orangered;">ers</span></div>
           <div>
-              <div class="login_text">이메일jsp<input type="text"></div>
+              <div class="login_text">이메일<input type="text"></div>
             </div>
             <div>
                 <div class="login_text">비밀번호<input type="text"></div>
             </div>
-        </div>
-        <div id="naver_id_login"></div>
+          </div>
+          <div id="login_loginbtn">로그인</div>
+          <div id="naver_id_login"></div>
+          <div class="login_find">
+            <div>아이디찾기</div>
+            <div>비밀번호찾기</div>
+          </div>
     </div>
     <div class="login_backgroundImg"></div>
     
