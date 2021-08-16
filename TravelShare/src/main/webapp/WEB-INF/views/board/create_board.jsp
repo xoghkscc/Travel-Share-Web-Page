@@ -98,6 +98,7 @@
 				</textarea>
 				<script>
 					var ckeditor_config = {
+						height: 500,
 						resize_enaleb : false,
 						enterMode : CKEDITOR.ENTER_BR,
 						shiftEnterMode : CKEDITOR.ENTER_P,
