@@ -20,13 +20,13 @@
 		<div class="boardtit">여행지 등록하기</div>
 
 		<div class="board_create_form">
-			<form action="">
+			<form action="./createBoard" method="post" enctype="multipart/form-data">
 				<div class="board_input">
 					<div>
 						<label>제목 입력하기</label>
 					</div>
 					<div>
-						<input type="text" name="boardtit" placeholder="여행의 제목을 입력해주세요">
+						<input type="text" name="board_title" placeholder="여행의 제목을 입력해주세요">
 					</div>
 					<div>
 						<label>우편번호 </label>
@@ -40,7 +40,7 @@
 						<label>주소</label>
 					</div>
 					<div>
-						<input type="text" id="addr" style="width: 300px;" readonly />
+						<input type="text" id="addr" name="addr" style="width: 300px;" readonly />
 					</div>
 					<div>
 						<label>상세</label>
@@ -49,33 +49,33 @@
 						<input type="text" id="detailAddr" style="width: 300px;" />
 					</div>
 					<div>
-						<input type="hidden" id="sido" style="width: 300px; height: 30px;"
+						<input type="hidden" id="sido" name="sido" style="width: 300px; height: 30px;"
 							readonly /><br>
 					</div>
 					<div>
-						<input type="hidden" id="sigungu"
+						<input type="hidden" id="sigungu" name="sigungu"
 							style="width: 300px; height: 30px;" readonly /><br>
 					</div>
 					<div>
-						<input type="hidden" id="sidoCode"
+						<input type="hidden" id="sigunguCode" name="sigungucode"
 							style="width: 300px; height: 30px;" readonly /><br>
 					</div>
 					<div>
-						<input type="hidden" id="sigunguCode"
+						<input type="hidden" id="sidoCode" name="sidoCode"
 							style="width: 300px; height: 30px;" readonly /><br>
 					</div>
 					<div>
 						<label>추천 명소</label>
 					</div>
 					<div>
-						<input type="text" style="width: 300px;"
+						<input type="text" name="board_bestplace" style="width: 300px;"
 							placeholder="여행지 주변 추천 명소를 입력해주세요" />
 					</div>
 					<div>
 						<label>추천 맛집</label>
 					</div>
 					<div>
-						<input type="text" style="width: 300px;"
+						<input type="text" name="board_besteat" style="width: 300px;"
 							placeholder="여행지 주변 추천 맛집을 입력해주세요" />
 					</div>
 					<div class="board_travel_route">
@@ -92,7 +92,7 @@
 						<label>여행 대표 사진</label>
 					</div>
 					<div class="board_travel_file board_img">
-						<input type="file" id="board_mainImg" style="width: 200px;" />
+						<input type="file" id="board_mainimg" name="board_mainimgReal" style="width: 200px;" />
 					</div>
 				</div>
 				<textarea rows="50" cols="50" id="board_content" name="board_content">
@@ -120,13 +120,12 @@
 						}
 					});
 				</script>
-				<button type="submit" class="board_btn-default">등록완료</button>
+				<input type="submit" class="board_btn-default" value="등록완료"/>
 			</form>
 		</div>
 	</div>
 
-	<script
-		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 	<script
 		src="<%=request.getContextPath()%>/resources/js/create_board.js"

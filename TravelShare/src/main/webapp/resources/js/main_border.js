@@ -26,23 +26,25 @@ function pagingRest(click_number) {
 
 		if (status == 200 & readyState == 4) {
 			Object.keys(myobj).forEach((key) => {
+				console.log(myobj[key])
 				var board_content = document.createElement("div");
 				board_content.setAttribute("class", "board_content");
 				board_content.setAttribute("id", "board_content");
 
 				var board_imgContent = document.createElement("div");
 				board_imgContent.setAttribute("class", "board_imgContent");
-				board_imgContent.innerHTML = "<img onclick='imgClick()' alt='' src='<%=request.getContextPath()%>/resources/files/1.jpg'> <img alt='' src='<%=request.getContextPath()%>/resources/files/2.jpg'>";
+				console.log(myobj[key].board_mainimg);
+				board_imgContent.innerHTML = "<img onclick='imgClick()' alt='' src='"+myobj[key].board_mainimg+"+'> <img alt='' src='"+myobj[key].board_mainimg+"+'>";
 
 				var board_textContent = document.createElement("div");
 				board_textContent.setAttribute("class", "board_textContent");
-				board_textContent.innerHTML = "<div class='board_text1'>" + myobj[key].user_name + "</div> <div class='board_textTit'>" + myobj[key].board_name + "</div>";
+				board_textContent.innerHTML = "<div class='board_text1'>" + myobj[key].user_id + "</div> <div class='board_textTit'>" + myobj[key].board_title + "</div>";
 
 				var board_option = document.createElement("div");
 				board_option.setAttribute("class", "board_option");
 				board_option.innerHTML = "<div class='board_areaPan'>" +
 					"<span class='material-icons-outlined board_area_img'> location_on </span>" +
-					"<div class='board_area'>" + myobj[key].area + " </div> </div>" +
+					"<div class='board_area'>" + myobj[key].sigungu + " </div> </div>" +
 					"<div class='board_likePan'> <span class='material-icons-outlined board_like_img'> favorite </span> <div class='like'>0명</div> </div>";
 				board_content.appendChild(board_imgContent);
 				board_content.appendChild(board_textContent);
@@ -153,14 +155,6 @@ var sel = document.getElementById("h_area2");
  }
 }
 
-function imgClick() {
-	const body = document.getElementsByTagName("body");
-		Array.from(body).forEach((value2) => {
-			value2.setAttribute("class", "board_detail_open");
-		});
-	document.getElementById("board_clickPan").setAttribute("class", "board_show");
-}
-
 function imgClickRollback() {
 	const body = document.getElementsByTagName("body");
 		Array.from(body).forEach((value2) => {
@@ -170,6 +164,57 @@ function imgClickRollback() {
 }
 
 
+function imgClick(value) {
+	const body = document.getElementsByTagName("body");
+		Array.from(body).forEach((value2) => {
+			value2.setAttribute("class", "board_detail_open");
+		});
+		
+	getBoardContent(value);
+	
+	document.getElementById("board_clickPan").setAttribute("class", "board_show");
+}
+
+
+function getBoardContent(value) {
+	const xhttp = new XMLHttpRequest();
+	
+	xhttp.addEventListener('readystatechange', (e) => {
+		const target = e.target;
+
+		myobj = JSON.parse(target.responseText);
+
+			Object.keys(myobj).forEach((key) => {
+				console.log(myobj[key]);
+				document.getElementById("board_googleMap").setAttribute("src", "https://www.google.com/maps?q= "+myobj[key].addr+" &output=embed");
+//				document.getElementById("board_mainimg").setAttribute("src", myobj[key].board_mainimg);
+				document.getElementById("board_title").innerHTML = myobj[key].board_title;
+				document.getElementById("board_bestplace").innerHTML = myobj[key].board_bestplace;
+				document.getElementById("board_besteat").innerHTML = myobj[key].board_besteat;
+				document.getElementById("board_main_content").innerHTML = myobj[key].board_content;
+				
+				Array.from(document.querySelectorAll("#board_main_content>img")).forEach((value2) => {
+					value2.style.width = "40vw";
+					value2.style.height = "auto";
+				});
+				
+			});
+	});
+
+	xhttp.open('POST', '/travelShare/boardrest/choiceBoardInfo/', true);
+	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
+	xhttp.send(value);
+}
+
+function locationFilter (value){
+	if(value == 0){
+		var selectOptionSido = document.getElementById("board_sido").options[document.getElementById("board_sido").selectedIndex].value;
+		console.log(selectOptionSido);
+		location.href = "./mainBoardFilter2?sidocode="+selectOptionSido;
+	} else {
+		location.href = "./mainBoardFilter?sigungucode="+value;
+	}
+}
 
 
 

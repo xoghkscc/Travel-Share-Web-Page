@@ -26,6 +26,7 @@
     display: flex;
     width: 100%;
     align-items: center;
+    margin-bottom: 30px;
 }
 
 .region_area{
@@ -63,6 +64,7 @@ select{
 }
 
 .board_list_travel{
+	
     margin-top: 30px;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
@@ -71,20 +73,32 @@ select{
 }
 
 
+@media (min-width: 1080px){
+	.board_list_travel {margin-top: 30px;
+   						display: grid;
+    					grid-template-columns: 25% 25% 25% 25%;
+    					row-gap: 25px;
+    					column-gap: 12px;
+    					width: 1040px;}
+}
+
 @media (max-width: 1080px){
-	.board_list_travel {grid-template-columns: 33% 33% 33%;}
+	.board_list_travel {grid-template-columns: 33% 33% 33%;
+						width: 770px;}
 	.sel{width: 770px}
 }
 
 @media (max-width: 780px){
-	.board_list_travel {grid-template-columns: 50% 50%;}
+	.board_list_travel {grid-template-columns: 50% 50%;
+	width: 500px;}
 	.sel{width: 500px}
 	h2{font-size: 18px}
 	.region_area {width: 80px}
 	select{width: 90px}
 }
 @media (max-width: 530px){
-	.board_list_travel {grid-template-columns: 100%;}
+	.board_list_travel {grid-template-columns: 100%;
+	width: 244px;}
 	.sel{width: 244px}
 	.sel_pan{justify-content: center}
 	h2{font-size: 13px}
@@ -213,7 +227,7 @@ select{
     color: #8a944a;
     border: 1px solid #839705;
 }
-.board_paging>:last-child{
+.nextBtn{
     width: 80px;
     font-size: 16px;
     text-align: left;
@@ -602,3 +616,5 @@ select{
 	.board_comment_see_text>div:nth-child(2) {font-size: 10px;}
 	.board_comment_see_img>img{width: 50px; height: 50px;}
 }
+
+

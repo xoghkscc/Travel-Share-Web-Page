@@ -3,7 +3,7 @@ window.onload = function(){
                 new daum.Postcode({
                     oncomplete: function (data) {
                         document.getElementById('zipCode').value = data.zonecode; //5자리 새우편번호 사용
-                        document.getElementById('addr').value = data.address; //전체 주소
+                        document.getElementById('addr').value = data.jibunAddress; //전체 주소
                         document.getElementById('detailAddr').value = data.buildingName; //상세 주소
                         document.getElementById('detailAddr').focus();
                         document.getElementById('sido').value = data.sido; //시도

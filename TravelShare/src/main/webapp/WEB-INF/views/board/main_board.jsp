@@ -18,7 +18,7 @@
 		<div class="sel">
 			<div class="sel_pan">
 				<div class="region_sel">
-					<select class="region_area" onchange="cat1_change(this.value)">
+					<select class="region_area" id="board_sido" onchange="cat1_change(this.value)">
 						<option value="0">전체</option>
 						<option value="11">서울</option>
 						<option value="26">부산</option>
@@ -40,9 +40,10 @@
 					</select>
 				</div>
 
-				<div class="region_sel2" id="region_sel2">
-					<select id="h_area2">
+				<div class="region_sel2" id="region_sel2" >
+					<select id="h_area2" onchange="locationFilter(this.value)">
 						<option>-선택-</option>
+						<option value="0" >-전체-</option>
 					</select>
 				</div>
 			</div>
@@ -66,20 +67,20 @@
 			<c:forEach items="${boardDB }" var="board" begin="0" end="11">
 				<div class="board_content" id="board_content">
 					<div class="board_imgContent">
-						<img onclick='imgClick()' alt=""
-							src="<%=request.getContextPath()%>/resources/files/1.jpg">
-						<img alt=""
-							src="<%=request.getContextPath()%>/resources/files/2.jpg">
+						<img class="${board.board_id }" onclick='imgClick(${board.board_id})' alt=""
+							src="${board.board_mainimg }">
+						<img  alt=""
+							src="<%=request.getContextPath()%>/resources/files/null.jpg" >
 					</div>
 					<div class="board_textContent">
-						<div class="board_text1">${board.user_name }</div>
-						<div class="board_textTit">${board.board_name }</div>
+						<div class="board_text1">${board.user_id }</div>
+						<div class="board_textTit">${board.board_title }</div>
 					</div>
 					<div class="board_option">
 						<div class="board_areaPan">
 							<span class="material-icons-outlined board_area_img">
 								location_on </span>
-							<div class="board_area">${board.area }</div>
+							<div class="board_area">${board.sigungu }</div>
 						</div>
 						<div class="board_likePan">
 							<span class="material-icons-outlined board_like_img">
@@ -103,7 +104,7 @@
 				</c:choose>
 			</c:forEach>
 			<c:choose>
-				<c:when test="${boardDB.size()/12+1>=3 ? true : false }">
+				<c:when test="${boardDB.size()/12+1>=6 ? true : false }">
 					<div class="nextBtn">
 						다음 <span class="material-icons-round next_btn">
 							arrow_forward_ios </span>
@@ -120,25 +121,14 @@
 		<div id="board_detailContent">
 			<div class="board_detailPan">
 				<div class="board_left_pan">
-					<iframe
+					<iframe id="board_googleMap"
 						src="https://www.google.com/maps?q= 서울 관악구 관악로 85 &output=embed"
 						style='border: 0;' allowfullscreen="" aria-hidden="false"
 						tabindex="0" frameborder="0"></iframe>
 					<!-- q= 뒤에 주소를 입력하면 됨 -->
 					<hr style="color: black; width: 100%; margin-bottom: 50px;">
-					<div class="board_main_content">
-						<div class="board_img_content">
-							<img src="<%=request.getContextPath()%>/resources/files/1.jpg" alt="">
-						</div>
-
-						<div class="board_text_content">
-							<p>1. 사진 샘플</p>
-						</div>
-						<div class="board_img_content">
-							<img src="<%=request.getContextPath()%>/resources/files/2.jpg" alt="">
-						</div>
-
-						<div class="board_text_content">2. 사진 샘플</div>
+					<div id="board_main_content" class="board_main_content">
+					<!-- 게시판 콘텐츠들이 들어가는 곳  -->
 					</div>
 
 					<div class="board_comment">
@@ -155,7 +145,7 @@
 						<div class="board_comment_show">
 							<div class="board_comment_see">
 								<div class="board_comment_see_img">
-									<img src="<%=request.getContextPath()%>/resources/files/3.jpg" alt="">
+									<img src="<%=request.getContextPath()%>/resources/files/null.jpg" alt="">
 								</div>
 								<div class="board_comment_see_text">
 									<div>
@@ -172,27 +162,27 @@
 
 				<div class="board_right_pan">
 					<div class="board_user_info">
-						<img src="<%=request.getContextPath()%>/resources/files/2.jpg"
+						<img id="board_mainimg" src="<%=request.getContextPath()%>/resources/files/null.jpg"
 							alt="">
 					</div>
 					<div class="board_user_name">닉네임</div>
 
-					<div class="board_title">즐거운 경주 여행</div>
+					<div id="board_title" class="board_title"></div>
 					<div class="board_sub_info">
 						<div class="board_sub_info2">
 							<div>
 								<span class="material-icons-outlined board_area_img">
 									location_on </span>
-								<div>추천 명소</div>
+								<div>추천 여행지</div>
 							</div>
-							<div>몰라</div>
+							<div id="board_bestplace">몰라</div>
 						</div>
 						<div class="board_sub_info2">
 							<div>
 								<span class="material-icons-outlined"> local_dining</span>
 								<div>추천 맛집</div>
 							</div>
-							<div>몰라</div>
+							<div id="board_besteat">몰라</div>
 						</div>
 						<div class="board_sub_info2">
 							<div>
@@ -218,21 +208,21 @@
 								class="board_singo">신고하기</span>
 						</div>
 
-						<div class="board_Plans">
-							<div class="board_Plans_tit">여행경로</div>
-							<div class="board_Plans_list">
-								<div>여정1</div>
-							</div>
-							<div class="board_Plans_list">
-								<div>여정2</div>
-							</div>
-							<div class="board_Plans_list">
-								<div>여정3</div>
-							</div>
-							<div class="board_Plans_list">
-								<div>여정4</div>
-							</div>
-						</div>
+<!-- 						<div class="board_Plans"> -->
+<!-- 							<div class="board_Plans_tit">여행경로</div> -->
+<!-- 							<div class="board_Plans_list"> -->
+<!-- 								<div>여정1</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="board_Plans_list"> -->
+<!-- 								<div>여정2</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="board_Plans_list"> -->
+<!-- 								<div>여정3</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="board_Plans_list"> -->
+<!-- 								<div>여정4</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 					</div>
 				</div>
 			</div>
