@@ -26,7 +26,7 @@ public class UserInfo {
 	private String user_sido;
 	private String user_sigungu;
 	private String user_roadname;
-	private int user_zonecode;
+	private String user_zonecode;
 	private String user_year;
 	private String user_month;
 	private String user_day;
