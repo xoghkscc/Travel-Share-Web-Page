@@ -11,60 +11,22 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="http://code.highcharts.com/maps/highmaps.js"></script>
 <script src="http://code.highcharts.com/maps/modules/drilldown.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/main_chart.js?ver=5.0"></script>
+<script src="<%=request.getContextPath()%>/resources/js/main_chart.js?ver=5.15"></script>
 <script type="text/javascript">
 var highMap = new highMaps();
 highMap.init();
 </script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css?ver=5.0">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css?ver=5.15">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Two+Tone|Material+Icons+Sharp|Material+Icons+Outlined" rel="stylesheet">
 <link rel="shortcut icon" href="#">
 </head>
 <body>
-<jsp:include page="./header/top.jsp"></jsp:include>
   <main>
         <!-- 메인섹션 -->
         <section id="main_sec1">
             <div class="main_backgroundImg"></div>
             <div class="main_container">
-                <nav class="main_navbar">
-                    <div class="main_logo">Travel<span style="color: orangered;">ers</span></div>
-                    <div class="main_menuBar">
-                        <div class="main_topMenu">
-                            <div></div>
-                            <div class="main_icons">
-                                <div class="main_flipedInfo">
-                                    <span class="material-icons-two-tone" style="font-size: 2.5vw;">
-                                        event
-                                    </span>
-                                </div>
-                                <div class="main_flipedInfo">
-                                    <span class="material-icons-two-tone" style="font-size: 2.5vw;">
-                                        location_on
-                                    </span>
-                                </div>
-                                <div class="main_flipedInfo">
-                                    <span class="material-icons-two-tone" style="font-size: 2.5vw;">
-                                        phone_iphone
-                                    </span>
-                                </div>
-                                <div class="main_flipedInfo">
-                                    <span class="material-icons-two-tone" style="font-size: 2.5vw;" id="main_login_Btn">
-                                        perm_identity
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="main_bottomMenu">
-                            <span>전체</span>
-                            <span><a href="https://www.mangoplate.com/">먹기</a></span>
-                            <span><a href="https://www.starbucks.co.kr/index.do">마시기</a></span>
-                            <span><a href="https://www.everland.com/web/intro.html">놀기</a></span>
-                            <span><a href="https://gil.seoul.go.kr/walk/main.jsp">걷기</a></span>
-                            <span><a href="http://ticket.interpark.com/Contents/Ranking?smid1=s_menu&smid2=performance">보기</a></span>
-                        </div>
-                    </div>
-                </nav>
+				<jsp:include page="./header/top.jsp"></jsp:include>
                 <div class="main_mainBar">
                     <div id="main_content">
                         <div class="main_travel">
@@ -306,11 +268,11 @@ highMap.init();
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui impedit numquam atque quidem quos facere obcaecati deleniti labore culpa esse nostrum dicta earum rem ducimus, voluptates eligendi voluptate exercitationem dolorem!</p>
             </section>
             <footer class="global-footer">
-                <a href="https://www.youtube.com/channel/UC_s1FC7s5YVwDImzv-WG93Q" target="blank">1분코딩</a>
+                <span>fotter자리</span>
             </footer>
         </section>
     </main>
    
-    <script src="<%=request.getContextPath()%>/resources/js/main_app.js?ver=5.0"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/main_app.js?ver=5.15"></script>
 </body>
 </html>
