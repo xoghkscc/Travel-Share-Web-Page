@@ -10,7 +10,7 @@
 </head>
 <body>
 	<jsp:include page="../header/top.jsp"></jsp:include>
-	<form id="membership" action="./membership" method="POST" autocomplete='off'></form>
+	<form id="membership" action="./membership" method="POST" onSubmit="return false;" autocomplete='off'></form>
 	<div id="membership_table">
 		
     	<table>
@@ -107,6 +107,9 @@
     		<tr>
     			<th align="left"><input type="text" name="user_address" form="membership" id="user_add_detail"></th>
     		</tr>
+    			<th id="address_warning"></th>
+    		<tr>
+    		</tr>
    			<tr>
     			<th class="member_text">성별</th>
     		</tr>
@@ -139,4 +142,6 @@
     			
     			
 	
-
+    		
+    		
+    		
