@@ -6,6 +6,9 @@ import com.kgitbank.travelShare.model.UserInfo;
 
 public interface UserInfoMapper {
 
-	public List<UserInfo> getUserInfo();
+	public int adduserinfo(UserInfo userinfo);
 	
+	public Integer checkId(String user_email);
+	
+	public Integer checkNickname(String user_nickname);
 }

@@ -3,6 +3,9 @@ package com.kgitbank.travelShare;
 
 
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +38,18 @@ public class MemberShipController {
 	}
 	
 	@PostMapping("/membership")
-	public String memberShipPost() {
+	public String memberShipPost(UserInfo userinfo) {
+		Calendar cal = new GregorianCalendar();
+		Date date = new Date(cal.getTimeInMillis());
 		
+		userinfo.setUser_birth(userinfo.getUser_year() + "/" + userinfo.getUser_month() + "/" + userinfo.getUser_day());
+		userinfo.setUser_date(date);
+		userinfo.setUser_rank("브론즈");
+		userinfo.setUser_position("수습");
 		
-		System.out.println("포스트왔다");
+		System.out.println(userinfo.getUser_birth());
+		user_info.adduserinfo(userinfo);
+		
 		return "/membership/membership";
 		
 	}

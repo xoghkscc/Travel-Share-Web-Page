@@ -19,7 +19,7 @@ const name_warning = document.getElementById("name_warning");
 const phone_warning = document.getElementById("phone_warning");
 const birth_warning = document.getElementById("birth_warning");
 const gender_warning = document.getElementById("gender_warning");
-
+const xhttp = new XMLHttpRequest();
 const chkStyle = /^[0-9]*$/;
 
 member_email.addEventListener('blur', () => {
@@ -30,7 +30,24 @@ member_email.addEventListener('blur', () => {
 	} else if(!email_check(email_val)){
 		email_warning.innerHTML = "이메일 형식에 맞게 입력해주세요"
 	}  else {
-		email_warning.innerHTML = ""
+	
+	const member_email_val = member_email.value;
+	
+	console.log(member_email.value);
+	
+	xhttp.addEventListener('readystatechange', (e) => {
+		const target = e.target
+		const status = e.target.status;
+		const readyState = target.readyState;
+		
+		if(status == 200 && readyState == 4) {
+		email_warning.innerHTML = e.target.responseText;
+	
+		}
+	});
+
+	xhttp.open('POST', '/travelShare/membershiprest/emailwarning', true);
+	xhttp.send(member_email_val);
 	} 
 	
 	function email_check(email_val) {
@@ -86,8 +103,22 @@ member_nickname.addEventListener('blur', () => {
 	if(nickname_val == ""){
 		nickname_warning.innerHTML = "필수 정보입니다"
 	}  else {
-		nickname_warning.innerHTML = ""
+	
+	xhttp.addEventListener('readystatechange', (e) => {
+		const target = e.target
+		const status = e.target.status;
+		const readyState = target.readyState;
+		
+		if(status == 200 && readyState == 4) {
+		nickname_warning.innerHTML = e.target.responseText;
+	
+		}
+	});
+
+	xhttp.open('POST', '/travelShare/membershiprest/nicknamewarning', true);
+	xhttp.send(nickname_val);
 	} 
+	 
 });
 
 member_name.addEventListener('blur', () => {
@@ -334,3 +365,19 @@ member_sub2.addEventListener('click', () => {
 	} 
 });
 
+window.onload = function(){
+document.getElementById("add_code_search").addEventListener('click', (e) => {
+    	console.log("왔다");          
+	  	new daum.Postcode({
+                    oncomplete: function (data) {
+                        document.getElementById('user_add_code').value = data.zonecode; //5자리 새우편번호 사용
+                        document.getElementById('user_add_city').value = data.jibunAddress; //전체 주소
+                        document.getElementById('user_add_detail').value = data.buildingName; //상세 주소
+                        document.getElementById('user_add_detail').focus();
+						document.getElementById('sido').value = data.sido; //시도
+                        document.getElementById('sigungu').value = data.sigungu; //시/군/구
+                        document.getElementById('roadname').value = data.roadname;
+                    }
+                }).open();
+            });
+	}

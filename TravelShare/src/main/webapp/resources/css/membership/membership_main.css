@@ -5,6 +5,10 @@
 	margin-left: 35%;
 }
 
+.member_text {
+	text-align: left;
+}
+ 
 #member_email {
 	width: 500px;
 	height:45px;
@@ -39,12 +43,9 @@
 
 #member_gender {
 	height:45px;
-	width: 505px;	
+	width: 501px;	
 }
 
-.member_text {
-	text-align: left;
-}
 
 #member_sub2 {
 	height:45px;
@@ -66,11 +67,40 @@
 
 #member_day{
 	height:45px;
-	width: 152px;
+	width: 162px;
 	font-size:20px;	
 }
 
+#user_add_code{
+	margin-top : 20px;
+	height:45px;
+	width: 300px;
+	font-size:20px;	
+	margin-bottom : 10px;
 
+}
+
+#user_add_city{
+	
+	height:45px;
+	width: 463px;
+	font-size:20px;	
+	margin-bottom : 10px;
+	
+}
+
+#user_add_detail{
+	margin-bottom : 20px;
+	height:45px;
+	width: 501px;
+	font-size:20px;	
+}
+
+#add_code_search {
+	background-color: orange;
+	width: 100px;
+	height: 45px;
+}
 
 
 
