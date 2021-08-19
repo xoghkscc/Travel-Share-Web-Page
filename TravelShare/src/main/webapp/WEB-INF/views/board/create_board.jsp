@@ -78,16 +78,16 @@
 						<input type="text" name="board_besteat" style="width: 300px;"
 							placeholder="여행지 주변 추천 맛집을 입력해주세요" />
 					</div>
-					<div class="board_travel_route">
-						<label>여행경로</label>
-					</div>
-					<div class="board_travel_route">
-						<input type="text" style="width: 300px;" />
-						<div>
-							<span class="material-icons-outlined pulsBtn">
-								add_circle_outline </span>
-						</div>
-					</div>
+<!-- 					<div class="board_travel_route"> -->
+<!-- 						<label>여행경로</label> -->
+<!-- 					</div> -->
+<!-- 					<div class="board_travel_route"> -->
+<!-- 						<input type="text" style="width: 300px;" /> -->
+<!-- 						<div> -->
+<!-- 							<span class="material-icons-outlined pulsBtn"> -->
+<!-- 								add_circle_outline </span> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 					<div class="board_travel_mainPicture board_img">
 						<label>여행 대표 사진</label>
 					</div>

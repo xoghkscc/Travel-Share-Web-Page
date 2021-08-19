@@ -17,5 +17,9 @@ public interface BoardMapper {
 	
 	public ArrayList<BoardModel> getBoardPaging(@Param("startnum") Integer startnum, @Param("endnum") Integer endnum);
 	
+	public ArrayList<BoardModel> getBoardPaging1(@Param("sigungucode") Integer sigungucode, @Param("startnum") Integer startnum, @Param("endnum") Integer endnum);
+	
+	public ArrayList<BoardModel> getBoardPaging2(@Param("sidocode") Integer sidocode, @Param("startnum") Integer startnum, @Param("endnum") Integer endnum);
+	
 	public void insertBoard(BoardModel baordModel);
 }

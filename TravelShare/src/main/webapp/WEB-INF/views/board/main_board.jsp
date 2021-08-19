@@ -41,9 +41,9 @@
 				</div>
 
 				<div class="region_sel2" id="region_sel2" >
-					<select id="h_area2" onchange="locationFilter(this.value)">
+					<select id="h_area2" onchange="locationFilter()">
 						<option>-선택-</option>
-						<option value="0" >-전체-</option>
+						<option value="0" >전체</option>
 					</select>
 				</div>
 			</div>
@@ -51,7 +51,18 @@
 			<div class="board_board_tit">
 				<div>
 					<h2>
-						조건에 맞는 여행지가 <strong>${boardDB.size() }</strong>개 있습니다.
+						<c:choose>
+							<c:when test="${empty sidoName }">
+								<strong>전체 조건</strong>에 맞는 여행지가 <strong>${boardDB.size() }</strong>개 있습니다.
+							</c:when>
+							<c:when test="${sidoName == '전체' and  sidogunName == '전체'}">
+								<strong>전체 조건</strong>에 맞는 여행지가 <strong>${boardDB.size() }</strong>개 있습니다.
+							</c:when>
+							<c:otherwise>
+								<strong>${sidoName }[${sidogunName }]</strong>에 맞는 여행지가 <strong>${boardDB.size() }</strong>개 있습니다. 
+							</c:otherwise>
+						</c:choose>
+						
 					</h2>
 				</div>
 				<div>
@@ -93,7 +104,7 @@
 		</div>
 		<div class="board_paging">
 			<c:forEach begin="1"
-				end="${boardDB.size()/12+1>=6 ? 5 : boardDB.size()/12+1}" var="i">
+				end="${boardDB.size()/12+1>=6 ? 5 : (boardDB.size() / 12)+1 }" var="i">
 				<c:choose>
 					<c:when test="${i == 1 }">
 						<div class="board_choose board_paging_number" id="${i }">${i }</div>

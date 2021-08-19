@@ -37,17 +37,27 @@ public class BoardContentController {
 
 	@Autowired
 	BoardMapper boardMapper;
-
+	
+	public Model filterText(HttpServletRequest req, Model model) {
+		String sidoName = req.getParameter("sidoName");
+		String sidogunName = req.getParameter("sidogunName");
+		model.addAttribute("sidoName", sidoName);
+		model.addAttribute("sidogunName", sidogunName);
+		
+		return model;
+	}
+	
 	@GetMapping("mainBoardFilter")
 	public String mainBorderFilter(HttpServletRequest req ,Model model) {
 		Integer sigungucode =Integer.parseInt(req.getParameter("sigungucode"));
+		model = filterText(req, model);
 		model.addAttribute("boardDB", boardMapper.getBoardFilter1(sigungucode));
-		System.out.println(sigungucode);
 		return "/board/main_board";
 	}
 	
 	@GetMapping("mainBoardFilter2")
 	public String mainBorderFilter2(HttpServletRequest req ,Model model) {
+		model = filterText(req, model);
 		Integer sidocode =Integer.parseInt(req.getParameter("sidocode"));
 		if(sidocode == 0) {
 			model.addAttribute("boardDB", boardMapper.getBoardAll());

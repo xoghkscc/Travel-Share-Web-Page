@@ -9,22 +9,36 @@
 	</select>
 	
 	<select id="getBoardFilter1" resultType="com.kgitbank.travelShare.model.BoardModel">
-				SELECT * FROM main_board WHERE sigungucode = #{sigungucode}
+				SELECT * FROM main_board WHERE sigungucode = #{sigungucode} ORDER BY board_id DESC
 	</select>
 	
 	<select id="getBoardFilter2" resultType="com.kgitbank.travelShare.model.BoardModel">
-				SELECT * FROM main_board WHERE sigungucode LIKE #{sidocode} || '%'
+				SELECT * FROM main_board WHERE sigungucode LIKE #{sidocode} || '%' ORDER BY board_id DESC
 	</select>
 	
 	<select id="getBoardChoice" resultType="com.kgitbank.travelShare.model.BoardModel">
-				SELECT * FROM main_board WHERE board_id = #{board_id}
+				SELECT * FROM main_board WHERE board_id = #{board_id} ORDER BY board_id DESC
 	</select>
 	
 	<select id="getBoardPaging" resultType="com.kgitbank.travelShare.model.BoardModel">
 		SELECT *
 		FROM (SELECT ROWNUM AS rnum, board_id, user_id, board_title, board_lookupcnt, board_bestplace, board_besteat,
             board_mainimg, board_content, sigungucode, sido, sigungu, addr
-        FROM main_board board_id) WHERE RNUM BETWEEN #{startnum }+1 AND #{endnum }
+        FROM main_board board_id ORDER BY board_id DESC) WHERE RNUM BETWEEN #{startnum }+1 AND #{endnum } ORDER BY board_id DESC
+	</select>
+	
+	<select id="getBoardPaging1" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT *
+		FROM (SELECT ROWNUM AS rnum, board_id, user_id, board_title, board_lookupcnt, board_bestplace, board_besteat,
+            board_mainimg, board_content, sigungucode, sido, sigungu, addr
+        FROM main_board board_id WHERE sigungucode= #{sigungucode} ORDER BY board_id DESC) WHERE RNUM BETWEEN #{startnum }+1 AND #{endnum } ORDER BY board_id DESC
+	</select>
+	
+	<select id="getBoardPaging2" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT *
+		FROM (SELECT ROWNUM AS rnum, board_id, user_id, board_title, board_lookupcnt, board_bestplace, board_besteat,
+            board_mainimg, board_content, sigungucode, sido, sigungu, addr
+        FROM main_board board_id WHERE sigungucode LIKE #{sidocode} || '%' ORDER BY board_id DESC) WHERE RNUM BETWEEN #{startnum }+1 AND #{endnum } ORDER BY board_id DESC
 	</select>
 	
 	

@@ -1,18 +1,20 @@
 const board_paging_number = document.getElementsByClassName("board_paging_number");
-
 Array.from(board_paging_number).forEach((value) => {
 	value.addEventListener('click', (e) => {
+		var sigungucode = getParameterByName('sigungucode');
+		var sidocode = getParameterByName('sidocode');
+		
 		Array.from(board_paging_number).forEach((value2) => {
 			value2.setAttribute("class", "board_paging_number");
 			});
 			value.setAttribute("class", "board_choose board_paging_number");
 		const click_number = value.getAttribute("id");
-		pagingRest(click_number);
+		pagingRest(click_number, sigungucode, sidocode);
 		
 	});
 });
 
-function pagingRest(click_number) {
+function pagingRest(click_number, sigungucode, sidocode) {
 	const board_list_travel = document.querySelector(".board_list_travel");
 	board_list_travel.innerHTML = "";
 	const xhttp = new XMLHttpRequest();
@@ -26,15 +28,13 @@ function pagingRest(click_number) {
 
 		if (status == 200 & readyState == 4) {
 			Object.keys(myobj).forEach((key) => {
-				console.log(myobj[key])
 				var board_content = document.createElement("div");
 				board_content.setAttribute("class", "board_content");
 				board_content.setAttribute("id", "board_content");
 
 				var board_imgContent = document.createElement("div");
 				board_imgContent.setAttribute("class", "board_imgContent");
-				console.log(myobj[key].board_mainimg);
-				board_imgContent.innerHTML = "<img onclick='imgClick()' alt='' src='"+myobj[key].board_mainimg+"+'> <img alt='' src='"+myobj[key].board_mainimg+"+'>";
+				board_imgContent.innerHTML = "<img onclick='imgClick("+myobj[key].board_id+")' alt='' src='"+myobj[key].board_mainimg+"'> <img alt='' src='/travelShare/resources/files/null.jpg'>";
 
 				var board_textContent = document.createElement("div");
 				board_textContent.setAttribute("class", "board_textContent");
@@ -53,12 +53,32 @@ function pagingRest(click_number) {
 			});
 		}
 	});
-
+	
+	var pagingData = {
+		click_number : click_number,
+		sigungucode : sigungucode,
+		sidocode : sidocode
+	}
+	
 	xhttp.open('POST', '/travelShare/boardrest/paging/', true);
-	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
-	xhttp.send(click_number);
+	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8');
+	xhttp.send(JSON.stringify(pagingData));
 }
 
+function isObjEmpty(obj)  {
+  if(Object.keys(obj).length === 0)  {
+    return true;
+  }
+  return false;
+}
+
+//주소에서 파라미터를 가져옳 수 있는 함수
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 
 function cat1_change(key){
  var cat1_num = new Array(11,26,27,28,29,30,31,36,41,47,48,42,43,44,45,46,50);
@@ -185,7 +205,6 @@ function getBoardContent(value) {
 		myobj = JSON.parse(target.responseText);
 
 			Object.keys(myobj).forEach((key) => {
-				console.log(myobj[key]);
 				document.getElementById("board_googleMap").setAttribute("src", "https://www.google.com/maps?q= "+myobj[key].addr+" &output=embed");
 //				document.getElementById("board_mainimg").setAttribute("src", myobj[key].board_mainimg);
 				document.getElementById("board_title").innerHTML = myobj[key].board_title;
@@ -206,13 +225,16 @@ function getBoardContent(value) {
 	xhttp.send(value);
 }
 
-function locationFilter (value){
-	if(value == 0){
+function locationFilter (){
 		var selectOptionSido = document.getElementById("board_sido").options[document.getElementById("board_sido").selectedIndex].value;
-		console.log(selectOptionSido);
-		location.href = "./mainBoardFilter2?sidocode="+selectOptionSido;
+		var selectOptionSidoName = document.getElementById("board_sido").options[document.getElementById("board_sido").selectedIndex].text;
+		var selectOptionSidogunName = document.getElementById("h_area2").options[document.getElementById("h_area2").selectedIndex].text;
+		var sigungucode = document.getElementById("h_area2").options[document.getElementById("h_area2").selectedIndex].value;
+		
+	if(sigungucode == 0){
+		location.href = "./mainBoardFilter2?sidocode="+selectOptionSido+"&sidoName="+selectOptionSidoName+"&sidogunName="+selectOptionSidogunName;
 	} else {
-		location.href = "./mainBoardFilter?sigungucode="+value;
+		location.href = "./mainBoardFilter?sigungucode="+sigungucode+"&sidoName="+selectOptionSidoName+"&sidogunName="+selectOptionSidogunName;
 	}
 }
 
