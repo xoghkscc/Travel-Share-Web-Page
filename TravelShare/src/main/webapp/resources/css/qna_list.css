@@ -1,0 +1,53 @@
+@charset "UTF-8";
+* {
+	margin: 0px;
+	padding: 0px;
+}
+.qna_guide{
+  position: relative;
+  top: 100px;
+  background-image: url(../files/back4.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+th, td {
+  text-align: center;
+}
+.qna_table {
+  width: 80%;
+  margin: auto;
+  border: solid rgba(128, 128, 128, 0.3);
+  
+}
+h2 {
+  width: 80%;
+  margin: auto;
+  right: 100px;
+}
+.search_op {
+  margin:auto;
+  margin-left: 1100px;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  vertical-align: middle;
+  
+}
+.search_text {
+  margin-left: 10px;
+  height: 25px;
+  width: 230px;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+.search_btn {
+  margin-bottom: 15px;
+  width: 85px;
+}
+.write_btn {
+  position: relative;
+  left: 1430px;
+}
+
+.qna_head {
+  background-color: skyblue;
+}

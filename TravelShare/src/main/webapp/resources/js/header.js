@@ -1,6 +1,24 @@
 const burger = document.querySelector(".burger"); 
 const nav = document.querySelector(".nav-links"); 
 const navlinks = document.querySelectorAll(".nav-links li");
+const guide_header = document.querySelector("#guide_header");
+const guide_link = document.querySelectorAll(".guide_link");
+window.addEventListener('scroll', function(e){
+	if (window.scrollY > 0) {
+		guide_header.classList.add('down');
+		for (let i = 0; i < guide_link.length; i++) {
+			guide_link[i].style.color= 'black';	
+		}
+
+		
+	} else {
+		if (guide_header.classList.contains('down'))
+		guide_header.classList.remove('down');
+		for (let i = 0; i < guide_link.length; i++) {
+			guide_link[i].style.color= 'blanchedalmond';	
+		}
+	}
+});
 
 const navAnimation = () => { 
   navlinks.forEach((link, index) => {
@@ -42,3 +60,23 @@ const navAnimation = () => {
     navSlide(); 
   }; 
   init();
+/*
+$(function(){
+  var $header = $('header'); //헤더를 변수에 넣기
+  var $page = $('body'); //색상이 변할 부분
+  var $window = $(window);
+  var pageOffsetTop = $page.offset().top;//색상 변할 부분의 top값 구하기
+  
+  $window.resize(function(){ //반응형을 대비하여 리사이즈시 top값을 다시 계산
+    pageOffsetTop = $page.offset().top;
+  });
+  
+  $window.on('scroll', function(){ //스크롤시
+    var scrolled = $window.scrollTop() >= pageOffsetTop; //스크롤된 상태; true or false
+    $header.toggleClass('down', scrolled); //클래스 토글
+	console.log(scrolled); 
+});
+
+});
+*/
+
