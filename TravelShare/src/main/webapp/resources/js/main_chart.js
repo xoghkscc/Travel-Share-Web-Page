@@ -196,8 +196,7 @@ highMaps.prototype.init = function(){
                                 
                                         me.selected = '0';
                                         me.event.drillup();
-                                        // location.href = `/travelShare/board/mainBoardFilter?sigungucode=${this.properties.code}&sidoName=${sido}&sidogunName=${this.properties.name}`;
-                                        location.href = '#';
+                                        location.href = `/travelShare/board/mainBoardFilter?sigungucode=${this.properties.code}&sidoName=${sido}&sidogunName=${this.properties.name}`;
                                     }
                                 }
 

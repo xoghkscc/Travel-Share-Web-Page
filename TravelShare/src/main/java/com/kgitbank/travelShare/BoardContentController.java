@@ -68,8 +68,8 @@ public class BoardContentController {
 	}
 	
 	@GetMapping("mainBoard")
-	public String mainBorder(Model model) {
-
+	public String mainBorder(Model model, HttpSession session) {
+		System.out.println("id : "+session.getAttribute("id"));
 		model.addAttribute("boardDB", boardMapper.getBoardAll());
 		return "/board/main_board";
 	}
@@ -86,7 +86,6 @@ public class BoardContentController {
 
 		try {
 			byte[] bytes = upload.getBytes();
-			
 			UUID uuid = UUID.randomUUID();
 			String fileRanName = uuid.toString();
 			

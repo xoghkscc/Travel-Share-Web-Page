@@ -9,6 +9,7 @@
     overflow: hidden;
 }
 .sel{
+	margin-top: 80px;
 	width: 1030px;
     display: flex;
     flex-direction: column;

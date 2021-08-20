@@ -33,6 +33,7 @@ public class LoginController {
 	            List<LoginInfo> loinfo = loginService.CheckloginId(logininfo);
 	    		for (LoginInfo logo_info : loinfo) {
 	    			 session.setAttribute("id", logo_info.getUser_id());
+	    			 System.out.println(session.getAttribute("id"));
 	    		}
 	            
 	            return "redirect:/site/index";
