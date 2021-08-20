@@ -6,15 +6,15 @@
 		<nav>
 			<div class="logo">
 				<h1>
-					<a href="../site/index"> Travel<span style="color: red; font-size: 35px;">ers</span></a>
+					<a class="guide_link" href="../site/index"> Travel<span style="color: red; font-size: 35px;">ers</span></a>
 				</h1>
 
 			</div>
 			<ul class="nav-links">
-				<li><a href="#">여행지</a></li>
-				<li><a href="#">QnA</a></li>
-				<li><a href="../board/mainBoard">게시판</a></li>
-				<li><a href="../site/login">로그인</a></li>
+				<li><a class="guide_link" href="#">여행지</a></li>
+				<li><a class="guide_link" href="#">QNA</a></li>
+				<li><a class="guide_link" href="../board/mainBoard">게시판</a></li>
+				<li><a class="guide_link" href="../site/login">로그인</a></li>
 			</ul>
 			<div class="burger">
 				<div class="line1"></div>
