@@ -1,5 +1,4 @@
 const main_start = document.querySelector('.main_start');
-const main_login_Btn = document.getElementById('main_login_Btn');
 const main_bottomMenu = document.getElementsByClassName('main_bottomMenu');
 const main_map_app = document.querySelector('.main_map_app');
 const main_cellphone_list = document.getElementsByClassName('main_cellphone_list');
@@ -7,8 +6,6 @@ const main_sticky_text = document.getElementsByClassName('main_sticky_text');
 const main_sticky_container2 = document.querySelector('.main_sticky_container2');
 
 main_start.addEventListener('click', main_start_click);
-main_login_Btn.addEventListener('click', main_login_Btn_click);
-
 
 for(let i=0; i < main_bottomMenu.length; i++){
     main_bottomMenu[i].addEventListener('mouseover', main_bottomMenu_mouseover);
@@ -67,10 +64,6 @@ function main_bottomMenu_mouseout(e) {
     e.target.style.color = 'blanchedalmond';
 }
 
-function main_login_Btn_click(e) {
-    location.href = `${getContextPath()}/site/login`;
-}
-
 window.addEventListener('resize', resize);
 // let stageWidth = 900;
 // let stageHeight = 700;
@@ -97,3 +90,4 @@ function resize(){
         highMap3.init();
     }
 }
+resize();

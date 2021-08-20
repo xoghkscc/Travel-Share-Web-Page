@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.kgitbank.travelShare.mapper.UserMapper">
+  
+  <!-- 여러 줄 꺼낼 때 -->
+  <select id="getAdmin_SearchingList" resultType="com.kgitbank.travelShare.model.User">
+        SELECT * FROM user_info where user_name = '${name}'
+  </select>
+
+
+</mapper>
