@@ -17,6 +17,7 @@
 <body>
 	<jsp:include page="../header/top.jsp"></jsp:include>
 	<!-- 네이버아이디로로그인 버튼 노출 영역 -->
+	<form id="login" action="../login" method="POST" autocomplete='off'></form>
 	<div class="loginBox">
 		<div id="basic_login">
 			<div>
@@ -24,16 +25,16 @@
 			</div>
 			<div>
 				<div class="login_text">
-					이메일<input type="text">
+					이메일<input form="login" name="user_email"  type="text">
 				</div>
 			</div>
 			<div>
 				<div class="login_text">
-					비밀번호<input type="text">
+					비밀번호<input form="login" name="user_password" type="text">
 				</div>
 			</div>
 		</div>
-		<div id="login_loginbtn">로그인</div>
+		<div id="login_loginbtn"><input type="submit" form="login" value="로그인"></div>
 		<div id="naver_id_login"></div>
 		<div class="login_find">
 			<div>

@@ -4,12 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kgitbank.travelShare.mapper.UserInfoMapper">
         
+              
+       <insert id="adduserinfo">
+       		INSERT INTO user_info(user_id, user_email, user_password, user_name, user_nickname, user_phonenumber, user_date, user_gender, user_address, user_rank, user_position, user_birth, user_sido, user_sigungu, user_roadname, user_zonecode) 
+       		VALUES(user_info_seq.nextval, #{user_email },  #{user_password }, #{user_name }, #{user_nickname }, #{user_phonenumber }, #{user_date }, #{user_gender }, #{user_address }, #{user_rank }, #{user_position }, #{user_birth }, #{user_sido }, #{user_sigungu }, #{user_roadname }, #{user_zonecode }
+       		)
+       </insert>
        
-        <select id="getUserInfo" resultType="com.kgitbank.travelShare.model.UserInfo">
-          SELECT member_email FROM user_info 
-          
+       <select id="checkId" resultType="int">
+        	SELECT COUNT(user_email) FROM user_info WHERE user_email=#{user_email }
         </select>
         
+        <select id="checkNickname" resultType="int">
+        	SELECT COUNT(user_nickname) FROM user_info WHERE user_nickname=#{user_nickname }
+        </select>
+         
 </mapper>
 
 <!-- resultType="java.util.List" -->

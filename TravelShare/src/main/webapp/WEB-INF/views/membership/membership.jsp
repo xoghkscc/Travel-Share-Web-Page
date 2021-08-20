@@ -10,7 +10,7 @@
 </head>
 <body>
 	<jsp:include page="../header/top.jsp"></jsp:include>
-	<form id="membership" action="./membership" method="POST" autocomplete='off'></form>
+	<form id="membership" action="./membership" method="POST" onSubmit="return false;" autocomplete='off'></form>
 	<div id="membership_table">
 		
     	<table>
@@ -18,8 +18,10 @@
     			<th class="member_text">아이디</th>
     		</tr>
     		<tr>
-    			<td><input type="text" form="membership" placeholder="ex: myname@example.com" id="member_email"></td>
+    			<td><input type="text" form="membership" name="user_email" placeholder="ex: myname@example.com" id="member_email"></td>
     		</tr>
+    		
+    		
     		<tr>
     			 <td id="email_warning"></td>
     		</tr>
@@ -27,7 +29,7 @@
     			<th class="member_text">비밀번호</th>
     		</tr>
     		<tr>
-    			<td><input type="password" form="membership" id="member_password1" class="member_password"></td>
+    			<td><input type="password" form="membership" name="user_password" id="member_password1" class="member_password"></td>
     		</tr>
     		<tr>
     			 <td id="password_warning"></td>
@@ -36,7 +38,7 @@
     			<th class="member_text">비밀번호 확인</th>
     		</tr>
     		<tr>
-    			<td ><input type="password" form="membership"  id="member_password2" class="member_password"></td>
+    			<td ><input type="password" form="membership" id="member_password2" class="member_password"></td>
     		</tr>
     		<tr>
     			 <td id="password_check_warning"></td>
@@ -44,7 +46,7 @@
     			<th class="member_text">닉네임</th>
     		</tr>
     		<tr>
-    			<td> <input type="text" form="membership" id="member_nickname"></td>
+    			<td> <input type="text" form="membership" name="user_nickname" id="member_nickname"></td>
     		</tr>
     		<tr>
     			 <td  id="nickname_warning"></td>
@@ -53,7 +55,7 @@
     			<th class="member_text">이름</th> 	
     		</tr>
     		<tr>
-    			<td><input type="text" form="membership" id=member_name></td>
+    			<td><input type="text" form="membership" name="user_name" id=member_name></td>
     		</tr>
     		<tr>
     			 <td id="name_warning"></td>
@@ -61,7 +63,7 @@
     			<th class="member_text">전화번호</th>
     		</tr>
     		<tr>
-    			<td><input type="text" form="membership" id=member_phone maxlength='11' ></td>
+    			<td><input type="text" form="membership" name="user_phonenumber" id=member_phone maxlength='11' ></td>
     		</tr>
     		<tr id="phone_warning"></tr>
     		<tr>
@@ -69,9 +71,9 @@
     		</tr>
     		<tr>
     			<td>
-    				<input type="text" form="membership" id=member_year>
+    				<input type="text" form="membership" name="user_year"  id=member_year>
 					&nbsp;
-    				<select name='month' id=member_month form="membership">
+    				<select name="user_month"  id=member_month form="membership">
     					<option value='' selected>-- 월 --</option>
     					<option value='1'>1</option>
     					<option value='2'>2</option>
@@ -87,22 +89,37 @@
     					<option value='12'>12</option>
 					</select>
 				&nbsp;
-    			<input type="text" form="membership" id=member_day>
+    			<input type="text" form="membership" name="user_day"   id=member_day>
     			</td>
     		</tr>
     		<tr>
     			 <td id="birth_warning"></td>
     		</tr>
+    		<tr>
+    			<th align="left">우편번호  <input type="text"  form="membership"name="user_zonecode"  id="user_add_code" readonly> <button id="add_code_search"> 우편번호 찾기</button> </th>
+    			<th><input form="membership" type="hidden" id="sido" name="user_sido"/></th>
+    			<th><input form="membership" type="hidden" id="sigungu" name="user_sigungu"/></th>
+    			<th><input form="membership" type="hidden" id="roadname" name="user_roadname"/></th>
+    		</tr>
+    		<tr>	
+    			<th align="left">주소  <input type="text" id="user_add_city" readonly></th>
+    		</tr>
+    		<tr>
+    			<th align="left"><input type="text" name="user_address" form="membership" id="user_add_detail"></th>
+    		</tr>
+    			<th id="address_warning"></th>
+    		<tr>
+    		</tr>
    			<tr>
-    			<th class="member_text" form="membership">성별</th>
+    			<th class="member_text">성별</th>
     		</tr>
     		<tr>
     			<td>
-    				<select name='gender' form="membership" id="member_gender">
-    					<option value='' selected>-- 성별 --</option>
-    					<option value='man'>남자</option>
-    					<option value='woman '>여자</option>
-    					<option value='nothing'>선택안함</option>
+    				<select form="membership" name="user_gender" id="member_gender">
+    					<option selected>-- 성별 --</option>
+    					<option value='남'>남자</option>
+    					<option value='여'>여자</option>
+    					<option value='선택안함'>선택안함</option>
 					</select>
 				</td>
     		</tr>
@@ -119,5 +136,12 @@
 	</div>
 	
 	<script src="<%=request.getContextPath() %>/resources/membershipJS/membership.js" charset="UTF-8"></script>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </body>
 </html>
+    			
+    			
+	
+    		
+    		
+    		

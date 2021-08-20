@@ -2,6 +2,7 @@ package com.kgitbank.travelShare;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/site")
@@ -22,4 +23,11 @@ public class IndexController {
 	public String getCallback() {
 		return "login/naverCallback";
 	}
+	
+	@PostMapping("/index") 
+	public String postIndex() {
+		return "/index";
+				
+	}
+	
 }
