@@ -69,8 +69,11 @@ public class BoardContentController {
 	
 	@GetMapping("mainBoard")
 	public String mainBorder(Model model, HttpSession session) {
-		System.out.println("id : "+session.getAttribute("id"));
 		model.addAttribute("boardDB", boardMapper.getBoardAll());
+		
+		if(session.getAttribute("id") != null) {
+			model.addAttribute("id", session.getAttribute("id"));
+		} 
 		return "/board/main_board";
 	}
 
@@ -80,7 +83,7 @@ public class BoardContentController {
 	}
 
 	@RequestMapping(value = "createBoard", method = RequestMethod.POST)
-	public String insertBoard(HttpServletRequest request, HttpServletResponse response, BoardModel boardModel,
+	public void insertBoard(HttpServletRequest request, HttpServletResponse response, BoardModel boardModel,
 			@RequestParam("board_mainimgReal") MultipartFile upload) {
 		OutputStream out = null;
 
@@ -105,7 +108,13 @@ public class BoardContentController {
 		boardModel.setBoard_lookupcnt(0);
 		boardModel.setLikecnt(0);
 		boardMapper.insertBoard(boardModel);
-		return "/index";
+		
+		try {
+			response.sendRedirect("./mainBoard");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 //		나중에 게시판 만들고 가야할 위치를 정해야함
 	}
 

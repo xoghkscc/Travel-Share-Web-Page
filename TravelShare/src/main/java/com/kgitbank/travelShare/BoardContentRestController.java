@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kgitbank.travelShare.mapper.BoardMapper;
 import com.kgitbank.travelShare.model.BoardModel;
+import com.kgitbank.travelShare.model.CommentInfo;
 import com.kgitbank.travelShare.model.PagingModel;
 
 @RestController
@@ -42,4 +43,17 @@ public class BoardContentRestController {
 	public ArrayList<BoardModel> getChoiceBoard(@RequestBody Integer board_id){
 		return boardMapper.getBoardChoice(board_id);
 	}
+	
+	@PostMapping(value = "/lookupCntPlus", produces = MediaType.APPLICATION_JSON_VALUE)
+	public void lookupCntPlus(@RequestBody Integer board_id){
+		boardMapper.lookupCntPlus(board_id);
+	}
+	
+	@PostMapping(value = "/insertComment", produces = MediaType.APPLICATION_JSON_VALUE)
+	public void insertCommnet(@RequestBody CommentInfo commentInfo){
+		System.out.println(commentInfo.getComment_text());
+		boardMapper.insertComment(commentInfo);
+	}
+	
+	
 }

@@ -19,24 +19,24 @@
 			<div class="sel_pan">
 				<div class="region_sel">
 					<select class="region_area" id="board_sido" onchange="cat1_change(this.value)">
-						<option value="0">전체</option>
-						<option value="11">서울</option>
-						<option value="26">부산</option>
-						<option value="27">대구</option>
-						<option value="28">인천</option>
-						<option value="29">광주</option>
-						<option value="30">대전</option>
-						<option value="31">울산</option>
-						<option value="36">세종</option>
-						<option value="41">경기도</option>
-						<option value="47">경상북도</option>
-						<option value="48">경상남도</option>
-						<option value="42">강원도</option>
-						<option value="43">충청북도</option>
-						<option value="44">충청남도</option>
-						<option value="45">전라북도</option>
-						<option value="46">전라남도</option>
-						<option value="50">제주시</option>
+						<option value="0" ${sidoName=='전체' ? "selected" : "" }>전체</option>
+						<option value="11" ${sidoName=='서울' ? "selected" : "" }>서울</option>
+						<option value="26" ${sidoName=='부산' ? "selected" : "" }>부산</option>
+						<option value="27" ${sidoName=='대구' ? "selected" : "" } >대구</option>
+						<option value="28" ${sidoName=='인천' ? "selected" : "" }>인천</option>
+						<option value="29" ${sidoName=='광주' ? "selected" : "" }>광주</option>
+						<option value="30" ${sidoName=='대전' ? "selected" : "" }>대전</option>
+						<option value="31" ${sidoName=='울산' ? "selected" : "" }>울산</option>
+						<option value="36" ${sidoName=='세종' ? "selected" : "" }>세종</option>
+						<option value="41" ${sidoName=='경기도' ? "selected" : "" }>경기도</option>
+						<option value="47" ${sidoName=='경상북도' ? "selected" : "" }>경상북도</option>
+						<option value="48" ${sidoName=='경상남도' ? "selected" : "" }>경상남도</option>
+						<option value="42" ${sidoName=='강원도' ? "selected" : "" }>강원도</option>
+						<option value="43" ${sidoName=='충청북도' ? "selected" : "" }>충청북도</option>
+						<option value="44" ${sidoName=='충청남도' ? "selected" : "" }>충청남도</option>
+						<option value="45" ${sidoName=='전라북도' ? "selected" : "" }>전라북도</option>
+						<option value="46" ${sidoName=='전라남도' ? "selected" : "" }>전라남도</option>
+						<option value="50" ${sidoName=='제주시' ? "selected" : "" }>제주시</option>
 					</select>
 				</div>
 
@@ -104,7 +104,7 @@
 		</div>
 		<div class="board_paging">
 			<c:forEach begin="1"
-				end="${boardDB.size()/12+1>=6 ? 5 : (boardDB.size() / 12)+1 }" var="i">
+				end="${boardDB.size()/12+1>=6 ? 5 : (boardDB.size() % 12)==0 ? (boardDB.size() / 12) : (boardDB.size() / 12)+1 }" var="i">
 				<c:choose>
 					<c:when test="${i == 1 }">
 						<div class="board_choose board_paging_number" id="${i }">${i }</div>
@@ -147,10 +147,11 @@
 							<p>한줄댓글</p>
 						</div>
 						<div class="board_comment_write">
-							<form action="">
-								<input type="text" name="board_commnet"
-									placeholder="한 줄 댓글을 남겨주세요."> <input type="submit"
-									name="board_commnet_submit" value="댓글남기기">
+							<form action="#" id="board_commentId">
+								<input type="text" id="board_commnet" name="board_commnet" placeholder="한 줄 댓글을 남겨주세요."> 
+								
+								<input type="hidden" id="user_id" name="user_id" value="${id }"> 
+								<input type="submit" name="board_commnet_submit" value="댓글남기기">
 							</form>
 						</div>
 						<div class="board_comment_show">
@@ -178,6 +179,7 @@
 					</div>
 					<div class="board_user_name">닉네임</div>
 
+					<div id="board_content_id" class="board_content_id"></div>
 					<div id="board_title" class="board_title"></div>
 					<div class="board_sub_info">
 						<div class="board_sub_info2">

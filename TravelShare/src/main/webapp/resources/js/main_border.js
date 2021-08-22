@@ -80,6 +80,9 @@ function getParameterByName(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+
+
+
 function cat1_change(key){
  var cat1_num = new Array(11,26,27,28,29,30,31,36,41,47,48,42,43,44,45,46,50);
  var cat1_name = new Array('서울','부산','대구','인천','광주','대전','울산','세종', '경기', '경북','경남','강원','충북','충남','전북','전남','제주');
@@ -161,6 +164,7 @@ function cat1_change(key){
  var val = cat2_num[key];
 
 var sel = document.getElementById("h_area2");
+var sigungucode = getParameterByName("sigungucode");
 
  for(i=sel.length-1; i>=0; i--)
 
@@ -168,12 +172,27 @@ var sel = document.getElementById("h_area2");
 
  sel.options[0] = new Option('-선택-','', '', 'true');
  sel.options[1] = new Option('전체','0');
+ sel.options[0].selected = true;
+	
 
  for(i=0; i<name.length; i++){
-
   sel.options[i+2] = new Option(name[i],val[i]);
+
+	if(sigungucode ==  sel.options[i+2].getAttribute("value")){
+		sel.options[i+2].selected = true;
+	}
  }
 }
+
+window.onload =  () => {
+	var sidogunName = getParameterByName("sidogunName");
+	var sel = document.getElementById("h_area2");
+	var key = document.getElementById("board_sido");
+	if(sidogunName == '전체'){
+		sel.options[1].selected = true;
+	}
+	cat1_change(key.value);
+};
 
 function imgClickRollback() {
 	const body = document.getElementsByTagName("body");
@@ -193,6 +212,12 @@ function imgClick(value) {
 	getBoardContent(value);
 	
 	document.getElementById("board_clickPan").setAttribute("class", "board_show");
+	
+	const xhttp = new XMLHttpRequest();
+	
+	xhttp.open('POST', '/travelShare/boardrest/lookupCntPlus/', true);
+	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
+	xhttp.send(value);
 }
 
 
@@ -207,6 +232,7 @@ function getBoardContent(value) {
 			Object.keys(myobj).forEach((key) => {
 				document.getElementById("board_googleMap").setAttribute("src", "https://www.google.com/maps?q= "+myobj[key].addr+" &output=embed");
 //				document.getElementById("board_mainimg").setAttribute("src", myobj[key].board_mainimg);
+				document.getElementById("board_content_id").innerHTML = myobj[key].board_id;
 				document.getElementById("board_title").innerHTML = myobj[key].board_title;
 				document.getElementById("board_bestplace").innerHTML = myobj[key].board_bestplace;
 				document.getElementById("board_besteat").innerHTML = myobj[key].board_besteat;
@@ -225,18 +251,75 @@ function getBoardContent(value) {
 	xhttp.send(value);
 }
 
+function getBoardCommnet(value) {
+	const xhttp = new XMLHttpRequest();
+	
+	xhttp.addEventListener('readystatechange', (e) => {
+		const target = e.target;
+
+		myobj = JSON.parse(target.responseText);
+
+			Object.keys(myobj).forEach((key) => {
+				
+			});
+	});
+
+	xhttp.open('POST', '/travelShare/boardrest/choiceBoardInfo/', true);
+	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8');
+	xhttp.send(value);
+}
+
 function locationFilter (){
 		var selectOptionSido = document.getElementById("board_sido").options[document.getElementById("board_sido").selectedIndex].value;
 		var selectOptionSidoName = document.getElementById("board_sido").options[document.getElementById("board_sido").selectedIndex].text;
 		var selectOptionSidogunName = document.getElementById("h_area2").options[document.getElementById("h_area2").selectedIndex].text;
 		var sigungucode = document.getElementById("h_area2").options[document.getElementById("h_area2").selectedIndex].value;
 		
-	if(sigungucode == 0){
+	if(sigungucode == 0 && selectOptionSido != 0){
 		location.href = "./mainBoardFilter2?sidocode="+selectOptionSido+"&sidoName="+selectOptionSidoName+"&sidogunName="+selectOptionSidogunName;
-	} else {
+	} else if(selectOptionSido == 0){
+		location.href = "./mainBoard"
+	} else{
 		location.href = "./mainBoardFilter?sigungucode="+sigungucode+"&sidoName="+selectOptionSidoName+"&sidogunName="+selectOptionSidogunName;
 	}
 }
+
+
+const board_commentId = document.getElementById("board_commentId");
+board_commentId.onsubmit = (e) => {
+	e.preventDefault();
+	var board_comment = this.board_commnet.value;
+	var user_id = this.user_id.value;
+	var board_id = document.getElementById("board_content_id").innerHTML;
+	if(user_id == ''){
+		alert("로그인이 필요한 서비스입니다.");
+	} else{
+		insertCommnet(board_id, user_id, board_comment)
+	}
+	this.board_commnet.value = '';
+}
+
+function insertCommnet(board_id, user_id, board_comment){
+	var xhttp = new XMLHttpRequest();
+	
+	
+	var commnetInfo = {
+		board_id : board_id,
+		user_id : user_id,
+		comment_text : board_comment
+	}
+	
+	
+	xhttp.open('POST', '/travelShare/boardrest/insertComment/', true);
+	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
+	xhttp.send(JSON.stringify(commnetInfo));
+}
+
+
+
+
+
+
 
 
 

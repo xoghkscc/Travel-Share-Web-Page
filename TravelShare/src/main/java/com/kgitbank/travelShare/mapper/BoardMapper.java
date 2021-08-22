@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Param;
 
 import com.kgitbank.travelShare.model.BoardModel;
+import com.kgitbank.travelShare.model.CommentInfo;
 
 public interface BoardMapper {
 	public ArrayList<BoardModel> getBoardAll();
@@ -22,4 +23,8 @@ public interface BoardMapper {
 	public ArrayList<BoardModel> getBoardPaging2(@Param("sidocode") Integer sidocode, @Param("startnum") Integer startnum, @Param("endnum") Integer endnum);
 	
 	public void insertBoard(BoardModel baordModel);
+	
+	public void lookupCntPlus(@Param("board_id") Integer board_id);
+	
+	public void insertComment(CommentInfo commentInfo);
 }
