@@ -13,7 +13,8 @@ const member_sub2 = document.getElementById("member_sub2");
 const user_add_code = document.getElementById("user_add_code");
 const user_add_city = document.getElementById("user_add_city");
 const user_add_detail = document.getElementById("user_add_detail");
-
+const phoneCheckInput = document.getElementById("phoneCheckInput");
+const checkNum = document.getElementById("checkNum");
 
 const email_warning = document.getElementById("email_warning");
 const password_warning = document.getElementById("password_warning");	
@@ -38,7 +39,6 @@ member_email.addEventListener('blur', () => {
 	
 	const member_email_val = member_email.value;
 	
-	console.log(member_email.value);
 	
 	xhttp.addEventListener('readystatechange', (e) => {
 		const target = e.target
@@ -98,7 +98,7 @@ member_nickname.addEventListener('blur', () => {
 	const nickname_val = member_nickname.value;
 
 	if(nickname_val == ""){
-		nickname_warning.innerHTML = "필수 정보입니다"
+		nickname_warning.innerHTML = "필수 정보입니다";
 	}  else {
 	
 	xhttp.addEventListener('readystatechange', (e) => {
@@ -123,9 +123,9 @@ member_name.addEventListener('blur', () => {
 	const name_val = member_name.value;
 
 	if(name_val == ""){
-		name_warning.innerHTML = "필수 정보입니다"
+		name_warning.innerHTML = "필수 정보입니다";
 	}  else {
-		name_warning.innerHTML = ""
+		name_warning.innerHTML = "";
 	} 
 });
 
@@ -135,13 +135,13 @@ member_phone.addEventListener('blur', () => {
 	var phone = Number(phone_val);
 	
 	if(!chkStyle.test(phone)){
-		phone_warning.innerHTML = "숫자만 입력해주세요"
+		phone_warning.innerHTML = "숫자만 입력해주세요";
 	} else if (phone_val.length < 9) {
-		phone_warning.innerHTML = "9자리 이상 입력해주세요"
+		phone_warning.innerHTML = "9자리 이상 입력해주세요";
 	} else if(phone_val == ""){
-		phone_warning.innerHTML = "필수 정보입니다"
-	}  else {
-		phone_warning.innerHTML = ""
+		phone_warning.innerHTML = "필수 정보입니다";
+	} else {
+		phone_warning.innerHTML = "";
 	} 
 });
 
@@ -157,18 +157,18 @@ member_year.addEventListener('blur', () => {
 	var yearNow = today.getFullYear(); 
 
 	if(!chkStyle.test(year)){
-  		birth_warning.innerHTML = "숫자만 입력해주세요"
+  		birth_warning.innerHTML = "숫자만 입력해주세요";
 	} else if(year_val == "" ) {
-		birth_warning.innerHTML = "필수 정보입니다"
+		birth_warning.innerHTML = "필수 정보입니다";
 	} else if(year_val.length < 4) {
-		birth_warning.innerHTML = "태어난 년도 4자리를 정확하게 입력하세요."
+		birth_warning.innerHTML = "태어난 년도 4자리를 정확하게 입력하세요.";
 	} else if (year_val.length > 4) {
-		birth_warning.innerHTML = "태어난 년도 4자리를 정확하게 입력하세요."
+		birth_warning.innerHTML = "태어난 년도 4자리를 정확하게 입력하세요.";
     } else if ((year_val.length) == 4) { 
 	 if (1900 > year || year > yearNow){ 
 		birth_warning.innerHTML = "태어난 년도 4자리를 정확하게 입력하세요."
 	} else if (!chkStyle.test(day) && day_val.length != 0){
-  	  birth_warning.innerHTML = "숫자만 입력해주세요"
+  	  birth_warning.innerHTML = "숫자만 입력해주세요";
 	} else {
  	 if ((day < 1 || day > 31) && day_val.length != 0) { 
 		birth_warning.innerHTML = "태어난 일(날짜) 2자리를 정확하게 입력하세요" 
@@ -177,9 +177,9 @@ member_year.addEventListener('blur', () => {
  	}  else if (month == 2 && day_val != "") { 
 	var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)); 
 	if (day>29 || (day==29 && !isleap)) {
-		 birth_warning.innerHTML = "태어난 일(날짜) 2자리를 정확하게 입력하세요"  
+		 birth_warning.innerHTML = "태어난 일(날짜) 2자리를 정확하게 입력하세요";
 	} else { 
-		birth_warning.innerHTML = ""
+		birth_warning.innerHTML = "";
 	} 
   }	else {
 	birth_warning.innerHTML = ""
@@ -283,19 +283,60 @@ member_day.addEventListener('blur', () => {
 
 });
 
+user_add_detail.addEventListener('blur', () => {
+
+	 user_add_detail_val = user_add_detail.value;
+	 user_add_code_val = user_add_code.value;
+	 user_add_city_val = user_add_city.value;
+	if(user_add_detail_val == "" || user_add_code_val == "" || user_add_city_val == "") {
+		adderss_warning.innerHTML = "필수정보입니다";
+	} else {
+		address_warning.innerHTML = "";
+	}	
+
+});
+
 
 member_gender.addEventListener('blur', () => {
 	
 	const gender_val = member_gender.value;
-
+	
 	if(gender_val == ""){
-		gender_warning.innerHTML = "필수 정보입니다"
+		gender_warning.innerHTML = "필수 정보입니다";
 	} else {
-		gender_warning.innerHTML = ""
+		gender_warning.innerHTML = "";
 	} 
 });
 
 
+phone_check.addEventListener('click', () => {
+	
+	const member_phone_val = member_phone.value;
+	
+	xhttp.addEventListener('readystatechange', (e) => {
+		const target = e.target
+		const status = e.target.status;
+		const readyState = target.readyState;
+		
+		if(status == 200 && readyState == 4) {
+		checkNum.value = e.target.responseText;
+	
+		}
+	});
+	console.log(member_phone_val);
+	xhttp.open('POST', '/travelShare/membershiprest/phoneCheck', true);
+	xhttp.send(member_phone_val);
+	
+});
+
+phoneCheckInput.addEventListener('blur', () => {
+		
+	if(checkNum.value != phoneCheckInput.value && member_phone.value != ""){
+		phone_warning.innerHTML = "인증번호가 틀립니다";
+	} else {
+		phone_warning.innerHTML = "인증되었습니다";
+	} 
+});
 
 member_sub2.addEventListener('click', (event) => {
 	
@@ -312,83 +353,99 @@ member_sub2.addEventListener('click', (event) => {
 	const user_add_code_val = user_add_code.value;
 	const user_add_detail_val = user_add_detail.value;
 	
+	console.log(gender_val)
+	
+	if(email_warning.innerHTML != "" || password_warning.innerHTML != "적합한 비밀번호입니다" ||
+	   password_check_warning.innerHTML != "비밀번호가 일치합니다" || nickname_warning.innerHTML != "" ||
+	   name_warning.innerHTML != "" || phone_warning.innerHTML != "인증되었습니다" || checkNum.value == "" ||
+	   birth_warning.innerHTML != "" || adderss_warning.innerHTML != "" || gender_val == "-- 성별 --"	
+	){	
+		console.log("무언가 조건에걸림");
+		event.preventDefault();
+	} else {
+		alert("회원가입이 완료되었습니다");
+	}
 	
 	
 	if(email_val == ""){
-		email_warning.innerHTML = "필수입력 정보입니다"
+		email_warning.innerHTML = "필수입력 정보입니다";
 	} else if(!email_check(email_val)) {
 		email_warning.innerHTML = "이메일 형식에 맞게 입력해주세요";
+	} else if(email_warning.innerHTML == "이미 존재하는 이메일입니다"){
+		email_warning.innerHTML == "이미 존재하는 이메일입니다";
 	} else {
-		email_warning.innerHTML = ""
+		email_warning.innerHTML = "";
 	} 
-	
-	console.log(password_warning.value);
+
 	if (password1_val == "") {
-		password_warning.innerHTML = "필수입력 정보입니다"
-	}else if(password_warning.value != undefined) {
+		password_warning.innerHTML = "필수입력 정보입니다";
+	}else if(password_warning.innerHTML == "8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.") {
 		password_warning.innerHTML = "8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
 	} else {
-		password_warning.innerHTML = ""
+		password_warning.innerHTML = "적합한 비밀번호입니다";
 	} 
 	
 	if (password2_val == "") {
-		password_check_warning.innerHTML = "필수입력 정보입니다"
-	} else if(password_check_warning.value != undefined) {
+		password_check_warning.innerHTML = "필수입력 정보입니다";
+	} else if(password_check_warning.innerHTML == "비밀번호가 일치하지 않습니다") {
 		password_check_warning.innerHTML = "비밀번호가 일치하지 않습니다";
 	} else {
-		password_check_warning.innerHTML = ""
+		password_check_warning.innerHTML = "비밀번호가 일치합니다";
 	} 
 	
 	if (nickname_val == "") {
-		nickname_warning.innerHTML = "필수입력 정보입니다"
-	} else if(nickname_warning.value != undefined) {
+		nickname_warning.innerHTML = "필수입력 정보입니다";
+	} else if(nickname_warning.innerHTML == "이미 존재하는 닉네임입니다") {
 		nickname_warning.innerHTML = "이미 존재하는 닉네임입니다";	
 	} else {
-		nickname_warning.innerHTML = ""
+		nickname_warning.innerHTML = "";
 	} 
 	
 	if (name_val == "") {
-		name_warning.innerHTML = "필수입력 정보입니다"
+		name_warning.innerHTML = "필수입력 정보입니다";
 	} else {
-		name_warning.innerHTML = ""
+		name_warning.innerHTML = "";
 	} 
 	
 	if (phone_val == "") {
-		phone_warning.innerHTML = "필수입력 정보입니다"
-	} else if(phone_warning.value != undefined) {
+		phone_warning.innerHTML = "필수입력 정보입니다";
+	} else if(phone_warning.innerHTML == "올바른 전화번호 양식를 입력해주세요" || phone_warning.innerHTML == "9자리 이상 입력해주세요" || phone_warning.innerHTML == "숫자만 입력해주세요") {
 		phone_warning.innerHTML = "올바른 전화번호 양식를 입력해주세요";	
+	} else if(phone_warning.innerHTML == "인증번호가 틀립니다" || checkNum.value =="" || phone_warning.innerHTML == "휴대폰 인증하셔야 합니다") {
+		phone_warning.innerHTML = "휴대폰 인증하셔야 합니다";
 	} else {
-		phone_warning.innerHTML = ""
+		phone_warning.innerHTML = "인증되었습니다";
 	} 
 	
 	if (year_val == "" && month_val == "" && day_val == "") {
 		birth_warning.innerHTML = "생년월일을 똑바로 입력해주세요";
 	} else if (year_val == "" || month_val == "" || day_val == "") {
 		birth_warning.innerHTML = "생년월일을 똑바로 입력해주세요";
-	}  else if(birth_warning.value != undefined) {
+	}  else if(birth_warning.innerHTML != "") {
 		birth_warning.innerHTML = "생년월일을 똑바로 입력해주세요";	
 	} else {
-		birth_warning.innerHTML = ""
+		birth_warning.innerHTML = "";
 
 	} 
 	
 	if (gender_val == "-- 성별 --" ) {
 		gender_warning.innerHTML = "필수입력 정보입니다";
 	} else {
-		gender_warning.innerHTML = ""
+		gender_warning.innerHTML = "";
 	} 
 	
-	if (user_add_code_val != undefined || user_add_detail_val != undefined){
+	if (user_add_code_val == "" || user_add_detail_val == ""){
 		address_warning.innerHTML = "필수입력 정보입니다";
 	} else {
-		address_warning.innerHTML = ""
+		address_warning.innerHTML = "";
 	} 
 	
 });
 
+
 window.onload = function(){
 document.getElementById("add_code_search").addEventListener('click', (e) => {
-    	console.log("왔다");          
+        
 	  	new daum.Postcode({
                     oncomplete: function (data) {
                         document.getElementById('user_add_code').value = data.zonecode; //5자리 새우편번호 사용

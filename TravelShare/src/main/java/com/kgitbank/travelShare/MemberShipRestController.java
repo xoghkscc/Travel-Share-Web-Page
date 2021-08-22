@@ -1,10 +1,14 @@
 package com.kgitbank.travelShare;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kgitbank.travelShare.mapper.UserInfoMapper;
@@ -39,5 +43,25 @@ public class MemberShipRestController {
 		}
 
 	}
+	
+	@PostMapping(value="/phoneCheck", produces="text/plain; charset=utf-8")
+	 public String sendSMS(@RequestBody String member_phone) {
+		System.out.println("왔음");
+		System.out.println(member_phone);
+		
+		
+	        Random rand  = new Random();
+	        String numStr = "";
+	        for(int i=0; i<4; i++) {
+	            String ran = Integer.toString(rand.nextInt(10));
+	            numStr+=ran;
+	        }
+
+	        System.out.println("수신자 번호 : " + member_phone);
+	        System.out.println("인증번호 : " + numStr);
+	        certificationService.certifiedPhoneNumber(member_phone,numStr);
+			return numStr;
+	 }
+	
 	
 }

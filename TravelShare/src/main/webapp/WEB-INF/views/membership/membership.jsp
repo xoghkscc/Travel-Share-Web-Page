@@ -10,7 +10,8 @@
 </head>
 <body>
 	<jsp:include page="../header/top.jsp"></jsp:include>
-	<form id="membership" action="./membership" method="POST" onSubmit="return false;" autocomplete='off'></form>
+	<form id="membership" action="./membership" method="POST" autocomplete='off'></form>
+	<form id="phoneCheck" action="./phoneCheck" method="POST" autocomplete='off'></form>
 	<div id="membership_table">
 		
     	<table>
@@ -63,7 +64,11 @@
     			<th class="member_text">전화번호</th>
     		</tr>
     		<tr>
-    			<td><input type="text" form="membership" name="user_phonenumber" id=member_phone maxlength='11' ></td>
+    			<td><input type="text" form="membership" name="user_phonenumber" id=member_phone maxlength='11' ><button id="phone_check">인증확인</button></td>
+    			<th><input type="hidden" id="checkNum" name="checkNum"/></th>
+    		</tr>
+    		<tr>
+    			<td><input type="text" id="phoneCheckInput"></td>
     		</tr>
     		<tr id="phone_warning"></tr>
     		<tr>
@@ -106,9 +111,9 @@
     		</tr>
     		<tr>
     			<th align="left"><input type="text" name="user_address" form="membership" id="user_add_detail"></th>
-    		</tr>
-    			<th id="address_warning"></th>
+    		</tr>	
     		<tr>
+    			<th id="address_warning"></th>
     		</tr>
    			<tr>
     			<th class="member_text">성별</th>
@@ -127,9 +132,7 @@
     			 <td id="gender_warning"></td>
     		</tr>
     		<tr>
-    			<th >
-    				<input type="submit" id="member_sub2"  value="회원가입" form="membership">
-    			</th>
+    			<th><input type="submit" id="member_sub2"  value="회원가입" form="membership"></th>
     		</tr>
     		
     	</table> 
@@ -141,7 +144,8 @@
 </html>
     			
     			
-	
+		
+    	
     		
     		
     		

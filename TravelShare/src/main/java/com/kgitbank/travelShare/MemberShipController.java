@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -31,6 +33,8 @@ public class MemberShipController {
 	
 	@Autowired
 	UserInfoMapper user_info;
+	
+
 	
 	@GetMapping("/membership")
 	public String memberShip() {
@@ -50,9 +54,26 @@ public class MemberShipController {
 
 		user_info.adduserinfo(userinfo);
 		
-		return "/membership/membership";
+		return "/login/naverLogin";
 		}
 
+	
+//	@PostMapping("/phoneCheck")
+//    public @ResponseBody
+//    void sendSMS(String phoneNumberCheck) {
+//		
+//        Random rand  = new Random();
+//        String numStr = "";
+//        for(int i=0; i<4; i++) {
+//            String ran = Integer.toString(rand.nextInt(10));
+//            numStr+=ran;
+//        }
+//
+//        System.out.println("수신자 번호 : " + phoneNumberCheck);
+//        System.out.println("인증번호 : " + numStr);
+//        certificationService.certifiedPhoneNumber(phoneNumberCheck,numStr);
+//    }
+	
 	
 	@GetMapping("/idsearch")
 	public String idSearch() {

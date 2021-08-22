@@ -16,13 +16,14 @@
 </head>
 <body>
 	<jsp:include page="../header/top.jsp"></jsp:include>
+	<form id="id_search" action="./membership" method="POST" autocomplete='off'></form>
 	<div class="id_search_box">
 		<div>
 			<div id="id_search1">아이디 찾기</div>
 
 			<div id="red">
 				<div class="name_text">
-					<b> 이름</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+					<b> 이름</b><input
 						type="text" class="info">
 				</div>
 				<div class="phone_text">

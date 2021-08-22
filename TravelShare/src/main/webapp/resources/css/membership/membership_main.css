@@ -2,7 +2,7 @@
 
 #membership_table{
 	
-	margin-left: 35%;
+	margin-left: 37%;
 }
 
 .member_text {
@@ -10,31 +10,38 @@
 }
  
 #member_email {
-	width: 500px;
+	width: 400px;
 	height:45px;
 	font-size:20px;
 }
 
 .member_password{
-	width: 500px;
+	width: 400px;
 	height:45px;
 	font-size:20px;
 }
 
 #member_nickname {
-	width: 500px;
+	width: 400px;
 	height:45px;
 	font-size:20px;
 }
 
 #member_name {
-	width: 500px;
+	width: 400px;
 	height:45px;
 	font-size:20px;
 }
 
 #member_phone {
-	width: 500px;
+	width: 310px;
+	height:45px;
+	font-size:20px;
+	margin-bottom: 10px;
+}
+
+#phoneCheckInput {
+	width: 400px;
 	height:45px;
 	font-size:20px;
 }
@@ -43,38 +50,38 @@
 
 #member_gender {
 	height:45px;
-	width: 501px;	
+	width: 401px;	
 }
 
 
 #member_sub2 {
 	height:45px;
-	width: 509px;	
+	width: 400px;	
 }
 
 #member_year{
 	height:45px;
-	width: 152px;
+	width: 130px;
 	font-size:20px;	
 }
 
 #member_month{
 	text-align: center;
-	height: 50px;
-	width: 152px;	
+	height: 45px;
+	width: 130px;	
 	font-size:20px;
 }
 
 #member_day{
 	height:45px;
-	width: 162px;
+	width: 106px;
 	font-size:20px;	
 }
 
 #user_add_code{
 	margin-top : 20px;
 	height:45px;
-	width: 300px;
+	width: 196px;
 	font-size:20px;	
 	margin-bottom : 10px;
 
@@ -83,7 +90,7 @@
 #user_add_city{
 	
 	height:45px;
-	width: 463px;
+	width: 362px;
 	font-size:20px;	
 	margin-bottom : 10px;
 	
@@ -92,21 +99,26 @@
 #user_add_detail{
 	margin-bottom : 20px;
 	height:45px;
-	width: 501px;
+	width: 400px;
 	font-size:20px;	
 }
 
 #add_code_search {
 	background-color: orange;
-	width: 100px;
+	width: 110px;
 	height: 45px;
+	margin-left: 20px;
 }
 
 #address_warning{
 	text-align: left;
 }
 
-
+#phone_check{
+	width: 70px;
+	height: 45px;
+	margin-left: 20px;
+}
 
 
 

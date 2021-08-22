@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>네이버 로그인</title>
+<title>로그인</title>
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
 	charset="utf-8"></script>
@@ -30,7 +30,7 @@
 			</div>
 			<div>
 				<div class="login_text">
-					비밀번호<input form="login" name="user_password" type="text">
+					비밀번호<input form="login" name="user_password" type="password">
 				</div>
 			</div>
 		</div>
@@ -38,10 +38,13 @@
 		<div id="naver_id_login"></div>
 		<div class="login_find">
 			<div>
-				<a href="../membership/idsearch"> 아이디찾기 </a>
+				<a href="../membership/idsearch"> 아이디 찾기 </a>
 			</div>
 			<div>
-				<a href="../membership/passwordsearch"> 비밀번호찾기 </a>
+				<a href="../membership/passwordsearch"> 비밀번호 찾기 </a>
+			</div>
+			<div>
+				<a href="../membership/membership"> 회원 가입 </a>
 			</div>
 		</div>
 	</div>
