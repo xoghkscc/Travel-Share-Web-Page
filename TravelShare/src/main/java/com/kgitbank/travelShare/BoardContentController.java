@@ -105,8 +105,6 @@ public class BoardContentController {
 			e.printStackTrace();
 		}
 		boardModel.setUser_id(1);
-		boardModel.setBoard_lookupcnt(0);
-		boardModel.setLikecnt(0);
 		boardMapper.insertBoard(boardModel);
 		
 		try {

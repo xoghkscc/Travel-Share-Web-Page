@@ -6,10 +6,12 @@ import lombok.Data;
 
 @Data
 public class CommentInfo {
-	private Integer commnet_id;
+	private Integer comment_id;
 	private Integer user_id;
 	private Integer board_id;
 	private String comment_text;
-	private Date comment_date;
+	private String comment_date;
 	private Integer qna_id;
+	private String user_nickname;
+	private String user_imgurl;
 }

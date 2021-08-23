@@ -16,5 +16,6 @@ public class BoardModel {
 	private String sido;
 	private String sigungu;
 	private String addr;
-	private Integer likecnt;
+	private String board_date;
+	private Integer like_cnt;
 }

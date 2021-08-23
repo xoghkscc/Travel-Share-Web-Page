@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.kgitbank.travelShare.model.BoardLikeModel;
 import com.kgitbank.travelShare.model.BoardModel;
 import com.kgitbank.travelShare.model.CommentInfo;
 
@@ -27,4 +28,8 @@ public interface BoardMapper {
 	public void lookupCntPlus(@Param("board_id") Integer board_id);
 	
 	public void insertComment(CommentInfo commentInfo);
+	
+	public ArrayList<CommentInfo> selectComment(@Param("board_id") Integer board_id);
+	
+	public ArrayList<BoardLikeModel> selectLike(@Param("board_id") Integer board_id, @Param("user_id") Integer user_id);
 }

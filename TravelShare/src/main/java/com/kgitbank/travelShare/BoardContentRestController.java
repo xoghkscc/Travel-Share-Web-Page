@@ -2,6 +2,8 @@ package com.kgitbank.travelShare;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,8 +53,26 @@ public class BoardContentRestController {
 	
 	@PostMapping(value = "/insertComment", produces = MediaType.APPLICATION_JSON_VALUE)
 	public void insertCommnet(@RequestBody CommentInfo commentInfo){
-		System.out.println(commentInfo.getComment_text());
 		boardMapper.insertComment(commentInfo);
+	}
+	
+	@PostMapping(value = "/selectComment", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ArrayList<CommentInfo> selectCommnet(@RequestBody Integer board_id){
+		return boardMapper.selectComment(board_id);
+	}
+	
+	@PostMapping(value = "/likeJudgment", produces = MediaType.APPLICATION_JSON_VALUE)
+	public int likeJudgment(@RequestBody Integer board_id, HttpSession session){
+		
+		if(session.getAttribute("id") == null) {
+			return 0;
+		} else {
+			if(boardMapper.selectLike(board_id,Integer.parseInt((String) session.getAttribute("id"))).isEmpty()) {
+				return 0;
+			} else {
+				return 1;
+			}
+		}
 	}
 	
 	

@@ -5,39 +5,39 @@
   
   <mapper namespace="com.kgitbank.travelShare.mapper.BoardMapper">
 	<select id="getBoardAll" resultType="com.kgitbank.travelShare.model.BoardModel">
-		SELECT * FROM main_board ORDER BY board_id DESC
+		SELECT * FROM like_view ORDER BY board_id DESC
 	</select>
 	
 	<select id="getBoardFilter1" resultType="com.kgitbank.travelShare.model.BoardModel">
-		SELECT * FROM main_board WHERE sigungucode = #{sigungucode} ORDER BY board_date DESC
+		SELECT * FROM like_view WHERE sigungucode = #{sigungucode} ORDER BY board_date DESC
 	</select>
 	
 	<select id="getBoardFilter2" resultType="com.kgitbank.travelShare.model.BoardModel">
-		SELECT * FROM main_board WHERE sigungucode LIKE #{sidocode} || '%' ORDER BY board_date DESC
+		SELECT * FROM like_view WHERE sigungucode LIKE #{sidocode} || '%' ORDER BY board_date DESC
 	</select>
 	
 	<select id="getBoardChoice" resultType="com.kgitbank.travelShare.model.BoardModel">
-		SELECT * FROM main_board WHERE board_id = #{board_id} ORDER BY board_date DESC
+		SELECT * FROM like_view WHERE board_id = #{board_id} ORDER BY board_date DESC
 	</select>
 	
 	<select id="getBoardPaging" resultType="com.kgitbank.travelShare.model.BoardModel">
 		SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY board_date DESC) AS rnum,  board_id, user_id, board_title, board_lookupcnt, board_bestplace, board_besteat, board_mainimg, board_content, sigungucode, sido, sigungu,
-    	addr, board_date FROM main_board ORDER BY board_date DESC) WHERE rnum BETWEEN #{startnum }+1 AND #{endnum }  ORDER BY board_date DESC
+    	addr, board_date, like_cnt FROM like_view ORDER BY board_date DESC) WHERE rnum BETWEEN #{startnum }+1 AND #{endnum }  ORDER BY board_date DESC
 	</select>
 	
 	<select id="getBoardPaging1" resultType="com.kgitbank.travelShare.model.BoardModel">
 		SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY board_date DESC) AS rnum,  board_id, user_id, board_title, board_lookupcnt, board_bestplace, board_besteat, board_mainimg, board_content, sigungucode, sido, sigungu,
-    	addr, board_date FROM main_board WHERE sigungucode = #{sigungucode} ORDER BY board_date DESC) WHERE rnum BETWEEN #{startnum }+1 AND #{endnum }  ORDER BY board_date DESC
+    	addr, board_date, like_cnt FROM like_view WHERE sigungucode = #{sigungucode} ORDER BY board_date DESC) WHERE rnum BETWEEN #{startnum }+1 AND #{endnum }  ORDER BY board_date DESC
 	</select>
 	
 	<select id="getBoardPaging2" resultType="com.kgitbank.travelShare.model.BoardModel">
 		SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY board_date DESC) AS rnum,  board_id, user_id, board_title, board_lookupcnt, board_bestplace, board_besteat, board_mainimg, board_content, sigungucode, sido, sigungu,
-    	addr, board_date FROM main_board WHERE sigungucode LIKE #{sidocode} || '%' ORDER BY board_date DESC) WHERE rnum BETWEEN #{startnum }+1 AND #{endnum }  ORDER BY board_date DESC
+    	addr, board_date, like_cnt FROM like_view WHERE sigungucode LIKE #{sidocode} || '%' ORDER BY board_date DESC) WHERE rnum BETWEEN #{startnum }+1 AND #{endnum }  ORDER BY board_date DESC
 	</select>
 	
 	<insert id="insertBoard">
 		INSERT INTO main_board VALUES (board_seq.nextval, #{user_id}, #{board_title},#{board_lookupcnt},
-		#{board_bestplace},#{board_besteat},#{board_mainimg},#{board_content},#{sigungucode},#{sido},#{sigungu}, #{addr}, sysdate)
+		#{board_bestplace},#{board_besteat},#{board_mainimg},#{board_content},#{sigungucode},#{sido},#{sigungu}, #{addr}, CURRENT_DATE)
 	</insert>
 	
 	<update id="lookupCntPlus">
@@ -45,8 +45,16 @@
 	</update>
 	
 	<insert id="insertComment">
-		INSERT INTO board_comment(comment_id, user_id, board_id, comment_text, comment_date) VALUES (comment_seq.nextval, #{user_id}, #{board_id}, #{comment_text}, sysdate)
+		INSERT INTO board_comment(comment_id, user_id, board_id, comment_text, comment_date) VALUES (comment_seq.nextval, #{user_id}, #{board_id}, #{comment_text}, CURRENT_DATE)
 	</insert>
+	
+	<select id="selectComment" resultType="com.kgitbank.travelShare.model.CommentInfo">
+		SELECT * FROM board_comment INNER JOIN user_info USING(user_id) WHERE board_id = #{board_id}
+	</select>
+	
+	<select id="selectLike" resultType="com.kgitbank.travelShare.model.BoardLikeModel">
+		SELECT * FROM board_like WHERE board_id = #{board_id } and user_id = #{user_id }
+	</select>
 	
 	
 	

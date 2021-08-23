@@ -18,11 +18,12 @@
 		<div class="sel">
 			<div class="sel_pan">
 				<div class="region_sel">
-					<select class="region_area" id="board_sido" onchange="cat1_change(this.value)">
+					<select class="region_area" id="board_sido"
+						onchange="cat1_change(this.value)">
 						<option value="0" ${sidoName=='전체' ? "selected" : "" }>전체</option>
 						<option value="11" ${sidoName=='서울' ? "selected" : "" }>서울</option>
 						<option value="26" ${sidoName=='부산' ? "selected" : "" }>부산</option>
-						<option value="27" ${sidoName=='대구' ? "selected" : "" } >대구</option>
+						<option value="27" ${sidoName=='대구' ? "selected" : "" }>대구</option>
 						<option value="28" ${sidoName=='인천' ? "selected" : "" }>인천</option>
 						<option value="29" ${sidoName=='광주' ? "selected" : "" }>광주</option>
 						<option value="30" ${sidoName=='대전' ? "selected" : "" }>대전</option>
@@ -40,10 +41,10 @@
 					</select>
 				</div>
 
-				<div class="region_sel2" id="region_sel2" >
+				<div class="region_sel2" id="region_sel2">
 					<select id="h_area2" onchange="locationFilter()">
 						<option>-선택-</option>
-						<option value="0" >전체</option>
+						<option value="0">전체</option>
 					</select>
 				</div>
 			</div>
@@ -62,7 +63,7 @@
 								<strong>${sidoName }[${sidogunName }]</strong>에 맞는 여행지가 <strong>${boardDB.size() }</strong>개 있습니다. 
 							</c:otherwise>
 						</c:choose>
-						
+
 					</h2>
 				</div>
 				<div>
@@ -78,10 +79,10 @@
 			<c:forEach items="${boardDB }" var="board" begin="0" end="11">
 				<div class="board_content" id="board_content">
 					<div class="board_imgContent">
-						<img class="${board.board_id }" onclick='imgClick(${board.board_id})' alt=""
-							src="${board.board_mainimg }">
-						<img  alt=""
-							src="<%=request.getContextPath()%>/resources/files/null.jpg" >
+						<img class="${board.board_id }"
+							onclick='imgClick(${board.board_id})' alt=""
+							src="${board.board_mainimg }"> <img alt=""
+							src="<%=request.getContextPath()%>/resources/files/null.jpg">
 					</div>
 					<div class="board_textContent">
 						<div class="board_text1">${board.user_id }</div>
@@ -93,18 +94,37 @@
 								location_on </span>
 							<div class="board_area">${board.sigungu }</div>
 						</div>
-						<div class="board_likePan">
-							<span class="material-icons-outlined board_like_img">
-								favorite </span>
-							<div class="like">0명</div>
+							<c:choose>
+								<c:when test="${board.like_cnt>=5 &&  board.like_cnt<10}">
+									<div class="board_likePan" style="color: rgb(241, 175, 135);">
+										<span class="material-icons-outlined board_like_img">
+											favorite </span>
+										<div class="like">${board.like_cnt}명</div>
+									</div>
+								</c:when>
+								<c:when test="${board.like_cnt>=10 }">
+									<div class="board_likePan" style="color: #e56c23;">
+										<span class="material-icons-outlined board_like_img">
+											favorite </span>
+										<div class="like">${board.like_cnt}명</div>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="board_likePan">
+										<span class="material-icons-outlined board_like_img">
+											favorite </span>
+										<div class="like">${board.like_cnt}명</div>
+									</div>
+								</c:otherwise>
+							</c:choose>
 						</div>
-					</div>
 				</div>
 			</c:forEach>
 		</div>
 		<div class="board_paging">
 			<c:forEach begin="1"
-				end="${boardDB.size()/12+1>=6 ? 5 : (boardDB.size() % 12)==0 ? (boardDB.size() / 12) : (boardDB.size() / 12)+1 }" var="i">
+				end="${boardDB.size()/12+1>=6 ? 5 : (boardDB.size() % 12)==0 ? (boardDB.size() / 12) : (boardDB.size() / 12)+1 }"
+				var="i">
 				<c:choose>
 					<c:when test="${i == 1 }">
 						<div class="board_choose board_paging_number" id="${i }">${i }</div>
@@ -139,7 +159,7 @@
 					<!-- q= 뒤에 주소를 입력하면 됨 -->
 					<hr style="color: black; width: 100%; margin-bottom: 50px;">
 					<div id="board_main_content" class="board_main_content">
-					<!-- 게시판 콘텐츠들이 들어가는 곳  -->
+						<!-- 게시판 콘텐츠들이 들어가는 곳  -->
 					</div>
 
 					<div class="board_comment">
@@ -148,25 +168,25 @@
 						</div>
 						<div class="board_comment_write">
 							<form action="#" id="board_commentId">
-								<input type="text" id="board_commnet" name="board_commnet" placeholder="한 줄 댓글을 남겨주세요."> 
-								
-								<input type="hidden" id="user_id" name="user_id" value="${id }"> 
-								<input type="submit" name="board_commnet_submit" value="댓글남기기">
+								<input type="text" id="board_commnet" name="board_commnet"
+									placeholder="한 줄 댓글을 남겨주세요."> <input type="hidden"
+									id="user_id" name="user_id" value="${id }"> <input
+									type="submit" name="board_commnet_submit" value="댓글남기기">
 							</form>
 						</div>
-						<div class="board_comment_show">
-							<div class="board_comment_see">
-								<div class="board_comment_see_img">
-									<img src="<%=request.getContextPath()%>/resources/files/null.jpg" alt="">
-								</div>
-								<div class="board_comment_see_text">
-									<div>
-										<strong>닉네임</strong> <span class="board_comment_see_text_date">2021.08.12</span>
-									</div>
-									<div>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</div>
-								</div>
-							</div>
-							<hr style="color: black; width: 100%; margin-bottom: 50px;">
+						<div id="board_comment_show" class="board_comment_show">
+							<!-- 							<div class="board_comment_see"> -->
+							<!-- 								<div class="board_comment_see_img"> -->
+							<%-- 									<img src="<%=request.getContextPath()%>/resources/files/null.jpg" alt=""> --%>
+							<!-- 								</div> -->
+							<!-- 								<div class="board_comment_see_text"> -->
+							<!-- 									<div> -->
+							<!-- 										<strong>닉네임</strong> <span class="board_comment_see_text_date">2021.08.12</span> -->
+							<!-- 									</div> -->
+							<!-- 									<div>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</div> -->
+							<!-- 								</div> -->
+							<!-- 							</div> -->
+							<!-- 							<hr style="color: black; width: 100%; margin-bottom: 50px;"> -->
 						</div>
 					</div>
 				</div>
@@ -174,7 +194,8 @@
 
 				<div class="board_right_pan">
 					<div class="board_user_info">
-						<img id="board_mainimg" src="<%=request.getContextPath()%>/resources/files/null.jpg"
+						<img id="board_mainimg"
+							src="<%=request.getContextPath()%>/resources/files/null.jpg"
 							alt="">
 					</div>
 					<div class="board_user_name">닉네임</div>
@@ -208,7 +229,7 @@
 					</div>
 
 					<div>
-						<div class="board_scrap_btn">
+						<div id="board_scrap_btn" class="board_scrap_btn">
 							<span class="material-icons-outlined board_like_img">
 								favorite </span>
 							<div>스크랩</div>
@@ -221,21 +242,21 @@
 								class="board_singo">신고하기</span>
 						</div>
 
-<!-- 						<div class="board_Plans"> -->
-<!-- 							<div class="board_Plans_tit">여행경로</div> -->
-<!-- 							<div class="board_Plans_list"> -->
-<!-- 								<div>여정1</div> -->
-<!-- 							</div> -->
-<!-- 							<div class="board_Plans_list"> -->
-<!-- 								<div>여정2</div> -->
-<!-- 							</div> -->
-<!-- 							<div class="board_Plans_list"> -->
-<!-- 								<div>여정3</div> -->
-<!-- 							</div> -->
-<!-- 							<div class="board_Plans_list"> -->
-<!-- 								<div>여정4</div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
+						<!-- 						<div class="board_Plans"> -->
+						<!-- 							<div class="board_Plans_tit">여행경로</div> -->
+						<!-- 							<div class="board_Plans_list"> -->
+						<!-- 								<div>여정1</div> -->
+						<!-- 							</div> -->
+						<!-- 							<div class="board_Plans_list"> -->
+						<!-- 								<div>여정2</div> -->
+						<!-- 							</div> -->
+						<!-- 							<div class="board_Plans_list"> -->
+						<!-- 								<div>여정3</div> -->
+						<!-- 							</div> -->
+						<!-- 							<div class="board_Plans_list"> -->
+						<!-- 								<div>여정4</div> -->
+						<!-- 							</div> -->
+						<!-- 						</div> -->
 					</div>
 				</div>
 			</div>

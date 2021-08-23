@@ -182,7 +182,7 @@ select{
     justify-content: space-around;
     border: solid #e1e1e1;
     border-width: 0px 1px 0px 0px;
-    cursor: pointer;
+    cursor: default;
 }
 
 .board_area_img{
@@ -195,15 +195,11 @@ select{
     justify-content: space-around;
     border: solid #e1e1e1;
     border-width: 0px 1px 0px 0px;
-    cursor: pointer;
+    cursor: default;
 }
 
 .board_like_img{
     font-size: 22px;
-}
-
-.board_likePan:hover{
-    color: #e56c23;
 }
 
 .board_paging{
@@ -356,7 +352,6 @@ select{
     width: 145px;
     height: 35px;
     border: none;
-    color: #bdbdbd;
     background-color: #fff;
     font-size: 14px;
     font-weight: bold;
@@ -368,9 +363,7 @@ select{
     
     margin-bottom: 40px;
 }
-.board_scrap_btn:hover{
-    color: #ff6d00;
-}
+
 
 .board_travelPlans{
     width: 100%;

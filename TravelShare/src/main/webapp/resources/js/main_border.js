@@ -45,7 +45,7 @@ function pagingRest(click_number, sigungucode, sidocode) {
 				board_option.innerHTML = "<div class='board_areaPan'>" +
 					"<span class='material-icons-outlined board_area_img'> location_on </span>" +
 					"<div class='board_area'>" + myobj[key].sigungu + " </div> </div>" +
-					"<div class='board_likePan'> <span class='material-icons-outlined board_like_img'> favorite </span> <div class='like'>0명</div> </div>";
+					"<div id='board_likePan' class='board_likePan'> <span class='material-icons-outlined board_like_img'> favorite </span> <div class='like'>"+myobj[key].like_cnt+"명</div> </div>";
 				board_content.appendChild(board_imgContent);
 				board_content.appendChild(board_textContent);
 				board_content.appendChild(board_option);
@@ -185,13 +185,13 @@ var sigungucode = getParameterByName("sigungucode");
 }
 
 window.onload =  () => {
-	var sidogunName = getParameterByName("sidogunName");
 	var sel = document.getElementById("h_area2");
 	var key = document.getElementById("board_sido");
+	cat1_change(key.value);
+	var sidogunName = getParameterByName("sidogunName");
 	if(sidogunName == '전체'){
 		sel.options[1].selected = true;
 	}
-	cat1_change(key.value);
 };
 
 function imgClickRollback() {
@@ -208,8 +208,10 @@ function imgClick(value) {
 		Array.from(body).forEach((value2) => {
 			value2.setAttribute("class", "board_detail_open");
 		});
-		
+	
+	getBoardUser(value);
 	getBoardContent(value);
+	getBoardCommnet(value);
 	
 	document.getElementById("board_clickPan").setAttribute("class", "board_show");
 	
@@ -218,6 +220,37 @@ function imgClick(value) {
 	xhttp.open('POST', '/travelShare/boardrest/lookupCntPlus/', true);
 	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
 	xhttp.send(value);
+}
+
+function getBoardUser(board_id){
+	const xhttp = new XMLHttpRequest();
+	
+	xhttp.addEventListener('readystatechange', (e) => {
+		const target = e.target;
+		var board_scrap_btn = document.getElementById("board_scrap_btn");
+		myobj = JSON.parse(target.responseText);
+		console.log(myobj);
+		if(myobj == 1){
+			board_scrap_btn.style.color = '#e56c23';
+			board_scrap_btn.addEventListener('mouseout', () => {
+				board_scrap_btn.style.color = '#e56c23';
+			});
+		} else {
+			board_scrap_btn.style.color = '#bdbdbd';
+			
+			board_scrap_btn.addEventListener('mouseover', () => {
+				board_scrap_btn.style.color = '#e56c23';
+			});
+			
+			board_scrap_btn.addEventListener('mouseout', () => {
+				board_scrap_btn.style.color = '#bdbdbd';
+			});
+		}
+	});
+	
+	xhttp.open('POST', '/travelShare/boardrest/likeJudgment/', true);
+	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
+	xhttp.send(board_id);
 }
 
 
@@ -256,15 +289,39 @@ function getBoardCommnet(value) {
 	
 	xhttp.addEventListener('readystatechange', (e) => {
 		const target = e.target;
-
+		const status = target.status;
+		const readyState = target.readyState;
 		myobj = JSON.parse(target.responseText);
-
+		
+		var board_comment_show = document.getElementById("board_comment_show");
+		board_comment_show.innerHTML = '';
+		
+		if(status == 200 & readyState == 4){
 			Object.keys(myobj).forEach((key) => {
+				var board_comment_see = document.createElement("div");
+				board_comment_see.setAttribute("class", "board_comment_see");
 				
+				var board_comment_see_img = document.createElement("div");
+				board_comment_see_img.setAttribute("class", "board_comment_see_img");
+				board_comment_see_img.innerHTML = "<img src='/travelShare/resources/files/null.jpg' alt=''>"
+				
+				var board_comment_see_text = document.createElement("div");
+				board_comment_see_text.setAttribute("class", "board_comment_see_text");
+				board_comment_see_text.innerHTML = "<div> <strong>"+myobj[key].user_nickname+"</strong> <span class='board_comment_see_text_date'>"+myobj[key].comment_date+"</span> </div> <div>"+myobj[key].comment_text+"</div>"
+				
+				
+				
+				board_comment_see.appendChild(board_comment_see_img);
+				board_comment_see.appendChild(board_comment_see_text);
+				
+				board_comment_show.appendChild(board_comment_see);
+				board_comment_show.innerHTML += "<hr style='color: black; width: 100%; margin-bottom: 50px;'>"
 			});
+			
+		}
 	});
 
-	xhttp.open('POST', '/travelShare/boardrest/choiceBoardInfo/', true);
+	xhttp.open('POST', '/travelShare/boardrest/selectComment/', true);
 	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8');
 	xhttp.send(value);
 }
@@ -297,11 +354,21 @@ board_commentId.onsubmit = (e) => {
 		insertCommnet(board_id, user_id, board_comment)
 	}
 	this.board_commnet.value = '';
+	
 }
 
 function insertCommnet(board_id, user_id, board_comment){
 	var xhttp = new XMLHttpRequest();
 	
+	xhttp.addEventListener('readystatechange', (e) => {
+		const target = e.target;
+		const status = target.status;
+		const readyState = target.readyState;
+		
+		if(status == 200 & readyState == 4){
+			getBoardCommnet(board_id);
+		}
+	});
 	
 	var commnetInfo = {
 		board_id : board_id,
@@ -314,13 +381,6 @@ function insertCommnet(board_id, user_id, board_comment){
 	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
 	xhttp.send(JSON.stringify(commnetInfo));
 }
-
-
-
-
-
-
-
 
 
 
