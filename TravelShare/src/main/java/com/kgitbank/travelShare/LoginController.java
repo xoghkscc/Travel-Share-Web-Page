@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kgitbank.travelShare.mapper.LoginMapper;
 import com.kgitbank.travelShare.model.LoginInfo;
@@ -24,10 +24,12 @@ public class LoginController {
 	    LoginMapper loginService;
 
 	    @RequestMapping(value="/login", method = RequestMethod.POST)
-	    public String loginProcess(HttpSession session, LoginInfo logininfo) {
-	       
-	        System.out.println(logininfo.getUser_email() + logininfo.getUser_password());
-	        if(loginService.loginCheck(logininfo) != null){
+	    public String loginProcess(HttpSession session, LoginInfo logininfo, String user_email, String user_password) {
+	       System.out.println("컨트롤러왔다 d");
+	        System.out.println(user_email + user_password);
+	        logininfo.setUser_email(user_email);
+	        logininfo.setUser_password(user_password);
+	        
 	            session.setAttribute("loginCheck",true);
 	            
 	            List<LoginInfo> loinfo = loginService.CheckloginId(logininfo);
@@ -37,9 +39,7 @@ public class LoginController {
 	    		}
 	            
 	            return "redirect:/site/index";
-	        }else{
-	            return "redirect:/site/login";
-	        }
+	        
 	    }
 	    
 	    @RequestMapping(value="/logoutProcess")

@@ -19,8 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.kgitbank.travelShare.mapper.LoginMapper;
 import com.kgitbank.travelShare.mapper.UserInfoMapper;
+import com.kgitbank.travelShare.model.LoginInfo;
 import com.kgitbank.travelShare.model.UserInfo;
 
 import lombok.extern.java.Log;
@@ -35,7 +36,6 @@ public class MemberShipController {
 	UserInfoMapper user_info;
 	
 
-	
 	@GetMapping("/membership")
 	public String memberShip() {
 	
@@ -78,6 +78,22 @@ public class MemberShipController {
 	@GetMapping("/idsearch")
 	public String idSearch() {
 		return "/membership/idSearch";
+	}
+	
+	@PostMapping("/idSearch")
+	public String idSearchFind(UserInfo userinfo, Model model) {
+		
+	
+		UserInfo userfo = user_info.getUserEmail(userinfo);
+  		
+		System.out.println(userfo.getUser_email() + "된거다 제발");
+		
+	
+ 
+		
+		System.out.println();
+		
+		return "/membership/idSearchFind";
 	}
 	
 	@GetMapping("/passwordsearch")

@@ -16,31 +16,33 @@
 </head>
 <body>
 	<jsp:include page="../header/top.jsp"></jsp:include>
-	<form id="id_search" action="./membership" method="POST" autocomplete='off'></form>
+	<form id="id_search" action="./idSearch" method="POST" autocomplete='off'></form>
 	<div class="id_search_box">
 		<div>
 			<div id="id_search1">아이디 찾기</div>
 
 			<div id="red">
 				<div class="name_text">
-					<b> 이름</b><input
-						type="text" class="info">
+					<b> 이름</b><input type="text" class="info" name="user_name" form="id_search" id="user_name">
 				</div>
 				<div class="phone_text">
-					<b>전화번호</b>&nbsp;&nbsp;<input type="text" class="info"
-						id="phone_text1" maxlength="11">
+					<b>전화번호</b>&nbsp;&nbsp;<input type="text" name="user_phonenumber" form="id_search" class="info"
+						id="user_phone" maxlength="11">
+						<button id="check_button">인증하기</button>
 				</div>
+				<div class="phone_text">
+					<input type="text" class="info" placeholder="인증번호 4자리입력"  id="phone_check" maxlength="4">
+					<input type="hidden" id="checkNum">	
+				</div>
+				<div id="phone_warning"></div>				
 			</div>
 			<div id="password_search">
 				<span><a href="./passwordsearch"><b>비밀번호찾기<b></a></span> <span
-					id="submit"><input id="idsearch_sub" type="submit"
-					value="아이디 찾기"></span>
+					id="submit"><input id="idsearch_sub" form="id_search" type="submit" value="아이디 찾기"></span>
 			</div>
 
 		</div>
 	</div>
-
-
 	<script>
       $('.id_search_box').css('border','3px solid skyblue');
       $('.id_search_box').css('width','400px');

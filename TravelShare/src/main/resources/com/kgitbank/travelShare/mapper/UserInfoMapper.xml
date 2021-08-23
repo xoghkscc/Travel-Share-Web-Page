@@ -18,6 +18,10 @@
         <select id="checkNickname" resultType="int">
         	SELECT COUNT(user_nickname) FROM user_info WHERE user_nickname=#{user_nickname }
         </select>
+        
+          <select id="getUserEmail" resultType="com.kgitbank.travelShare.model.UserInfo">
+        	SELECT user_email FROM user_info WHERE user_name=#{user_name } AND user_phonenumber= #{user_phonenumber }
+        </select>
          
 </mapper>
 

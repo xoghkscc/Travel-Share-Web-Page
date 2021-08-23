@@ -25,16 +25,17 @@
 			</div>
 			<div>
 				<div class="login_text">
-					이메일<input form="login" name="user_email"  type="text">
+					이메일<input form="login" name="user_email" id="user_email"  type="text">
 				</div>
 			</div>
 			<div>
 				<div class="login_text">
-					비밀번호<input form="login" name="user_password" type="password">
+					비밀번호<input form="login" name="user_password" id="user_password" type="password">
 				</div>
+				<div id="login_warning"></div>
 			</div>
 		</div>
-		<div id="login_loginbtn"><input type="submit" form="login" value="로그인"></div>
+		<div><button form="login" id="login_loginbtn" value="로그인"> 로그인 </button></div>
 		<div id="naver_id_login"></div>
 		<div class="login_find">
 			<div>
@@ -49,7 +50,8 @@
 		</div>
 	</div>
 	<div class="login_backgroundImg"></div>
-
+	
+	<script src="<%=request.getContextPath() %>/resources/loginJS/login.js" charset="UTF-8"></script>
 	<script>
       $('.loginBox').css('border','3px solid skyblue');
       $('.loginBox').css('width','350px');

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kgitbank.travelShare.mapper.LoginMapper;
 import com.kgitbank.travelShare.mapper.UserInfoMapper;
 import com.kgitbank.travelShare.model.UserInfo;
 
@@ -23,6 +24,7 @@ public class MemberShipRestController {
 	
 	@Autowired
 	UserInfoMapper user_info;
+
 	
 	@PostMapping(value="/emailwarning", produces="text/plain; charset=utf-8")
 	public String getEmailwaring(@RequestBody String member_email) {

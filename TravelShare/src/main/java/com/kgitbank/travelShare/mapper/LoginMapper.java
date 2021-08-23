@@ -10,4 +10,6 @@ public interface LoginMapper {
 	public LoginInfo loginCheck(LoginInfo logininfo);
 
 	public List<LoginInfo> CheckloginId(LoginInfo logininfo);
+	
+
 }
