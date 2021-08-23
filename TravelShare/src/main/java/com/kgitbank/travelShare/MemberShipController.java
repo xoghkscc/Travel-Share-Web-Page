@@ -56,25 +56,7 @@ public class MemberShipController {
 		
 		return "/login/naverLogin";
 		}
-
-	
-//	@PostMapping("/phoneCheck")
-//    public @ResponseBody
-//    void sendSMS(String phoneNumberCheck) {
-//		
-//        Random rand  = new Random();
-//        String numStr = "";
-//        for(int i=0; i<4; i++) {
-//            String ran = Integer.toString(rand.nextInt(10));
-//            numStr+=ran;
-//        }
-//
-//        System.out.println("수신자 번호 : " + phoneNumberCheck);
-//        System.out.println("인증번호 : " + numStr);
-//        certificationService.certifiedPhoneNumber(phoneNumberCheck,numStr);
-//    }
-	
-	
+		
 	@GetMapping("/idsearch")
 	public String idSearch() {
 		return "/membership/idSearch";

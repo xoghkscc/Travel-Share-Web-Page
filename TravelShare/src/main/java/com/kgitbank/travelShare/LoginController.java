@@ -25,8 +25,7 @@ public class LoginController {
 
 	    @RequestMapping(value="/login", method = RequestMethod.POST)
 	    public String loginProcess(HttpSession session, LoginInfo logininfo, String user_email, String user_password) {
-	       System.out.println("컨트롤러왔다 d");
-	        System.out.println(user_email + user_password);
+
 	        logininfo.setUser_email(user_email);
 	        logininfo.setUser_password(user_password);
 	        
@@ -35,10 +34,9 @@ public class LoginController {
 	            List<LoginInfo> loinfo = loginService.CheckloginId(logininfo);
 	    		for (LoginInfo logo_info : loinfo) {
 	    			 session.setAttribute("id", logo_info.getUser_id());
-	    			 System.out.println(session.getAttribute("id"));
 	    		}
 	            
-	            return "redirect:/site/index";
+	            return "";
 	        
 	    }
 	    

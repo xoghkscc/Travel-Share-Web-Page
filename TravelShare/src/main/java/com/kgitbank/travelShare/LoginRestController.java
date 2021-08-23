@@ -29,7 +29,7 @@ public class LoginRestController {
 		
 	@PostMapping(value="/loginWarning", produces= MediaType.APPLICATION_JSON_VALUE)
 	public String getEmailwaring(@RequestBody LoginInfo login_info) {
-		System.out.println("레스트에 왔다");
+
 		if(loginService.loginCheck(login_info) == null) {
 			System.out.println("rest if문");
 			System.out.println(login_info.getUser_email() + "/" + login_info.getUser_password());

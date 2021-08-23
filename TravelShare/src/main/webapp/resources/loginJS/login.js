@@ -24,7 +24,7 @@ login_loginbtn.onclick = (event) => {
 		} else {
 			console.log("dd");
 			gocontroller();
-			console.log(e.target.responseText);
+			location.href = "../site/index";
 		} 
 	} 
 });
@@ -55,9 +55,6 @@ function gocontroller() {
     url: '../login',
     type: 'POST',
     data: logindata,
-    success: function (data) {
-            alert("데이터 전송이 성공적으로 끝났을 때 실행");
-    }
 });
 
 	
