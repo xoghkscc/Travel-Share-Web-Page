@@ -81,17 +81,20 @@ select{
     					row-gap: 25px;
     					column-gap: 12px;
     					width: 1040px;}
+	.board_create {width: 1080px;}
 }
 
 @media (max-width: 1080px){
 	.board_list_travel {grid-template-columns: 33% 33% 33%;
 						width: 770px;}
-	.sel{width: 770px}
+	.board_create {width: 770px;}
+	.sel{width: 780px}
 }
 
 @media (max-width: 780px){
 	.board_list_travel {grid-template-columns: 50% 50%;
 	width: 500px;}
+	.board_create {width: 530px;}
 	.sel{width: 500px}
 	h2{font-size: 18px}
 	.region_area {width: 80px}
@@ -100,6 +103,7 @@ select{
 @media (max-width: 530px){
 	.board_list_travel {grid-template-columns: 100%;
 	width: 244px;}
+	.board_create {width: 244px;}
 	.sel{width: 244px}
 	.sel_pan{justify-content: center}
 	h2{font-size: 13px}
@@ -202,8 +206,31 @@ select{
     font-size: 22px;
 }
 
+.board_create{
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+	
+}
+
+.board_create>button {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+	width: 80px;
+	height: 30px;
+	font-size: 14px;
+	color: black;
+	background-color: white;
+	cursor: pointer;
+	border: 1px solid #e6e6e6;
+}
+.board_create>button>p {
+	margin-top: 5px;	
+}
 .board_paging{
-    margin-top: 100px;
+    margin-top: 40px;
     margin-bottom: 100px;
     font-size: 20px;
     color: gray;

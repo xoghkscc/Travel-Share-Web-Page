@@ -56,9 +56,17 @@
 		SELECT * FROM board_like WHERE board_id = #{board_id } and user_id = #{user_id }
 	</select>
 	
+	<delete id="deleteLike">
+		DELETE FROM board_like WHERE board_id = #{board_id} and user_id = #{user_id}
+	</delete>
 	
+	<insert id="insertLike">
+		INSERT INTO board_like VALUES(like_seq.nextval, #{user_id}, #{board_id})
+	</insert>
 	
-	
+	<select id="selectLikeCnt" resultType="int">
+		SELECT like_cnt FROM like_view WHERE board_id = #{board_id}
+	</select>
 	
 	
 </mapper>

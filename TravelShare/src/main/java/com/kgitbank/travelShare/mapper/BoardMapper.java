@@ -32,4 +32,10 @@ public interface BoardMapper {
 	public ArrayList<CommentInfo> selectComment(@Param("board_id") Integer board_id);
 	
 	public ArrayList<BoardLikeModel> selectLike(@Param("board_id") Integer board_id, @Param("user_id") Integer user_id);
+	
+	public void deleteLike(@Param("board_id") Integer board_id, @Param("user_id") Integer user_id);
+	
+	public void insertLike(@Param("board_id") Integer board_id, @Param("user_id") Integer user_id);
+	
+	public Integer selectLikeCnt(@Param("board_id") Integer board_id);
 }

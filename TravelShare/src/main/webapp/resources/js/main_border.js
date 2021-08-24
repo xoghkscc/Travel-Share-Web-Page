@@ -45,7 +45,7 @@ function pagingRest(click_number, sigungucode, sidocode) {
 				board_option.innerHTML = "<div class='board_areaPan'>" +
 					"<span class='material-icons-outlined board_area_img'> location_on </span>" +
 					"<div class='board_area'>" + myobj[key].sigungu + " </div> </div>" +
-					"<div id='board_likePan' class='board_likePan'> <span class='material-icons-outlined board_like_img'> favorite </span> <div class='like'>"+myobj[key].like_cnt+"명</div> </div>";
+					"<div id='board_likePan' class='board_likePan'> <span class='material-icons-outlined board_like_img'> favorite </span> <div id="+myobj[key].board_id+" class='like'>"+myobj[key].like_cnt+"명</div> </div>";
 				board_content.appendChild(board_imgContent);
 				board_content.appendChild(board_textContent);
 				board_content.appendChild(board_option);
@@ -194,6 +194,8 @@ window.onload =  () => {
 	}
 };
 
+
+
 function imgClickRollback() {
 	const body = document.getElementsByTagName("body");
 		Array.from(body).forEach((value2) => {
@@ -208,7 +210,7 @@ function imgClick(value) {
 		Array.from(body).forEach((value2) => {
 			value2.setAttribute("class", "board_detail_open");
 		});
-	
+	getLikeCnt(value);
 	getBoardUser(value);
 	getBoardContent(value);
 	getBoardCommnet(value);
@@ -224,12 +226,21 @@ function imgClick(value) {
 
 function getBoardUser(board_id){
 	const xhttp = new XMLHttpRequest();
-	
 	xhttp.addEventListener('readystatechange', (e) => {
 		const target = e.target;
-		var board_scrap_btn = document.getElementById("board_scrap_btn");
 		myobj = JSON.parse(target.responseText);
-		console.log(myobj);
+		boardScrap(myobj, board_id)	
+	});
+	
+	xhttp.open('POST', '/travelShare/boardrest/likeJudgment/', true);
+	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
+	xhttp.send(board_id);
+}
+var clickJug = 0;
+
+function boardScrap(myobj, board_id) {
+		var loginId = document.getElementById("user_id").value;
+		var board_scrap_btn = document.getElementById("board_scrap_btn");
 		if(myobj == 1){
 			board_scrap_btn.style.color = '#e56c23';
 			board_scrap_btn.addEventListener('mouseout', () => {
@@ -246,9 +257,72 @@ function getBoardUser(board_id){
 				board_scrap_btn.style.color = '#bdbdbd';
 			});
 		}
+		
+			board_scrap_btn.onclick = () => {
+				clickJug = 1;
+				console.log("myobj : "+ myobj + "board_id :" + board_id);
+				if(loginId == ''){
+					alert("로그인이 필요한 서비스입니다.");
+				} else {
+					if(myobj == 1){
+						myobj = 0;
+						board_scrap_btn.style.color = '#bdbdbd';
+						
+						board_scrap_btn.addEventListener('mouseover', () => {
+							board_scrap_btn.style.color = '#e56c23';
+						});
+						
+						board_scrap_btn.addEventListener('mouseout', () => {
+							board_scrap_btn.style.color = '#bdbdbd';
+						});
+						deleteLike(board_id);
+						alert("찜을 취소하였습니다.");
+						
+					} else {
+						myobj = 1;
+						board_scrap_btn.style.color = '#e56c23';
+						board_scrap_btn.addEventListener('mouseout', () => {
+						board_scrap_btn.style.color = '#e56c23';
+						});
+						insertLike(board_id)
+						alert("찜을 하였습니다.");
+					}
+				}
+				getLikeCnt(board_id);
+				board_scrap_btn.onclick = null;
+			};
+}
+
+function getLikeCnt(board_id){
+	const xhttp = new XMLHttpRequest();
+	xhttp.addEventListener('readystatechange', (e) => {
+		const target = e.target;
+		myobj = JSON.parse(target.responseText);
+		document.getElementById("board_scarp_cnt").innerHTML = myobj;
+		document.getElementById(board_id).innerHTML = myobj+"명";
+		
 	});
 	
-	xhttp.open('POST', '/travelShare/boardrest/likeJudgment/', true);
+	xhttp.open('POST', '/travelShare/boardrest/selectLikeCnt/', true);
+	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
+	xhttp.send(board_id);
+	
+}
+
+function deleteLike(board_id){
+	const xhttp = new XMLHttpRequest();
+	
+	
+	xhttp.open('POST', '/travelShare/boardrest/deleteLike/', true);
+	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
+	xhttp.send(board_id);
+}
+
+function insertLike(board_id){
+	const xhttp = new XMLHttpRequest();
+	
+	
+	xhttp.open('POST', '/travelShare/boardrest/insertLike/', true);
 	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
 	xhttp.send(board_id);
 }
@@ -380,6 +454,14 @@ function insertCommnet(board_id, user_id, board_comment){
 	xhttp.open('POST', '/travelShare/boardrest/insertComment/', true);
 	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
 	xhttp.send(JSON.stringify(commnetInfo));
+}
+
+function createBoardLocation(id){
+	if(id >= 1){
+		location.href = "./createBoard";
+	}else {
+		alert("로그인이 필요한 서비스입니다.");
+	}
 }
 
 

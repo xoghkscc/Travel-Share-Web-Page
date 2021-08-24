@@ -99,27 +99,30 @@
 									<div class="board_likePan" style="color: rgb(241, 175, 135);">
 										<span class="material-icons-outlined board_like_img">
 											favorite </span>
-										<div class="like">${board.like_cnt}명</div>
+										<div id="${board.board_id}" class="like">${board.like_cnt}명</div>
 									</div>
 								</c:when>
 								<c:when test="${board.like_cnt>=10 }">
 									<div class="board_likePan" style="color: #e56c23;">
 										<span class="material-icons-outlined board_like_img">
 											favorite </span>
-										<div class="like">${board.like_cnt}명</div>
+										<div id="${board.board_id}" class="like">${board.like_cnt}명</div>
 									</div>
 								</c:when>
 								<c:otherwise>
 									<div class="board_likePan">
 										<span class="material-icons-outlined board_like_img">
 											favorite </span>
-										<div class="like">${board.like_cnt}명</div>
+										<div id="${board.board_id}" class="like">${board.like_cnt}명</div>
 									</div>
 								</c:otherwise>
 							</c:choose>
 						</div>
 				</div>
 			</c:forEach>
+		</div>
+		<div id="board_create" class="board_create" onclick="createBoardLocation(${id})">
+			<button><span class="material-icons">create</span><p>글쓰기</p></button>
 		</div>
 		<div class="board_paging">
 			<c:forEach begin="1"
@@ -224,7 +227,7 @@
 									favorite </span>
 								<div>스크랩</div>
 							</div>
-							<div>0</div>
+							<div id="board_scarp_cnt">0</div>
 						</div>
 					</div>
 

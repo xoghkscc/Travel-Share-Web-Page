@@ -104,7 +104,8 @@ public class BoardContentController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		boardModel.setUser_id(1);
+		boardModel.setBoard_lookupcnt(0);
+		System.out.println(boardModel);
 		boardMapper.insertBoard(boardModel);
 		
 		try {

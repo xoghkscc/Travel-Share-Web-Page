@@ -26,13 +26,13 @@
 						<label>제목 입력하기</label>
 					</div>
 					<div>
-						<input type="text" name="board_title" placeholder="여행의 제목을 입력해주세요">
+						<input type="text" name="board_title" placeholder="여행의 제목을 입력해주세요" required>
 					</div>
 					<div>
 						<label>우편번호 </label>
 					</div>
 					<div>
-						<input type="text" name="zipCode" id="zipCode" style="width: 80px;" readonly />
+						<input type="text" name="zipCode" id="zipCode" style="width: 80px;" readonly required />
 						<button type="button" style="width: 60px; height: 32px;"
 							id="address_kakao">검색</button>
 					</div>
@@ -40,7 +40,7 @@
 						<label>주소</label>
 					</div>
 					<div>
-						<input type="text" id="addr" name="addr" style="width: 300px;" readonly />
+						<input type="text" id="addr" name="addr" style="width: 300px;" readonly required />
 					</div>
 					<div>
 						<label>상세</label>
@@ -54,7 +54,7 @@
 					</div>
 					<div>
 						<input type="hidden" id="sigungu" name="sigungu"
-							style="width: 300px; height: 30px;" readonly /><br>
+							style="width: 300px; height: 30px;" readonly required/><br>
 					</div>
 					<div>
 						<input type="hidden" id="sigunguCode" name="sigungucode"
@@ -62,21 +62,21 @@
 					</div>
 					<div>
 						<input type="hidden" id="sidoCode" name="sidoCode"
-							style="width: 300px; height: 30px;" readonly /><br>
+							style="width: 300px; height: 30px;" readonly required/><br>
 					</div>
 					<div>
 						<label>추천 명소</label>
 					</div>
 					<div>
 						<input type="text" name="board_bestplace" style="width: 300px;"
-							placeholder="여행지 주변 추천 명소를 입력해주세요" />
+							placeholder="여행지 주변 추천 명소를 입력해주세요"  />
 					</div>
 					<div>
 						<label>추천 맛집</label>
 					</div>
 					<div>
 						<input type="text" name="board_besteat" style="width: 300px;"
-							placeholder="여행지 주변 추천 맛집을 입력해주세요" />
+							placeholder="여행지 주변 추천 맛집을 입력해주세요"  />
 					</div>
 <!-- 					<div class="board_travel_route"> -->
 <!-- 						<label>여행경로</label> -->
@@ -92,11 +92,12 @@
 						<label>여행 대표 사진</label>
 					</div>
 					<div class="board_travel_file board_img">
-						<input type="file" id="board_mainimg" name="board_mainimgReal" style="width: 200px;" />
+						<input type="file" id="board_mainimg" name="board_mainimgReal" style="width: 200px;" required />
 					</div>
 				</div>
-				<textarea rows="50" cols="50" id="board_content" name="board_content">
+				<textarea rows="50" cols="50" id="board_content" name="board_content" required>
 				</textarea>
+						<input type="hidden" id="user_id" name="user_id" value="${id }" required />
 				<script>
 					var ckeditor_config = {
 						height: 500,

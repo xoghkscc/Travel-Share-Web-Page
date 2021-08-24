@@ -75,5 +75,21 @@ public class BoardContentRestController {
 		}
 	}
 	
+	@PostMapping(value = "/deleteLike", produces = MediaType.APPLICATION_JSON_VALUE)
+	public void deleteLike(@RequestBody Integer board_id, HttpSession session){
+		int user_id =Integer.parseInt((String)session.getAttribute("id"));
+		boardMapper.deleteLike(board_id, user_id);
+	}
+	
+	@PostMapping(value = "/insertLike", produces = MediaType.APPLICATION_JSON_VALUE)
+	public void insertLike(@RequestBody Integer board_id, HttpSession session){
+		int user_id =Integer.parseInt((String)session.getAttribute("id"));
+		boardMapper.insertLike(board_id, user_id);
+	}
+	
+	@PostMapping(value = "/selectLikeCnt", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Integer selectLikeCnt(@RequestBody Integer board_id){
+		return boardMapper.selectLikeCnt(board_id);
+	}
 	
 }
