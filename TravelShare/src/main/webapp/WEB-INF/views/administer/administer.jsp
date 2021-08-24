@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/administer_main.css?ver=1.74">
+	href="<%=request.getContextPath()%>/resources/css/administer_main.css?ver=2.85">
 	
 	<!-- CKEDITOR -->
 	<link rel="stylesheet" type="text/css"
@@ -87,20 +87,25 @@
 				<div class="admin_board_container admin_allContainer">
 
 					<div class="admin_board_count">게시판 현황</div>
+					<div>
+						<input type="text" class="admin_board_searchText" placeholder="제목을 검색하세요."/>
+						<button class="admin_board_searchBtn" type="submit">검색</button>
+					</div>
 					<table class="admin_board_table table table-bordered"
 						style="text-align: center; border: 1px solid black; width: 800px;">
 						<thead>
 							</tr>
-							<th style="background-color: #fafafa; text-align: center;">게시글
-								번호</th>
-							<th style="background-color: #fafafa; text-align: center;">내용</th>
+							<th style="background-color: #fafafa; text-align: center;">글번호</th>
 							<th style="background-color: #fafafa; text-align: center;">작성자</th>
+							<th style="background-color: #fafafa; text-align: center;">글제목</th>
+							<th style="background-color: #fafafa; text-align: center;">찜수</th>
 							<th style="background-color: #fafafa; text-align: center;">조회수</th>
 							<tr>
 						</thead>
 						<tbody class="tbodyclass_board">
 						</tbody>
 					</table>
+					<div class="admin_board_paging"></div>	
 				</div>
 
                 <div class="admin_declare_container admin_allContainer">
@@ -108,6 +113,10 @@
                     <div class="admin_declare_count">
                         신고 관리
                     </div>
+                    <div>
+						<input type="text" class="admin_declare_searchText" placeholder="이름을 검색하세요."/>
+						<button class="admin_declare_searchBtn" type="submit">검색</button>
+					</div>
                     <table class="admin_declare_table table table-bordered" style="text-align: center; border: 1px solid black; width: 800px;">
                         <thead>
                            </tr>
@@ -120,7 +129,8 @@
                         </thead>
                         <tbody class="tbodyclass_declare">
                         </tbody>
-                    </table>	
+                    </table>
+	
                 </div>
 
                 <div class="admin_notice_container admin_allContainer">
@@ -132,6 +142,10 @@
                             공지사항 작성
                         </span>
                     </div>
+                   	<div>
+						<input type="text" class="admin_notice_searchText" placeholder="제목을 검색하세요."/>
+						<button class="admin_notice_searchBtn" type="submit">검색</button>
+					</div>
                     <table class="admin_notice_table table table-bordered" style="text-align: center; border: 1px solid black; width: 800px;">
                         <thead>
                            </tr>
@@ -201,9 +215,9 @@
 							<label>제목 입력하기</label>
 							<input id="noticeTitleUpdate" type="text" name="noticeTitleUpdate" placeholder="제목을 입력해주세요">
 						</div>
-	                    <div class="board_travel_mainPicture board_img">
+	                    <div>
 							<label>첨부할 사진</label>
-							<input type="file" id="noticeImg" style="width: 200px;" />
+							<input type="file" id="noticeImg" name="noticeImgFile" style="width: 200px;" />
 						</div>
 						<textarea rows="30" cols="30" id="noticeContentUpdate" name="notice_contentUpdate">
 						</textarea>
@@ -243,11 +257,26 @@
                 <button class="admin_hiddenBtn" data-index="1">수정</button>
                 <button class="admin_hiddenBtn" data-index="2">취소</button>
             </div>
+            <div class="admin_hiddenInnerText"></div>
         </div>	
+        <div class="admin_hiddenAlarm2">
+            <div>
+                <button class="admin_hiddenBtn2" data-index="0">내용확인</button>
+                <button class="admin_hiddenBtn2" data-index="1">내용삭제</button>
+                <button class="admin_hiddenBtn2" data-index="2">취소</button>
+            </div>
+            <div class="admin_hiddenInnerText2"></div>
+        </div>	
+        <div class="admin_hiddenAlarm3">
+        	수정할 신고 숫자를 입력하세요.
+       		<input class="admin_hiddenInputText" type="text" />
+       		<button class="admin_hiddenBtn3">수정</button>
+       		<button class="admin_hiddenBtn3">취소</button>
+        </div>
 	</section>
 
 	<script
-		src="<%=request.getContextPath()%>/resources/js/administer_ajax.js?ver=1.74"></script>
+		src="<%=request.getContextPath()%>/resources/js/administer_ajax.js?ver=2.94"></script>
 <!-- 	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 
 </body>

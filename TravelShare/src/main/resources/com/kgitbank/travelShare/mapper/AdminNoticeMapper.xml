@@ -8,20 +8,40 @@
 		SELECT * FROM notices order by notice_id
 	</select>
 	
+	<select id="getBoardsAll" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT * FROM main_board order by board_id
+	</select>
+	
 	<select id="getNoticeOne" resultType="com.kgitbank.travelShare.model.AdminNotice">
 		SELECT * FROM notices WHERE notice_id=${num}
+	</select>
+	
+	<select id="getBoardOne" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT * FROM main_board WHERE board_id=${num}
 	</select>
 	
 	<select id="getNoticeId" resultType="int">
 		SELECT max(notice_id) FROM notices
 	</select>
 	
+	<select id="getNoticesAllSearching" resultType="com.kgitbank.travelShare.model.AdminNotice">
+		SELECT * FROM notices WHERE notice_title like '%${name}%' order by notice_id
+	</select>
+	
+	<select id="getBoardsAllSearching" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT * FROM main_board WHERE board_title like '%${boardName}%' order by board_id
+	</select>
+
     <insert id="insertAdminNotice">
   	  INSERT INTO notices VALUES(${notice_id},${user_id},'${notice_title}','${notice_text}',${notice_lookupcnt},SYSDATE)
 	</insert>
 	
 	<delete id="deleteAdminNotice">
   	  DELETE FROM notices WHERE notice_id=${num}
+	</delete>
+	
+	<delete id="deleteBoardNotice">
+  	  DELETE FROM main_board WHERE board_id=${num}
 	</delete>
 	
 	<update id="updateAdminNotice">
