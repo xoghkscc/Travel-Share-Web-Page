@@ -13,8 +13,7 @@
 
 <body class="qna_guide">
 <jsp:include page="../header/top.jsp"></jsp:include>
-	<h2>QNA 게시판</h2>
-    <hr>
+	<h2 class="qna_logo">QNA 게시판</h2>
     <div>
       <select class="search_op">
         <option class="content">제목</option>
@@ -25,15 +24,15 @@
       </select>
      </div> 
   
-  <div class="qna_table">
-    <table class="qna table table-hover">
+  <div>
+    <table id="qnaTable" class="table table-hover">
         <thead class=qna_head>
           <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>작성일</th>
-            <th>조회수</th>
+            <th class="text-center">번호</th>
+            <th class="text-center">제목</th>
+            <th class="text-center">작성자</th>
+            <th class="text-center">작성일</th>
+            <th class="text-center">조회수</th>
           </tr>
         </thead>
         <tbody>
@@ -42,24 +41,18 @@
 		          <tr>
 		           	<td>${list.qno}</td>
 		           	<td>
-		           		<a href="/qna/view?qno=${list.qno }">${list.title }</a>
+		           		<a href="./qnaView?qno=${list.qno }">${list.title }</a>
 		           	</td>
 		           	<td>${list.writer }</td>
 		           	<td>${list.regdate }</td>
 		           	<td>${list.viewcnt }</td>
 		          </tr>
           	</c:forEach>
-          	<tr>
-            <td>3</td>
-            <td>안녕하세요</td>
-            <td>john</td>
-            <td>08-17</td>
-            <td>4</td>
-          </tr>
+          	
         </tbody>
       </table>
       </div>
-      	<a class="write_btn btn btn-default" href="./qna_write">글쓰기</a>
+      	<a class="write_btn btn btn-default" href="./qnaWrite">글쓰기</a>
 	
 		<div>
 			<c:if test="${page.prev }">
