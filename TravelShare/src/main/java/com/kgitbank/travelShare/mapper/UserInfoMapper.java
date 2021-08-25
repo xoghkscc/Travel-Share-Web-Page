@@ -14,4 +14,9 @@ public interface UserInfoMapper {
 	public Integer checkNickname(String user_nickname);
 	
 	public UserInfo getUserEmail(UserInfo userinfo);
+	
+	public UserInfo checkPassword(UserInfo userinfo);
+	
+	public int changePassword(UserInfo userinfo);
+	
 }

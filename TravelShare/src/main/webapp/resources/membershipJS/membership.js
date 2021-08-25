@@ -332,7 +332,7 @@ phone_check.addEventListener('click', () => {
 phoneCheckInput.addEventListener('blur', () => {
 		
 	if(checkNum.value != phoneCheckInput.value && member_phone.value != ""){
-		phone_warning.innerHTML = "인증번호가 틀립니다";
+		phone_warning.innerHTML = "휴대폰인증 하셔야합니다";
 	} else {
 		phone_warning.innerHTML = "인증되었습니다";
 	} 
@@ -357,7 +357,7 @@ member_sub2.addEventListener('click', (event) => {
 	
 	if(email_warning.innerHTML != "" || password_warning.innerHTML != "적합한 비밀번호입니다" ||
 	   password_check_warning.innerHTML != "비밀번호가 일치합니다" || nickname_warning.innerHTML != "" ||
-	   name_warning.innerHTML != "" || phone_warning.innerHTML != "인증되었습니다" || checkNum.value == "" ||
+	   name_warning.innerHTML != "" || phone_warning.innerHTML != "인증되었습니다" || checkNum.value != "" ||
 	   birth_warning.innerHTML != "" || adderss_warning.innerHTML != "" || gender_val == "-- 성별 --"	
 	){	
 		console.log("무언가 조건에걸림");
@@ -412,7 +412,7 @@ member_sub2.addEventListener('click', (event) => {
 	} else if(phone_warning.innerHTML == "올바른 전화번호 양식를 입력해주세요" || phone_warning.innerHTML == "9자리 이상 입력해주세요" || phone_warning.innerHTML == "숫자만 입력해주세요") {
 		phone_warning.innerHTML = "올바른 전화번호 양식를 입력해주세요";	
 	} else if(phone_warning.innerHTML == "인증번호가 틀립니다" || checkNum.value =="" || phone_warning.innerHTML == "휴대폰 인증하셔야 합니다") {
-		phone_warning.innerHTML = "휴대폰 인증하셔야 합니다";
+		phone_warning.innerHTML = "휴대폰인증 하셔야합니다";
 	} else {
 		phone_warning.innerHTML = "인증되었습니다";
 	} 

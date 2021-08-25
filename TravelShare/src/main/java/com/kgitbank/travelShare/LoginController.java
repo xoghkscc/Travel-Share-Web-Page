@@ -54,7 +54,7 @@ public class LoginController {
 	    
 	        //세션 검사를 통해 Access control
 	        if(session.getAttribute("loginCheck")!=null){
-	            return "/login/naverLogin";
+	            return "/login/login";
 	        }else{
 	            return "/site/index";
 	        }

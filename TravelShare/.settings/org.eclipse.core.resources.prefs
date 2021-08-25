@@ -1,4 +1,9 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/views/membership/passwordChange.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/membership/passwordSearch.jsp=UTF-8
+encoding//src/main/webapp/resources/css/membership/passwordChange.css=UTF-8
 encoding//src/main/webapp/resources/loginJS/login.js=UTF-8
 encoding//src/main/webapp/resources/membershipJS/id_search.js=UTF-8
 encoding//src/main/webapp/resources/membershipJS/membership.js=UTF-8
+encoding//src/main/webapp/resources/membershipJS/passwordChange.js=UTF-8
+encoding//src/main/webapp/resources/membershipJS/passwordsearch.js=UTF-8

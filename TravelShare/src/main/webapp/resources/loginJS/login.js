@@ -20,9 +20,7 @@ login_loginbtn.onclick = (event) => {
 		if(status == 200 && readyState == 4) {
 		if(e.target.responseText == "아이디 혹은 비빌번호가 틀렸습니다"){
 			login_warning.innerHTML = e.target.responseText;
-			console.log("반복확인");
 		} else {
-			console.log("dd");
 			gocontroller();
 			location.href = "../site/index";
 		} 

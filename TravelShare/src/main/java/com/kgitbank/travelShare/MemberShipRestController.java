@@ -2,7 +2,10 @@ package com.kgitbank.travelShare;
 
 import java.util.Random;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kgitbank.travelShare.mapper.LoginMapper;
 import com.kgitbank.travelShare.mapper.UserInfoMapper;
+import com.kgitbank.travelShare.model.LoginInfo;
 import com.kgitbank.travelShare.model.UserInfo;
 
 import lombok.extern.log4j.Log4j;
@@ -42,6 +46,19 @@ public class MemberShipRestController {
 			return "";
 		} else {
 			return "이미 존재하는 닉네임입니다";
+		}
+
+	}
+	
+	@PostMapping(value="/passwordWarning", produces= MediaType.APPLICATION_JSON_VALUE)
+	public String getEmailwaring(@RequestBody UserInfo userinfo, HttpSession session) {
+
+		if(user_info.checkPassword(userinfo) == null) {
+
+			return "틀렸습니다";
+		} else {
+			session.setAttribute("password_id", user_info.checkPassword(userinfo).getUser_id());
+			return "";
 		}
 
 	}

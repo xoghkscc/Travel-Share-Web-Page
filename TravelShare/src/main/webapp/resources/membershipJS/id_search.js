@@ -66,3 +66,4 @@ idsearch_sub.addEventListener('click', (event) => {
 		alert("휴대전화 인증을 해주세요");
 	}
 });
+

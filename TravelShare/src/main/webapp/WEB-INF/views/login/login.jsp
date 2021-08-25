@@ -18,58 +18,38 @@
 	<jsp:include page="../header/top.jsp"></jsp:include>
 	<!-- 네이버아이디로로그인 버튼 노출 영역 -->
 	<form id="login" action="../login" method="POST" autocomplete='off'></form>
+		<jsp:include page="../header/top.jsp"></jsp:include>
 	<div class="loginBox">
 		<div id="basic_login">
-			<div>
-				Travel<span style="color: orangered;">ers</span>
+			<div id="login_text">
+				로그인
 			</div>
-			<div>
-				<div class="login_text">
-					이메일<input form="login" name="user_email" id="user_email"  type="text">
+				<div class="login_info" id="email_info">
+					<input form="login" name="user_email" placeholder="이메일주소" id="user_email"  type="text">
 				</div>
-			</div>
-			<div>
-				<div class="login_text">
-					비밀번호<input form="login" name="user_password" id="user_password" type="password">
+
+				<div class="login_info" id="password_info">
+					<input form="login" name="user_password" placeholder="비밀번호" id="user_password" type="password">
 				</div>
 				<div id="login_warning"></div>
-			</div>
 		</div>
-		<div><button form="login" id="login_loginbtn" value="로그인"> 로그인 </button></div>
-		<div id="naver_id_login"></div>
-		<div class="login_find">
-			<div>
-				<a href="../membership/idsearch"> 아이디 찾기 </a>
-			</div>
-			<div>
-				<a href="../membership/passwordsearch"> 비밀번호 찾기 </a>
-			</div>
-			<div>
+		<div id="button"><button form="login" id="login_loginbtn" value="로그인"> 로그인 </button></div>
+	
+			<div id="search_box">
+				<a href="../membership/idsearch" class="search_text" id="id_search"> 아이디 찾기 </a> / <a href="../membership/passwordsearch" class="search_text" id="password_search"> 비밀번호 찾기 </a>
+            </div>
+			<div id="membership">
 				<a href="../membership/membership"> 회원 가입 </a>
 			</div>
-		</div>
+
 	</div>
-	<div class="login_backgroundImg"></div>
+	
 	
 	<script src="<%=request.getContextPath() %>/resources/loginJS/login.js" charset="UTF-8"></script>
 	<script>
-      $('.loginBox').css('border','3px solid skyblue');
+	  $('.loginBox').css('border','1px solid black');
       $('.loginBox').css('width','350px');
-      $('.loginBox').css('height','300px');
+      $('.loginBox').css('height','380px');
       $('.loginBox').css('margin','auto');
-  </script>
-
-	<!-- //네이버아이디로로그인 버튼 노출 영역 -->
-	<script type="text/javascript">
-  	var naver_id_login = new naver_id_login("9P_2H_B7Lveve_S05JNP", "http://localhost:8080/project/site/callback");
-  	var state = naver_id_login.getUniqState();
-  	naver_id_login.setButton("white", 3,50);
-  	naver_id_login.setDomain("YOUR_SERVICE_URL");
-  	naver_id_login.setState(state);
-  	naver_id_login.setPopup();
-  	naver_id_login.init_naver_id_login();
-
-      //
-    // https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=9P_2H_B7Lveve_S05JNP&client_secret=39z4tUOQVk&access_token=AAAANgh82T2oDKPedK_24pXBwzgbGvtALWDreSkyWNOlg7dMhsYUVxexsVhx5GbVjPxCkHNLAd7AZ-6NBsEFnwKv3X8&service_provider=NAVER
-  </script>
+ 	</script>
 </html>
