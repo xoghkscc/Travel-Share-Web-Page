@@ -54,8 +54,7 @@ public class BoardContentController {
 	public String createBoard(HttpServletRequest req, Model model) {
 		String board_id = req.getParameter("board_id");
 		BoardModel bm = boardMapper.selectBoardSearch(Integer.parseInt(board_id));
-		
-		model.addAttribute("updateBoardInfo", boardMapper.selectBoardSearch(Integer.parseInt(board_id)));
+		model.addAttribute("updateBoardInfo", bm);
 		return "/board/update_board";
 	}
 	
@@ -167,6 +166,7 @@ public class BoardContentController {
 			e.printStackTrace();
 		}
 		boardModel.setBoard_lookupcnt(0);
+		System.out.println(boardModel);
 		boardMapper.insertBoard(boardModel);
 		
 		try {

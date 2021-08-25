@@ -244,7 +244,7 @@
 					</div>
 
 					<div class="board_travelPlans">
-						<div class="singo">
+						<div id="singo" class="singo">
 							<span class="material-icons singo_img"> lightbulb </span> <span
 								class="board_singo">신고하기</span>
 						</div>

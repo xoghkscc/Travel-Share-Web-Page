@@ -13,9 +13,11 @@ public class BoardModel {
 	private String board_mainimg;
 	private String board_content;
 	private Integer sigungucode;
+	private Integer zipcode;
 	private String sido;
 	private String sigungu;
 	private String addr;
+	private String detailaddr;
 	private String board_date;
 	private Integer like_cnt;
 	private String user_nickname;

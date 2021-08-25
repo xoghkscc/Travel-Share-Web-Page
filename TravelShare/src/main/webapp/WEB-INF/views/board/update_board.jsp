@@ -33,7 +33,7 @@
 						<label>우편번호 </label>
 					</div>
 					<div>
-						<input type="text" name="zipCode" id="zipCode" style="width: 80px;" readonly required />
+						<input type="text" name="zipcode" id="zipCode" value="${updateBoardInfo.zipcode }" style="width: 80px;" readonly required />
 						<button type="button" style="width: 60px; height: 32px;"
 							id="address_kakao">검색</button>
 					</div>
@@ -47,7 +47,7 @@
 						<label>상세</label>
 					</div>
 					<div>
-						<input type="text" id="detailAddr" style="width: 300px;" />
+						<input type="text" name="detailaddr" id="detailAddr" value="${updateBoardInfo.detailaddr }" style="width: 300px;" />
 					</div>
 					<div>
 						<input type="hidden" id="sido" name="sido" value="${updateBoardInfo.sido }" style="width: 300px; height: 30px;"

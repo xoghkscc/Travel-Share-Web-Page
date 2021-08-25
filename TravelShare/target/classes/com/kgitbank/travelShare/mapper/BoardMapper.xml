@@ -37,7 +37,7 @@
 	
 	<insert id="insertBoard">
 		INSERT INTO main_board VALUES (board_seq.nextval, #{user_id}, #{board_title},#{board_lookupcnt},
-		#{board_bestplace},#{board_besteat},#{board_mainimg},#{board_content},#{sigungucode},#{sido},#{sigungu}, #{addr}, `)
+		#{board_bestplace},#{board_besteat},#{board_mainimg},#{board_content},#{sigungucode},#{sido},#{sigungu}, #{addr}, CURRENT_DATE, #{zipcode}, #{detailaddr})
 	</insert>
 	
 	<update id="lookupCntPlus">
@@ -73,7 +73,7 @@
 	</delete>
 	
 	<select id="selectBoardSearch" resultType="com.kgitbank.travelShare.model.BoardModel">
-		SELECT * FROM like_view WHERE board_id = #{board_id}
+		SELECT * FROM main_board WHERE board_id = #{board_id}
 	</select>
 	
 	<update id="updateBoard1">
