@@ -6,7 +6,7 @@
         
        
         <select id="loginCheck" resultType="com.kgitbank.travelShare.model.LoginInfo">
-        	SELECT user_id, user_email, user_password FROM user_info WHERE user_email=#{user_email } AND user_password= #{user_password }
+        	SELECT user_name, user_position, user_id, user_email, user_password FROM user_info WHERE user_email=#{user_email } AND user_password= #{user_password }
         </select>
         
        <select id="CheckloginId" resultType="com.kgitbank.travelShare.model.LoginInfo">

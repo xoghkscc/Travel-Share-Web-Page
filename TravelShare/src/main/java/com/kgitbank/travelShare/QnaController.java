@@ -20,36 +20,36 @@ public class QnaController {
 	@Autowired
 	QnaMapper service;
 	
-	@RequestMapping(value = "/qna_list", method = RequestMethod.GET)
+	@RequestMapping(value = "/qnaList", method = RequestMethod.GET)
 	public void getList(Model model) throws Exception {
 		
 		List<QnaVO> list = null;
 		list = service.qna_list();
-		System.out.println(list);
 		
 		model.addAttribute("qna_list",list);
 	}
 	
-	@RequestMapping(value = "/qna_write", method = RequestMethod.GET)
+	@RequestMapping(value = "/qnaWrite", method = RequestMethod.GET)
 	public void getWrite() throws Exception {
+		
 		
 	}
 	
-	@RequestMapping(value = "/qna_write", method = RequestMethod.POST)
+	@RequestMapping(value = "/qnaWrite", method = RequestMethod.POST)
 	public String postWrite(QnaVO vo) throws Exception {
+		System.out.println("왔음");
 		service.qna_write(vo);
-		
-		return "redirect:/qna/qna_list";
+		return "redirect:/qna/qnaList";
 	}
 	
 	//게시물 조회
-	@RequestMapping(value = "/qna_view", method = RequestMethod.GET)
+	@RequestMapping(value = "/qnaView", method = RequestMethod.GET)
 	public void getView(@RequestParam("qno") int qno, Model model) throws Exception {
 		QnaVO vo = service.qna_view(qno);
 		model.addAttribute("qna_view", vo);
 	}
 	
-	@RequestMapping(value = "/qna_modify", method = RequestMethod.GET)
+	@RequestMapping(value = "/qnaModify", method = RequestMethod.GET)
 	public void getModify(@RequestParam("qno") int qno, Model model) throws Exception {
 		
 		QnaVO vo = service.qna_view(qno);
@@ -57,17 +57,17 @@ public class QnaController {
 		model.addAttribute("qna_view", vo);
 	}
 	
-	@RequestMapping(value = "/qna_modify", method = RequestMethod.POST)
+	@RequestMapping(value = "/qnaModify", method = RequestMethod.POST)
 	public String postModify(QnaVO vo) throws Exception {
 		service.qna_modify(vo);
 		
-		return "redirect:/qna/view?qno=" + vo.getQno();
+		return "redirect:/qna/qnaView?qno=" + vo.getQno();
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String getDelete(@RequestParam("qno") int qno) throws Exception {
 		service.qna_delete(qno);
-		return "redirect:/qna/list";
+		return "redirect:/qna/qnaList";
 	}
 	
 	//게시물 목록 + 페이징 추가

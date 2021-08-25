@@ -10,10 +10,15 @@ header {
 	position: fixed;
   	width: 100%;
   	z-index: 999;
-  	
-  	
+  	 	
 }
-
+.userImg {
+	border-radius: 100%; 
+  	width: 40px; 
+  	height: 35px;
+  	padding-right: 5px;
+  	margin-top: 20px;
+}
 
 .logo a {
   font-size: 35px;
@@ -41,12 +46,15 @@ nav {
   transition-duration:0.4s;
   transition-timing-function:ease;
 }
-
+.material-icons-outlined {
+	font-size: 30px;
+}
 
 .nav-links { 
-  width: 30%; 
+  width: 40%; 
   display: flex; 
   justify-content: space-around;
+  padding-right: 80px;
 }
 .nav-links li {
   list-style: none; 
