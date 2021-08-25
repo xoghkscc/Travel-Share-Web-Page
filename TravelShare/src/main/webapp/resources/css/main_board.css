@@ -555,8 +555,24 @@ select{
 .board_comment_tit{
     width: 55vw;
     text-align: left;
+    display: flex;
+    justify-content: space-between;
 }
 
+.board_ud{
+    display: flex;
+	align-items: center;
+}
+
+.board_ud > button {
+	width: 60px;
+	height: 40px;
+	margin-left: 10px;
+	color: black;
+	background-color: white;
+	cursor: pointer;
+	border: 1px solid #e6e6e6; 
+}
 .board_comment_write{
     width: 55vw;
     background-color: #f7f7f7;
@@ -571,7 +587,7 @@ select{
 .board_comment_write>form{
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
 }
 
 .board_comment_write>form>input:first-child{
@@ -643,3 +659,13 @@ select{
 	display: none;
 }
 
+
+.board_middle{
+	color: rgb(241, 175, 135);
+}
+
+.board_top{
+	color: #e56c23;
+}
+
+	

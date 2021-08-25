@@ -17,16 +17,17 @@
 <body>
 <jsp:include page="../header/top.jsp"></jsp:include>
 	<div class="board_create">
-		<div class="boardtit">여행지 등록하기</div>
+		<div class="boardtit">여행지 수정하기</div>
 
 		<div class="board_create_form">
-			<form action="./createBoard" method="post" enctype="multipart/form-data">
+			<form action="./updateBoard" method="post" enctype="multipart/form-data">
 				<div class="board_input">
 					<div>
 						<label>제목 입력하기</label>
 					</div>
+						<input type="hidden" name="board_id" value="${updateBoardInfo.board_id }">
 					<div>
-						<input type="text" name="board_title" placeholder="여행의 제목을 입력해주세요" required>
+						<input type="text" name="board_title" value="${updateBoardInfo.board_title }" required>
 					</div>
 					<div>
 						<label>우편번호 </label>
@@ -40,7 +41,7 @@
 						<label>주소</label>
 					</div>
 					<div>
-						<input type="text" id="addr" name="addr" style="width: 300px;" readonly required />
+						<input type="text" id="addr" name="addr" style="width: 300px;" value="${updateBoardInfo.addr }" readonly required  />
 					</div>
 					<div>
 						<label>상세</label>
@@ -49,15 +50,15 @@
 						<input type="text" id="detailAddr" style="width: 300px;" />
 					</div>
 					<div>
-						<input type="hidden" id="sido" name="sido" style="width: 300px; height: 30px;"
+						<input type="hidden" id="sido" name="sido" value="${updateBoardInfo.sido }" style="width: 300px; height: 30px;"
 							readonly /><br>
 					</div>
 					<div>
-						<input type="hidden" id="sigungu" name="sigungu"
+						<input type="hidden" id="sigungu" name="sigungu" value="${updateBoardInfo.sigungu }"
 							style="width: 300px; height: 30px;" readonly required/><br>
 					</div>
 					<div>
-						<input type="hidden" id="sigunguCode" name="sigungucode"
+						<input type="hidden" id="sigunguCode" name="sigungucode" value="${updateBoardInfo.sigungucode }"
 							style="width: 300px; height: 30px;" readonly /><br>
 					</div>
 					<div>
@@ -68,14 +69,14 @@
 						<label>추천 명소</label>
 					</div>
 					<div>
-						<input type="text" name="board_bestplace" style="width: 300px;"
+						<input type="text" name="board_bestplace" style="width: 300px;" value="${updateBoardInfo.board_bestplace }"
 							placeholder="여행지 주변 추천 명소를 입력해주세요"  />
 					</div>
 					<div>
 						<label>추천 맛집</label>
 					</div>
 					<div>
-						<input type="text" name="board_besteat" style="width: 300px;"
+						<input type="text" name="board_besteat" style="width: 300px;" value="${updateBoardInfo.board_besteat }"
 							placeholder="여행지 주변 추천 맛집을 입력해주세요"  />
 					</div>
 <!-- 					<div class="board_travel_route"> -->
@@ -92,10 +93,11 @@
 						<label>여행 대표 사진</label>
 					</div>
 					<div class="board_travel_file board_img">
-						<input type="file" id="board_mainimg" name="board_mainimgReal" style="width: 200px;" required />
+						<input type="file" id="board_mainimg" name="board_mainimgReal" style="width: 200px;" />
 					</div>
 				</div>
-				<textarea rows="50" cols="50" id="board_content" name="board_content" required>
+				<textarea rows="50" cols="50" id="board_content" name="board_content" >
+				${updateBoardInfo.board_content }
 				</textarea>
 						<input type="hidden" id="user_id" name="user_id" value="${id }" required />
 				<script>
@@ -121,7 +123,7 @@
 						}
 					});
 				</script>
-				<input type="submit" class="board_btn-default" value="등록완료"/>
+				<input type="submit" class="board_btn-default" value="수정완료"/>
 			</form>
 		</div>
 	</div>

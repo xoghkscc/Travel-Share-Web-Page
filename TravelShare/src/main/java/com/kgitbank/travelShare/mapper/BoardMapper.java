@@ -38,4 +38,13 @@ public interface BoardMapper {
 	public void insertLike(@Param("board_id") Integer board_id, @Param("user_id") Integer user_id);
 	
 	public Integer selectLikeCnt(@Param("board_id") Integer board_id);
+	
+	public void deleteBoard(@Param("board_id") Integer board_id);
+	
+	public BoardModel selectBoardSearch(@Param("board_id") Integer board_id);
+	
+	public void updateBoard1(BoardModel baordModel);
+	
+	public void updateBoard2(BoardModel baordModel);
+	
 }

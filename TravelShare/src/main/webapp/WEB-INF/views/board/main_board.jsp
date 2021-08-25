@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>해먹남녀</title>
+<title>Travelers</title>
 </head>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/css/main_board.css">
@@ -80,12 +80,12 @@
 				<div class="board_content" id="board_content">
 					<div class="board_imgContent">
 						<img class="${board.board_id }"
-							onclick='imgClick(${board.board_id})' alt=""
+							onclick='imgClick(${board.board_id}, ${board.user_id})' alt=""
 							src="${board.board_mainimg }"> <img alt=""
 							src="<%=request.getContextPath()%>/resources/files/null.jpg">
 					</div>
 					<div class="board_textContent">
-						<div class="board_text1">${board.user_id }</div>
+						<div class="board_text1">${board.user_nickname }</div>
 						<div class="board_textTit">${board.board_title }</div>
 					</div>
 					<div class="board_option">
@@ -96,14 +96,14 @@
 						</div>
 							<c:choose>
 								<c:when test="${board.like_cnt>=5 &&  board.like_cnt<10}">
-									<div class="board_likePan" style="color: rgb(241, 175, 135);">
+									<div class="board_likePan board_middle">
 										<span class="material-icons-outlined board_like_img">
 											favorite </span>
 										<div id="${board.board_id}" class="like">${board.like_cnt}명</div>
 									</div>
 								</c:when>
 								<c:when test="${board.like_cnt>=10 }">
-									<div class="board_likePan" style="color: #e56c23;">
+									<div class="board_likePan board_top">
 										<span class="material-icons-outlined board_like_img">
 											favorite </span>
 										<div id="${board.board_id}" class="like">${board.like_cnt}명</div>
@@ -121,8 +121,8 @@
 				</div>
 			</c:forEach>
 		</div>
-		<div id="board_create" class="board_create" onclick="createBoardLocation(${id})">
-			<button><span class="material-icons">create</span><p>글쓰기</p></button>
+		<div id="board_create" class="board_create" >
+			<button onclick="createBoardLocation(${id})"><span class="material-icons">create</span><p>글쓰기</p></button>
 		</div>
 		<div class="board_paging">
 			<c:forEach begin="1"
@@ -166,13 +166,17 @@
 					</div>
 
 					<div class="board_comment">
-						<div class="board_comment_tit">
+						<div id="board_comment_tit" class="board_comment_tit">
 							<p>한줄댓글</p>
+<!-- 									<div class="board_ud"> -->
+<!-- 										<button>수정</button> -->
+<!-- 										<button>삭제</button> -->
+<!-- 									</div> -->
 						</div>
 						<div class="board_comment_write">
 							<form action="#" id="board_commentId">
 								<input type="text" id="board_commnet" name="board_commnet"
-									placeholder="한 줄 댓글을 남겨주세요."> <input type="hidden"
+									placeholder="한 줄 댓글을 남겨주세요." autocomplete="off"> <input type="hidden"
 									id="user_id" name="user_id" value="${id }"> <input
 									type="submit" name="board_commnet_submit" value="댓글남기기">
 							</form>
@@ -196,12 +200,12 @@
 
 
 				<div class="board_right_pan">
-					<div class="board_user_info">
+					<div id="board_user_info" class="board_user_info">
 						<img id="board_mainimg"
 							src="<%=request.getContextPath()%>/resources/files/null.jpg"
 							alt="">
 					</div>
-					<div class="board_user_name">닉네임</div>
+					<div id="board_user_name" class="board_user_name">닉네임</div>
 
 					<div id="board_content_id" class="board_content_id"></div>
 					<div id="board_title" class="board_title"></div>

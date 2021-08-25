@@ -34,18 +34,24 @@ function pagingRest(click_number, sigungucode, sidocode) {
 
 				var board_imgContent = document.createElement("div");
 				board_imgContent.setAttribute("class", "board_imgContent");
-				board_imgContent.innerHTML = "<img onclick='imgClick("+myobj[key].board_id+")' alt='' src='"+myobj[key].board_mainimg+"'> <img alt='' src='/travelShare/resources/files/null.jpg'>";
+				board_imgContent.innerHTML = "<img onclick='imgClick("+myobj[key].board_id+", "+myobj[key].user_id+")' alt='' src='"+myobj[key].board_mainimg+"'> <img alt='' src='/travelShare/resources/files/null.jpg'>";
 
 				var board_textContent = document.createElement("div");
 				board_textContent.setAttribute("class", "board_textContent");
-				board_textContent.innerHTML = "<div class='board_text1'>" + myobj[key].user_id + "</div> <div class='board_textTit'>" + myobj[key].board_title + "</div>";
+				board_textContent.innerHTML = "<div class='board_text1'>" + myobj[key].user_nickname + "</div> <div class='board_textTit'>" + myobj[key].board_title + "</div>";
 
 				var board_option = document.createElement("div");
 				board_option.setAttribute("class", "board_option");
 				board_option.innerHTML = "<div class='board_areaPan'>" +
 					"<span class='material-icons-outlined board_area_img'> location_on </span>" +
-					"<div class='board_area'>" + myobj[key].sigungu + " </div> </div>" +
-					"<div id='board_likePan' class='board_likePan'> <span class='material-icons-outlined board_like_img'> favorite </span> <div id="+myobj[key].board_id+" class='like'>"+myobj[key].like_cnt+"명</div> </div>";
+					"<div class='board_area'>" + myobj[key].sigungu + " </div> </div>" 
+					if(myobj[key].like_cnt >=10){
+					board_option.innerHTML += "<div id='board_likePan' class='board_likePan board_top'> <span class='material-icons-outlined board_like_img'> favorite </span> <div id="+myobj[key].board_id+" class='like'>"+myobj[key].like_cnt+"명</div> </div>";
+					}else if(myobj[key].like_cnt <10 && myobj[key].like_cnt >=5){
+					board_option.innerHTML += "<div id='board_likePan' class='board_likePan board_middle'> <span class='material-icons-outlined board_like_img'> favorite </span> <div id="+myobj[key].board_id+" class='like'>"+myobj[key].like_cnt+"명</div> </div>";
+					} else {
+					board_option.innerHTML += "<div id='board_likePan' class='board_likePan'> <span class='material-icons-outlined board_like_img'> favorite </span> <div id="+myobj[key].board_id+" class='like'>"+myobj[key].like_cnt+"명</div> </div>";
+					}
 				board_content.appendChild(board_imgContent);
 				board_content.appendChild(board_textContent);
 				board_content.appendChild(board_option);
@@ -192,37 +198,74 @@ window.onload =  () => {
 	if(sidogunName == '전체'){
 		sel.options[1].selected = true;
 	}
+	
 };
 
 
 
 function imgClickRollback() {
+	var board_scrap_btn = document.getElementById("board_scrap_btn");
 	const body = document.getElementsByTagName("body");
 		Array.from(body).forEach((value2) => {
 			value2.setAttribute("class", "");
 		});
+	board_scrap_btn.onclick = null;	
 	document.getElementById("board_clickPan").setAttribute("class", "board_hide");
+	
 }
 
 
-function imgClick(value) {
+function imgClick(board_id, user_id) {
 	const body = document.getElementsByTagName("body");
 		Array.from(body).forEach((value2) => {
 			value2.setAttribute("class", "board_detail_open");
 		});
-	getLikeCnt(value);
-	getBoardUser(value);
-	getBoardContent(value);
-	getBoardCommnet(value);
-	
+	getLikeCnt(board_id);
+	getBoardUser(board_id);
+	getBoardContent(board_id);
+	getBoardCommnet(board_id);
+	shwoRD(user_id, board_id);
 	document.getElementById("board_clickPan").setAttribute("class", "board_show");
 	
 	const xhttp = new XMLHttpRequest();
 	
 	xhttp.open('POST', '/travelShare/boardrest/lookupCntPlus/', true);
 	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
-	xhttp.send(value);
+	xhttp.send(board_id);
 }
+
+function shwoRD(user_id, board_id) {
+	var loginId = document.getElementById("user_id").value;
+	if(user_id == loginId){
+		document.getElementById("board_comment_tit").innerHTML = "<p>한줄댓글</p> <div class='board_ud'><button id='board_update'>수정</button> <button id='board_delete'>삭제</button> </div>";
+		
+		document.getElementById("board_delete").onclick = () => {
+			boardDelete(board_id);
+		}
+		
+		document.getElementById("board_update").onclick = () => {
+			boardUpdate(board_id);
+		}
+	} else {
+		document.getElementById("board_comment_tit").innerHTML = "<p>한줄댓글</p>";
+	}
+}
+
+function boardDelete(board_id){
+	if(confirm("이 게시글을 삭제하시겠습니까?")){
+		location.href = "./deleteBoard?board_id="+board_id;
+	} else{
+	}
+}
+
+function boardUpdate(board_id){
+	if(confirm("이 게시글을 수정하시겠습니까?")){
+		document.getElementById("board_content").innerHTML = "dasdsa"
+		location.href = "./updateBoard?board_id="+board_id;
+	} else{
+	}
+}
+
 
 function getBoardUser(board_id){
 	const xhttp = new XMLHttpRequest();
@@ -233,7 +276,7 @@ function getBoardUser(board_id){
 	});
 	
 	xhttp.open('POST', '/travelShare/boardrest/likeJudgment/', true);
-	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
+	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8');
 	xhttp.send(board_id);
 }
 var clickJug = 0;
@@ -263,6 +306,7 @@ function boardScrap(myobj, board_id) {
 				console.log("myobj : "+ myobj + "board_id :" + board_id);
 				if(loginId == ''){
 					alert("로그인이 필요한 서비스입니다.");
+					location.href = "../site/login";
 				} else {
 					if(myobj == 1){
 						myobj = 0;
@@ -289,7 +333,6 @@ function boardScrap(myobj, board_id) {
 					}
 				}
 				getLikeCnt(board_id);
-				board_scrap_btn.onclick = null;
 			};
 }
 
@@ -344,7 +387,8 @@ function getBoardContent(value) {
 				document.getElementById("board_bestplace").innerHTML = myobj[key].board_bestplace;
 				document.getElementById("board_besteat").innerHTML = myobj[key].board_besteat;
 				document.getElementById("board_main_content").innerHTML = myobj[key].board_content;
-				
+				document.getElementById("board_user_name").innerHTML = myobj[key].user_nickname;
+				document.getElementById("board_user_info").scrollIntoView();
 				Array.from(document.querySelectorAll("#board_main_content>img")).forEach((value2) => {
 					value2.style.width = "40vw";
 					value2.style.height = "auto";
@@ -424,6 +468,7 @@ board_commentId.onsubmit = (e) => {
 	var board_id = document.getElementById("board_content_id").innerHTML;
 	if(user_id == ''){
 		alert("로그인이 필요한 서비스입니다.");
+		location.href = "../site/login";
 	} else{
 		insertCommnet(board_id, user_id, board_comment)
 	}
@@ -461,6 +506,7 @@ function createBoardLocation(id){
 		location.href = "./createBoard";
 	}else {
 		alert("로그인이 필요한 서비스입니다.");
+		location.href = "../site/login";
 	}
 }
 
