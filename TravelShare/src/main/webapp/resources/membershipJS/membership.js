@@ -25,7 +25,7 @@ const phone_warning = document.getElementById("phone_warning");
 const birth_warning = document.getElementById("birth_warning");
 const gender_warning = document.getElementById("gender_warning");
 const adderss_warning = document.getElementById("address_warning");
-const xhttp = new XMLHttpRequest();
+
 const chkStyle = /^[0-9]*$/;
 
 member_email.addEventListener('blur', () => {
@@ -36,7 +36,7 @@ member_email.addEventListener('blur', () => {
 	} else if(!email_check(email_val)){
 		email_warning.innerHTML = "이메일 형식에 맞게 입력해주세요"
 	}  else {
-	
+	const xhttp = new XMLHttpRequest();
 	const member_email_val = member_email.value;
 	
 	
@@ -96,7 +96,7 @@ member_password2.addEventListener('blur', () => {
 member_nickname.addEventListener('blur', () => {
 	
 	const nickname_val = member_nickname.value;
-
+	const xhttp = new XMLHttpRequest();
 	if(nickname_val == ""){
 		nickname_warning.innerHTML = "필수 정보입니다";
 	}  else {
@@ -310,7 +310,7 @@ member_gender.addEventListener('blur', () => {
 
 
 phone_check.addEventListener('click', () => {
-	
+	const xhttp = new XMLHttpRequest();
 	const member_phone_val = member_phone.value;
 	
 	xhttp.addEventListener('readystatechange', (e) => {
@@ -320,10 +320,8 @@ phone_check.addEventListener('click', () => {
 		
 		if(status == 200 && readyState == 4) {
 		checkNum.value = e.target.responseText;
-	
 		}
 	});
-	console.log(member_phone_val);
 	xhttp.open('POST', '/travelShare/membershiprest/phoneCheck', true);
 	xhttp.send(member_phone_val);
 	

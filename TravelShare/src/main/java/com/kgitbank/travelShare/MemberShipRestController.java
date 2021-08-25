@@ -65,9 +65,7 @@ public class MemberShipRestController {
 	
 	@PostMapping(value="/phoneCheck", produces="text/plain; charset=utf-8")
 	 public String sendSMS(@RequestBody String member_phone) {
-		System.out.println("왔음");
-		System.out.println(member_phone);
-		
+
 		
 	        Random rand  = new Random();
 	        String numStr = "";
@@ -76,8 +74,6 @@ public class MemberShipRestController {
 	            numStr+=ran;
 	        }
 
-	        System.out.println("수신자 번호 : " + member_phone);
-	        System.out.println("인증번호 : " + numStr);
 	        certificationService.certifiedPhoneNumber(member_phone,numStr);
 			return numStr;
 	 }
