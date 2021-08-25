@@ -5,23 +5,26 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Param;
 
 import com.kgitbank.travelShare.model.AdminNotice;
+import com.kgitbank.travelShare.model.BoardLikeModel;
 import com.kgitbank.travelShare.model.BoardModel;
+import com.kgitbank.travelShare.model.NoticeModel;
 
 public interface AdminNoticeMapper {
 	
 	//select all
-	public ArrayList<AdminNotice> getNoticesAll();
+	public ArrayList<NoticeModel> getNoticesAll();
 	public ArrayList<BoardModel> getBoardsAll();
+	public ArrayList<BoardLikeModel> getMainBestPlace();
 	
 	//select only one
-	public AdminNotice getNoticeOne(@Param("num") String num);
+	public NoticeModel getNoticeOne(@Param("num") String num);
 	public BoardModel getBoardOne(@Param("num") String num);
 	
 	//select id
 	public int getNoticeId();
 	
 	//select (searching)
-	public ArrayList<AdminNotice> getNoticesAllSearching(@Param("name") String name);
+	public ArrayList<NoticeModel> getNoticesAllSearching(@Param("name") String name);
 	
 	public ArrayList<BoardModel> getBoardsAllSearching(@Param("boardName") String boardName);
 	

@@ -17,6 +17,7 @@ var highMap = new highMaps();
 highMap.init();
 </script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css?ver=5.15">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main_board.css?ver=1.00">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Two+Tone|Material+Icons+Sharp|Material+Icons+Outlined" rel="stylesheet">
 <link rel="shortcut icon" href="#">
 </head>
@@ -66,126 +67,6 @@ highMap.init();
                     <span id="main_sev3_text_1">우리나라에 이런 곳이 있었어???</span><br>
                     <span id="main_sev3_text_2">Best Travel<span style="color: orangered;">ers</span> Course!</span>
                     <div class="main_recommend">
-                        <div class="board_content" id="board_content">
-                            <div class="board_imgContent">
-                                <img alt=""
-                                    src="<%=request.getContextPath()%>/resources/files/back1.jpg">
-                                <img alt=""
-                                    src="<%=request.getContextPath()%>/resources/files/back2.jpg">
-                            </div>
-                            <div class="board_textContent">
-                                <div class="board_text1">${board.user_name }</div>
-                                <div class="board_textTit">${board.board_name }</div>
-                            </div>
-                            <div class="board_option">
-                                <div class="board_areaPan">
-                                    <span class="material-icons-outlined board_area_img">
-                                        location_on </span>
-                                    <div class="board_area">${board.area }</div>
-                                </div>
-                                <div class="board_likePan">
-                                    <span class="material-icons-outlined board_like_img">
-                                        favorite </span>
-                                    <div class="like">0명</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="board_content" id="board_content">
-                            <div class="board_imgContent">
-                                <img alt=""
-                                    src="<%=request.getContextPath()%>/resources/files/back1.jpg">
-                                <img alt=""
-                                    src="<%=request.getContextPath()%>/resources/files/back2.jpg">
-                            </div>
-                            <div class="board_textContent">
-                                <div class="board_text1">${board.user_name }</div>
-                                <div class="board_textTit">${board.board_name }</div>
-                            </div>
-                            <div class="board_option">
-                                <div class="board_areaPan">
-                                    <span class="material-icons-outlined board_area_img">
-                                        location_on </span>
-                                    <div class="board_area">${board.area }</div>
-                                </div>
-                                <div class="board_likePan">
-                                    <span class="material-icons-outlined board_like_img">
-                                        favorite </span>
-                                    <div class="like">0명</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="board_content" id="board_content">
-                            <div class="board_imgContent">
-                                <img alt=""
-                                    src="<%=request.getContextPath()%>/resources/files/back1.jpg">
-                                <img alt=""
-                                    src="<%=request.getContextPath()%>/resources/files/back2.jpg">
-                            </div>
-                            <div class="board_textContent">
-                                <div class="board_text1">${board.user_name }</div>
-                                <div class="board_textTit">${board.board_name }</div>
-                            </div>
-                            <div class="board_option">
-                                <div class="board_areaPan">
-                                    <span class="material-icons-outlined board_area_img">
-                                        location_on </span>
-                                    <div class="board_area">${board.area }</div>
-                                </div>
-                                <div class="board_likePan">
-                                    <span class="material-icons-outlined board_like_img">
-                                        favorite </span>
-                                    <div class="like">0명</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="board_content" id="board_content">
-                            <div class="board_imgContent"> 
-                                <img alt=""
-                                    src="<%=request.getContextPath()%>/resources/files/back1.jpg">
-                                <img alt=""
-                                    src="<%=request.getContextPath()%>/resources/files/back2.jpg">
-                            </div>
-                            <div class="board_textContent">
-                                <div class="board_text1">${board.user_name }</div>
-                                <div class="board_textTit">${board.board_name }</div>
-                            </div>
-                            <div class="board_option">
-                                <div class="board_areaPan">
-                                    <span class="material-icons-outlined board_area_img">
-                                        location_on </span>
-                                    <div class="board_area">${board.area }</div>
-                                </div>
-                                <div class="board_likePan">
-                                    <span class="material-icons-outlined board_like_img">
-                                        favorite </span>
-                                    <div class="like">0명</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="board_content" id="board_content">
-                            <div class="board_imgContent">
-                                <img alt=""
-                                    src="<%=request.getContextPath()%>/resources/files/back1.jpg">
-                                <img alt=""
-                                    src="<%=request.getContextPath()%>/resources/files/back2.jpg">
-                            </div>
-                            <div class="board_textContent">
-                                <div class="board_text1">${board.user_name }</div>
-                                <div class="board_textTit">${board.board_name }</div>
-                            </div>
-                            <div class="board_option">
-                                <div class="board_areaPan">
-                                    <span class="material-icons-outlined board_area_img">
-                                        location_on </span>
-                                    <div class="board_area">${board.area }</div>
-                                </div>
-                                <div class="board_likePan">
-                                    <span class="material-icons-outlined board_like_img">
-                                        favorite </span>
-                                    <div class="like">0명</div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="board_content" id="board_content">
                             <div class="board_imgContent">
                                 <img alt=""
@@ -272,7 +153,106 @@ highMap.init();
             </footer>
         </section>
     </main>
-   
-    <script src="<%=request.getContextPath()%>/resources/js/main_app.js?ver=5.15"></script>
+    
+    <!-- popup창 -->
+   	<div id="board_clickPan" class="board_hide">
+		<div class="x_box">
+			<span class="material-icons-outlined "> close </span>
+		</div>
+		<div id="board_detailContent">
+			<div class="board_detailPan">
+				<div class="board_left_pan">
+					<iframe id="board_googleMap"
+						src="https://www.google.com/maps?q= 서울 관악구 관악로 85 &output=embed"
+						style='border: 0;' allowfullscreen="" aria-hidden="false"
+						tabindex="0" frameborder="0"></iframe>
+					<!-- q= 뒤에 주소를 입력하면 됨 -->
+					<hr style="color: black; width: 100%; margin-bottom: 50px;">
+					<div id="board_main_content" class="board_main_content">
+					<!-- 게시판 콘텐츠들이 들어가는 곳  -->
+					</div>
+
+					<div class="board_comment">
+						<div class="board_comment_tit">
+							<p>한줄댓글</p>
+						</div>
+						<div class="board_comment_write">
+							<form action="">
+								<input type="text" name="board_commnet"
+									placeholder="한 줄 댓글을 남겨주세요."> <input type="submit"
+									name="board_commnet_submit" value="댓글남기기">
+							</form>
+						</div>
+						<div class="board_comment_show">
+							<div class="board_comment_see">
+								<div class="board_comment_see_img">
+									<img src="<%=request.getContextPath()%>/resources/files/null.jpg" alt="">
+								</div>
+								<div class="board_comment_see_text">
+									<div>
+										<strong>닉네임</strong> <span class="board_comment_see_text_date">2021.08.12</span>
+									</div>
+									<div>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</div>
+								</div>
+							</div>
+							<hr style="color: black; width: 100%; margin-bottom: 50px;">
+						</div>
+					</div>
+				</div>
+				<div class="board_right_pan">
+					<div class="board_user_info">
+						<img id="board_mainimg" src="<%=request.getContextPath()%>/resources/files/null.jpg"
+							alt="">
+					</div>
+					<div class="board_user_name">닉네임</div>
+
+					<div id="board_title" class="board_title"></div>
+					<div class="board_sub_info">
+						<div class="board_sub_info2">
+							<div>
+								<span class="material-icons-outlined board_area_img">
+									location_on </span>
+								<div>추천 여행지</div>
+							</div>
+							<div id="board_bestplace">몰라</div>
+						</div>
+						<div class="board_sub_info2">
+							<div>
+								<span class="material-icons-outlined"> local_dining</span>
+								<div>추천 맛집</div>
+							</div>
+							<div id="board_besteat">몰라</div>
+						</div>
+						<div class="board_sub_info2">
+							<div>
+								<span class="material-icons-outlined board_like_img">
+									favorite </span>
+								<div>스크랩</div>
+							</div>
+							<div>0</div>
+						</div>
+					</div>
+
+					<div>
+						<div class="board_scrap_btn">
+							<span class="material-icons-outlined board_like_img">
+								favorite </span>
+							<div>스크랩</div>
+						</div>
+					</div>
+
+					<div class="board_travelPlans">
+						<div class="singo">
+							<span class="material-icons singo_img"> lightbulb </span> <span
+								class="board_singo">신고하기</span>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+   	<script src="<%=request.getContextPath()%>/resources/js/main_ajax.js?ver=1.08"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/main_app.js?ver=5.19"></script>
 </body>
 </html>

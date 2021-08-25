@@ -406,7 +406,7 @@ function admin_ajax_func4(e){
 					//누른 페이지번호에 따라서 10개씩 출력하기위함 (처음에는 앞 10개출력)
 					if((pagingNumBtn*10)-10 <= i && i < pagingNumBtn*10){
 						let notice_id = myobj[i].notice_id;
-						let user_id = myobj[i].user_id;
+						let user_nickName = myobj[i].user_nickName;
 						let notice_title = myobj[i].notice_title;
 						let notice_text = myobj[i].notice_text;
 						let notice_lookupcnt = myobj[i].notice_lookupcnt;
@@ -424,14 +424,14 @@ function admin_ajax_func4(e){
 						tr.style.border = "solid black 1px";
 						tr.style.height = "30px";
 						
-						const user_id_Append = document.createTextNode(user_id);
+						const user_nickName_Append = document.createTextNode(user_nickName);
 						const notice_title_Append = document.createTextNode(notice_title);
 						const notice_date_Append = document.createTextNode(date.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }));
 						const notice_lookupcnt_Append = document.createTextNode(notice_lookupcnt);
 						const notice_id_Append = document.createTextNode(notice_id);
 						
 						td1.appendChild(notice_id_Append);
-						td2.appendChild(user_id_Append);
+						td2.appendChild(user_nickName_Append);
 						td3.appendChild(notice_title_Append);
 						td4.appendChild(notice_date_Append);
 						td5.appendChild(notice_lookupcnt_Append);

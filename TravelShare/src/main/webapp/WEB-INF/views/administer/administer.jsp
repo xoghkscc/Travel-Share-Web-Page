@@ -276,7 +276,7 @@
 	</section>
 
 	<script
-		src="<%=request.getContextPath()%>/resources/js/administer_ajax.js?ver=2.94"></script>
+		src="<%=request.getContextPath()%>/resources/js/administer_ajax.js?ver=2.89"></script>
 <!-- 	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 
 </body>
