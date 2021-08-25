@@ -18,7 +18,6 @@
 	<jsp:include page="../header/top.jsp"></jsp:include>
 	<!-- 네이버아이디로로그인 버튼 노출 영역 -->
 	<form id="login" action="../login" method="POST" autocomplete='off'></form>
-		<jsp:include page="../header/top.jsp"></jsp:include>
 	<div class="loginBox">
 		<div id="basic_login">
 			<div id="login_text">

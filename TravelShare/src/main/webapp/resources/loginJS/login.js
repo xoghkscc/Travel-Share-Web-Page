@@ -21,6 +21,7 @@ login_loginbtn.onclick = (event) => {
 		if(e.target.responseText == "아이디 혹은 비빌번호가 틀렸습니다"){
 			login_warning.innerHTML = e.target.responseText;
 		} else {
+			console.log(왔음);
 			gocontroller();
 			location.href = "../site/index";
 		} 
