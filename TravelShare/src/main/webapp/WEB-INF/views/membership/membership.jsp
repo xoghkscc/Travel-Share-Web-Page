@@ -148,7 +148,7 @@
 		
 		<script>
 		  $('.membership_box').css('border','1px solid black');
-		  $('.membership_box').css('width','350px');
+		  $('.membership_box').css('width','400px');
 		  $('.membership_box').css('height','auto');
 		  $('.membership_box').css('margin','auto');
 	  </script>
