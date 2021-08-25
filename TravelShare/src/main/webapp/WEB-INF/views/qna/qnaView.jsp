@@ -8,13 +8,13 @@
 </head>
 <body>
 	<label>제목</label>
-	${view.title } <br />
+	${view.title } <br>
 	
 	<label>작성자</label>
-	${view.writer } <br />
+	${view.writer } <br>
 	
 	<label>내용</label>
-	${view.content } <br />
+	${view.content } <br>
 	
 	<div>
 		<a href="/qna/modify?qno=${view.qno }">게시물 수정</a>

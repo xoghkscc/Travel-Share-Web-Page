@@ -7,7 +7,7 @@ import com.kgitbank.travelShare.model.UserInfo;
 
 public interface LoginMapper {
 	
-	public LoginInfo loginCheck(LoginInfo logininfo);
+	public List<LoginInfo> loginCheck(LoginInfo logininfo);
 
 	public List<LoginInfo> CheckloginId(LoginInfo logininfo);
 }

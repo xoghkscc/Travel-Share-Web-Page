@@ -30,10 +30,15 @@ public class LoginController {
 	        if(loginService.loginCheck(logininfo) != null){
 	            session.setAttribute("loginCheck",true);
 	            
-	            List<LoginInfo> loinfo = loginService.CheckloginId(logininfo);
+	            List<LoginInfo> loinfo = loginService.loginCheck(logininfo);
 	    		for (LoginInfo logo_info : loinfo) {
 	    			 session.setAttribute("id", logo_info.getUser_id());
+	    			 session.setAttribute("name",logo_info.getUser_name());
+	    			 session.setAttribute("manager", logo_info.getUser_position());
 	    			 System.out.println(session.getAttribute("id"));
+	    			 System.out.println(session.getAttribute("name"));
+	    			 System.out.println(session.getAttribute("manager"));
+	    	
 	    		}
 	            
 	            return "redirect:/site/index";
@@ -47,8 +52,9 @@ public class LoginController {
 	                            
 	        session.setAttribute("loginCheck",null);
 	        session.setAttribute("id",null);
+	        session.setAttribute("name", null);
 	        
-	        return "/site/index";
+	        return "redirect:/site/index";
 	    }
 	    
 	    @RequestMapping(value="/needLogin")
