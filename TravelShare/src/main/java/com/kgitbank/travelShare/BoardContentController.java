@@ -69,7 +69,6 @@ public class BoardContentController {
 	
 	@GetMapping("mainBoard")
 	public String mainBorder(Model model, HttpSession session) {
-		System.out.println("id : "+session.getAttribute("id"));
 		model.addAttribute("boardDB", boardMapper.getBoardAll());
 		return "/board/main_board";
 	}

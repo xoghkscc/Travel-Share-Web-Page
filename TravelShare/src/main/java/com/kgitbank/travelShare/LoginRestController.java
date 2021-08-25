@@ -28,14 +28,11 @@ public class LoginRestController {
 	LoginMapper loginService;
 		
 	@PostMapping(value="/loginWarning", produces= MediaType.APPLICATION_JSON_VALUE)
-	public String getEmailwaring(@RequestBody LoginInfo login_info) {
-
-		if(loginService.loginCheck(login_info) == null) {
-			System.out.println("rest if문");
-			System.out.println(login_info.getUser_email() + "/" + login_info.getUser_password());
-			return "아이디 혹은 비빌번호가 틀렸습니다";
+	public int getEmailwaring(@RequestBody LoginInfo logindata) {
+		if(loginService.loginCheck(logindata).isEmpty()) {
+			return 1;
 		} 
-		return "";
+		return 0;
 	}
 	
 }

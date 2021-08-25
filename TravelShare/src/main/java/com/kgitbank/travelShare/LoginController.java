@@ -1,7 +1,5 @@
 package com.kgitbank.travelShare;
 
-
-
 import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
@@ -20,54 +18,49 @@ import com.kgitbank.travelShare.model.LoginInfo;
 @Controller
 public class LoginController {
 
-		@Autowired
-	    LoginMapper loginService;
+	@Autowired
+	LoginMapper loginService;
 
-	    @RequestMapping(value="/login", method = RequestMethod.POST)
-	    public String loginProcess(HttpSession session, LoginInfo logininfo, String user_email, String user_password) {
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String loginProcess(HttpSession session, LoginInfo logininfo, String user_email, String user_password) {
 
-	        logininfo.setUser_email(user_email);
-	        logininfo.setUser_password(user_password);
-	        
-	            session.setAttribute("loginCheck",true);
-	            
-	            List<LoginInfo> loinfo = loginService.loginCheck(logininfo);
-	    		for (LoginInfo logo_info : loinfo) {
-	    			 session.setAttribute("id", logo_info.getUser_id());
-<<<<<<< HEAD
-	    			 session.setAttribute("name",logo_info.getUser_name());
-	    			 session.setAttribute("manager", logo_info.getUser_position());
-	    			 System.out.println(session.getAttribute("id"));
-	    			 System.out.println(session.getAttribute("name"));
-	    			 System.out.println(session.getAttribute("manager"));
-	    	
-=======
->>>>>>> refs/heads/develop-cha
-	    		}
-	            
-	            return "";
-	        
-	    }
-	    
-	    @RequestMapping(value="/logoutProcess")
-	    public String logoutProcess(HttpSession session) {
-	                            
-	        session.setAttribute("loginCheck",null);
-	        session.setAttribute("id",null);
-	        session.setAttribute("name", null);
-	        
-	        return "redirect:/site/index";
-	    }
-	    
-	    @RequestMapping(value="/needLogin")
-	    public String needLoginPage(HttpSession session) {
-	    
-	        //세션 검사를 통해 Access control
-	        if(session.getAttribute("loginCheck")!=null){
-	            return "/login/login";
-	        }else{
-	            return "/site/index";
-	        }
-	    }
-	    
+		logininfo.setUser_email(user_email);
+		logininfo.setUser_password(user_password);
+
+		session.setAttribute("loginCheck", true);
+
+		List<LoginInfo> loinfo = loginService.loginCheck(logininfo);
+		for (LoginInfo logo_info : loinfo) {
+			session.setAttribute("id", logo_info.getUser_id());
+			session.setAttribute("name", logo_info.getUser_name());
+			session.setAttribute("manager", logo_info.getUser_position());
+			System.out.println(session.getAttribute("id"));
+			System.out.println(session.getAttribute("name"));
+			System.out.println(session.getAttribute("manager"));
+
+		}
+		return "";
 	}
+
+	@RequestMapping(value = "/logoutProcess")
+	public String logoutProcess(HttpSession session) {
+
+		session.setAttribute("loginCheck", null);
+		session.setAttribute("id", null);
+		session.setAttribute("name", null);
+
+		return "redirect:/site/index";
+	}
+
+	@RequestMapping(value = "/needLogin")
+	public String needLoginPage(HttpSession session) {
+
+		// 세션 검사를 통해 Access control
+		if (session.getAttribute("loginCheck") != null) {
+			return "/login/login";
+		} else {
+			return "/site/index";
+		}
+	}
+
+}

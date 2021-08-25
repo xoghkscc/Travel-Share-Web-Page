@@ -2,10 +2,10 @@
 // user_password = document.getElementById("user_password");
 const login_warning = document.getElementById("login_warning");
 const login = document.getElementById("login");
-const xhttp = new XMLHttpRequest();
 
 
 login_loginbtn.onclick = (event) => {
+	const xhttp = new XMLHttpRequest();
 		
 	var user_email = this.user_email.value;
 	var user_password = this.user_password.value;
@@ -13,19 +13,18 @@ login_loginbtn.onclick = (event) => {
 	event.preventDefault();
 	
 	xhttp.addEventListener('readystatechange', (e) => {
-		const target = e.target
+		const target = e.target;
 		const status = e.target.status;
 		const readyState = target.readyState;
-
 		if(status == 200 && readyState == 4) {
-		if(e.target.responseText == "아이디 혹은 비빌번호가 틀렸습니다"){
-			login_warning.innerHTML = e.target.responseText;
-		} else {
-			gocontroller();
-			location.href = "../site/index";
+			if(target.responseText == 1){
+				login_warning.innerHTML = "아이디 혹은 비밀번호가 틀렸습니다.";
+			} else {
+				gocontroller();
+				location.href = "../site/index";
+			} 
 		} 
-	} 
-});
+	});
 	
 	var logindata = {
 			user_email : user_email,
