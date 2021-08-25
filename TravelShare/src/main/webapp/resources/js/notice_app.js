@@ -8,7 +8,7 @@ const notice_searchText = document.querySelector('.notice_searchText');
 const notice_searchBtn = document.querySelector('.notice_searchBtn');
 //필요한 DOM(for popup)
 const notice_Popup = document.querySelector('.notice_Popup');
-const x_box = document.querySelector('.x_box');
+const notice_cancel = document.querySelector('.notice_cancel');
 const notice_PopupTitle = document.querySelector('.notice_PopupTitle');
 const notice_PopupId = document.querySelector('.notice_PopupId');
 const notice_PopupDate = document.querySelector('.notice_PopupDate');
@@ -28,7 +28,7 @@ notice_tbody.addEventListener('click', tableNoticeTrClick); //셀선택기능
 notice_paging.addEventListener('click', notice_pagingFunc); //페이징기능
 notice_searchBtn.addEventListener('click', notice_searchFunc); //검색기능
 
-x_box.addEventListener('click', notice_PopupCancelFunc); //팝업 닫기 기능
+notice_cancel.addEventListener('click', notice_PopupCancelFunc); //팝업 닫기 기능
 
 //시작하자마자 함수실행
 getNotices();

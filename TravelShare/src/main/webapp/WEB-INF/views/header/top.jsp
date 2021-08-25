@@ -36,7 +36,7 @@
 				<c:otherwise>
 						<li id="popupmenu-item">
 							<ul  class="popupmenu-menu">
-								<li><a href="#">관리자정보</a></li>
+								<li><a href="/travelShare/site/admin">관리자정보</a></li>
 								<li><a href="#">공지</a></li>
 								<li><a href="../logoutProcess">로그아웃</li>
 							</ul>

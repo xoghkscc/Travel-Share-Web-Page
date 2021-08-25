@@ -37,6 +37,9 @@ tr {
   text-align: center;
 }
 
+.notice_tbody > tr:hover{
+	background-color: orangered;	
+}
 
 
 table {

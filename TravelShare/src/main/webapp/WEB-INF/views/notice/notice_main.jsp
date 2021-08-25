@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>게시물 목록</title>
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/resources/css/notice_list.css?ver=1.17">
+	href="<%=request.getContextPath()%>/resources/css/notice_list.css?ver=1.20">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Two+Tone|Material+Icons+Sharp|Material+Icons+Outlined" rel="stylesheet">
 </head>
@@ -21,7 +21,7 @@
 				<input type="text" class="notice_searchText" placeholder="제목을 검색하세요."/>
 				<button class="notice_searchBtn" type="submit">검색</button>
 			</div>
-		    <table id="qnaTable" class="table table-hover">
+		    <table id="qnaTable" class="table">
 		        <thead class=qna_head>
 		          <tr>
 		            <th class="text-center">번호</th>
@@ -62,7 +62,7 @@
 		       <div class="notice_PopupText"></div>
 		  	</div>
 		  </div>
-      	<script src="<%=request.getContextPath()%>/resources/js/notice_app.js?ver=1.20"></script>
+      	<script src="<%=request.getContextPath()%>/resources/js/notice_app.js?ver=1.21"></script>
 <!--       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 </body>
 </html>
