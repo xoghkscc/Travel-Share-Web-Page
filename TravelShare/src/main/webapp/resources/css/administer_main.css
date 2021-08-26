@@ -248,7 +248,8 @@ table{
 .tbodyclass > tr{
      border: 1px black solid;
 }
-.tbodyclass > tr:hover, .tbodyclass_admin > tr:hover, .tbodyclass_notice > tr:hover{
+.tbodyclass > tr:hover, .tbodyclass_admin > tr:hover, .tbodyclass_notice > tr:hover,
+.tbodyclass_board > tr:hover, .tbodyclass_declare > tr:hover{
      border: 1px black solid;
      background-color: rgba(50,50,250,0.3);
 }

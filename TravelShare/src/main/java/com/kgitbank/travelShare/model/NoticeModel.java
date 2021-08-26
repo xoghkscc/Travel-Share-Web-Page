@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 public class NoticeModel {
 	@NonNull
 	private int notice_id;
+	private String user_imgurl;
 	@NonNull
 	private String user_nickName;
 	@NonNull

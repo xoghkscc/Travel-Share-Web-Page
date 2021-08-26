@@ -25,7 +25,6 @@ function getNotices(e){
 			//자바스크립트에서는 아주 쉽게 JSON형식의 문자열을 Object로 변환할 수 있다
 			myobj = JSON.parse(target.responseText);
 			
-			console.log("드러와쓰");
 			//시작하면서 안의 내용 초기화
 			board_content.innerHTML = "";
 			main_recommend.innerHTML = "";

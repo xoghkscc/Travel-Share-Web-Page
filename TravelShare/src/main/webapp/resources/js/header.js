@@ -1,7 +1,6 @@
 const burger = document.querySelectorAll("burger");
 const navlinks = document.querySelectorAll(".nav-links li");
 const nav = document.querySelector(".nav-links"); 
-const navlinks = document.querySelectorAll(".nav-links li");
 const guide_header = document.querySelector("#guide_header");
 const guide_link = document.querySelectorAll(".guide_link");
 window.addEventListener('scroll', function(e){

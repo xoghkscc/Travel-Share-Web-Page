@@ -6,6 +6,12 @@ body {
     overflow-x: hidden; 
 }
 
+hr{
+    height: 10px;
+    border: 0;
+    box-shadow: 0 10px 10px -10px #bbb inset;
+}
+
 .notice_container{
 	position: absolute;
 	left: 0;
@@ -37,8 +43,8 @@ tr {
   text-align: center;
 }
 
-.notice_tbody > tr:hover{
-	background-color: orangered;	
+#notice_table:hover tbody tr:hover td {
+    background-color: rgba(240, 240, 240, 0.3);
 }
 
 
@@ -48,7 +54,7 @@ table {
 
 
 .qna_head {
-  background-color: skyblue;
+  background-color: rgb(255, 124, 62);
 }
 
 
@@ -114,6 +120,7 @@ table {
 }
 
 .notice_textContainer > div{
+    
     margin-left: 10px;
 }
 .notice_textContainer > :first-child{
@@ -121,26 +128,44 @@ table {
    position: relative;
 }
 .notice_PopupTitle{
+    
+    font-family: 'Jua', sans-serif;
     margin-top: 20px;
     font-size: 40px;
 }
+.notice_cntBoard{
+	font-size: 30px;
+}
+.notice_PopupText{
+    line-height: 30px;
+    /* letter-spacing: 1px; */
+}
 
 .notice_PopupTop{
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     display: grid;
     grid-template-columns: 15% 70% 15%;
-    border: solid 1px blueviolet;
+    /* border: solid 1px blueviolet; */
     height: 100px;
 }
 .notice_PopupTop > :first-child{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url(../asset/배경2.jpg);
+    background-size: cover;
+    border-radius: 10%;
+    border: 3px black solid;
 }
 .notice_PopupTop > :nth-child(2){
+    margin-left: 20px;
+    align-items: center;
     display: grid;
-    grid-template-rows: 40% 20% 40%;
+    grid-template-rows: 1fr 1fr;
+    font-size: 25px;
 }
+
 .notice_PopupTop > :nth-child(3){
     /* border: 1px solid yellow; */
     display: flex;

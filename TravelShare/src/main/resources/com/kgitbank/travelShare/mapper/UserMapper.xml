@@ -28,6 +28,10 @@
 		UPDATE user_info SET user_warning = '${declareCnt}' where user_nickname = '${AdminNickName}'
   </update>
   
+  <delete id="deleteAdminUser">
+		DELETE FROM user_info where user_email = '${adminUserEmail}'
+  </delete>
+  
   
   
 </mapper>

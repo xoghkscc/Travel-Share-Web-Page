@@ -26,10 +26,7 @@ public class AdminRestController {
 	
 	@RequestMapping(value="/searching", produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<User> getUesrInfo(){
-		
-		
-		
-		System.out.println("searching!");
+
 		//mapping안하고 바로 @셀렉트
 		List<User> users = UserMapper.getUserList();
 
@@ -65,26 +62,17 @@ public class AdminRestController {
 	
 	@RequestMapping(value="/admin_notice", produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<NoticeModel> getAdmin_notice(){
-		System.out.println("이곳에옴스스스");
+
 		//mapping안하고 바로 @셀렉트
 		List<NoticeModel> NoticeModel = AdminNoticeMapper.getNoticesAll();
-		System.out.println(NoticeModel);
+
 		return NoticeModel;
 	}
 	
 	@RequestMapping(value="/admin_position_update")
 	public String getAdmin_position_update(@RequestParam("AdminNickName") String AdminNickName,
 										   @RequestParam("AdminPositionValue") String AdminPositionValue){
-		
-		System.out.println("AdminNickName : " + AdminNickName);
-		System.out.println("AdminPositionValue : " + AdminPositionValue);
-		
-//		User user = new User();
-//		
-//		int idCnt = UserMapper.getAdminUsersId();
-		
-//		User user = UserMapper.getAdmin_User(noticeNickName);
-		
+
 		//user한명의 직책 업데이트하기
 		UserMapper.getAdmin_position_update(AdminNickName, AdminPositionValue);
 
@@ -94,11 +82,9 @@ public class AdminRestController {
 	@RequestMapping(value="/admin_noticeUpdate", produces=MediaType.APPLICATION_JSON_VALUE)
 	public NoticeModel getAdmin_noticeUpdate(@RequestParam("noticeId") String noticeId){
 		
-		System.out.println("수정원하는번호 : " + noticeId);
-		
 		//mapping안하고 바로 @셀렉트
 		NoticeModel NoticeModel = AdminNoticeMapper.getNoticeOne(noticeId);
-		System.out.println(NoticeModel);
+
 		return NoticeModel;
 	}
 	
@@ -107,7 +93,7 @@ public class AdminRestController {
 		
 		
 		List<User> users = UserMapper.getAdmin_SearchingList(noticeName);
-		System.out.println("유저 : " + users);
+
 		return users;
 	}
 	
@@ -116,7 +102,7 @@ public class AdminRestController {
 		
 		//position_search 이지만 sql은 같으므로 같은 함수
 		List<User> users = UserMapper.getAdmin_SearchingList(noticeName);
-		System.out.println("유저 : " + users);
+
 		return users;
 	}
 	
@@ -128,15 +114,6 @@ public class AdminRestController {
 
 		return NoticeModel;
 	}
-	
-//	@RequestMapping(value="/admin_notice_content", produces=MediaType.APPLICATION_JSON_VALUE)
-//	public AdminNotice getAdmin_notice_content(@RequestParam("noticeId") String noticeId) {	
-//		
-//		//공지사항 제목 검색하기
-//		AdminNotice adminNotices = AdminNoticeMapper.getNoticeOne(noticeId);
-//
-//		return adminNotices;
-//	}
 	
 	@RequestMapping(value="/admin_board", produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<BoardModel> getAdmin_Board(){
@@ -160,9 +137,7 @@ public class AdminRestController {
 	public List<BoardLikeModel> getBestPlace() {	
 		
 		List<BoardLikeModel> boardLikeModel = AdminNoticeMapper.getMainBestPlace();
-		
-		System.out.println(boardLikeModel);
-		
+
 		return boardLikeModel;
 	}
 }

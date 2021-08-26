@@ -51,10 +51,12 @@ const admin_board_paging = document.querySelector('.admin_board_paging');
 
 function tableMemberTrClick(e) {
 	const admin_changeName = e.target.parentNode.children[0].innerText;
-        if (!confirm(`${admin_changeName}님을 선택하셨습니다. 확인(예) 또는 취소(아니오)를 선택해주세요.`)) {
+	const adminUserEmail = e.target.parentNode.children[4].innerText;
+        if (!confirm(`${admin_changeName}님을 회원탈퇴 하시겠습니까?`)) {
             alert("취소(아니오)를 누르셨습니다.");
         } else {
-            alert("확인(예)을 누르셨습니다.");
+			location.href = `/travelShare/site/admin_user_delete?adminUserEmail=${adminUserEmail}`;
+            alert(`${admin_changeName}님을 회원탈퇴하였습니다.`);
         }
 }
 

@@ -6,7 +6,7 @@
   <mapper namespace="com.kgitbank.travelShare.mapper.AdminNoticeMapper">
   
 	<select id="getNoticesAll" resultType="com.kgitbank.travelShare.model.NoticeModel">
-		SELECT notice_id, user_nickName, notice_title, notice_text, notice_lookupcnt, notice_date 
+		SELECT notice_id, user_nickName, user_imgurl, notice_title, notice_text, notice_lookupcnt, notice_date 
 		FROM notices INNER JOIN user_info USING ( user_id ) order by notice_id desc
 	</select>
 	
@@ -15,7 +15,7 @@
 	</select>
 	
 	<select id="getNoticeOne" resultType="com.kgitbank.travelShare.model.NoticeModel">
-		SELECT 	notice_id, user_nickName, notice_title, notice_text, notice_lookupcnt, notice_date 
+		SELECT 	notice_id, user_nickName, user_imgurl, notice_title, notice_text, notice_lookupcnt, notice_date 
 		FROM notices INNER JOIN user_info USING ( user_id ) WHERE notice_id=${num}
 	</select>
 	
@@ -28,7 +28,7 @@
 	</select>
 	
 	<select id="getNoticesAllSearching" resultType="com.kgitbank.travelShare.model.NoticeModel">
-		SELECT notice_id, user_nickName, notice_title, notice_text, notice_lookupcnt, notice_date 
+		SELECT notice_id, user_nickName, user_imgurl, notice_title, notice_text, notice_lookupcnt, notice_date 
 		FROM notices INNER JOIN user_info USING ( user_id ) WHERE notice_title like '%${name}%' order by notice_id
 	</select>
 	

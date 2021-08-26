@@ -14,6 +14,7 @@ const notice_PopupId = document.querySelector('.notice_PopupId');
 const notice_PopupDate = document.querySelector('.notice_PopupDate');
 const notice_PopupCnt = document.querySelector('.notice_PopupCnt');
 const notice_PopupText = document.querySelector('.notice_PopupText');
+const notice_PopupImg = document.querySelector('.notice_PopupImg');
 
 //필요한 변수
 let searchNoticeValue = ""; //검색칸에 무슨 내용을 적었는지 꺼내기 위한 변수
@@ -183,21 +184,27 @@ function getNoticePopup(num){
 			notice_PopupDate.innerHTML = "";
 			notice_PopupCnt.innerHTML = "";
 			notice_PopupText.innerHTML = "";
-
-			//만들어야할 페이지버튼의 갯수를 알아보기위함
-
+			notice_PopupText.innerHTML = "";
+			notice_PopupImg.innerHTML = "";
+			
 			let notice_id = myobj.notice_id;
 			let user_nickName = myobj.user_nickName;
+			let user_imgurl = myobj.user_imgurl;
 			let notice_title = myobj.notice_title;
 			let notice_text = myobj.notice_text;
 			let notice_lookupcnt = myobj.notice_lookupcnt;
 			let notice_date = myobj.notice_date;
 
+			var date = new Date(notice_date);
+
 			notice_PopupTitle.innerHTML = notice_title;
 			notice_PopupId.innerHTML = user_nickName;
-			notice_PopupDate.innerHTML = notice_date;
+			notice_PopupDate.innerHTML = date.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
 			notice_PopupCnt.innerHTML = notice_lookupcnt;
 			notice_PopupText.innerHTML = notice_text;
+			
+			
+			notice_PopupImg.innerHTML = user_imgurl;
 
 		}
 	});

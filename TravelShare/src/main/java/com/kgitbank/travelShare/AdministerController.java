@@ -5,12 +5,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -44,17 +44,15 @@ public class AdministerController {
 	
 	@RequestMapping(value="/adminNotice", produces=MediaType.APPLICATION_JSON_VALUE)
 	public String getAdmin_notice(@RequestParam("noticeTitle") String title, 
-								  @RequestParam("notice_content") String content){
+								  @RequestParam("notice_content") String content, HttpSession session){
 	
 		int idCnt = AdminNoticeMapper.getNoticeId();
 	
 		Date now = new Date();
-		
-		AdminNotice adn = new AdminNotice(idCnt+1,1,title, content, 1, now);
-		
-		System.out.println("notice_id : " + idCnt+1);
-		System.out.println("title : " + title);
-		System.out.println("content : " + content+1);
+
+		Object ids = session.getAttribute("id");
+		int number = Integer.parseInt(ids.toString());
+		AdminNotice adn = new AdminNotice(idCnt+1,number,title, content, 1, now);
 		
 		
 		AdminNoticeMapper.insertAdminNotice(adn);
@@ -65,11 +63,13 @@ public class AdministerController {
 	
 	@RequestMapping("/admin_delete")
 	public String getAdmin_delete(@RequestParam("noticeId") String noticeId) {	
-		
-		System.out.println(noticeId);
-		
 		AdminNoticeMapper.deleteAdminNotice(noticeId);
-		
+		return "administer/administer";
+	}
+	
+	@RequestMapping("/admin_user_delete")
+	public String getAdmin_user_delete(@RequestParam("adminUserEmail") String adminUserEmail) {	
+		UserMapper.deleteAdminUser(adminUserEmail);
 		return "administer/administer";
 	}
 	
@@ -99,10 +99,7 @@ public class AdministerController {
 		Date now = new Date();
 		
 		AdminNotice adn = new AdminNotice(Integer.parseInt(noticeId),1,title, content, 1, now);
-		
-		System.out.println("notice_id : " + Integer.parseInt(noticeId));
-		System.out.println("title : " + title);
-		System.out.println("content : " + content);
+
 		
 		AdminNoticeMapper.updateAdminNotice(adn);
 		
@@ -127,8 +124,6 @@ public class AdministerController {
 										   @RequestParam("AdminNickName") String AdminNickName,
 										   @RequestParam("declareCnt") String declareCnt){
 		
-		System.out.println("AdminNickName : " +AdminNickName);
-		System.out.println("declareCnt : " +declareCnt);
 		//user한명의 신고수 업데이트하기
 		UserMapper.getAdmin_declare_update(AdminNickName, declareCnt);
 		
@@ -138,7 +133,7 @@ public class AdministerController {
 	
 	@RequestMapping(value="/admin_boardOne", produces=MediaType.APPLICATION_JSON_VALUE)
 	public String getAdmin_Board(HttpServletRequest req ,Model model, @RequestParam("boardId") String boardId){
-		System.out.println(boardId);
+
 		//mapping안하고 바로 @셀렉트
 		BoardModel boardModel = AdminNoticeMapper.getBoardOne(boardId);
 
@@ -153,8 +148,7 @@ public class AdministerController {
 	@RequestMapping("/admin_boardOneDelte")
 	public String getAdmin_boardOneDelte(@RequestParam("boardId") String boardId) {	
 		
-		System.out.println(boardId);
-		
+
 		AdminNoticeMapper.deleteBoardNotice(boardId);
 		
 		return "administer/administer";

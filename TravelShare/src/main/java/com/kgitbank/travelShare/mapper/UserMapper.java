@@ -30,4 +30,7 @@ public interface UserMapper {
 	//update
 	public int getAdmin_position_update(@Param("AdminNickName") String AdminNickName, @Param("AdminPositionValue") String AdminPositionValue);
 	public int getAdmin_declare_update(@Param("AdminNickName") String AdminNickName, @Param("declareCnt") String declareCnt);
+
+	//delete
+	public int deleteAdminUser(@Param("adminUserEmail") String adminUserEmail);
 }
