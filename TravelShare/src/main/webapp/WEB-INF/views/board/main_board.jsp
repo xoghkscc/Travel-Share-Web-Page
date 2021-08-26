@@ -67,10 +67,10 @@
 					</h2>
 				</div>
 				<div>
-					<select class="board_tit_area">
-						<option value="">최신순 정렬</option>
-						<option value="">조회순 정렬</option>
-						<option value="">찜순 정렬</option>
+					<select id="board_tit_area" class="board_tit_area" onchange="boardSort()">
+						<option value="board_id">최신순 정렬</option>
+						<option value="board_lookupcnt">조회순 정렬</option>
+						<option value="like_cnt">찜순 정렬</option>
 					</select>
 				</div>
 			</div>
@@ -244,7 +244,7 @@
 					</div>
 
 					<div class="board_travelPlans">
-						<div id="singo" class="singo">
+						<div id="singo" class="singo" >
 							<span class="material-icons singo_img"> lightbulb </span> <span
 								class="board_singo">신고하기</span>
 						</div>

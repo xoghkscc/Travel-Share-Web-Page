@@ -192,6 +192,7 @@ public class BoardContentController {
 			byte[] bytes = upload.getBytes();
 
 			String uploadPath = request.getSession().getServletContext().getRealPath("/resources/files/board_img/") + fileRanName+".jpg";// 저장경로
+			System.out.println(uploadPath);
 			out = new FileOutputStream(new File(uploadPath));
 			out.write(bytes);
 

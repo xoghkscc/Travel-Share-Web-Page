@@ -1,4 +1,5 @@
 const board_paging_number = document.getElementsByClassName("board_paging_number");
+
 Array.from(board_paging_number).forEach((value) => {
 	value.addEventListener('click', (e) => {
 		var sigungucode = getParameterByName('sigungucode');
@@ -14,7 +15,21 @@ Array.from(board_paging_number).forEach((value) => {
 	});
 });
 
+function boardSort(){
+	Array.from(board_paging_number).forEach((value, index) => {
+		value.setAttribute("class", "board_paging_number");
+		if(index == 0){
+			value.setAttribute("class", "board_choose board_paging_number");
+		}
+		
+});
+	var sigungucode = getParameterByName('sigungucode');
+	var sidocode = getParameterByName('sidocode');
+	pagingRest(1, sigungucode, sidocode);
+}
+
 function pagingRest(click_number, sigungucode, sidocode) {
+	var order = document.getElementById("board_tit_area").options[document.getElementById("board_tit_area").selectedIndex].value;
 	const board_list_travel = document.querySelector(".board_list_travel");
 	board_list_travel.innerHTML = "";
 	const xhttp = new XMLHttpRequest();
@@ -63,7 +78,8 @@ function pagingRest(click_number, sigungucode, sidocode) {
 	var pagingData = {
 		click_number : click_number,
 		sigungucode : sigungucode,
-		sidocode : sidocode
+		sidocode : sidocode,
+		order : order
 	}
 	
 	xhttp.open('POST', '/travelShare/boardrest/paging/', true);
@@ -225,6 +241,7 @@ function imgClick(board_id, user_id) {
 	getBoardContent(board_id);
 	getBoardCommnet(board_id);
 	shwoRD(user_id, board_id);
+	warning(board_id, user_id);
 	document.getElementById("board_clickPan").setAttribute("class", "board_show");
 	
 	const xhttp = new XMLHttpRequest();
@@ -233,6 +250,72 @@ function imgClick(board_id, user_id) {
 	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
 	xhttp.send(board_id);
 }
+
+
+
+function warning(board_id, user_id) {
+	const xhttp = new XMLHttpRequest();
+	
+	xhttp.addEventListener('readystatechange', (e) => {
+		const target = e.target;
+		var singoIdCheck = JSON.parse(target.responseText);
+		myobj = JSON.parse(target.responseText);
+		
+		if(myobj == 2){
+			document.getElementById("singo").style.color = "white";
+		} else if(myobj == 1){
+			document.getElementById("singo").style.color = "#7f7f7f";
+		}
+	document.getElementById("singo").onclick = () => {
+			console.log("singoIdCheck :" + singoIdCheck);
+		if(singoIdCheck == 2){
+			warningftn(board_id, 2, user_id);
+		} else{
+			warningftn(board_id, singoIdCheck, user_id);
+			singoIdCheck = 2;
+		}
+	}
+	});
+	
+	
+	xhttp.open('POST', '/travelShare/boardrest/warningJudgment/', true);
+	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8');
+	xhttp.send(board_id);
+}
+
+function warningftn(board_id, singoIdCheck, user_id){
+	if(singoIdCheck == 0){
+		alert("로그인이 필요한 서비스입니다.");
+		location.href = "../site/login";
+	} else if(singoIdCheck == 1){
+		if(confirm("게시글을 신고하시겠습니까?")){
+		alert("신고해 주셔서 감사합니다");
+		warningRest(board_id);
+		userInfoWarningRest(user_id);
+		document.getElementById("singo").style.color = "white";
+		} else{
+		}
+	} else {
+		alert("이미 신고한 글입니다.");
+	}
+}
+
+function userInfoWarningRest(user_id){
+	const xhttp = new XMLHttpRequest();
+	
+	xhttp.open('POST', '/travelShare/boardrest/userInfoWarning/', true);
+	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8');
+	xhttp.send(user_id);
+}
+
+function warningRest(board_id){
+	const xhttp = new XMLHttpRequest();
+	
+	xhttp.open('POST', '/travelShare/boardrest/insertWarning/', true);
+	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8');
+	xhttp.send(board_id);
+}
+
 
 function shwoRD(user_id, board_id) {
 	var loginId = document.getElementById("user_id").value;
@@ -509,6 +592,8 @@ function createBoardLocation(id){
 		location.href = "../site/login";
 	}
 }
+
+
 
 
 

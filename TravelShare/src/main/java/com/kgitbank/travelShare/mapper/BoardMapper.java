@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.kgitbank.travelShare.model.BoardLikeModel;
 import com.kgitbank.travelShare.model.BoardModel;
 import com.kgitbank.travelShare.model.CommentInfo;
+import com.kgitbank.travelShare.model.WarningModel;
 
 public interface BoardMapper {
 	public ArrayList<BoardModel> getBoardAll();
@@ -17,11 +18,11 @@ public interface BoardMapper {
 	
 	public ArrayList<BoardModel> getBoardFilter2(@Param("sidocode") Integer sidocode);
 	
-	public ArrayList<BoardModel> getBoardPaging(@Param("startnum") Integer startnum, @Param("endnum") Integer endnum);
+	public ArrayList<BoardModel> getBoardPaging(@Param("startnum") Integer startnum, @Param("endnum") Integer endnum, @Param("order") String order);
 	
-	public ArrayList<BoardModel> getBoardPaging1(@Param("sigungucode") Integer sigungucode, @Param("startnum") Integer startnum, @Param("endnum") Integer endnum);
+	public ArrayList<BoardModel> getBoardPaging1(@Param("sigungucode") Integer sigungucode, @Param("startnum") Integer startnum, @Param("endnum") Integer endnum, @Param("order") String order);
 	
-	public ArrayList<BoardModel> getBoardPaging2(@Param("sidocode") Integer sidocode, @Param("startnum") Integer startnum, @Param("endnum") Integer endnum);
+	public ArrayList<BoardModel> getBoardPaging2(@Param("sidocode") Integer sidocode, @Param("startnum") Integer startnum, @Param("endnum") Integer endnum, @Param("order") String order);
 	
 	public void insertBoard(BoardModel baordModel);
 	
@@ -46,5 +47,11 @@ public interface BoardMapper {
 	public void updateBoard1(BoardModel baordModel);
 	
 	public void updateBoard2(BoardModel baordModel);
+	
+	public ArrayList<WarningModel> selectWarning(@Param("board_id") Integer board_id, @Param("singo_id") Integer singo_id);
+	
+	public void insertWaring(@Param("board_id") Integer board_id, @Param("singo_id") Integer singo_id);
+	
+	public void userInfoWarning(@Param("user_id") Integer user_id);
 	
 }

@@ -32,14 +32,14 @@ public class BoardContentRestController {
 		int click_number = pagingModel.getClick_number();
 		int sigungucode = pagingModel.getSigungucode();
 		int sidocode = pagingModel.getSidocode();
-		
+		String order = pagingModel.getOrder();
 		
 		if(sigungucode == 0 && sidocode == 0) {
-			return boardMapper.getBoardPaging((click_number-1)*12, (click_number)*12);
+			return boardMapper.getBoardPaging((click_number-1)*12, (click_number)*12, order);
 		} else if(sigungucode != 0) {
-			return boardMapper.getBoardPaging1(sigungucode, (click_number-1)*12, (click_number)*12);
+			return boardMapper.getBoardPaging1(sigungucode, (click_number-1)*12, (click_number)*12, order);
 		} else {
-			return boardMapper.getBoardPaging2(sidocode, (click_number-1)*12, (click_number)*12);
+			return boardMapper.getBoardPaging2(sidocode, (click_number-1)*12, (click_number)*12, order);
 		}
 	}
 	
@@ -92,6 +92,30 @@ public class BoardContentRestController {
 	@PostMapping(value = "/selectLikeCnt", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Integer selectLikeCnt(@RequestBody Integer board_id){
 		return boardMapper.selectLikeCnt(board_id);
+	}
+	
+	@PostMapping(value = "/warningJudgment", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Integer warningJudgment(@RequestBody Integer board_id, HttpSession session){
+		
+		if(session.getAttribute("id") == null) {
+			return 0;
+		} else {
+			if(boardMapper.selectWarning(board_id,Integer.parseInt((String) session.getAttribute("id"))).isEmpty()) {
+				return 1;
+			} else {
+				return 2;
+			}
+		}
+	}
+	
+	@PostMapping(value = "/insertWarning", produces = MediaType.APPLICATION_JSON_VALUE)
+	public void insertWarning(@RequestBody Integer board_id, HttpSession session){
+		boardMapper.insertWaring(board_id, Integer.parseInt((String) session.getAttribute("id")));
+	}
+	
+	@PostMapping(value = "/userInfoWarning", produces = MediaType.APPLICATION_JSON_VALUE)
+	public void userInfoWarning(@RequestBody Integer user_id){
+		boardMapper.userInfoWarning(user_id);
 	}
 	
 }
