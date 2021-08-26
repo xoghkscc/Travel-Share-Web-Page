@@ -136,6 +136,9 @@ table {
 .notice_cntBoard{
 	font-size: 30px;
 }
+.notice_PopupImg{
+	background-size: cover;
+}
 .notice_PopupText{
     line-height: 30px;
     /* letter-spacing: 1px; */

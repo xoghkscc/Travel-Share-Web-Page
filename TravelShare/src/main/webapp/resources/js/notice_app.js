@@ -203,9 +203,25 @@ function getNoticePopup(num){
 			notice_PopupCnt.innerHTML = notice_lookupcnt;
 			notice_PopupText.innerHTML = notice_text;
 			
-			
-			notice_PopupImg.innerHTML = user_imgurl;
+			var x = document.createElement('img');
 
+//			  x.setAttribute("src", `${getContextPath()}/resources/files/user_img/back4.jpg"`);
+//			
+//			  x.setAttribute("width", "304");
+//			
+//			  x.setAttribute("height", "228");
+//
+//  			notice_PopupImg.innerHTML = user_imgurl;
+//	console.log(notice_PopupImg);
+	
+//			notice_PopupImg.style.backgroundImage = `url("${user_imgurl}")`;
+			notice_PopupImg.style.backgroundSize = "cover";
+			
+			
+//			console.log(getContextPath());
+			notice_PopupImg.innerHTML = "<img src='"+user_imgurl+"'>";
+//			console.log(`<img src="<%=request.getContextPath()%>${user_imgurl}">`);
+//			console.log(notice_PopupImg);
 		}
 	});
 
@@ -259,4 +275,11 @@ function notice_searchFunc(e){
 //팝업을 위한 함수
 function notice_PopupCancelFunc(e){
 	notice_Popup.style.display = "none";
+}
+
+//현재위치
+function getContextPath(){
+    var offset=location.href.indexOf(location.host)+location.host.length;
+    var ctxPath=location.href.substring(offset,location.href.indexOf('/',offset+1));
+    return ctxPath;
 }

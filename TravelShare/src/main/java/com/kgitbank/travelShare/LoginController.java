@@ -26,19 +26,9 @@ public class LoginController {
 
 		logininfo.setUser_email(user_email);
 		logininfo.setUser_password(user_password);
-
-		session.setAttribute("loginCheck", true);
-
+		
 		List<LoginInfo> loinfo = loginService.loginCheck(logininfo);
-		for (LoginInfo logo_info : loinfo) {
-			session.setAttribute("id", logo_info.getUser_id());
-			session.setAttribute("name", logo_info.getUser_name());
-			session.setAttribute("manager", logo_info.getUser_position());
-			System.out.println(session.getAttribute("id"));
-			System.out.println(session.getAttribute("name"));
-			System.out.println(session.getAttribute("manager"));
 
-		}
 		return "";
 	}
 

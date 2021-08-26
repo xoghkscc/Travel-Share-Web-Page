@@ -114,6 +114,8 @@ public class BoardContentController {
 		PrintWriter printWriter = null;
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
+		File file = new File(".");
+        String rootPath = file.getAbsolutePath();
 
 		try {
 
@@ -123,6 +125,7 @@ public class BoardContentController {
 
 			String uploadPath = request.getSession().getServletContext().getRealPath("/resources/files/board_img/") + fileRanName+".jpg";// 저장경로
 			out = new FileOutputStream(new File(uploadPath));
+
 			out.write(bytes);
 
 			String callback = request.getParameter("CKEditorFuncNum");
@@ -137,11 +140,12 @@ public class BoardContentController {
 			printWriter.println(json);
 			printWriter.flush();
 			
-			String path = request.getSession().getServletContext().getRealPath("./");
-			Pattern regex = Pattern.compile("\\.metadata");
-			String uploadPath2 = regex.split(path)[0]+"TravelShare\\src\\main\\webapp\\resources\\files\\board_img\\"+fileRanName+".jpg";// 저장경로
-			out = new FileOutputStream(new File(uploadPath2));
-			out.write(bytes);
+//			String path = request.getSession().getServletContext().getRealPath("./");
+//			Pattern regex = Pattern.compile("\\.metadata");
+//			String uploadPath2 = regex.split(path)[0]+"TravelShare\\src\\main\\webapp\\resources\\files\\board_img\\"+fileRanName+".jpg";// 저장경로
+//			System.out.println("2 : " + uploadPath2);
+//			out = new FileOutputStream(new File(uploadPath2));
+//			out.write(bytes);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
