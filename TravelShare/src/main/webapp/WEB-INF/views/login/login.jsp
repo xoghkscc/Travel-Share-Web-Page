@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
-<html lang="ko">
+<html lang="UTF-8">
 <head>
 <meta charset="utf-8">
 <title>로그인</title>
@@ -38,7 +38,7 @@
 				<a href="../membership/idsearch" class="search_text" id="id_search"> 아이디 찾기 </a> / <a href="../membership/passwordsearch" class="search_text" id="password_search"> 비밀번호 찾기 </a>
             </div>
 			<div id="membership">
-				<a href="../membership/membership"> 회원 가입 </a>
+				<a href="../membership/membership" id="membership_text"> 회원 가입 </a>
 			</div>
 
 	</div>

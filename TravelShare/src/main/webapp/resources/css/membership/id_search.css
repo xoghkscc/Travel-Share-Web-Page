@@ -22,7 +22,7 @@ body{
     background-color: rgb(243, 243, 243);
     text-align: center;
     position: absolute;
-    left: calc(48% - 175px);
+    left: calc(48% - 160px);
     top: calc(40% - 150px);
 }
 
@@ -106,6 +106,10 @@ body{
     width: 265px;
     font-size: 15px;
     margin-bottom: 15px;
+}
+
+#password_search {
+	color : gray;
 }
 
 #id_search1 > input:focus {
