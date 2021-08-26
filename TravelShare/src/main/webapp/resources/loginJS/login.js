@@ -21,7 +21,7 @@ login_loginbtn.onclick = (event) => {
 				login_warning.innerHTML = "아이디 혹은 비밀번호가 틀렸습니다.";
 			} else {
 				gocontroller();
-				location.href = "../login/goIndex";
+				location.href = `../login/goIndex?user_email=${this.user_email.value}`;
 			} 
 		} 
 	});

@@ -65,19 +65,14 @@ public class LoginController {
 
 	
 	@RequestMapping("/login/goIndex")
-	public String loginProcess2(HttpSession session) {
+	public String loginProcess2(HttpSession session, @RequestParam("user_email") String user_email) {
 
-
+		LoginInfo loginfo = loginService.getUserName(user_email);
 		session.setAttribute("loginCheck", true);
-		List<LoginInfo> loinfo = loginService.loginCheck(logininfo);
-//			session.setAttribute("id", session.getUser_id());
-//			session.setAttribute("name", logo_info.getUser_name());
-//			session.setAttribute("manager", logo_info.getUser_position());
-			System.out.println(session.getAttribute("id"));
-			System.out.println(session.getAttribute("name"));
-			System.out.println(session.getAttribute("manager"));
+		session.setAttribute("id", loginfo.getUser_id());
+		session.setAttribute("name", loginfo.getUser_name());
+		session.setAttribute("manager", loginfo.getUser_position());
 
-		
-		return "/index";
+		return "redirect:/site/index";
 	}
 }

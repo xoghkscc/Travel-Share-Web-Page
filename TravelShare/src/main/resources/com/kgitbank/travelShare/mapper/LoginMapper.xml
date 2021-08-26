@@ -13,6 +13,10 @@
         	SELECT user_id FROM user_info WHERE user_email=#{user_email } AND user_password= #{user_password }
         </select>
         
+       <select id="getUserName" resultType="com.kgitbank.travelShare.model.LoginInfo">
+        	SELECT * FROM user_info WHERE user_email=#{user_email}
+        </select>
+    
      
 </mapper>
 
