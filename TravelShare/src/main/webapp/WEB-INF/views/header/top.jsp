@@ -20,17 +20,17 @@
 				<li><a class="guide_link" href="../qna/qnaList">QNA</a></li>
 				<li><a class="guide_link" href="#">게시판</a></li>					
 			<c:choose>	
-				<c:when test="${empty sessionScope.loginCheck }">
+				<c:when test="${empty sessionScope.loginCheck}">
 					<li><a class="guide_link" href="../site/login">로그인</a></li>
 				</c:when>
-				<c:when test="${sessionScope.manager eq 'member' }">
+				<c:when test="${sessionScope.manager eq 'member'}">
 					<li id="popupmenu-item">
 							<ul  class="popupmenu-menu">
 								<li><a href="#">회원정보</a></li>
 								<li><a href="#">공지</a></li>
 								<li><a href="../logoutProcess">로그아웃</li>
 							</ul>
-						<a class="guide_link">${sessionScope.name }님</a></li>
+						<a class="guide_link">${sessionScope.name}님</a></li>
 						<li><a class="guide_link" href="#"><span class="material-icons-outlined">notifications</span></a></li>
 				</c:when>
 				<c:otherwise>
