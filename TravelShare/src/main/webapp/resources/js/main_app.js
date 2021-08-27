@@ -45,15 +45,17 @@ function main_map_scroll(e) {
         main_sticky_text[1].style.opacity = '1';
         main_sticky_text[1].style.left = '0px';
         main_sticky_text[1].style.top = '30px';
-        main_sticky_text[2].style.left = '-1200px';
+        main_sticky_text[2].style.left = '-100vw';
     }else if(main_scrollY > 2000){
         main_cellphone_list[0].children[0].style.opacity = '1';
         main_cellphone_list[1].children[0].style.opacity = '0';
         main_sticky_text[0].style.opacity = '1';
         main_sticky_text[0].style.left = '0px';
         main_sticky_text[0].style.top = '30px';
-        main_sticky_text[1].style.left = '-1200px';
-    }
+        main_sticky_text[1].style.left = '-100vw';
+    }else{
+		main_sticky_text[0].style.left = '-100vw';
+	}
 }
 
 function main_bottomMenu_mouseover(e) {

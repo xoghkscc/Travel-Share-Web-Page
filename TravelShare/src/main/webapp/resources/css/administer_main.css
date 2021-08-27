@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&family=Cute+Font&family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
 body{
+	height: 100vh;
     background-image: url(../files/back4.jpg);
     background-size: cover;
 }
@@ -22,6 +23,7 @@ body{
 }
 
 .admin_container{
+	margin-top: 90px;
     background-color: blanchedalmond;
     border: 3px black solid;
     border-radius: 2%;
@@ -99,7 +101,7 @@ table{
     border: 1px red solid;
 }
 
-.admin_notice_paging{
+.admin_notice_paging, .admin_board_paging{
     margin: auto;
     margin-top: 15px;
     width: 200px;
@@ -107,7 +109,7 @@ table{
     display: flex;
     justify-content: center;
 }
-.admin_notice_paging > span{
+.admin_notice_paging > span, .admin_board_paging > span{
     text-align: center;
     line-height: 210%;
     margin-left: 3px;
@@ -118,7 +120,7 @@ table{
     width: 25px;
     height: 30px;
 }
-.admin_notice_paging > span:hover{
+.admin_notice_paging > span:hover, .admin_board_paging > span:hover{
 	background-color: black;
     color: orangered;
 }
@@ -126,7 +128,8 @@ table{
 /******************************
 	확인창 관련 css
 ******************************/
-.admin_hiddenAlarm{
+.admin_hiddenAlarm, .admin_hiddenAlarm2, .admin_hiddenAlarm3{
+	z-index: 1000;
 	position: absolute;
 	border-radius: 3%;
 	left: calc(50% - 225px);
@@ -142,15 +145,22 @@ table{
     transform: translateY(30px);
     transition: 0.5s;
 }
-.admin_hiddenAlarm > div{
+.admin_hiddenAlarm > :first-child, .admin_hiddenAlarm2 > :first-child{
     /* border: 1px solid red; */
     width: 300px;
     position: absolute;
     top: 83px;
     left: 200px;
 }
+.admin_hiddenInnerText, .admin_hiddenInnerText2{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 250px;
+	font-size: 18px;
+}
 
-.admin_hiddenAlarm > div > button{
+.admin_hiddenAlarm > :first-child > button, .admin_hiddenAlarm2 > :first-child > button{
     background-color: rgb(36, 125, 242);
     color: white;
     width: 67px;
@@ -161,17 +171,60 @@ table{
     transition: 1s;
     /* box-shadow: 1px 1px 2px rgb(255, 255, 255) inset; */
 }
-.admin_hiddenAlarm > div > :nth-child(3){
+.admin_hiddenAlarm > :first-child > :nth-child(3){
     background-color: white;
     border: 1px rgb(205, 205, 205) solid;
     color: rgb(36, 125, 242);
 }
-.admin_hiddenAlarm > div > button:hover{
+.admin_hiddenAlarm > :first-child > button:hover{
     background-color: rgb(66, 165, 255);
     box-shadow: 1px 1px 2px rgb(255, 255, 255) inset;
 }
-.admin_hiddenAlarm > div > :nth-child(3):hover{
+.admin_hiddenAlarm > :first-child > :nth-child(3):hover{
     background-color: rgba(66, 165, 255, 0.2);
+}
+
+.admin_hiddenAlarm2 > :first-child > :nth-child(1){
+	background-color: rgb(150,255,255);
+	color: black;
+}
+.admin_hiddenAlarm2 > :first-child > :nth-child(3){
+	background-color: rgb(255,150,255);
+	color: black;
+}
+.admin_hiddenAlarm2 > :first-child > :nth-child(2){
+	background-color: rgb(255,255,150);
+	color: black;
+}
+.admin_hiddenAlarm2 > :first-child > button:hover{
+    background-color: rgb(66, 165, 255);
+    box-shadow: 1px 1px 2px rgb(255, 255, 255) inset;
+}
+.admin_hiddenAlarm2 > :first-child > :nth-child(3):hover{
+    background-color: rgba(66, 165, 255, 0.2);
+}
+
+.admin_hiddenAlarm3 > input{
+	border: black 1px solid;
+	width: 300px;
+	height: 30px;
+    position: absolute;
+    top: 45px;
+    left: 20px;
+}
+.admin_hiddenAlarm3 > :nth-child(2){
+	width: 50px;
+	height: 30px;
+    position: absolute;
+    top: 90px;
+    left: 20px;
+}
+.admin_hiddenAlarm3 > :nth-child(3){
+	width: 50px;
+	height: 30px;
+    position: absolute;
+    top: 90px;
+    left: 100px;
 }
 
 .notice_hiddenId{
@@ -195,7 +248,8 @@ table{
 .tbodyclass > tr{
      border: 1px black solid;
 }
-.tbodyclass > tr:hover, .tbodyclass_admin > tr:hover, .tbodyclass_notice > tr:hover{
+.tbodyclass > tr:hover, .tbodyclass_admin > tr:hover, .tbodyclass_notice > tr:hover,
+.tbodyclass_board > tr:hover, .tbodyclass_declare > tr:hover{
      border: 1px black solid;
      background-color: rgba(50,50,250,0.3);
 }

@@ -19,5 +19,18 @@ public interface UserMapper {
 	@Select("SELECT * FROM user_info order by user_warning desc")
 	public List<User> getAdmin_warningList();
 	
+	//get User only one
+	public User getAdmin_User(@Param("noticeNickName") String noticeNickName);
+	
 	public List<User> getAdmin_SearchingList(@Param("name") String name);
+	
+	//getId
+	public int getAdminUsersId();
+	
+	//update
+	public int getAdmin_position_update(@Param("AdminNickName") String AdminNickName, @Param("AdminPositionValue") String AdminPositionValue);
+	public int getAdmin_declare_update(@Param("AdminNickName") String AdminNickName, @Param("declareCnt") String declareCnt);
+
+	//delete
+	public int deleteAdminUser(@Param("adminUserEmail") String adminUserEmail);
 }

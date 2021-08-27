@@ -35,12 +35,12 @@ highMaps.prototype.init = function(){
         mapHeight = 900;
         mapFontSize = 10;
     }else if(drawMap == 2){
-        console.log("2단계");
+    
         mapWidth = 590;
         mapHeight = 650;
         mapFontSize = 7.5;
     }else if(drawMap == 3){
-        console.log("3단계");
+ 
         mapWidth = 450;
         mapHeight = 550;
         mapFontSize = 6;

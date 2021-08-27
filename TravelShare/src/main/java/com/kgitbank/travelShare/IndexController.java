@@ -16,7 +16,7 @@ public class IndexController {
 	
 	@RequestMapping("/login")
 	public String getLogin() {
-		return "login/naverLogin";
+		return "login/login";
 	}
 	
 	@RequestMapping("/callback")
