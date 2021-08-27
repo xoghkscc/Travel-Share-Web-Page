@@ -1,6 +1,10 @@
 package com.kgitbank.travelShare;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -80,11 +84,15 @@ public class AdminRestController {
 	}
 	
 	@RequestMapping(value="/admin_noticeUpdate", produces=MediaType.APPLICATION_JSON_VALUE)
-	public NoticeModel getAdmin_noticeUpdate(@RequestParam("noticeId") String noticeId){
+	public NoticeModel getAdmin_noticeUpdate(HttpServletRequest request, @RequestParam("noticeId") String noticeId){
 		
 		//mapping안하고 바로 @셀렉트
 		NoticeModel NoticeModel = AdminNoticeMapper.getNoticeOne(noticeId);
 
+//		String uploadPath = request.getSession().getServletContext().getRealPath("/resources/files/user_img/") + "null"+".jpg";// 저장경로
+//	
+//		NoticeModel.setUser_imgurl(uploadPath);
+		
 		return NoticeModel;
 	}
 	

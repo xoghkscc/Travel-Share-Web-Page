@@ -11,12 +11,12 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="http://code.highcharts.com/maps/highmaps.js"></script>
 <script src="http://code.highcharts.com/maps/modules/drilldown.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/main_chart.js?ver=5.15"></script>
+<script src="<%=request.getContextPath()%>/resources/js/main_chart.js?ver=5.18"></script>
 <script type="text/javascript">
 var highMap = new highMaps();
 highMap.init();
 </script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css?ver=5.15">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css?ver=5.16">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main_board.css?ver=1.00">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Two+Tone|Material+Icons+Sharp|Material+Icons+Outlined" rel="stylesheet">
 <link rel="shortcut icon" href="#">
@@ -140,16 +140,41 @@ highMap.init();
                     <div class="main_scroll_height"></div>
                 </div>
             </section>
-            <section class="normal-content global-width">
-                <h2>왼쪽조</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis ullam culpa ab, laborum repellat ut quae deleniti nostrum sapiente illum!</p>
-                <h2>프로젝트 성공을 위한 걸음</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam provident voluptatum numquam dolorum, quod odio.</p>
-                <h2>오늘도 힘내보자</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui impedit numquam atque quidem quos facere obcaecati deleniti labore culpa esse nostrum dicta earum rem ducimus, voluptates eligendi voluptate exercitationem dolorem!</p>
+            <section class="main_lastWord global-width">
+            	<div>
+	                <h2>일상을 떠나는 사람들</h2>
+	                <p>업무에 시달리고, 학업에 시달리는 여러분들을 위해 하루의 행복한 시간을 선물해드립니다.<br></p>
+            	</div>
+            	<div>
+	                <h2>St. Auhustine</h2>
+    	            <p>여행하지 않는 사람들에게는, 이 세상이 한 페이지만 읽은 책과 같다.</p>
+            	</div>
+                <div>
+	                <h2>Lin Yutang</h2>
+	                <p>여행이 얼마나 아름다운 것인지는, 집으로 돌아와 오래되고 친숙한 베개에 누워 쉴 때까지 깨닫지 못한다.</p>
+                </div>
+                <div>
+	                <h2>고도원 ‘사랑합니다, 감사합니다’ 중</h2>
+	                <p>인생은 여행이다. 여행은 떠나는 일이다. 오늘의 나를 떠나 어제의 나와 내일의 나를 만나는 일이다.힘들여 오늘을 살아가는
+	                    나로부터 벗어나 새로운 나와 소통하는 일은 살아가면서 얼마나 중요한가. 타지에서의 깊은밤 낯선 침대에 누워 어둠에 안겨있노라면
+	                    내가 있던 자리에 두고 온 많은 일들이 그 동안 내 삶을 얼마나 꽁꽁 묶어놓고 있었는지를 깨닫게 된다. 사람에 치이고 생활에 찌든
+	                    현실의 무게는 늘 버거웠고 사랑에 배고픈 일상은 언제나 외로웠다. 오늘..아무리 삶이 버겁고 외로울지라도 언제나 사랑합니다.
+	                    감사합니다... 한마디 하면서 살아가는 사람에게 행복은 늘 품 안에 있다. </p>
+                </div>
             </section>
-            <footer class="global-footer">
-                <span>fotter자리</span>
+
+            <footer class="footer_container">
+               <div>
+                    <div class="footer_logo"></div>
+                    <div>Travel<span style="color: orangered;">ers</span></div>
+               </div>
+               <div>
+                   <div onclick="location.href='#'"></div>
+                   <div onclick="location.href='#'"></div>
+                   <div onclick="location.href='#'"></div>
+                   <div onclick="location.href='#'"></div>
+               </div>
+               <div>A website created by the collaboration of the left team</div>
             </footer>
         </section>
     </main>

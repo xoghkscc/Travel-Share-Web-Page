@@ -171,7 +171,7 @@
                         </span>
                     </div>
 					<!-- 등록form -->
-                    <form id="notice_form" action="/travelShare/site/adminNotice" method="POST">
+                    <form id="notice_form" action="/travelShare/site/adminNotice" method="POST" enctype="multipart/form-data">
                     	<div>
 							<label>제목 입력하기</label>
 							<input id="noticeTitle" type="text" name="noticeTitle" placeholder="제목을 입력해주세요">
