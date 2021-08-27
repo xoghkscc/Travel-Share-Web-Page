@@ -58,7 +58,7 @@
         FROM boardsample board_id) WHERE RNUM BETWEEN #{startnum } AND #{endnum }-1
 	</select>
 	
-	<select id="getMainBestPlace" resultType="com.kgitbank.travelShare.model.BoardLikeModel">
+	<select id="getMainBestPlace" resultType="com.kgitbank.travelShare.model.LikeViewModel">
 		select * from (SELECT * FROM like_view order by LIKE_CNT DESC) where rownum <![CDATA[<]]> 5
 	</select>
 </mapper>

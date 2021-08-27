@@ -1,4 +1,4 @@
-package com.kgitbank.travelShare;
+package com.kgitbank.travelShare.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -16,6 +16,7 @@ import com.kgitbank.travelShare.mapper.AdminNoticeMapper;
 import com.kgitbank.travelShare.mapper.UserMapper;
 import com.kgitbank.travelShare.model.BoardLikeModel;
 import com.kgitbank.travelShare.model.BoardModel;
+import com.kgitbank.travelShare.model.LikeViewModel;
 import com.kgitbank.travelShare.model.NoticeModel;
 import com.kgitbank.travelShare.model.User;
 
@@ -142,9 +143,9 @@ public class AdminRestController {
 	}
 	
 	@RequestMapping(value="/GetbestPlace", produces=MediaType.APPLICATION_JSON_VALUE)
-	public List<BoardLikeModel> getBestPlace() {	
+	public List<LikeViewModel> getBestPlace() {	
 		
-		List<BoardLikeModel> boardLikeModel = AdminNoticeMapper.getMainBestPlace();
+		List<LikeViewModel> boardLikeModel = AdminNoticeMapper.getMainBestPlace();
 
 		return boardLikeModel;
 	}

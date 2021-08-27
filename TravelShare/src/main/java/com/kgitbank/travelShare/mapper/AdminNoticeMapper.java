@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Param;
 
 import com.kgitbank.travelShare.model.AdminNotice;
-import com.kgitbank.travelShare.model.BoardLikeModel;
 import com.kgitbank.travelShare.model.BoardModel;
+import com.kgitbank.travelShare.model.LikeViewModel;
 import com.kgitbank.travelShare.model.NoticeModel;
 
 public interface AdminNoticeMapper {
@@ -14,7 +14,7 @@ public interface AdminNoticeMapper {
 	//select all
 	public ArrayList<NoticeModel> getNoticesAll();
 	public ArrayList<BoardModel> getBoardsAll();
-	public ArrayList<BoardLikeModel> getMainBestPlace();
+	public ArrayList<LikeViewModel> getMainBestPlace();
 	
 	//select only one
 	public NoticeModel getNoticeOne(@Param("num") String num);
