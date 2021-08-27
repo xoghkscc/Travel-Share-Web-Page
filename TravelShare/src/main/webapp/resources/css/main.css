@@ -323,8 +323,15 @@ main{
     font-family: 'Cute Font', cursive;
     font-weight: bold;
 }
-
-
+/*******************************
+	last word섹션
+********************************/
+.main_lastWord{
+    line-height: 35px;
+}
+.main_lastWord > div{
+    margin-top: 20px;
+}
 /*********************************
 게시판
 ********************************/
@@ -538,6 +545,86 @@ main{
 
 .scroll-text{
     position: relative;
+}
+
+
+/********************************
+	footer
+*********************************/
+.footer_container{
+	margin-top: 30px;
+	width: 100vw;
+	height: 300px;
+	background-color: black;
+    display: grid;
+    grid-auto-rows: 45% 25% auto;
+    justify-content: center;
+}
+.footer_container > :first-child{
+    /* border: 1px solid red; */
+    margin-top: 30px;
+    display: flex;
+    /* border: 1px green solid; */
+    align-items: center;
+    justify-content: center;
+}
+.footer_container > :first-child > :nth-child(1){
+    background-image: url(../files/mainlogo.png);
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    /* border: thistle 1px solid; */
+}
+.footer_container > :first-child > :nth-child(2){
+    color: blanchedalmond;
+    font-size: 45px;
+    /* margin-bottom: 5px; */
+    font-family: 'Jua', sans-serif;
+}
+
+.footer_container > :nth-child(2){
+    /* border: 1px turquoise solid; */
+    width: 320px;
+    height: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    margin: auto;
+    /* border: 2px solid sandybrown; */
+}
+.footer_container > :nth-child(2) > div{
+    
+    /* border: 1px red solid; */
+    width: 70px;
+    height: 70px;
+}
+.footer_container > :nth-child(2) > :first-child{
+    background-image: url(../files/youtubeLogo.png);
+    background-size: cover;
+}
+.footer_container > :nth-child(2) > :nth-child(2){
+    background-image: url(../files/instagramLogo.png);
+    background-size: cover;
+}
+.footer_container > :nth-child(2) > :nth-child(3){
+    background-image: url(../files/twitterLogo.png);
+    background-size: cover;
+}
+.footer_container > :nth-child(2) > :nth-child(4){
+    background-image: url(../files/facebookLogo.png);
+    background-size: cover;
+}
+.footer_container > :nth-child(2) > div:hover{
+    border: 5px sandybrown solid;
+    border-radius: 18px;
+    cursor: pointer;
+}
+.footer_container > :nth-child(3){ 
+    margin-top: 10px;
+    text-align: center;
+    color: white;
 }
 
 

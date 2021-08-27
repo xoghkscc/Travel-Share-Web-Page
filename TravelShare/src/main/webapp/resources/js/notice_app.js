@@ -205,23 +205,9 @@ function getNoticePopup(num){
 			
 			var x = document.createElement('img');
 
-//			  x.setAttribute("src", `${getContextPath()}/resources/files/user_img/back4.jpg"`);
-//			
-//			  x.setAttribute("width", "304");
-//			
-//			  x.setAttribute("height", "228");
-//
-//  			notice_PopupImg.innerHTML = user_imgurl;
-//	console.log(notice_PopupImg);
-	
-//			notice_PopupImg.style.backgroundImage = `url("${user_imgurl}")`;
-			notice_PopupImg.style.backgroundSize = "cover";
-			
-			
-//			console.log(getContextPath());
-			notice_PopupImg.innerHTML = "<img src='"+user_imgurl+"'>";
-//			console.log(`<img src="<%=request.getContextPath()%>${user_imgurl}">`);
-//			console.log(notice_PopupImg);
+			notice_PopupImg.style.backgroundImage = `url(${getContextPath()}${user_imgurl}`;
+			notice_PopupImg.style.backgroundSize = "100%, 100%";
+
 		}
 	});
 

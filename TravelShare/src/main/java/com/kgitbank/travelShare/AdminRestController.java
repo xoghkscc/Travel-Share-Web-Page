@@ -89,9 +89,9 @@ public class AdminRestController {
 		//mapping안하고 바로 @셀렉트
 		NoticeModel NoticeModel = AdminNoticeMapper.getNoticeOne(noticeId);
 
-		String uploadPath = request.getSession().getServletContext().getRealPath("/resources/files/user_img/") + "null"+".jpg";// 저장경로
-	
-		NoticeModel.setUser_imgurl(uploadPath);
+//		String uploadPath = request.getSession().getServletContext().getRealPath("/resources/files/user_img/") + "null"+".jpg";// 저장경로
+//	
+//		NoticeModel.setUser_imgurl(uploadPath);
 		
 		return NoticeModel;
 	}

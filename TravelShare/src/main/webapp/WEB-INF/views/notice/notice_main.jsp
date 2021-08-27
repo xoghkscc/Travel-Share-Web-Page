@@ -8,7 +8,7 @@
 <title>게시물 목록</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/resources/css/notice_list.css?ver=1.31">
+	href="<%=request.getContextPath()%>/resources/css/notice_list.css?ver=1.33">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Two+Tone|Material+Icons+Sharp|Material+Icons+Outlined" rel="stylesheet">
 </head>
 
