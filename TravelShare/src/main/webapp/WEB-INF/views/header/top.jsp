@@ -18,7 +18,7 @@
 			<ul class="nav-links">
 				<li><a class="guide_link" href="../board/mainBoard">여행지</a></li>
 				<li><a class="guide_link" href="../qna/qnaList">QNA</a></li>
-				<li><a class="guide_link" href="#">게시판</a></li>					
+				<li><a class="guide_link" href="../notice/main">공지사항</a></li>					
 			<c:choose>	
 				<c:when test="${empty sessionScope.loginCheck}">
 					<li><a class="guide_link" href="../site/login">로그인</a></li>
