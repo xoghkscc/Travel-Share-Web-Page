@@ -16,91 +16,117 @@ body{
     /* overflow: hidden; */
 }
 
-.login_backgroundImg{
-    z-index: -1;
-    /* filter: blur(3px); */
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background-image: url(../files/back4.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* filter: blur(5px); */
+a {
+    text-decoration: none;
+    color: gray;
 }
 
-.loginBox{
-    background-color: rgba(51, 173, 255, 0.12);
-    display: grid;
-    grid-template-rows: 50% 13% 20% 10%;
+a:visited { 
+	color : gray;
+ }
 
+.loginBox{
+   	background-color: rgb(243, 243, 243);
     text-align: center;
     position: absolute;
-    left: calc(50% - 175px);
-    top: calc(50% - 150px);
+    left: calc(48% - 160px);
+    top: calc(40% - 150px);
 }
 
 #basic_login{
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+
     font-family: 'Ubuntu', sans-serif;
-    font-size: 40px;
-    color: blanchedalmond;
+    font-size: 20px;
+    background-color: rgb(243, 243, 243);
 
 }
-.login_text{
+
+#login_text{
+	background-color: white;
+    padding-top: 10px;
+    height: 45px;
+}
+
+#email_info {
+    margin-top: 25px;
+    padding-left: 40px;
+  
+}
+
+#password_info {
+    margin-top: 15px;
+    padding-left: 40px;
+    
+}
+
+#user_email{
+    height: 50px;
+    width: 265px;
+    font-size: 15px;
+    padding-left: 15px;
+    border: 0.5px solid rgb(225, 225, 225)
+  
+}
+
+#user_password {
+    height: 50px;
+    width: 265px;
+    font-size: 15px;
+    padding-left: 15px;
+    border: 0.5px solid rgb(225, 225, 225)
+}
+
+.login_info{
     display: grid;
-    grid-template-columns: 30% 70%;
     color: black;
     font-size: 20px;
 }
 
-.login_text > input{
-    height: 30px;
-    width: 170px;
-}
-
-.login_find{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: auto;
-    
-}
-
-.login_find > *{
-    width: 100px;
-    height: 30px;
-    border: 2px black solid;
-    background-color: coral;
-    /* color: black; */
-    border-radius: 10%;
-    margin: 10px;
-    font-size: 15px;
-    line-height: 220%;
-}
-
-.login_find >*:hover{
-    cursor: pointer;
-    background-color: crimson;
-}
-
-#naver_id_login{
-    margin-top: 15px;
-}
-
 
 #login_loginbtn{
-    margin: auto;
-    background-color: white;
-    border-radius: 5%;
-    width: 230px;
+    background-color: rgb(255, 109, 0);
+    color: white;
+    margin-top: 15px;
+    width: 265px;
     height: 50px;
-    color: rgba(128, 128, 128, 0.658);
-    font-weight: bold;
-    line-height: 300%;
+    border: 0;
+    border-radius: 4px 4px 4px 4px
+
 }
 
 #login_loginbtn:hover{
     cursor: pointer;
+}
+
+#search_box{
+    margin-top: 20px;
+}
+
+.search_text {
+    color: gray;
+    
+}
+
+#login_warning {
+    color: rgb(255, 109, 0);
+    font-size: 15px;
+    padding-top: 5px;
+}
+
+#membership {
+    margin-top: 21px;
+   
+}
+
+#membership_text {
+	 color: gray;
+}
+
+input:focus {
+    outline: 2px solid black;
+}
+
+.loing_container{
+	width: 100%;
+	height: 100vh;
 }

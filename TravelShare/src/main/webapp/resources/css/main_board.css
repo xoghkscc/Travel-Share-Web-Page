@@ -81,17 +81,20 @@ select{
     					row-gap: 25px;
     					column-gap: 12px;
     					width: 1040px;}
+	.board_create {width: 1080px;}
 }
 
 @media (max-width: 1080px){
 	.board_list_travel {grid-template-columns: 33% 33% 33%;
 						width: 770px;}
-	.sel{width: 770px}
+	.board_create {width: 770px;}
+	.sel{width: 780px}
 }
 
 @media (max-width: 780px){
 	.board_list_travel {grid-template-columns: 50% 50%;
 	width: 500px;}
+	.board_create {width: 530px;}
 	.sel{width: 500px}
 	h2{font-size: 18px}
 	.region_area {width: 80px}
@@ -100,6 +103,7 @@ select{
 @media (max-width: 530px){
 	.board_list_travel {grid-template-columns: 100%;
 	width: 244px;}
+	.board_create {width: 244px;}
 	.sel{width: 244px}
 	.sel_pan{justify-content: center}
 	h2{font-size: 13px}
@@ -182,7 +186,7 @@ select{
     justify-content: space-around;
     border: solid #e1e1e1;
     border-width: 0px 1px 0px 0px;
-    cursor: pointer;
+    cursor: default;
 }
 
 .board_area_img{
@@ -195,19 +199,38 @@ select{
     justify-content: space-around;
     border: solid #e1e1e1;
     border-width: 0px 1px 0px 0px;
-    cursor: pointer;
+    cursor: default;
 }
 
 .board_like_img{
     font-size: 22px;
 }
 
-.board_likePan:hover{
-    color: #e56c23;
+.board_create{
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+	
 }
 
+.board_create>button {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+	width: 80px;
+	height: 30px;
+	font-size: 14px;
+	color: black;
+	background-color: white;
+	cursor: pointer;
+	border: 1px solid #e6e6e6;
+}
+.board_create>button>p {
+	margin-top: 5px;	
+}
 .board_paging{
-    margin-top: 100px;
+    margin-top: 40px;
     margin-bottom: 100px;
     font-size: 20px;
     color: gray;
@@ -356,7 +379,6 @@ select{
     width: 145px;
     height: 35px;
     border: none;
-    color: #bdbdbd;
     background-color: #fff;
     font-size: 14px;
     font-weight: bold;
@@ -368,9 +390,7 @@ select{
     
     margin-bottom: 40px;
 }
-.board_scrap_btn:hover{
-    color: #ff6d00;
-}
+
 
 .board_travelPlans{
     width: 100%;
@@ -535,8 +555,24 @@ select{
 .board_comment_tit{
     width: 55vw;
     text-align: left;
+    display: flex;
+    justify-content: space-between;
 }
 
+.board_ud{
+    display: flex;
+	align-items: center;
+}
+
+.board_ud > button {
+	width: 60px;
+	height: 40px;
+	margin-left: 10px;
+	color: black;
+	background-color: white;
+	cursor: pointer;
+	border: 1px solid #e6e6e6; 
+}
 .board_comment_write{
     width: 55vw;
     background-color: #f7f7f7;
@@ -551,7 +587,7 @@ select{
 .board_comment_write>form{
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
 }
 
 .board_comment_write>form>input:first-child{
@@ -562,7 +598,7 @@ select{
     font-size: 16px;
     text-align: center;
 }
-.board_comment_write>form>input:nth-child(2){
+.board_comment_write>form>input:nth-child(3){
     height: 71px;
     box-sizing: border-box;
     font-size: 16px;
@@ -613,9 +649,23 @@ select{
 @media (max-width: 500px){
 	.board_comment_tit>p{font-size: 15px;}
 	.board_comment_write>form>input:first-child{ width: 150px; font-size: 10px;}
-	.board_comment_write>form>input:nth-child(2){font-size: 10px;}
+	.board_comment_write>form>input:nth-child(3){font-size: 10px;}
 	.board_comment_see_text>div:nth-child(2) {font-size: 10px;}
 	.board_comment_see_img>img{width: 50px; height: 50px;}
 }
 
 
+#board_content_id{
+	display: none;
+}
+
+
+.board_middle{
+	color: rgb(241, 175, 135);
+}
+
+.board_top{
+	color: #e56c23;
+}
+
+	

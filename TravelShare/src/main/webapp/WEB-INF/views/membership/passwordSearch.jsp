@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>ºñ¹Ğ¹øÈ£ Ã£±â</title>
+<meta charset="UTF-8">
+<title>ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</title>
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
 	charset="utf-8"></script>
@@ -15,35 +15,39 @@
 	href="<%=request.getContextPath()%>/resources/css/membership/password_search.css">
 </head>
 <body>
-	<jsp:include page="../header/top.jsp"></jsp:include>
+	<jsp:include page="../header/top2.jsp"></jsp:include>
+	<div class="loing_container" style="width: 100%; height: 100vh"></div>
+	<form id="password_search" action="./passwordsearch" method="POST" autocomplete='off'></form>
 	<div class="password_search_box">
 		<div>
-			<div id="password_search1">ºñ¹Ğ¹øÈ£ Ã£±â</div>
-
-			<div id="red">
-				<div class="id_text">
-					<b>¾ÆÀÌµğ</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"
-						class="info">
+			<div id="password_search1">ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</div>
+				<div class="email_text" id="email_text">
+					<input type="text" class="info" name="user_email" placeholder="ì•„ì´ë””" form="password_search" id="user_email">
 				</div>
-				<div class="phone_text">
-					<b>ÀüÈ­¹øÈ£</b>&nbsp;&nbsp;<input type="text" class="info"
-						id="phone_text1" maxlength="11">
+				<div class="phone_text" id="phone_text">
+					<input type="text" name="user_phonenumber" placeholder="í•¸ë“œí° ë²ˆí˜¸" form="password_search" class="info"
+						id="user_phone" maxlength="11">
+						<button id="check_button">ì¸ì¦í•˜ê¸°</button>
 				</div>
+				<div class="phone_text" id="check_num">
+					<input type="text" class="info" placeholder="ì¸ì¦ë²ˆí˜¸ 4ìë¦¬ ì…ë ¥"  id="phone_check" maxlength="4">
+					<input type="hidden" id="checkNum">	
+				</div>
+				<div id="phone_warning"></div>				
 			</div>
-			<div id="password_search">
-				<span><a href="./idsearch"><b>¾ÆÀÌµğ Ã£±â<b></a></span> <span
-					id="submit"><input id="passwordsearch_sub" type="submit"
-					value="ºñ¹Ğ¹øÈ£ Ã£±â"></span>
+			<div id="id_search">
+				<input id="password_sub" form="password_search" type="submit" value="ë¹„ë°€ë²ˆí˜¸ì°¾ê¸°">
+			</div>
+			<div>
+				<a href="./idsearch" id="id_search">ì•„ì´ë”” ì°¾ê¸°</a>
 			</div>
 
-		</div>
 	</div>
-
-
+	<jsp:include page="../footer/footer.jsp"></jsp:include>
 	<script>
-      $('.password_search_box').css('border','3px solid skyblue');
-      $('.password_search_box').css('width','400px');
-      $('.password_search_box').css('height','300px');
+      $('.password_search_box').css('border','1px solid black');
+      $('.password_search_box').css('width','350px');
+      $('.password_search_box').css('height','400px');
       $('.password_search_box').css('margin','auto');
   </script>
 	<script

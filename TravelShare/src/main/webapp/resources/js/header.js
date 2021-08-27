@@ -1,6 +1,6 @@
-const burger = document.querySelector(".burger"); 
-const nav = document.querySelector(".nav-links"); 
+const burger = document.querySelectorAll("burger");
 const navlinks = document.querySelectorAll(".nav-links li");
+const nav = document.querySelector(".nav-links"); 
 const guide_header = document.querySelector("#guide_header");
 const guide_link = document.querySelectorAll(".guide_link");
 window.addEventListener('scroll', function(e){
@@ -35,15 +35,14 @@ const navAnimation = () => {
     }); 
   };
 
-  const handleNav = () => { 
-    nav.classList.toggle("nav-active"); 
-    //nav Animation 
-    navAnimation(); 
-    //burger Animation 
-    burger.classList.toggle("toggle"); 
-  }; 
-  const navSlide = () => { 
-    burger.addEventListener("click", handleNav); 
+  function navSlide() { 
+    burger.onclick= () => {
+	    nav.classList.toggle("nav-active"); 
+	    //nav Animation 
+	    navAnimation(); 
+	    //burger Animation 
+	    burger.classList.toggle("toggle"); 
+	};
   };
   const setNavTransition = (width) => { 
     if (width > 768) { 

@@ -10,7 +10,7 @@ import lombok.ToString;
 @Data
 @ToString
 public class UserInfo {
-	
+	private int user_id;
 	private String user_email;
 	private String user_password;
 	private String user_name;
@@ -31,6 +31,6 @@ public class UserInfo {
 	private String user_month;
 	private String user_day;
 	private String user_birth;
-	
+
 	
 } 

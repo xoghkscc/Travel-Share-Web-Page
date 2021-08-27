@@ -38,6 +38,26 @@ public class BoardContentController {
 	@Autowired
 	BoardMapper boardMapper;
 	
+	@GetMapping("deleteBoard")
+	public void deleteBoard(HttpServletRequest req, HttpServletResponse resp) {
+		String board_id = req.getParameter("board_id");
+		boardMapper.deleteBoard(Integer.parseInt(board_id));
+		try {
+			resp.sendRedirect("./mainBoard");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@GetMapping("updateBoard")
+	public String createBoard(HttpServletRequest req, Model model) {
+		String board_id = req.getParameter("board_id");
+		BoardModel bm = boardMapper.selectBoardSearch(Integer.parseInt(board_id));
+		model.addAttribute("updateBoardInfo", bm);
+		return "/board/update_board";
+	}
+	
 	public Model filterText(HttpServletRequest req, Model model) {
 		String sidoName = req.getParameter("sidoName");
 		String sidogunName = req.getParameter("sidogunName");
@@ -69,8 +89,11 @@ public class BoardContentController {
 	
 	@GetMapping("mainBoard")
 	public String mainBorder(Model model, HttpSession session) {
-		System.out.println("id : "+session.getAttribute("id"));
 		model.addAttribute("boardDB", boardMapper.getBoardAll());
+		
+		if(session.getAttribute("id") != null) {
+			model.addAttribute("id", session.getAttribute("id"));
+		} 
 		return "/board/main_board";
 	}
 
@@ -79,8 +102,49 @@ public class BoardContentController {
 		return "/board/create_board";
 	}
 
+	@RequestMapping(value = "updateBoard", method = RequestMethod.POST)
+	public void updateBoard(HttpServletRequest request, HttpServletResponse response, BoardModel boardModel,
+			@RequestParam("board_mainimgReal") MultipartFile upload) {
+		OutputStream out = null;
+		if(!upload.isEmpty()) {
+			try {
+				byte[] bytes = upload.getBytes();
+				UUID uuid = UUID.randomUUID();
+				String fileRanName = uuid.toString();
+				
+				String path = request.getSession().getServletContext().getRealPath("./");
+				Pattern regex = Pattern.compile("\\.metadata");
+				String uploadPath2 = regex.split(path)[0]+"TravelShare\\src\\main\\webapp\\resources\\files\\board_img\\"+fileRanName+".jpg";// 저장경로
+				out = new FileOutputStream(new File(uploadPath2));
+				out.write(bytes);
+				boardModel.setBoard_mainimg(request.getContextPath()+"/resources/files/board_img/" + fileRanName+".jpg");
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			boardMapper.updateBoard1(boardModel);
+		}else {
+			boardMapper.updateBoard2(boardModel);
+		}
+		
+		try {
+			response.sendRedirect("./mainBoard");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		try {
+//			response.sendRedirect("./mainBoard");
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		나중에 게시판 만들고 가야할 위치를 정해야함
+	}
+	
 	@RequestMapping(value = "createBoard", method = RequestMethod.POST)
-	public String insertBoard(HttpServletRequest request, HttpServletResponse response, BoardModel boardModel,
+	public void insertBoard(HttpServletRequest request, HttpServletResponse response, BoardModel boardModel,
 			@RequestParam("board_mainimgReal") MultipartFile upload) {
 		OutputStream out = null;
 
@@ -101,11 +165,16 @@ public class BoardContentController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		boardModel.setUser_id(1);
 		boardModel.setBoard_lookupcnt(0);
-		boardModel.setLikecnt(0);
+		System.out.println(boardModel);
 		boardMapper.insertBoard(boardModel);
-		return "/index";
+		
+		try {
+			response.sendRedirect("./mainBoard");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 //		나중에 게시판 만들고 가야할 위치를 정해야함
 	}
 
@@ -115,6 +184,8 @@ public class BoardContentController {
 		PrintWriter printWriter = null;
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
+		File file = new File(".");
+        String rootPath = file.getAbsolutePath();
 
 		try {
 
@@ -123,7 +194,9 @@ public class BoardContentController {
 			byte[] bytes = upload.getBytes();
 
 			String uploadPath = request.getSession().getServletContext().getRealPath("/resources/files/board_img/") + fileRanName+".jpg";// 저장경로
+			System.out.println(uploadPath);
 			out = new FileOutputStream(new File(uploadPath));
+
 			out.write(bytes);
 
 			String callback = request.getParameter("CKEditorFuncNum");
@@ -138,11 +211,12 @@ public class BoardContentController {
 			printWriter.println(json);
 			printWriter.flush();
 			
-			String path = request.getSession().getServletContext().getRealPath("./");
-			Pattern regex = Pattern.compile("\\.metadata");
-			String uploadPath2 = regex.split(path)[0]+"TravelShare\\src\\main\\webapp\\resources\\files\\board_img\\"+fileRanName+".jpg";// 저장경로
-			out = new FileOutputStream(new File(uploadPath2));
-			out.write(bytes);
+//			String path = request.getSession().getServletContext().getRealPath("./");
+//			Pattern regex = Pattern.compile("\\.metadata");
+//			String uploadPath2 = regex.split(path)[0]+"TravelShare\\src\\main\\webapp\\resources\\files\\board_img\\"+fileRanName+".jpg";// 저장경로
+//			System.out.println("2 : " + uploadPath2);
+//			out = new FileOutputStream(new File(uploadPath2));
+//			out.write(bytes);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
