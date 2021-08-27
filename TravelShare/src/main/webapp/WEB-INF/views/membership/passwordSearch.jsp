@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -35,10 +35,10 @@
 				<div id="phone_warning"></div>				
 			</div>
 			<div id="id_search">
-				<input id="password_sub" form="password_search" type="submit" value="비밀번호찾기"></span>
+				<input id="password_sub" form="password_search" type="submit" value="비밀번호찾기">
 			</div>
 			<div>
-				<a href="./idsearch">아이디 찾기</a>
+				<a href="./idsearch" id="id_search">아이디 찾기</a>
 			</div>
 
 	</div>

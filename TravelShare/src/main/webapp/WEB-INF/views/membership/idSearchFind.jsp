@@ -24,9 +24,8 @@
 				<div class="name_text" id="name_text">
 					${email } ${text }
 				</div>
-			</div>
 			<div id="password_search">
-				<a href="./passwordsearch">비밀번호찾기</a> / <a href="../site/login">로그인하기</a>
+				<a href="./passwordsearch" class="search_text">비밀번호찾기</a> / <a href="../site/login" class="search_text">로그인하기</a>
 			</div>
 		</div>
 	</div>

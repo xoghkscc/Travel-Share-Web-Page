@@ -38,7 +38,7 @@
 				<input id="idsearch_sub" form="id_search" type="submit" value="아이디 찾기"></span>
 			</div>
             <div>
-                <a href="./passwordsearch">비밀번호찾기</a>
+                <a href="./passwordsearch" id="password_search">비밀번호찾기</a>
             </div>
 	</div>
 	<script>

@@ -1,32 +1,47 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>х╦©Ь а╓╨╦</title>
+<meta charset="UTF-8">
+<title>М ▄Л⌡░ Л═∙КЁ╢</title>
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/membership/user_info.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons%7CMaterial+Icons+Two+Tone%7CMaterial+Icons+Sharp%7CMaterial+Icons+Outlined" rel="stylesheet">
 </head>
+
 <body>
+	
 	<jsp:include page="../header/top.jsp"></jsp:include>
-	<div id="info_main">
-		<div id="profile">
+	<div id="main">
+		
+		<div id="user_info">
 			<div>
-				Travelers га╥нгй<i class="fas fa-angle-down" onclick=toggleMute()></i>
+		
+				<img src="./img.jfif" id="user_img">
 			</div>
-			<div>
-				<a href="./profile_modify"><i id="user_img"
-					class="far fa-user-circle"></i></a> <span id="nickname">╢пЁвюс: </span>
+			<div class="user_name">
+				<div id="user_name"><strong id="name">Л²╢К╕└</strong> | <span style="color: rgb(255, 109, 0);">0</span>К╙┘ Л╟°М∙°Л┌╛К·▄</div>
+				<div id="user_zim">
+					Л∙└Л╖│ Л╟°К▀╧М∙° ЙЁ└Л▀°Й╦─Л²╢ Л≈├Л┼╣К▀┬К▀╓.
+					 [Й╦─Л⌠╟К÷╛Й╟─Й╦╟]</div>
 			</div>
-			<div>
-				<a href="./profile_modify"><button id="profile_modify">╪Жа╓</button></a>
+			<div id="user_profile">
+				<a href="./membership"><button id="user_button">
+					М■└К║°М∙└Л└╓Л═∙></button></a>
 			</div>
 		</div>
-		<div>2</div>
-		<div>3</div>
-		<div>4</div>
+
+		<div id="board_name">
+			<div id="my_travel">My Travel</div>
+			<div id="my_zim">My Zim</div>
+		</div>
+
+	</div>
+	
 </body>
 </html>
