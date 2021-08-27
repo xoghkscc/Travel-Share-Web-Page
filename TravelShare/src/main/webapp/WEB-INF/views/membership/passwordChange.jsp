@@ -17,7 +17,8 @@
 	href="<%=request.getContextPath()%>/resources/css/membership/passwordChange.css">
 </head>
 <body>
-	<jsp:include page="../header/top.jsp"></jsp:include>
+	<jsp:include page="../header/top2.jsp"></jsp:include>
+	<div class="loing_container" style="width: 100%; height: 100vh"></div>
 	<form id="password_change" action="./passwordchange" method="POST" autocomplete='off'></form>
 	<div class="password_change_box">
 		<div>
@@ -37,6 +38,7 @@
 				<input type="submit" form="password_change" id="passwordchange_sub" value="비밀번호 변경하기">
 			</div>
 	</div>
+	<jsp:include page="../footer/footer.jsp"></jsp:include>
 	<script>
       $('.password_change_box').css('border','1px solid black');
       $('.password_change_box').css('width','360px');

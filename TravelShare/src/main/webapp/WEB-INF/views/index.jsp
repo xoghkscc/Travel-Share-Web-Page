@@ -162,20 +162,20 @@ highMap.init();
 	                    감사합니다... 한마디 하면서 살아가는 사람에게 행복은 늘 품 안에 있다. </p>
                 </div>
             </section>
-
-            <footer class="footer_container">
-               <div>
-                    <div class="footer_logo"></div>
-                    <div>Travel<span style="color: orangered;">ers</span></div>
-               </div>
-               <div>
-                   <div onclick="location.href='#'"></div>
-                   <div onclick="location.href='#'"></div>
-                   <div onclick="location.href='#'"></div>
-                   <div onclick="location.href='#'"></div>
-               </div>
-               <div>A website created by the collaboration of the left team</div>
-            </footer>
+					<jsp:include page="./footer/footer.jsp"></jsp:include>
+<!--             <footer class="footer_container"> -->
+<!--                <div> -->
+<!--                     <div class="footer_logo"></div> -->
+<!--                     <div>Travel<span style="color: orangered;">ers</span></div> -->
+<!--                </div> -->
+<!--                <div> -->
+<!--                    <div onclick="location.href='#'"></div> -->
+<!--                    <div onclick="location.href='#'"></div> -->
+<!--                    <div onclick="location.href='#'"></div> -->
+<!--                    <div onclick="location.href='#'"></div> -->
+<!--                </div> -->
+<!--                <div>A website created by the collaboration of the left team</div> -->
+<!--             </footer> -->
         </section>
     </main>
     

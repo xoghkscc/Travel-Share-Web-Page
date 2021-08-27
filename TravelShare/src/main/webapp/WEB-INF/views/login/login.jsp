@@ -15,9 +15,10 @@
 	href="<%=request.getContextPath()%>/resources/css/login_start.css?ver=1.7">
 </head>
 <body>
-	<jsp:include page="../header/top.jsp"></jsp:include>
+	<jsp:include page="../header/top2.jsp"></jsp:include>
 	<!-- 네이버아이디로로그인 버튼 노출 영역 -->
 	<form id="login" action="../login" method="POST" autocomplete='off'></form>
+	<div class="loing_container"></div>
 	<div class="loginBox">
 		<div id="basic_login">
 			<div id="login_text">
@@ -42,7 +43,7 @@
 			</div>
 
 	</div>
-	
+	<jsp:include page="../footer/footer.jsp"></jsp:include>
 	
 	<script src="<%=request.getContextPath() %>/resources/loginJS/login.js" charset="UTF-8"></script>
 	<script>

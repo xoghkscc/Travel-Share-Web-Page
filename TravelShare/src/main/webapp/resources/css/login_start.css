@@ -125,3 +125,8 @@ a:visited {
 input:focus {
     outline: 2px solid black;
 }
+
+.loing_container{
+	width: 100%;
+	height: 100vh;
+}

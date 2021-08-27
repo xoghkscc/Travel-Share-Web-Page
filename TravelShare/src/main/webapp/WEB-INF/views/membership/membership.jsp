@@ -11,7 +11,8 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/membership/membership_main.css">
 </head>
 <body>
-	<jsp:include page="../header/top.jsp"></jsp:include>
+	<jsp:include page="../header/top2.jsp"></jsp:include>
+	<div class="loing_container" style="width: 100%; height: 100vh"></div>
 	<form id="membership" action="./membership" method="POST" autocomplete='off'></form>
 	<form id="phoneCheck" action="./phoneCheck" method="POST" autocomplete='off'></form>
 	<div class="membership_box">
@@ -145,7 +146,7 @@
 			</table> 
 		</div>
 		</div>
-		
+		<jsp:include page="../footer/footer.jsp"></jsp:include>
 		<script>
 		  $('.membership_box').css('border','1px solid black');
 		  $('.membership_box').css('width','350px');

@@ -16,6 +16,7 @@
 </head>
 <body>
 	<jsp:include page="../header/top.jsp"></jsp:include>
+	<div class="loing_container" style="width: 100%; height: 100vh"></div>
 	<form id="id_search" action="./idSearch" method="POST" autocomplete='off'></form>
 	<div class="id_search_box">
 		<div id="basic">
@@ -41,6 +42,7 @@
                 <a href="./passwordsearch" id="password_search">비밀번호찾기</a>
             </div>
 	</div>
+	<jsp:include page="../footer/footer.jsp"></jsp:include>
 	<script>
       $('.id_search_box').css('border','1px solid black');
       $('.id_search_box').css('width','350px');

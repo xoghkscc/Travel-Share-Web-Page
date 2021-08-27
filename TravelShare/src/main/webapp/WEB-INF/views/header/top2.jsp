@@ -11,7 +11,7 @@
 		<nav>
 			<div class="logo">
 				<h1>
-					<a class="guide_link" href="../site/index"> Travel<span style="color: red; font-size: 35px;">ers</span></a>
+					<a class="guide_link" href="../site/index"> Travel<span style="color: #e56c23; font-size: 35px;">ers</span></a>
 				</h1>
 
 			</div>
@@ -52,6 +52,6 @@
 			</div>
 		</nav>
 	</header>
-	<script src="<%=request.getContextPath()%>/resources/js/header.js"
+	<script src="<%=request.getContextPath()%>/resources/js/header2.js"
 		charset="UTF-8"></script>
 

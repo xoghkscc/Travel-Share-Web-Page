@@ -13,7 +13,7 @@
 	href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
 	rel="stylesheet">
 <body>
-	<jsp:include page="../header/top.jsp"></jsp:include>
+	<jsp:include page="../header/top2.jsp"></jsp:include>
 	<div id="board_main">
 		<div class="sel">
 			<div class="sel_pan">
@@ -269,7 +269,7 @@
 			</div>
 		</div>
 	</div>
-
+	<jsp:include page="../footer/footer.jsp"></jsp:include>
 	<script src="<%=request.getContextPath()%>/resources/js/main_border.js"
 		charset="UTF-8"></script>
 </body>

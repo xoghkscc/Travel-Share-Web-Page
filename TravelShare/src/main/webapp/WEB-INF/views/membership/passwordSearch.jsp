@@ -15,7 +15,8 @@
 	href="<%=request.getContextPath()%>/resources/css/membership/password_search.css">
 </head>
 <body>
-	<jsp:include page="../header/top.jsp"></jsp:include>
+	<jsp:include page="../header/top2.jsp"></jsp:include>
+	<div class="loing_container" style="width: 100%; height: 100vh"></div>
 	<form id="password_search" action="./passwordsearch" method="POST" autocomplete='off'></form>
 	<div class="password_search_box">
 		<div>
@@ -42,7 +43,7 @@
 			</div>
 
 	</div>
-
+	<jsp:include page="../footer/footer.jsp"></jsp:include>
 	<script>
       $('.password_search_box').css('border','1px solid black');
       $('.password_search_box').css('width','350px');

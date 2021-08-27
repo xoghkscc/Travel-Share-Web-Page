@@ -11,7 +11,7 @@
 		<nav>
 			<div class="logo">
 				<h1>
-					<a class="guide_link" href="../site/index"> Travel<span style="color: red; font-size: 35px;">ers</span></a>
+					<a class="guide_link" href="../site/index"> Travel<span style="color: orangered; font-size: 35px;">ers</span></a>
 				</h1>
 
 			</div>

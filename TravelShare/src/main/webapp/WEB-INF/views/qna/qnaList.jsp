@@ -14,7 +14,7 @@
 
 <body class="qna_guide">
 <jsp:include page="../header/top.jsp"></jsp:include>
-	
+	<div class="loing_container" style="width: 100%; height: 100vh"></div>
 	<div class="qna_container">
 		<div>QNA °Ô½ÃÆÇ</div>
 		<div>
@@ -75,6 +75,7 @@
 		       <div class="qna_PopupText"></div>
 		  	</div>
 		  </div>
+		  <jsp:include page="../footer/footer.jsp"></jsp:include>
       	<script src="<%=request.getContextPath()%>/resources/js/notice_app.js?ver=1.23"></script>
       	     
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
