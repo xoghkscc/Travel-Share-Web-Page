@@ -95,7 +95,7 @@ table {
     
     position: fixed;
     display: none;
-    z-index: 1005; 
+    z-index: 9005; 
     position: absolute;
     width: 100vw;
     height: 100vh;
@@ -156,7 +156,7 @@ table {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(../asset/배경2.jpg);
+    background-image: url(../files/back2.jpg);
     background-size: cover;
     border-radius: 10%;
     border: 3px black solid;

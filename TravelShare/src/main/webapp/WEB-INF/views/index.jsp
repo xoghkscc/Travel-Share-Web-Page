@@ -11,7 +11,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="http://code.highcharts.com/maps/highmaps.js"></script>
 <script src="http://code.highcharts.com/maps/modules/drilldown.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/main_chart.js?ver=5.18"></script>
+<script src="<%=request.getContextPath()%>/resources/js/main_chart.js?ver=5.20"></script>
 <script type="text/javascript">
 var highMap = new highMaps();
 highMap.init();
@@ -181,7 +181,7 @@ highMap.init();
     
     <!-- popup창 -->
    	<div id="board_clickPan" class="board_hide">
-		<div class="x_box">
+		<div onclick="imgClickRollback()" class="x_box">
 			<span class="material-icons-outlined "> close </span>
 		</div>
 		<div id="board_detailContent">
@@ -194,43 +194,52 @@ highMap.init();
 					<!-- q= 뒤에 주소를 입력하면 됨 -->
 					<hr style="color: black; width: 100%; margin-bottom: 50px;">
 					<div id="board_main_content" class="board_main_content">
-					<!-- 게시판 콘텐츠들이 들어가는 곳  -->
+						<!-- 게시판 콘텐츠들이 들어가는 곳  -->
 					</div>
 
 					<div class="board_comment">
-						<div class="board_comment_tit">
+						<div id="board_comment_tit" class="board_comment_tit">
 							<p>한줄댓글</p>
+<!-- 									<div class="board_ud"> -->
+<!-- 										<button>수정</button> -->
+<!-- 										<button>삭제</button> -->
+<!-- 									</div> -->
 						</div>
 						<div class="board_comment_write">
-							<form action="">
-								<input type="text" name="board_commnet"
-									placeholder="한 줄 댓글을 남겨주세요."> <input type="submit"
-									name="board_commnet_submit" value="댓글남기기">
+							<form action="#" id="board_commentId">
+								<input type="text" id="board_commnet" name="board_commnet"
+									placeholder="한 줄 댓글을 남겨주세요." autocomplete="off"> <input type="hidden"
+									id="user_id" name="user_id" value="${id }"> <input
+									type="submit" name="board_commnet_submit" value="댓글남기기">
 							</form>
 						</div>
-						<div class="board_comment_show">
-							<div class="board_comment_see">
-								<div class="board_comment_see_img">
-									<img src="<%=request.getContextPath()%>/resources/files/null.jpg" alt="">
-								</div>
-								<div class="board_comment_see_text">
-									<div>
-										<strong>닉네임</strong> <span class="board_comment_see_text_date">2021.08.12</span>
-									</div>
-									<div>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</div>
-								</div>
-							</div>
-							<hr style="color: black; width: 100%; margin-bottom: 50px;">
+						<div id="board_comment_show" class="board_comment_show">
+							<!-- 							<div class="board_comment_see"> -->
+							<!-- 								<div class="board_comment_see_img"> -->
+							<%-- 									<img src="<%=request.getContextPath()%>/resources/files/null.jpg" alt=""> --%>
+							<!-- 								</div> -->
+							<!-- 								<div class="board_comment_see_text"> -->
+							<!-- 									<div> -->
+							<!-- 										<strong>닉네임</strong> <span class="board_comment_see_text_date">2021.08.12</span> -->
+							<!-- 									</div> -->
+							<!-- 									<div>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</div> -->
+							<!-- 								</div> -->
+							<!-- 							</div> -->
+							<!-- 							<hr style="color: black; width: 100%; margin-bottom: 50px;"> -->
 						</div>
 					</div>
 				</div>
+
+
 				<div class="board_right_pan">
-					<div class="board_user_info">
-						<img id="board_mainimg" src="<%=request.getContextPath()%>/resources/files/null.jpg"
+					<div id="board_user_info" class="board_user_info">
+						<img id="board_mainimg"
+							src="<%=request.getContextPath()%>/resources/files/null.jpg"
 							alt="">
 					</div>
-					<div class="board_user_name">닉네임</div>
+					<div id="board_user_name" class="board_user_name">닉네임</div>
 
+					<div id="board_content_id" class="board_content_id"></div>
 					<div id="board_title" class="board_title"></div>
 					<div class="board_sub_info">
 						<div class="board_sub_info2">
@@ -254,12 +263,12 @@ highMap.init();
 									favorite </span>
 								<div>스크랩</div>
 							</div>
-							<div>0</div>
+							<div id="board_scarp_cnt">0</div>
 						</div>
 					</div>
 
 					<div>
-						<div class="board_scrap_btn">
+						<div id="board_scrap_btn" class="board_scrap_btn">
 							<span class="material-icons-outlined board_like_img">
 								favorite </span>
 							<div>스크랩</div>
@@ -267,17 +276,16 @@ highMap.init();
 					</div>
 
 					<div class="board_travelPlans">
-						<div class="singo">
+						<div id="singo" class="singo" >
 							<span class="material-icons singo_img"> lightbulb </span> <span
 								class="board_singo">신고하기</span>
 						</div>
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-   	<script src="<%=request.getContextPath()%>/resources/js/main_ajax.js?ver=1.08"></script>
-    <script src="<%=request.getContextPath()%>/resources/js/main_app.js?ver=5.19"></script>
+   	<script src="<%=request.getContextPath()%>/resources/js/main_ajax.js?ver=1.09"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/main_app.js?ver=5.20"></script>
 </body>
 </html>
