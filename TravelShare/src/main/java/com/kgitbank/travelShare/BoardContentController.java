@@ -153,10 +153,11 @@ public class BoardContentController {
 			UUID uuid = UUID.randomUUID();
 			String fileRanName = uuid.toString();
 			
-			String path = request.getSession().getServletContext().getRealPath("./");
-			Pattern regex = Pattern.compile("\\.metadata");
-			String uploadPath2 = regex.split(path)[0]+"TravelShare\\src\\main\\webapp\\resources\\files\\board_img\\"+fileRanName+".jpg";// 저장경로
-			out = new FileOutputStream(new File(uploadPath2));
+//			String path = request.getSession().getServletContext().getRealPath("./");
+//			Pattern regex = Pattern.compile("\\.metadata");
+//			String uploadPath2 = regex.split(path)[0]+"TravelShare\\src\\main\\webapp\\resources\\files\\board_img\\"+fileRanName+".jpg";// 저장경로
+			String uploadPath = request.getSession().getServletContext().getRealPath("/resources/files/board_img/") + fileRanName+".jpg";// 저장경로
+			out = new FileOutputStream(new File(uploadPath));
 			out.write(bytes);
 		
 			boardModel.setBoard_mainimg(request.getContextPath()+"/resources/files/board_img/" + fileRanName+".jpg");

@@ -19,4 +19,10 @@ public interface UserInfoMapper {
 	
 	public int changePassword(UserInfo userinfo);
 	
+	public UserInfo getUserInfo(Object object);
+	
+	public Integer getUserLike(int user_id);
+	
+	public int updateUserImgurl(UserInfo userinfo);
+	
 }

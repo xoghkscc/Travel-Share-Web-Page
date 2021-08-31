@@ -98,6 +98,7 @@ a {
     width: 265px;
     font-size: 15px;
     margin-bottom: 15px;
+    cursor : pointer;
 }
 
 #member_year{
@@ -150,6 +151,7 @@ a {
     color: white;
     border-radius: 4px 4px 4px 4xp;
     margin-left: 10px;
+    cursor : pointer;
 }
 
 
@@ -162,6 +164,7 @@ a {
     color: white;
     border-radius: 4px 4px 4px 4xp;
     margin-left: 20px;
+    cursor : pointer;
 
 }
 

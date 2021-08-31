@@ -9,6 +9,19 @@ body{
  
 }
 
+a {
+    text-decoration: none;
+ 
+}
+
+a:link {
+	color: gray;
+}
+
+a:visited { 
+	color : gray;
+ }
+
 #main {
 	position : absolute;
 	top: 50px;
@@ -18,42 +31,56 @@ body{
 #user_info{
     height: 200px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); grid-gap: 2px;
+    grid-template-columns: 20vw 50vw 30vw;
     border-top: rgb(232, 233, 233) 1px solid;
     border-bottom: rgb(232, 233, 233) 1px solid;
     background-color: rgb(245, 245, 245);
   
 }
 
+#user_img_div {
+	width: 20vw;
+	margin-left:30px;
+}
+
 #user_img {
-    width: 100px;
+	position: relative;
+	width: 10vw;
     height: 150px;
     min-width: 200px;
     margin-top: 20px;
-    margin-left: 80%;
+   
+
 }
 
-.user_name {
-    width: 800px;
+.user_name{
+	margin-top: 50px;
+	width: 50vw;
+	margin-left:110px;
 }
 
 #user_name {
-    margin-top: 50px;
+    width: 50vw;
+ 
+ 
 }
 
 #name{
     margin-right: 10px;
+ 
 }
 
 #user_zim {
     margin-top: 50px;
     color: black;
+    
 }
 
 
 #user_profile{
-    width: 500px;
-    
+    width: 30vw;
+
+
 }
 
 #user_button {

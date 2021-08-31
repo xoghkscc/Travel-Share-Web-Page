@@ -36,7 +36,7 @@
 				<div id="phone_warning"></div>				
 			</div>
 			<div id="password_search">
-				<input id="idsearch_sub" form="id_search" type="submit" value="아이디 찾기"></span>
+				<input id="idsearch_sub" form="id_search" type="submit" value="아이디 찾기">
 			</div>
             <div>
                 <a href="./passwordsearch" id="password_search">비밀번호찾기</a>

@@ -27,9 +27,21 @@
         	SELECT user_id FROM user_info WHERE user_email=#{user_email } AND user_phonenumber= #{user_phonenumber }
         </select>
          
-         <update id="changePassword">
+        <update id="changePassword">
         	UPDATE user_info SET user_password = #{user_password } WHERE user_id = #{user_id }
         </update>
+         
+        <select id="getUserInfo" resultType="com.kgitbank.travelShare.model.UserInfo">
+        	SELECT * FROM user_info WHERE user_id=#{object }
+        </select>
+        
+        <select id="getUserLike" resultType="int">
+        	SELECT COUNT(DISTINCT likeid) FROM like_view_user WHERE mainid =#{user_id }
+        </select>
+        
+      <update id="updateUserImgurl">
+        	UPDATE user_info SET user_imgurl = #{user_imgurl } WHERE user_id = #{user_id }
+       </update>
          
 </mapper>
 
