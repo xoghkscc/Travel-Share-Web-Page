@@ -4,6 +4,7 @@
 
 const board_commentId = document.getElementById("board_commentId");
 const qna_view_qno = document.querySelector('.qna_view_qno');
+const qna_user_position = document.querySelector('.qna_user_position');
 
 window.onload = (e) => {
 	var board_comment = this.board_commnet.value;
@@ -22,16 +23,21 @@ board_commentId.onsubmit = (e) => {
 	var board_comment = this.board_commnet.value;
 	var user_id = this.user_id.value;
 	var qna_id = qna_view_qno.innerText;
+	var user_position = qna_user_position.innerText;
 	console.log(board_comment);
 	console.log(user_id);
 	console.log(qna_id);
-	
+	console.log(user_position);
 	if(user_id == ''){
 		alert("로그인이 필요한 서비스입니다.");
 //		location.href = "../site/login";
 	} else{
-		console.log("들어옴");
-		insertCommnet(qna_id, user_id, board_comment);
+		if(user_position == "member"){
+			console.log(user_position);
+			alert("관리자만 댓글을 작성할 수 있습니다.");
+		}else{
+			insertCommnet(qna_id, user_id, board_comment);		
+		}
 	}
 	this.board_commnet.value = '';
 	
@@ -105,5 +111,6 @@ function getQnaCommnet(value) {
 }
 
 function imgClickRollback() {
-	window.history.back();
+//	window.history.back();
+	location.href = `/travelShare/qna/qnaList`;
 }

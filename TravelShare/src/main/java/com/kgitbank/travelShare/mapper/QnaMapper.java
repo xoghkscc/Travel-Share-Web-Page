@@ -5,12 +5,10 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-<<<<<<< HEAD
-=======
 import com.kgitbank.travelShare.model.CommentInfo;
->>>>>>> refs/heads/develop-kwang5
 import com.kgitbank.travelShare.model.QnaVO;
 import com.kgitbank.travelShare.model.QnaViewModel;
+import com.kgitbank.travelShare.model.User;
 
 public interface QnaMapper {
 	//게시물 목록
@@ -33,9 +31,10 @@ public interface QnaMapper {
 	
 
 	//조회수
-	public int qna_viewcntup(@Param("qno") String qno);
+	public int qna_viewcntup(QnaViewModel qnaViewModel);
 
 	public int qna_insertComment(CommentInfo commentInfo);
 	public ArrayList<CommentInfo> qna_selectComment(@Param("qna_id") Integer qna_id);
+	public User qna_getUserPosition(@Param("user_id") Integer user_id);
 
 }

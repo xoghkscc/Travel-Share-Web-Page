@@ -19,6 +19,7 @@ import com.kgitbank.travelShare.mapper.QnaMapper;
 import com.kgitbank.travelShare.model.LoginInfo;
 import com.kgitbank.travelShare.model.QnaVO;
 import com.kgitbank.travelShare.model.QnaViewModel;
+import com.kgitbank.travelShare.model.User;
 
 @Controller
 @RequestMapping("/qna")
@@ -61,9 +62,16 @@ public class QnaController {
 	
 	//게시물 조회
 	@RequestMapping(value = "/qnaView", method = RequestMethod.GET)
-	public void getView(@RequestParam("qno") int qno, Model model) throws Exception {
+	public void getView(@RequestParam("qno") int qno, Model model, HttpSession session) throws Exception {
 		QnaViewModel vo = service.qna_view(qno);
-		System.out.println("vo 내용 : " + vo);
+		
+		vo.setViewcnt(vo.getViewcnt() + 1);
+		service.qna_viewcntup(vo);
+		Object userid = session.getAttribute("id");
+		int user_id = Integer.parseInt(userid.toString());
+		User user = service.qna_getUserPosition(user_id);
+		vo.setUser_position(user.getUser_position());
+		
 		model.addAttribute("QnaViewModel", vo);
 	}
 	
@@ -72,10 +80,6 @@ public class QnaController {
 		
 
 		QnaViewModel vo = service.qna_view(qno);
-		vo.setViewcnt(vo.getViewcnt() + 1);
-
-		AdminNoticeMapper.updateNoticeLookup(vo);
-
 		
 		model.addAttribute("qna_view", vo);
 	}

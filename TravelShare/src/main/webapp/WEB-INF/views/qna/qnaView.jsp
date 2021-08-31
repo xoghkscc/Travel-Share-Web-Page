@@ -18,6 +18,7 @@
 		  
 <!-- 	<label>글번호</label> -->
 	<div class="qna_view_qno">${QnaViewModel.qno }</div>
+	<div class="qna_user_position">${QnaViewModel.user_position }</div>
 
 	<div id="board_clickPan">
 		<div onclick="imgClickRollback()" class="x_box">

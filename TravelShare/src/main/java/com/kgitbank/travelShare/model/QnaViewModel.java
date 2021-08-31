@@ -23,4 +23,5 @@ public class QnaViewModel {
 	private int user_id;
 	private String user_imgurl;
 	private String user_nickName;
+	private String user_position;
 }

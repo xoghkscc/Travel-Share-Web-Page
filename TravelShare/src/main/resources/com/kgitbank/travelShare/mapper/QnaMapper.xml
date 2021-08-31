@@ -17,7 +17,7 @@
 	</insert>
 	
 	<select id="qna_view" parameterType="int" resultType="com.kgitbank.travelShare.model.QnaViewModel">
-		SELECT qno, title,writer, content, regdate, user_id, user_nickName, user_imgurl, 
+		SELECT qno, title,writer, content, regdate, user_id, user_nickName, user_imgurl, user_position, 
 		viewcnt FROM qna_guide INNER JOIN user_info USING ( user_id ) WHERE qno = #{qno}
 	</select>
 	
@@ -46,7 +46,7 @@
 
 	<!-- 조회수 올리기 -->
 	<update id="qna_viewcntup">
-		UPDATE qna_guide SET viewcnt = '${viewcnt}' where qno_id=${qno}
+		UPDATE qna_guide SET viewcnt = '${viewcnt}' where qno=${qno}
 	</update>
 	<!-- qna 댓글 삽입 및 조회 -->
 	<insert id="qna_insertComment">
@@ -55,5 +55,8 @@
 	<select id="qna_selectComment" resultType="com.kgitbank.travelShare.model.CommentInfo">
 		SELECT * FROM board_comment INNER JOIN user_info USING(user_id) WHERE qna_id = #{qna_id} ORDER BY board_comment.comment_date desc
 	</select>
->>>>>>> refs/heads/develop-kwang5
+	<select id="qna_getUserPosition" resultType="com.kgitbank.travelShare.model.User">
+		SELECT * FROM user_info WHERE user_id = #{user_id}
+	</select>
+
 </mapper>
