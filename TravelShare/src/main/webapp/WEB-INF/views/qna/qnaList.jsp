@@ -49,32 +49,6 @@
 		      </table>
 		      	<a class="write_btn btn btn-default" href="./qnaWrite">글쓰기</a>
       	</div>
-      	<div class="qna_Popup">
-		   <div class="qna_cancel">
-			   <span class="material-icons-outlined "> close </span>
-		   </div>
-		   <div class="qna_textContainer">
-		       <div>공지사항 게시판</div>
-		       <div class="qna_PopupTitle">제목~~~</div>
-		       <hr>
-		       <div class="qna_PopupTop">
-		           <div class="qna_PopupImg">user_img</div>
-		           <div>
-		               <div class="qna_PopupId">user_id</div>
-<!-- 		               <hr> -->
-		               <div class="qna_PopupDate">date</div>
-		           </div>
-		           <div class="qna_cntBoard">
-			           <span class="material-icons-outlined">
-							visibility
-					   </span>
-			           <span class="qna_PopupCnt">viewcnt</span>
-		           </div>
-		       </div>
-		       <hr>
-		       <div class="qna_PopupText"></div>
-		  	</div>
-		  </div>
 		  <jsp:include page="../footer/footer.jsp"></jsp:include>
       	<script src="<%=request.getContextPath()%>/resources/js/notice_app.js?ver=1.23"></script>
       	     

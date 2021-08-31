@@ -2,15 +2,22 @@ package com.kgitbank.travelShare;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.SessionScope;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.kgitbank.travelShare.mapper.LoginMapper;
 import com.kgitbank.travelShare.mapper.Page;
 import com.kgitbank.travelShare.mapper.QnaMapper;
+import com.kgitbank.travelShare.model.LoginInfo;
 import com.kgitbank.travelShare.model.QnaVO;
 
 @Controller
@@ -19,6 +26,10 @@ public class QnaController {
 	
 	@Autowired
 	QnaMapper service;
+	
+	@Autowired
+	LoginMapper qnaService;
+	
 	
 	@RequestMapping(value = "/qnaList", method = RequestMethod.GET)
 	public void getList(Model model) throws Exception {
@@ -29,17 +40,23 @@ public class QnaController {
 		model.addAttribute("qna_list",list);
 	}
 	
-	@RequestMapping(value = "/qnaWrite", method = RequestMethod.GET)
-	public void getWrite() throws Exception {
-		
+	@GetMapping(value = "/qnaWrite")
+	public String getWrite() throws Exception {
+		return "/qna/qnaWrite";
 		
 	}
 	
 	@RequestMapping(value = "/qnaWrite", method = RequestMethod.POST)
-	public String postWrite(QnaVO vo) throws Exception {
-		System.out.println("왔음");
+	public ModelAndView postWrite(QnaVO vo, LoginInfo logininfo, HttpSession session) throws Exception {
+		ModelAndView mav = new ModelAndView("redirect:/qna/qnaList");
+		int qnacnt = service.getQno();
+		vo.setQno(qnacnt +1);
+		List writer = qnaService.loginCheck(logininfo);
+		
+		System.out.println(writer);
+		
 		service.qna_write(vo);
-		return "redirect:/qna/qnaList";
+		return mav;
 	}
 	
 	//게시물 조회
@@ -61,10 +78,10 @@ public class QnaController {
 	public String postModify(QnaVO vo) throws Exception {
 		service.qna_modify(vo);
 		
-		return "redirect:/qna/qnaView?qno=" + vo.getQno();
+		return "redirect:/qna/qnaList";
 	}
 	
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/qnaDelete", method = RequestMethod.GET)
 	public String getDelete(@RequestParam("qno") int qno) throws Exception {
 		service.qna_delete(qno);
 		return "redirect:/qna/qnaList";

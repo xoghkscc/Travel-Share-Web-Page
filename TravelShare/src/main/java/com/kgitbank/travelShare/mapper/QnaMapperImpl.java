@@ -21,6 +21,10 @@ public class QnaMapperImpl implements QnaMapper {
 	public List<QnaVO> qna_list() throws Exception {
 		return sql.selectList(namespace + ".qna_list");
 	}
+	@Override
+	public int getQno() {
+		return sql.insert(namespace);
+	}
 	
 	@Override
 	public void qna_write(QnaVO vo) throws Exception {

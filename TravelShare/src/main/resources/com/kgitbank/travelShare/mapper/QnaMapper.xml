@@ -8,26 +8,26 @@
 	<select id="qna_list" resultType="com.kgitbank.travelShare.model.QnaVO">
 		SELECT * FROM qna_guide order by qno desc
 	</select>
-	<select id="getQnaId" resultType="int">
-		SELECT max(qno) FROM qna_guide;
+	<select id="getQno" resultType="int">
+		SELECT max(qno) FROM qna_guide
 	</select>
 	
 	<insert id="qna_write" parameterType="com.kgitbank.travelShare.model.QnaVO">
-		INSERT INTO qna_guide VALUES(#{title}, #{writer}, #{content})
+		INSERT INTO qna_guide(qno,title,writer, content,regdate) VALUES(#{qno}, #{title}, #{writer}, #{content},CURRENT_DATE)
 	</insert>
 	
 	<select id="qna_view" parameterType="int" resultType="com.kgitbank.travelShare.model.QnaVO">
-		SELECT qno, title, content, regdate, viewcnt FROM qna_guide WHERE qno = #{qno}
+		SELECT qno, title,writer, content, regdate, viewcnt FROM qna_guide WHERE qno = #{qno}
 	</select>
 	
 	<!-- 게시물 수정 -->
 	<update id="qna_modify" parameterType="com.kgitbank.travelShare.model.QnaVO">
-		UPDATE qna_guied SET title = #{title}, content = #{content}, writer = #{writer}
+		UPDATE qna_guide SET title = #{title}, content = #{content}, writer = #{writer}
 		WHERE qno = #{qno}
 	</update>
 	<!-- 게시물 삭제 -->
 	<delete id="qna_delete" parameterType="int">
-		DELETE * FROM qna_guide WHERE qno = #{qno}
+		DELETE FROM qna_guide WHERE qno = #{qno}
 	</delete>
 	
 	<!-- 게시물 총 개수 -->

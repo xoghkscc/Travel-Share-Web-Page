@@ -7,6 +7,9 @@ import com.kgitbank.travelShare.model.QnaVO;
 public interface QnaMapper {
 	//게시물 목록
 	public List<QnaVO> qna_list() throws Exception;
+	
+	// 고유 번호 가져오기
+	public int getQno();
 	//게시물 작성
 	public void qna_write(QnaVO vo) throws Exception;
 	//게시물 조회
