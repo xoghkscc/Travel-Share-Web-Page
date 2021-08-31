@@ -54,9 +54,7 @@ public class QnaController {
 		int qnacnt = service.getQno();
 		Object user = session.getAttribute("id");
 		int userid = Integer.parseInt(user.toString());
-		System.out.println(userid);
 		User nick = service.getWriter(userid);
-		System.out.println(nick.getUser_nickName());
 		
 		vo.setQno(qnacnt +1);
 		vo.setWriter(nick.getUser_nickName());

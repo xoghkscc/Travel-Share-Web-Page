@@ -13,7 +13,7 @@
 	</select>
 	
 	<select id="getWriter" resultType="com.kgitbank.travelShare.model.User">
-		SELECT user_nickname FROM user_info WHERE user_id = ${user_id}
+		SELECT user_nickname FROM user_info WHERE user_id = ${userid}
 	</select>
 	
 	<insert id="qna_write" parameterType="com.kgitbank.travelShare.model.QnaVO">
