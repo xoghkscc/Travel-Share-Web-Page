@@ -3,6 +3,8 @@ package com.kgitbank.travelShare.mapper;
 import java.util.List;
 
 import com.kgitbank.travelShare.model.QnaVO;
+import com.kgitbank.travelShare.model.User;
+import com.kgitbank.travelShare.model.UserInfo;
 
 public interface QnaMapper {
 	//게시물 목록
@@ -10,6 +12,8 @@ public interface QnaMapper {
 	
 	// 고유 번호 가져오기
 	public int getQno();
+	
+	public User getWriter(int user_id);
 	//게시물 작성
 	public void qna_write(QnaVO vo) throws Exception;
 	//게시물 조회

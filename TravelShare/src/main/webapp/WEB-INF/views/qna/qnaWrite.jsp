@@ -26,12 +26,8 @@
 			<div>
 				<input type="text" name="title" placeholder="제목을 입력해주세요" style="width: 300px; height: 30px;">
 			</div>
-			<div>
-				<label>작성자</label>
-			</div>
-			<div>
-				<input type="text" name="writer" style="width: 300px; height: 30px;">
-			</div>
+			
+			
 			
 			<div class="qna_travel_mainPicture qna_img">
 				<label >QNA 글 작성</label>

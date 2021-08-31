@@ -19,6 +19,8 @@ import com.kgitbank.travelShare.mapper.Page;
 import com.kgitbank.travelShare.mapper.QnaMapper;
 import com.kgitbank.travelShare.model.LoginInfo;
 import com.kgitbank.travelShare.model.QnaVO;
+import com.kgitbank.travelShare.model.User;
+import com.kgitbank.travelShare.model.UserInfo;
 
 @Controller
 @RequestMapping("/qna")
@@ -47,14 +49,17 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value = "/qnaWrite", method = RequestMethod.POST)
-	public ModelAndView postWrite(QnaVO vo, LoginInfo logininfo, HttpSession session) throws Exception {
+	public ModelAndView postWrite(QnaVO vo, HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView("redirect:/qna/qnaList");
 		int qnacnt = service.getQno();
+		Object user = session.getAttribute("id");
+		int userid = Integer.parseInt(user.toString());
+		System.out.println(userid);
+		User nick = service.getWriter(userid);
+		System.out.println(nick.getUser_nickName());
+		
 		vo.setQno(qnacnt +1);
-		List writer = qnaService.loginCheck(logininfo);
-		
-		System.out.println(writer);
-		
+		vo.setWriter(nick.getUser_nickName());
 		service.qna_write(vo);
 		return mav;
 	}
