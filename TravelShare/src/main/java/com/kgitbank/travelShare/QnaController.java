@@ -57,6 +57,7 @@ public class QnaController {
 		User nick = service.getWriter(userid);
 		
 		vo.setQno(qnacnt +1);
+		vo.setUser_id(userid);
 		vo.setWriter(nick.getUser_nickName());
 		service.qna_write(vo);
 		return mav;

@@ -9,6 +9,13 @@
     margin-top: 60px;
 }
 
+#qnaTitle {
+	width: 700px;
+	height: 30px;
+	margin-bottom: 15px;
+	font-size: 30px;	
+}
+
 .qna_write>*{
     width: 1024px;
     display: flex;

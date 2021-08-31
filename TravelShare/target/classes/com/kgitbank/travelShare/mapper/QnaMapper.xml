@@ -17,7 +17,7 @@
 	</select>
 	
 	<insert id="qna_write" parameterType="com.kgitbank.travelShare.model.QnaVO">
-		INSERT INTO qna_guide(qno,title,writer, content,regdate) VALUES(#{qno}, #{title}, #{writer}, #{content},CURRENT_DATE)
+		INSERT INTO qna_guide(qno,title,writer, content,regdate, user_id, cs_open) VALUES(#{qno}, #{title}, #{writer}, #{content},CURRENT_DATE, #{user_id},#{cs_open})
 	</insert>
 	
 	<select id="qna_view" parameterType="int" resultType="com.kgitbank.travelShare.model.QnaVO">

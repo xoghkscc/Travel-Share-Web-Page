@@ -17,51 +17,45 @@
 <body>
 	<div class="qna_write">
 		<div class="qna_write_form">
-			<form action="./qnaWrite" method="post">
-			<div class="qna_input">
-				<div>
-					<label>제목</label>
-				</div>			
-			
-			<div>
-				<input type="text" name="title" placeholder="제목을 입력해주세요" style="width: 300px; height: 30px;">
-			</div>
-			
-			
-			
-			<div class="qna_travel_mainPicture qna_img">
-				<label >QNA 글 작성</label>
-			</div>
-			</div>
-				<div class="qna_travel_file qna_img">
-					<input type="file" id="qna_img" name="qna_img_file" style="width: 200px;" />
-				</div>
-				<textarea rows="50" cols="50" id="content" name="content">
-				</textarea>
-			
-				<script>
-					var ckeditor_config = {
-						height: 500,
-						resize_enaleb : false,
-						enterMode : CKEDITOR.ENTER_BR,
-						shiftEnterMode : CKEDITOR.ENTER_P,
-						filebrowserUploadUrl : "http://localhost:8080/travelShare/board/ckUpload"
-					};
-					CKEDITOR.replace("board_content", ckeditor_config);
-
-					CKEDITOR.on('dialogDefinition', function(ev) {
-						var dialogName = ev.data.name;
-						var dialogDefinition = ev.data.definition;
-
-						switch (dialogName) {
-						case 'image': //Image Properties dialog
-// 							dialogDefinition.removeContents('info');
-							dialogDefinition.removeContents('Link');
-							dialogDefinition.removeContents('advanced');
-							break;
-						}
-					});
-				</script>
+		<h2>카페 글쓰기</h2>
+		<hr>
+			<form id="qna_form" action="/travelShare/qna/qnaWrite" method="POST" enctype="multipart/form-data">
+                    	<div>
+							<input id="qnaTitle" type="text" name="title" placeholder="제목을 입력해주세요">
+							<input type="radio" id="cs_open" name="cs_open" value="Y" checked>
+							<label for="all">공개</label>
+							<input type="radio" id="cs_open" name="cs_open" value="N">
+							<label for="even">비공개</label>
+						</div>
+	                    <div class="board_travel_mainPicture board_img">
+							<label>첨부할 사진</label>
+							<input type="file" id="noticeImg" style="width: 200px;" />
+						</div>
+						<textarea rows="30" cols="30" id="noticeContent" name="content">
+						</textarea>
+						<script>
+							var ckeditor_config = {
+								height: 400,
+								width: 860,
+								resize_enaleb : false,
+								enterMode : CKEDITOR.ENTER_BR,
+								shiftEnterMode : CKEDITOR.ENTER_P,
+								filebrowserUploadUrl : "http://localhost:8080/travelShare/board/ckUpload"
+							};
+							CKEDITOR.replace("noticeContent", ckeditor_config);
+		
+							CKEDITOR.on('dialogDefinition', function(ev) {
+								var dialogName = ev.data.name;
+								var dialogDefinition = ev.data.definition;
+		
+								switch (dialogName) {
+								case 'image': //Image Properties dialog
+									dialogDefinition.removeContents('Link');
+									dialogDefinition.removeContents('advanced');
+									break;
+								}
+							});
+						</script>
 				<input type="submit" class="qna_btn-default" value="작성완료"/>
 			</form>		
 		</div>
