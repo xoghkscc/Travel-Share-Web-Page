@@ -41,4 +41,9 @@
 		ORDER BY qno desc
 			limit #{displayPost}, #{postNum}
 	</select>
+	
+	<!-- 조회수 올리기 -->
+	<update id="qna_viewcntup">
+		UPDATE qna_guide SET viewcnt = '${viewcnt}' where qno_id=${qno}
+	</update>
 </mapper>

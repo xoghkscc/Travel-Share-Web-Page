@@ -53,6 +53,9 @@ public class QnaController {
 	public void getModify(@RequestParam("qno") int qno, Model model) throws Exception {
 		
 		QnaVO vo = service.qna_view(qno);
+		vo.setViewcnt(vo.getViewcnt() + 1);
+
+		AdminNoticeMapper.updateNoticeLookup(vo);
 		
 		model.addAttribute("qna_view", vo);
 	}

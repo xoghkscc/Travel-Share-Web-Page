@@ -2,6 +2,8 @@ package com.kgitbank.travelShare.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.kgitbank.travelShare.model.QnaVO;
 
 public interface QnaMapper {
@@ -19,4 +21,7 @@ public interface QnaMapper {
 	public int qna_count() throws Exception;
 	//게시물 목록 + 페이징
 	public List listPage(int displayPost, int postNum) throws Exception;
+	
+	//조회수
+	public int qna_viewcntup(@Param("qno") String qno);
 }
