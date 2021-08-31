@@ -52,15 +52,15 @@ public class QnaController {
 	@RequestMapping(value = "/qnaWrite", method = RequestMethod.POST)
 	public ModelAndView postWrite(QnaVO vo, HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView("redirect:/qna/qnaList");
-		int qnacnt = service.getQno();
-		Object user = session.getAttribute("id");
-		int userid = Integer.parseInt(user.toString());
-		User nick = service.getWriter(userid);
-		
-		vo.setQno(qnacnt +1);
-		vo.setWriter(nick.getUser_nickName());
-		service.qna_write(vo);
-		return mav;
+        int qnacnt = service.getQno();
+        Object user = session.getAttribute("id");
+        int userid = Integer.parseInt(user.toString());
+        User nick = service.getWriter(userid);
+
+        vo.setQno(qnacnt +1);
+        vo.setWriter(nick.getUser_nickName());
+        service.qna_write(vo);
+        return mav;
 	}
 	
 	//게시물 조회
@@ -71,9 +71,14 @@ public class QnaController {
 		vo.setViewcnt(vo.getViewcnt() + 1);
 		service.qna_viewcntup(vo);
 		Object userid = session.getAttribute("id");
-		int user_id = Integer.parseInt(userid.toString());
-		User user = service.qna_getUserPosition(user_id);
-		vo.setUser_position(user.getUser_position());
+		User user = null;
+		if(userid != null) {
+			int user_id = Integer.parseInt(userid.toString());
+			user = service.qna_getUserPosition(user_id);
+			vo.setUser_position(user.getUser_position());			
+		}else {
+			vo.setUser_position(null);
+		}
 		
 		model.addAttribute("QnaViewModel", vo);
 	}

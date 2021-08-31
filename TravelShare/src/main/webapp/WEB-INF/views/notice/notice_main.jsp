@@ -8,7 +8,7 @@
 <title>게시물 목록</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/resources/css/notice_list.css?ver=1.44">
+	href="<%=request.getContextPath()%>/resources/css/notice_list.css?ver=1.45">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Two+Tone|Material+Icons+Sharp|Material+Icons+Outlined" rel="stylesheet">
 </head>
 
@@ -66,7 +66,7 @@
 		  	</div>
 		  </div>
 		  <jsp:include page="../footer/footer.jsp"></jsp:include>
-      	<script src="<%=request.getContextPath()%>/resources/js/notice_app.js?ver=1.41"></script>
+      	<script src="<%=request.getContextPath()%>/resources/js/notice_app.js?ver=1.45"></script>
 <!--       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 </body>
 </html>
