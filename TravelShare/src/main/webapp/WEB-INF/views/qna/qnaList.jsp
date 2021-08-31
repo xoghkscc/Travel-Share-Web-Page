@@ -50,7 +50,7 @@
 		      	<a class="write_btn btn btn-default" href="./qnaWrite">±Û¾²±â</a>
       	</div>
 		  <jsp:include page="../footer/footer.jsp"></jsp:include>
-      	<script src="<%=request.getContextPath()%>/resources/js/notice_app.js?ver=1.23"></script>
+<%--       	<script src="<%=request.getContextPath()%>/resources/js/notice_app.js?ver=1.23"></script> --%>
       	     
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>

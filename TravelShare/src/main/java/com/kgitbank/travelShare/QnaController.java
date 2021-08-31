@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.request.SessionScope;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kgitbank.travelShare.mapper.LoginMapper;
@@ -19,6 +18,7 @@ import com.kgitbank.travelShare.mapper.Page;
 import com.kgitbank.travelShare.mapper.QnaMapper;
 import com.kgitbank.travelShare.model.LoginInfo;
 import com.kgitbank.travelShare.model.QnaVO;
+import com.kgitbank.travelShare.model.QnaViewModel;
 
 @Controller
 @RequestMapping("/qna")
@@ -62,14 +62,15 @@ public class QnaController {
 	//게시물 조회
 	@RequestMapping(value = "/qnaView", method = RequestMethod.GET)
 	public void getView(@RequestParam("qno") int qno, Model model) throws Exception {
-		QnaVO vo = service.qna_view(qno);
-		model.addAttribute("qna_view", vo);
+		QnaViewModel vo = service.qna_view(qno);
+		System.out.println("vo 내용 : " + vo);
+		model.addAttribute("QnaViewModel", vo);
 	}
 	
 	@RequestMapping(value = "/qnaModify", method = RequestMethod.GET)
 	public void getModify(@RequestParam("qno") int qno, Model model) throws Exception {
 		
-		QnaVO vo = service.qna_view(qno);
+		QnaViewModel vo = service.qna_view(qno);
 		
 		model.addAttribute("qna_view", vo);
 	}

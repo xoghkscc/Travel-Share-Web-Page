@@ -16,8 +16,9 @@
 		INSERT INTO qna_guide(qno,title,writer, content,regdate) VALUES(#{qno}, #{title}, #{writer}, #{content},CURRENT_DATE)
 	</insert>
 	
-	<select id="qna_view" parameterType="int" resultType="com.kgitbank.travelShare.model.QnaVO">
-		SELECT qno, title,writer, content, regdate, viewcnt FROM qna_guide WHERE qno = #{qno}
+	<select id="qna_view" parameterType="int" resultType="com.kgitbank.travelShare.model.QnaViewModel">
+		SELECT qno, title,writer, content, regdate, user_id, user_nickName, user_imgurl, 
+		viewcnt FROM qna_guide INNER JOIN user_info USING ( user_id ) WHERE qno = #{qno}
 	</select>
 	
 	<!-- 게시물 수정 -->
@@ -40,5 +41,13 @@
 		SELECT qno, title, writer, regdate, viewcnt FROM qna_guide
 		ORDER BY qno desc
 			limit #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- qna 댓글 삽입 및 조회 -->
+	<insert id="qna_insertComment">
+		INSERT INTO board_comment(comment_id, user_id, comment_text, comment_date, qna_id) VALUES (comment_seq.nextval, #{user_id}, #{comment_text}, CURRENT_DATE, #{qna_id})
+	</insert>
+	<select id="qna_selectComment" resultType="com.kgitbank.travelShare.model.CommentInfo">
+		SELECT * FROM board_comment INNER JOIN user_info USING(user_id) WHERE qna_id = #{qna_id} ORDER BY board_comment.comment_date desc
 	</select>
 </mapper>
