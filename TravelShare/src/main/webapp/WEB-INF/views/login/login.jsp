@@ -18,7 +18,10 @@
 	<jsp:include page="../header/top2.jsp"></jsp:include>
 	<!-- 네이버아이디로로그인 버튼 노출 영역 -->
 	<form id="login" action="../login" method="POST" autocomplete='off'></form>
+<<<<<<< HEAD
 	<div class="loing_container"></div>
+=======
+>>>>>>> branch 'develop-cha' of https://github.com/xoghkscc/Travel-Share-Web-Page.git
 	<div class="loginBox">
 		<div id="basic_login">
 			<div id="login_text">
