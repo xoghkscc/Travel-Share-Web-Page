@@ -10,7 +10,8 @@ body {
 	position: absolute;
 	left: 0;
 	top: 80px;
-	width: 100vw;
+	width: 94vw;
+    margin-left: 3vw;
 	height: calc(100vh - 100px);
 	font-family: 'Jua', sans-serif;
 }
@@ -81,4 +82,8 @@ table {
 .qna_paging > span:hover{
 	background-color: black;
     color: orangered;
+}
+
+.write_btn{
+	float: right;
 }

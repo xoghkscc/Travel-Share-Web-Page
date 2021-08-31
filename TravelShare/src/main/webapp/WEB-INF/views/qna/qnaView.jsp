@@ -76,8 +76,9 @@
 							</div>
 							<div id="board_besteat">${QnaViewModel.regdate }</div>
 						</div>
+						<div style="width: 300px; height: 20px;"><a href="./qnaModify?qno=${QnaViewModel.qno }">게시물 수정</a></div>
+						<div style="width: 300px; height: 20px;"><a href="./qnaDelete?qno=${QnaViewModel.qno }">게시물 삭제</a></div>
 					</div>
-
 					<div class="board_travelPlans">
 						<div id="singo" class="singo" >
 							<span class="material-icons singo_img"> lightbulb </span> <span

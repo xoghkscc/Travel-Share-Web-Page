@@ -75,7 +75,8 @@
 		          	
 		        </tbody>
 		      </table>
-		      	<a class="write_btn btn btn-default" href="./qnaWrite">글쓰기</a>
+		      	<a class="write_btn btn btn-default" href="./qnaWrite">
+		      	<span class="material-icons-outlined" style="font-size: 16px;">edit</span>글쓰기</a>
       	</div>
 		  <jsp:include page="../footer/footer.jsp"></jsp:include>
 <%--       	<script src="<%=request.getContextPath()%>/resources/js/notice_app.js?ver=1.23"></script> --%>
