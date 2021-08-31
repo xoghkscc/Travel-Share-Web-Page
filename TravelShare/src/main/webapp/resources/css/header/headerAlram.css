@@ -1,0 +1,63 @@
+.haeder_alram{
+	position: relative;
+}
+.haeder_alram>*{
+	position: absolute;
+}
+
+.alramcontent{
+	position: relative;
+	left: 16px;
+    width: 15px;
+    height: 16px;
+    font-size: 11px;
+    color: white;
+    background-color: red;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 17.5px;
+}
+.haeder_alram{
+    cursor: pointer;
+}
+
+.alramContentText{
+	position: absolute;
+    width: 480px;
+    height: 330px;
+    right: -90px;
+    top: 35px;
+    background-color: white;
+    box-shadow: 0 0 5px rgb(0 0 0 / 50%);
+    overflow-y: scroll;
+    cursor: default;
+    
+}
+.alramContentText>*{
+    cursor: pointer;
+	border-bottom: 1px solid gray;
+	width: 100%;
+	height: 30%;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.alramContentText>*:hover{
+	background-color: #eec3a9;
+}
+
+.alramImg{
+	width: 50px;
+	height: 50px;
+}
+.alramText{
+	width: 70%;
+}
+
+.alramTime{
+	color: gray;
+	margin-top: 6px;
+    font-size: 13px;
+}

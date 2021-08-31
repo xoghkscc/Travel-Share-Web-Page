@@ -90,7 +90,6 @@ public class BoardContentController {
 	@GetMapping("mainBoard")
 	public String mainBorder(Model model, HttpSession session) {
 		model.addAttribute("boardDB", boardMapper.getBoardAll());
-		
 		if(session.getAttribute("id") != null) {
 			model.addAttribute("id", session.getAttribute("id"));
 		} 

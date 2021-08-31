@@ -98,4 +98,13 @@
 		UPDATE user_info SET user_warning = user_warning + 1 WHERE user_id = #{user_id}
 	</update>
 	
+	<select id="alramContent" resultType="com.kgitbank.travelShare.model.CommentInfo">
+		SELECT board_id, comment_id, main_board.user_id, comment_text, board_comment.comment_date, board_comment.comment_lookcheck, board_mainimg, main_board.board_title
+		FROM board_comment INNER JOIN main_board USING ( board_id ) WHERE main_board.user_id = ${user_id} AND comment_lookcheck = 'N' ORDER by comment_date DESC
+	</select>
+	
+	<update id="alramLookChange" >
+		UPDATE board_comment SET comment_lookcheck = 'Y' WHERE board_id = #{board_id}
+	</update>
+	
 </mapper>

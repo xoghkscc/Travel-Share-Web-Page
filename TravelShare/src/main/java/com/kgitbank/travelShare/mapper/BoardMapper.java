@@ -54,4 +54,8 @@ public interface BoardMapper {
 	
 	public void userInfoWarning(@Param("user_id") Integer user_id);
 	
+	public ArrayList<CommentInfo> alramContent(@Param("user_id") Integer user_id);
+	
+	public void alramLookChange(@Param("board_id") Integer board_id);
+	
 }

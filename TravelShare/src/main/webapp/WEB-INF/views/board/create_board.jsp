@@ -97,7 +97,7 @@
 						<label>여행 대표 사진</label>
 					</div>
 					<div class="board_travel_file board_img">
-						<input type="file" id="board_mainimg" name="board_mainimgReal"
+						<input type="file" id="board_mainimg" name="board_mainimgReal" accept="image/*"
 							style="width: 200px;" required />
 					</div>
 				</div>

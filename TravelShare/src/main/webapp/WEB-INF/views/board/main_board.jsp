@@ -96,7 +96,7 @@
 						</div>
 							<c:choose>
 								<c:when test="${board.like_cnt>=5 &&  board.like_cnt<10}">
-									<div class="board_likePan board_middle">
+									<div class="board_likePan board_malramContentdle">
 										<span class="material-icons-outlined board_like_img">
 											favorite </span>
 										<div id="${board.board_id}" class="like">${board.like_cnt}명</div>
