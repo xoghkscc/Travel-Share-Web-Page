@@ -7,8 +7,10 @@ import org.apache.ibatis.annotations.Param;
 
 import com.kgitbank.travelShare.model.CommentInfo;
 import com.kgitbank.travelShare.model.QnaVO;
+
 import com.kgitbank.travelShare.model.QnaViewModel;
 import com.kgitbank.travelShare.model.User;
+
 
 public interface QnaMapper {
 	//게시물 목록
@@ -16,6 +18,8 @@ public interface QnaMapper {
 	
 	// 고유 번호 가져오기
 	public int getQno();
+	
+	public User getWriter(@Param("userid") int userid);
 	//게시물 작성
 	public void qna_write(QnaVO vo) throws Exception;
 	//게시물 조회

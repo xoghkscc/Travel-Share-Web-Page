@@ -12,6 +12,10 @@
 		SELECT max(qno) FROM qna_guide
 	</select>
 	
+	<select id="getWriter" resultType="com.kgitbank.travelShare.model.User">
+		SELECT user_nickname FROM user_info WHERE user_id = ${userid}
+	</select>
+	
 	<insert id="qna_write" parameterType="com.kgitbank.travelShare.model.QnaVO">
 		INSERT INTO qna_guide(qno,title,writer, content,regdate) VALUES(#{qno}, #{title}, #{writer}, #{content},CURRENT_DATE)
 	</insert>
