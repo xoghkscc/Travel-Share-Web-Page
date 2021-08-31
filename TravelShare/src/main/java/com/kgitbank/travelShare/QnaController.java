@@ -52,15 +52,17 @@ public class QnaController {
 	@RequestMapping(value = "/qnaWrite", method = RequestMethod.POST)
 	public ModelAndView postWrite(QnaVO vo, HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView("redirect:/qna/qnaList");
-        int qnacnt = service.getQno();
-        Object user = session.getAttribute("id");
-        int userid = Integer.parseInt(user.toString());
-        User nick = service.getWriter(userid);
 
-        vo.setQno(qnacnt +1);
-        vo.setWriter(nick.getUser_nickName());
-        service.qna_write(vo);
-        return mav;
+		int qnacnt = service.getQno();
+		Object user = session.getAttribute("id");
+		int userid = Integer.parseInt(user.toString());
+		User nick = service.getWriter(userid);
+		
+		vo.setQno(qnacnt +1);
+		vo.setUser_id(userid);
+		vo.setWriter(nick.getUser_nickName());
+		service.qna_write(vo);
+		return mav;
 	}
 	
 	//게시물 조회

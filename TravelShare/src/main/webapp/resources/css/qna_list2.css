@@ -30,7 +30,8 @@ body {
 }
 
 td{
-	background-color: white;	
+	background-color: white;
+	margin-top:5px;	
 }
 
 td > a {

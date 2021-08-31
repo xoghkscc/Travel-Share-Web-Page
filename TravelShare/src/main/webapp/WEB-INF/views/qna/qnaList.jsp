@@ -34,15 +34,43 @@
 		        <tbody class="qna_tbody">
 		        	  
 		        	<c:forEach items="${qna_list }" var="list">
-				          <tr>
-				           	<td>${list.qno}</td>
-				           	<td>
-				           		<a href="./qnaView?qno=${list.qno }">${list.title }</a>
-				           	</td>
-				           	<td>${list.writer }</td>
-				           	<td>${list.regdate }</td>
-				           	<td>${list.viewcnt }</td>
-				          </tr>
+		        		<c:if test="${list.cs_open eq 'N' }">
+		        		<c:choose>	
+		        			<c:when test="${list.user_id eq sessionScope.id || (sessionScope.manager ne 'member' && not empty sessionScope.id) }">
+				         	 <tr>
+				           		<td>${list.qno}</td>
+				           		<td>
+				           			<a href="./qnaView?qno=${list.qno }">${list.title }</a>
+				           		</td>
+				           		<td>${list.writer }</td>
+				           		<td>${list.regdate }</td>
+				           		<td>${list.viewcnt }</td>
+				          	</tr>
+				          	</c:when>
+				          	<c:otherwise>
+				          		<tr>
+				           		<td>${list.qno}</td>
+				           		<td>
+				           		<span class="material-icons-outlined" style="font-size: 20px;">lock</span>
+				           		비밀글은 작성자와 관리자만 볼 수 있습니다.</td>
+				           		<td>${list.writer }</td>
+				           		<td>${list.regdate }</td>
+				           		<td>${list.viewcnt }</td>
+				          	</tr>
+				          	</c:otherwise>
+				          </c:choose>
+				        </c:if>
+				        <c:if test="${list.cs_open eq 'Y' }">
+				        	<tr>
+				           		<td>${list.qno}</td>
+				           		<td>
+				           			<a href="./qnaView?qno=${list.qno }">${list.title }</a>
+				           		</td>
+				           		<td>${list.writer }</td>
+				           		<td>${list.regdate }</td>
+				           		<td>${list.viewcnt }</td>
+				          	</tr>
+				        </c:if>
 		          	</c:forEach>
 		          	
 		        </tbody>
