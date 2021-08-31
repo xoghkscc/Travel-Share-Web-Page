@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.ProcessBuilder.Redirect;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -74,7 +75,18 @@ public class MemberShipController {
 		
 		return "/login/login";
 		}
+	
+	@PostMapping("/membershipUpdate")
+	public String membershipUpdate(UserInfo userinfo, HttpSession session) {
 		
+		userinfo.setUser_birth(userinfo.getUser_year() + "/" + userinfo.getUser_month() + "/" + userinfo.getUser_day());
+		userinfo.setUser_id(Integer.valueOf((String) session.getAttribute("id")));
+		System.out.println("왔음");
+		user_info.updateUserinfo15(userinfo);
+		
+		return "/membership/userinfo";
+		}
+	
 	@GetMapping("/idsearch")
 	public String idSearch() {
 		return "/membership/idSearch";
@@ -135,12 +147,33 @@ public class MemberShipController {
 			model.addAttribute("user_name", userif.getUser_name());
 			model.addAttribute("user_like", user_info.getUserLike(userif.getUser_id()));
 			model.addAttribute("user_img", userif.getUser_imgurl());
-			model.addAttribute("boardDB", boardMapper.getBoardAll());
+			model.addAttribute("boardDB", boardMapper.getBoardLike(Integer.valueOf((String) session.getAttribute("id"))));
 			
 			if(session.getAttribute("id") != null) {
 				model.addAttribute("id", session.getAttribute("id"));
 			} 
 			return "/membership/userinfo";
+		}
+
+	}
+	
+	@GetMapping("/userinfoLike")
+	public String userinfoLike(HttpSession session, UserInfo userinfo, Model model) {
+		
+		
+		if(session.getAttribute("loginCheck") == null) {
+			return "/login/login";
+		} else {
+			UserInfo userif = user_info.getUserInfo(session.getAttribute("id"));	
+			model.addAttribute("user_name", userif.getUser_name());
+			model.addAttribute("user_like", user_info.getUserLike(userif.getUser_id()));
+			model.addAttribute("user_img", userif.getUser_imgurl());
+			model.addAttribute("boardDB", boardMapper.getMyLike(Integer.valueOf((String) session.getAttribute("id"))));
+			
+			if(session.getAttribute("id") != null) {
+				model.addAttribute("id", session.getAttribute("id"));
+			} 
+			return "/membership/userinfoLike";
 		}
 
 	}
@@ -192,6 +225,28 @@ public class MemberShipController {
 		return "/membership/userinfo";
 	}
 	
+	@GetMapping("/membershipChange")
+	public String memberShipChange(HttpSession session, UserInfo userinfo, Model model) {
+		
+		if(session.getAttribute("loginCheck") == null) {
+			return "/login/login";
+		} else {
+		
+		UserInfo userif = user_info.getUserInfo2(Integer.valueOf((String) session.getAttribute("id")));
+		
+		
+		String str = userif.getUser_birth();
+		
+	
+		model.addAttribute("userinfo", userif);
+		
+		System.out.println(model.getAttribute("userinfo"));
+	
+		
+		return "/membership/membershipChange";
+		}
+	}
+	
 	@GetMapping("deleteBoard")
 	public void deleteBoard(HttpServletRequest req, HttpServletResponse resp) {
 		String board_id = req.getParameter("board_id");
@@ -204,13 +259,12 @@ public class MemberShipController {
 		}
 	}
 	
-	
 	@GetMapping("updateBoard")
 	public String createBoard(HttpServletRequest req, Model model) {
 		String board_id = req.getParameter("board_id");
 		BoardModel bm = boardMapper.selectBoardSearch(Integer.parseInt(board_id));
 		model.addAttribute("updateBoardInfo", bm);
-		return "/membership/userinfo";
+		return "/board/update_board";
 	}
 		
 }
