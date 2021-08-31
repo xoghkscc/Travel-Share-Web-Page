@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&family=Cute+Font&family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
 body {
-	height: 100vh;
-    background-image: url(../files/back4.jpg);
-    background-size: cover;
+/* 	height: 100vh; */
     overflow-x: hidden; 
 }
 
@@ -11,7 +9,12 @@ hr{
     border: 0;
     box-shadow: 0 10px 10px -10px #bbb inset;
 }
-
+.notice_background{
+    background-image: url(../files/back4.jpg);
+    background-size: cover;
+	height: 100vh;
+	width: 100vw;
+}
 .notice_container{
 	position: absolute;
 	left: 0;
@@ -33,6 +36,11 @@ hr{
 }
 .notice_searchText{
 	width: 250px;
+	height: 30px;
+}
+.notice_searchBtn{
+	width: 50px;
+	height: 30px;
 }
 
 td{
@@ -45,6 +53,7 @@ tr {
 
 #notice_table:hover tbody tr:hover td {
     background-color: rgba(240, 240, 240, 0.3);
+    cursor: pointer;
 }
 
 
@@ -70,16 +79,33 @@ table {
     text-align: center;
     line-height: 210%;
     margin-left: 3px;
-	border: black solid 1px;
-    background-color: orangered;
-    color: blanchedalmond;
+	border: rgb(209, 209, 209) solid 1px;
+    background-color: white;
+    color: black;
     border-radius: 20%;
     width: 25px;
     height: 30px;
 }
 .notice_paging > span:hover{
-	background-color: black;
+	background-color: white;
     color: orangered;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.notice_bottomBox{
+    border: 1px solid silver;
+    background-color: #e6e6e6;
+    width: 400px;
+    height: 100px;
+
+    display: grid;
+    justify-content: center;
+    /* text-align: center; */
+    align-items: center;
+    grid-template-rows: 1fr 1fr;
+    /* align-content: center; */
+    margin: auto;
 }
 
 /**********************************************
@@ -93,10 +119,12 @@ table {
 /* } */
 .notice_Popup{
     
-    position: fixed;
+/*     position: fixed; */
     display: none;
-    z-index: 9005; 
+    z-index: 1005; 
     position: absolute;
+    left: 0;
+    top: 0;
     width: 100vw;
     height: 100vh;
     overflow-y: scroll;
@@ -156,7 +184,7 @@ table {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(../files/back2.jpg);
+    background-image: url(../asset/배경2.jpg);
     background-size: cover;
     border-radius: 10%;
     border: 3px black solid;

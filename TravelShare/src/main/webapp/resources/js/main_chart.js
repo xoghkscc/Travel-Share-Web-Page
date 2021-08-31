@@ -186,14 +186,10 @@ highMaps.prototype.init = function(){
                                 }
 
                                 if(this.properties.code.length >= 4){
-                                    console.log(this.properties.code);
-                                    console.log(this.properties.name);
+//                                    console.log(this.properties.code);
+//                                    console.log(this.properties.name);
                                     if (!confirm(`${this.properties.name}를 선택하셨습니다. 확인(예) 또는 취소(아니오)를 선택해주세요.`)) {
-                                        alert("취소(아니오)를 누르셨습니다.");
                                     } else {
-                                        alert("확인(예)을 누르셨습니다.");
-                                        console.log(`/travelShare/board/mainBoardFilter?sigungucode=${this.properties.code}&sidoName=${sido}&sidogunName=${this.properties.name}`);
-                                
                                         me.selected = '0';
                                         me.event.drillup();
                                         location.href = `/travelShare/board/mainBoardFilter?sigungucode=${this.properties.code}&sidoName=${sido}&sidogunName=${this.properties.name}`;

@@ -11,12 +11,12 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="http://code.highcharts.com/maps/highmaps.js"></script>
 <script src="http://code.highcharts.com/maps/modules/drilldown.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/main_chart.js?ver=5.20"></script>
+<script src="<%=request.getContextPath()%>/resources/js/main_chart.js?ver=5.21"></script>
 <script type="text/javascript">
 var highMap = new highMaps();
 highMap.init();
 </script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css?ver=5.16">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css?ver=5.17">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main_board.css?ver=1.00">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Two+Tone|Material+Icons+Sharp|Material+Icons+Outlined" rel="stylesheet">
 <link rel="shortcut icon" href="#">
@@ -52,8 +52,8 @@ highMap.init();
             <div class="main_sec2_topbar1">여행 루트</div>
             <div class="main_sec2_topbar2">여행지를 직접 검색하시거나 목록에서 선택해주세요.</div>
             <div class="main_sec2_topbar3">
-                <input type="text" placeholder="어디로 여행을 떠나시나요?">
-                <span class="material-icons-outlined" style="font-size: calc(20px + 1vw);">search</span>
+                <input class="main_textInput" type="text" placeholder="어디로 여행을 떠나시나요?">
+                <span class="material-icons-outlined" id="main_textSearch" style="font-size: calc(20px + 1vw);">search</span>
             </div>
             <div id="main_map_container">
                 <div id="main_map" class="main_map_app"></div>
@@ -94,7 +94,7 @@ highMap.init();
                     </div>
                 </div>
             </div>
-            <hr>
+            <hr class="hrClass">
             <div id="main_sev3_container2">
                 <div>
                     <span id="main_sev3_text_1">머선129? 한번 가보긴 했나~?</span><br>
@@ -285,7 +285,7 @@ highMap.init();
 			</div>
 		</div>
 	</div>
-   	<script src="<%=request.getContextPath()%>/resources/js/main_ajax.js?ver=1.09"></script>
-    <script src="<%=request.getContextPath()%>/resources/js/main_app.js?ver=5.20"></script>
+   	<script src="<%=request.getContextPath()%>/resources/js/main_ajax.js?ver=1.11"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/main_app.js?ver=5.23"></script>
 </body>
 </html>

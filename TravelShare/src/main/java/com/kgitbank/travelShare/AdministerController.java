@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 import java.util.regex.Pattern;
@@ -16,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -152,5 +155,38 @@ public class AdministerController {
 		AdminNoticeMapper.deleteBoardNotice(boardId);
 		
 		return "administer/administer";
+	}
+	
+	@RequestMapping("/MainBoard_MapSearching")
+	public String getMainBoard_MapSearching(@RequestParam("Searching_content") String Searching_content,HttpServletRequest req, Model model) {	
+		
+		//공지사항 제목 검색하기
+		ArrayList<BoardModel> sido = AdminNoticeMapper.findSido(Searching_content);
+		ArrayList<BoardModel> sigungu = AdminNoticeMapper.findGungu(Searching_content);
+
+		if(sido == null || sido.size() == 0) {
+			if(sigungu == null || sigungu.size() == 0) {
+				model.addAttribute(sigungu);
+				model = filterTextMain(req, model);
+				model.addAttribute("boardDB",sido);
+			}else {
+				model = filterTextMain(req, model);
+				model.addAttribute("boardDB",sigungu);
+			}
+		}else {
+			model = filterTextMain(req, model);
+			model.addAttribute("boardDB",sido);
+		}
+		
+		return "/board/main_board";
+	}
+
+	public Model filterTextMain(HttpServletRequest req, Model model) {
+		String sidoName = req.getParameter("sidoName");
+		String sidogunName = req.getParameter("sidogunName");
+		model.addAttribute("sidoName", sidoName);
+		model.addAttribute("sidogunName", sidogunName);
+		
+		return model;
 	}
 }

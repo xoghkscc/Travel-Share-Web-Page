@@ -82,7 +82,7 @@ function getNotices(e){
 						span.innerHTML = `${pagingNumber + 5*(pageNextBtn-1)}`;
 												
 						if(`${pagingNumber + 5*(pageNextBtn-1)}` == pagingNumBtn){
-							span.style.backgroundColor = "black";
+							span.style.backgroundColor = "white";
 							span.style.color = "orangered";
 						}
 						notice_paging.appendChild(span);	
@@ -260,6 +260,7 @@ function notice_searchFunc(e){
 
 //팝업을 위한 함수
 function notice_PopupCancelFunc(e){
+	getNotices();
 	notice_Popup.style.display = "none";
 }
 
