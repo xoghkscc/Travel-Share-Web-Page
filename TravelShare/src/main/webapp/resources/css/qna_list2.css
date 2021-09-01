@@ -28,6 +28,11 @@ body {
 }
 .qna_searchText{
 	width: 250px;
+	height: 30px;
+}
+.qna_searchBtn {
+	width: 50px;
+	height: 30px;
 }
 
 td{
@@ -72,16 +77,33 @@ table {
     text-align: center;
     line-height: 210%;
     margin-left: 3px;
-	border: black solid 1px;
-    background-color: orangered;
-    color: blanchedalmond;
+	border: rgb(209, 209, 209) solid 1px;
+    background-color: white;
+    color: black;
     border-radius: 20%;
     width: 25px;
     height: 30px;
 }
 .qna_paging > span:hover{
-	background-color: black;
+	background-color: white;
     color: orangered;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.qna_bottomBox{
+    border: 1px solid silver;
+    background-color: #e6e6e6;
+    width: 400px;
+    height: 100px;
+
+    display: grid;
+    justify-content: center;
+    /* text-align: center; */
+    align-items: center;
+    grid-template-rows: 1fr 1fr;
+    /* align-content: center; */
+    margin: auto;
 }
 
 .write_btn{

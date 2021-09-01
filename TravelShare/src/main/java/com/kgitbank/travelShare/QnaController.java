@@ -97,7 +97,7 @@ public class QnaController {
 	@RequestMapping(value = "/qnaModify", method = RequestMethod.POST)
 	public String postModify(QnaVO vo) throws Exception {
 		service.qna_modify(vo);
-		
+		System.out.println("왔음");
 		return "redirect:/qna/qnaList";
 	}
 	

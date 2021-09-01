@@ -27,7 +27,7 @@
 	
 	<!-- 게시물 수정 -->
 	<update id="qna_modify" parameterType="com.kgitbank.travelShare.model.QnaVO">
-		UPDATE qna_guide SET title = #{title}, content = #{content}, writer = #{writer}
+		UPDATE qna_guide SET title = #{title}, content = #{content}, cs_open = #{cs_open}
 		WHERE qno = #{qno}
 	</update>
 	<!-- 게시물 삭제 -->

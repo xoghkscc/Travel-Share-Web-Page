@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>�Խù� ���</title>
+<meta charset="UTF-8">
+<title>게시물 목록</title>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/css/qna_list2.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -16,19 +16,15 @@
 <jsp:include page="../header/top.jsp"></jsp:include>
 	<div class="loing_container" style="width: 100%; height: 100vh"></div>
 	<div class="qna_container">
-		<div>QNA �Խ���</div>
-		<div>
-			<input type="text" class="qna_searchText" placeholder="������ �˻��ϼ���."/>
-			<button class="qna_searchBtn" type="submit">�˻�</button>
-		</div>
+		<div>QNA 게시판</div>
 		    <table id="qnaTable" class="table table-hover">
 		        <thead class=qna_head>
 		          <tr>
-		            <th class="text-center">��ȣ</th>
-		            <th class="text-center">����</th>
-		            <th class="text-center">�ۼ���</th>
-		            <th class="text-center">�ۼ���</th>
-		            <th class="text-center">��ȸ��</th>
+		            <th class="text-center">번호</th>
+		            <th class="text-center">제목</th>
+		            <th class="text-center">작성자</th>
+		            <th class="text-center">작성일</th>
+		            <th class="text-center">조회수</th>
 		          </tr>
 		        </thead>
 		        <tbody class="qna_tbody">
@@ -52,7 +48,7 @@
 				           		<td>${list.qno}</td>
 				           		<td>
 				           		<span class="material-icons-outlined" style="font-size: 20px;">lock</span>
-				           		��б��� �ۼ��ڿ� �����ڸ� �� �� �ֽ��ϴ�.</td>
+				           		비밀글은 작성자와 관리자만 볼 수 있습니다.</td>
 				           		<td>${list.writer }</td>
 				           		<td>${list.regdate }</td>
 				           		<td>${list.viewcnt }</td>
@@ -75,12 +71,21 @@
 		          	
 		        </tbody>
 		      </table>
+		      <div class="qna_bottomBox">
+			    <div class="qna_paging"></div>	
+			    <div>
+					<input type="text" class="qna_searchText" placeholder="제목을 검색하세요."/>
+					<button class="qna_searchBtn" type="submit">검색</button>
+				</div>
+	        </div>
+		      <c:if test="${not empty sessionScope.id }">
 		      	<a class="write_btn btn btn-default" href="./qnaWrite">
-		      	<span class="material-icons-outlined" style="font-size: 16px;">edit</span>�۾���</a>
-      	</div>
+		      	<span class="material-icons-outlined" style="font-size: 16px;">edit</span>글쓰기</a>
+      		 </c:if>
+      		</div>
 		  <jsp:include page="../footer/footer.jsp"></jsp:include>
-<%--       	<script src="<%=request.getContextPath()%>/resources/js/notice_app.js?ver=1.23"></script> --%>
-      	     
+       <!--  	<script src="<%=request.getContextPath()%>/resources/js/qna_paging.js?ver=1.23"></script> -->
+          
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>
