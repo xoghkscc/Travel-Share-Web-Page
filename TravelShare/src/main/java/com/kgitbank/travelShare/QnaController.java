@@ -39,7 +39,7 @@ public class QnaController {
 		
 		List<QnaVO> list = null;
 		list = service.qna_list();
-		
+//		d
 		model.addAttribute("qna_list",list);
 	}
 	
