@@ -82,7 +82,7 @@ function getNotices(e){
 						span.innerHTML = `${pagingNumber + 5*(pageNextBtn-1)}`;
 												
 						if(`${pagingNumber + 5*(pageNextBtn-1)}` == pagingNumBtn){
-							span.style.backgroundColor = "black";
+							span.style.backgroundColor = "white";
 							span.style.color = "orangered";
 						}
 						notice_paging.appendChild(span);	
@@ -219,7 +219,7 @@ function getNoticePopup(num){
 
 
 function tableNoticeTrClick(e) {
-	
+	document.body.style.overflowY = "hidden";
 	notice_Popup.style.display = "block";
 	getNoticePopup(e.target.parentNode.children[0].innerText);
 }
@@ -258,8 +258,10 @@ function notice_searchFunc(e){
 }
 
 
-//팝업을 위한 함수
+//팝업취소를 위한 함수
 function notice_PopupCancelFunc(e){
+	document.body.style.overflowY = "scroll";
+	getNotices();
 	notice_Popup.style.display = "none";
 }
 

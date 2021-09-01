@@ -37,4 +37,9 @@ public interface AdminNoticeMapper {
 	
 	//update
 	public int updateAdminNotice(AdminNotice adn);
+	public int updateNoticeLookup(NoticeModel adn);
+	
+	//find(메인지도에서 시,도 비교)
+	public ArrayList<BoardModel> findSido(@Param("Searching_content") String Searching_content);
+	public ArrayList<BoardModel> findGungu(@Param("Searching_content") String Searching_content);
 }

@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>QNA ÀÛ¼º</title>
+<meta charset="UTF-8">
+<title>QNA ìž‘ì„±</title>
 <link
 	href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
 	rel="stylesheet">
@@ -17,56 +17,46 @@
 <body>
 	<div class="qna_write">
 		<div class="qna_write_form">
-			<form action="../qna/qnaWrite" method="post">
-			<div class="qna_input">
-				<div>
-					<label>Á¦¸ñ</label>
-				</div>			
-			
-			<div>
-				<input type="text" name="title" placeholder="Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä" style="width: 300px; height: 30px;">
-			</div>
-			<div>
-				<label>ÀÛ¼ºÀÚ</label>
-			</div>
-			<div>
-				<input type="text" name="writer" style="width: 300px; height: 30px;">
-			</div>
-			
-			<div class="qna_travel_mainPicture qna_img">
-				<label >QNA ±Û ÀÛ¼º</label>
-			</div>
-			</div>
-				<div class="qna_travel_file qna_img">
-					<input type="file" id="qna_img" name="qna_img_file" style="width: 200px;" />
-				</div>
-				<textarea rows="50" cols="50" id="content" name="content">
-				</textarea>
-			
-				<script>
-					var ckeditor_config = {
-						height: 500,
-						resize_enaleb : false,
-						enterMode : CKEDITOR.ENTER_BR,
-						shiftEnterMode : CKEDITOR.ENTER_P,
-						filebrowserUploadUrl : "http://localhost:8080/travelShare/board/ckUpload"
-					};
-					CKEDITOR.replace("board_content", ckeditor_config);
-
-					CKEDITOR.on('dialogDefinition', function(ev) {
-						var dialogName = ev.data.name;
-						var dialogDefinition = ev.data.definition;
-
-						switch (dialogName) {
-						case 'image': //Image Properties dialog
-// 							dialogDefinition.removeContents('info');
-							dialogDefinition.removeContents('Link');
-							dialogDefinition.removeContents('advanced');
-							break;
-						}
-					});
-				</script>
-				<input type="submit" class="qna_btn-default" value="ÀÛ¼º¿Ï·á"/>
+		<h2>ì¹´íŽ˜ ê¸€ì“°ê¸°</h2>
+		<hr>
+			<form id="qna_form" action="/travelShare/qna/qnaWrite" method="POST" enctype="multipart/form-data">
+                    	<div>
+							<input id="qnaTitle" type="text" name="title" placeholder="ì œëª©ì„ ìž…ë ¥í•´ì£¼ì„¸ìš”">
+							<input type="radio" id="cs_open" name="cs_open" value="Y" checked>
+							<label for="all">ê³µê°œ</label>
+							<input type="radio" id="cs_open" name="cs_open" value="N">
+							<label for="even">ë¹„ê³µê°œ</label>
+						</div>
+	                    <div class="board_travel_mainPicture board_img">
+							<label>ì²¨ë¶€í•  ì‚¬ì§„</label>
+							<input type="file" id="noticeImg" style="width: 200px;" />
+						</div>
+						<textarea rows="30" cols="30" id="noticeContent" name="content">
+						</textarea>
+						<script>
+							var ckeditor_config = {
+								height: 400,
+								width: 860,
+								resize_enaleb : false,
+								enterMode : CKEDITOR.ENTER_BR,
+								shiftEnterMode : CKEDITOR.ENTER_P,
+								filebrowserUploadUrl : "http://localhost:8080/travelShare/board/ckUpload"
+							};
+							CKEDITOR.replace("noticeContent", ckeditor_config);
+		
+							CKEDITOR.on('dialogDefinition', function(ev) {
+								var dialogName = ev.data.name;
+								var dialogDefinition = ev.data.definition;
+		
+								switch (dialogName) {
+								case 'image': //Image Properties dialog
+									dialogDefinition.removeContents('Link');
+									dialogDefinition.removeContents('advanced');
+									break;
+								}
+							});
+						</script>
+				<input type="submit" class="qna_btn-default" value="ìž‘ì„±ì™„ë£Œ"/>
 			</form>		
 		</div>
 	</div>

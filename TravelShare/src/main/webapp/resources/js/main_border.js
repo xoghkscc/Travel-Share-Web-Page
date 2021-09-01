@@ -207,6 +207,12 @@ var sigungucode = getParameterByName("sigungucode");
 }
 
 window.onload =  () => {
+	var clickBoard_id = getParameterByName("board_id");
+	var clickUser_id = getParameterByName("user_id");
+	if(clickBoard_id !==''){
+		imgClick(clickBoard_id, clickUser_id);
+	}
+		
 	var sel = document.getElementById("h_area2");
 	var key = document.getElementById("board_sido");
 	cat1_change(key.value);
@@ -592,6 +598,16 @@ function createBoardLocation(id){
 		location.href = "../site/login";
 	}
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

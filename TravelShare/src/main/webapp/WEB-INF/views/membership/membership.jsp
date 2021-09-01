@@ -5,19 +5,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Travelers 회원가입</title>
+<title>회원 가입</title>
  <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/membership/membership_main.css">
 </head>
 <body>
 	<jsp:include page="../header/top2.jsp"></jsp:include>
-	<div class="loing_container" style="width: 100%; height: 100vh"></div>
+	<div class="loing_container" style="width: 100%; height: 150vh"></div>
 	<form id="membership" action="./membership" method="POST" autocomplete='off'></form>
 	<form id="phoneCheck" action="./phoneCheck" method="POST" autocomplete='off'></form>
 	<div class="membership_box">
 		<div id="membership_table">
-			<div id="user_membership">회원가입</div>
+			<div id="user_membership">회원 가입</div>
 			<table>
 				<tr>
 					<th class="member_text">아이디</th>
@@ -149,7 +149,7 @@
 		<jsp:include page="../footer/footer.jsp"></jsp:include>
 		<script>
 		  $('.membership_box').css('border','1px solid black');
-		  $('.membership_box').css('width','350px');
+		  $('.membership_box').css('width','400px');
 		  $('.membership_box').css('height','auto');
 		  $('.membership_box').css('margin','auto');
 	  </script>

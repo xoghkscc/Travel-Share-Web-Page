@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -90,9 +93,10 @@ public class AdminRestController {
 		//mapping안하고 바로 @셀렉트
 		NoticeModel NoticeModel = AdminNoticeMapper.getNoticeOne(noticeId);
 
-//		String uploadPath = request.getSession().getServletContext().getRealPath("/resources/files/user_img/") + "null"+".jpg";// 저장경로
-//	
-//		NoticeModel.setUser_imgurl(uploadPath);
+		//셀렉트한 모델의 조회수를 올리기위한 메소드
+		NoticeModel.setNotice_lookupcnt(NoticeModel.getNotice_lookupcnt() + 1);
+
+		AdminNoticeMapper.updateNoticeLookup(NoticeModel);
 		
 		return NoticeModel;
 	}
@@ -149,4 +153,22 @@ public class AdminRestController {
 
 		return boardLikeModel;
 	}
+	
+//	@RequestMapping(value="/MainBoard_MapSearching", produces=MediaType.APPLICATION_JSON_VALUE)
+//	public BoardModel getMainBoard_MapSearching(@RequestParam("Searching_content") String Searching_content) {	
+//		
+//		System.out.println("들어왔다라야이야양야야야");
+//		//공지사항 제목 검색하기
+//		BoardModel sido = AdminNoticeMapper.findSido(Searching_content);
+//		BoardModel sigungu = AdminNoticeMapper.findGungu(Searching_content);
+//		
+//		if(sido == null) {
+//			if(sigungu != null) {
+//				sido = sigungu;
+//			}
+//		}
+//		
+//		return sido;
+//	}
+
 }

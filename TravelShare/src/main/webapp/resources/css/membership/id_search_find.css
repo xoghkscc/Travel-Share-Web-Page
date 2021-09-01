@@ -43,10 +43,12 @@ body{
 
 #login {
 	margin-left : 100px;
+	
 }
 
 .search_text{
 	color : gray;
+	cursor : pointer;
 }
 
 #password_search {

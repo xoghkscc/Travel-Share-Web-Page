@@ -12,6 +12,10 @@ import com.kgitbank.travelShare.model.WarningModel;
 public interface BoardMapper {
 	public ArrayList<BoardModel> getBoardAll();
 	
+	public ArrayList<BoardModel> getBoardLike(@Param("user_id") Integer user_id);
+	
+	public ArrayList<BoardModel> getMyLike(@Param("user_id") Integer user_id);
+	
 	public ArrayList<BoardModel> getBoardChoice(@Param("board_id") Integer board_id);
 	
 	public ArrayList<BoardModel> getBoardFilter1(@Param("sigungucode") Integer sigungucode);
@@ -53,5 +57,9 @@ public interface BoardMapper {
 	public void insertWaring(@Param("board_id") Integer board_id, @Param("singo_id") Integer singo_id);
 	
 	public void userInfoWarning(@Param("user_id") Integer user_id);
+	
+	public ArrayList<CommentInfo> alramContent(@Param("user_id") Integer user_id);
+	
+	public void alramLookChange(@Param("board_id") Integer board_id);
 	
 }

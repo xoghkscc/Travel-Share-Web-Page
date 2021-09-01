@@ -17,13 +17,15 @@ login_loginbtn.onclick = (event) => {
 		const status = e.target.status;
 		const readyState = target.readyState;
 		if(status == 200 && readyState == 4) {
+
 			if(target.responseText == 1){
 				login_warning.innerHTML = "아이디 혹은 비밀번호가 틀렸습니다.";
 			} else {
 				gocontroller();
 				location.href = `../login/goIndex?user_email=${this.user_email.value}`;
-			} 
-		} 
+
+			}
+		}
 	});
 	
 	var logindata = {

@@ -21,13 +21,6 @@ a {
     text-decoration-line: none;
     color: inherit;
 }
-hr{     
-    margin-top: 10%;
-    margin-bottom: 10%;
-    border: 0;
-    height: 5px;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), orangered, rgba(0, 0, 0, 0));
-}
 
 /*********************
     1번 section
@@ -101,7 +94,13 @@ hr{
 
     text-shadow: burlywood 1px 0 10px;
 }
-
+.hrClass{
+    margin-top: 10%;
+    margin-bottom: 10%;
+    border: 0;
+    height: 5px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), orangered, rgba(0, 0, 0, 0));	
+}
 .main_icons{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -300,7 +299,7 @@ main{
 .main_recommend{
     /* margin-left: 2vw; */
     /* border: 2px red solid; */
-    column-gap: 12px;
+    column-gap: 37px;
     text-align: center;
 	display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -699,9 +698,12 @@ main{
         margin-bottom: 20px;
     }
 }
-@media (max-width: 730px){
+@media (max-width: 1050px){
     .main_recommend{
         grid-template-columns: 1fr 1fr;
+    }
+    .main_recommend{
+        column-gap: 20px;
     }
 }
 

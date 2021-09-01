@@ -16,4 +16,6 @@ public class QnaVO {
 	private String writer;	
 	private Date regdate;
 	private Integer viewcnt;
+	private Integer user_id;
+	private String cs_open;
 }

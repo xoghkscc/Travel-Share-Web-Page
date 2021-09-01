@@ -55,6 +55,7 @@ public class BoardContentRestController {
 	
 	@PostMapping(value = "/insertComment", produces = MediaType.APPLICATION_JSON_VALUE)
 	public void insertCommnet(@RequestBody CommentInfo commentInfo){
+		commentInfo.setComment_lookcheck("N");
 		boardMapper.insertComment(commentInfo);
 	}
 	

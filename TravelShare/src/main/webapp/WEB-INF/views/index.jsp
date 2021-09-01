@@ -11,12 +11,12 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="http://code.highcharts.com/maps/highmaps.js"></script>
 <script src="http://code.highcharts.com/maps/modules/drilldown.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/main_chart.js?ver=5.18"></script>
+<script src="<%=request.getContextPath()%>/resources/js/main_chart.js?ver=5.21"></script>
 <script type="text/javascript">
 var highMap = new highMaps();
 highMap.init();
 </script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css?ver=5.16">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css?ver=5.17">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main_board.css?ver=1.00">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Two+Tone|Material+Icons+Sharp|Material+Icons+Outlined" rel="stylesheet">
 <link rel="shortcut icon" href="#">
@@ -52,8 +52,8 @@ highMap.init();
             <div class="main_sec2_topbar1">여행 루트</div>
             <div class="main_sec2_topbar2">여행지를 직접 검색하시거나 목록에서 선택해주세요.</div>
             <div class="main_sec2_topbar3">
-                <input type="text" placeholder="어디로 여행을 떠나시나요?">
-                <span class="material-icons-outlined" style="font-size: calc(20px + 1vw);">search</span>
+                <input class="main_textInput" type="text" placeholder="어디로 여행을 떠나시나요?">
+                <span class="material-icons-outlined" id="main_textSearch" style="font-size: calc(20px + 1vw);">search</span>
             </div>
             <div id="main_map_container">
                 <div id="main_map" class="main_map_app"></div>
@@ -94,7 +94,7 @@ highMap.init();
                     </div>
                 </div>
             </div>
-            <hr>
+            <hr class="hrClass">
             <div id="main_sev3_container2">
                 <div>
                     <span id="main_sev3_text_1">머선129? 한번 가보긴 했나~?</span><br>
@@ -181,7 +181,7 @@ highMap.init();
     
     <!-- popup창 -->
    	<div id="board_clickPan" class="board_hide">
-		<div class="x_box">
+		<div onclick="imgClickRollback()" class="x_box">
 			<span class="material-icons-outlined "> close </span>
 		</div>
 		<div id="board_detailContent">
@@ -194,43 +194,52 @@ highMap.init();
 					<!-- q= 뒤에 주소를 입력하면 됨 -->
 					<hr style="color: black; width: 100%; margin-bottom: 50px;">
 					<div id="board_main_content" class="board_main_content">
-					<!-- 게시판 콘텐츠들이 들어가는 곳  -->
+						<!-- 게시판 콘텐츠들이 들어가는 곳  -->
 					</div>
 
 					<div class="board_comment">
-						<div class="board_comment_tit">
+						<div id="board_comment_tit" class="board_comment_tit">
 							<p>한줄댓글</p>
+<!-- 									<div class="board_ud"> -->
+<!-- 										<button>수정</button> -->
+<!-- 										<button>삭제</button> -->
+<!-- 									</div> -->
 						</div>
 						<div class="board_comment_write">
-							<form action="">
-								<input type="text" name="board_commnet"
-									placeholder="한 줄 댓글을 남겨주세요."> <input type="submit"
-									name="board_commnet_submit" value="댓글남기기">
+							<form action="#" id="board_commentId">
+								<input type="text" id="board_commnet" name="board_commnet"
+									placeholder="한 줄 댓글을 남겨주세요." autocomplete="off"> <input type="hidden"
+									id="user_id" name="user_id" value="${id }"> <input
+									type="submit" name="board_commnet_submit" value="댓글남기기">
 							</form>
 						</div>
-						<div class="board_comment_show">
-							<div class="board_comment_see">
-								<div class="board_comment_see_img">
-									<img src="<%=request.getContextPath()%>/resources/files/null.jpg" alt="">
-								</div>
-								<div class="board_comment_see_text">
-									<div>
-										<strong>닉네임</strong> <span class="board_comment_see_text_date">2021.08.12</span>
-									</div>
-									<div>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</div>
-								</div>
-							</div>
-							<hr style="color: black; width: 100%; margin-bottom: 50px;">
+						<div id="board_comment_show" class="board_comment_show">
+							<!-- 							<div class="board_comment_see"> -->
+							<!-- 								<div class="board_comment_see_img"> -->
+							<%-- 									<img src="<%=request.getContextPath()%>/resources/files/null.jpg" alt=""> --%>
+							<!-- 								</div> -->
+							<!-- 								<div class="board_comment_see_text"> -->
+							<!-- 									<div> -->
+							<!-- 										<strong>닉네임</strong> <span class="board_comment_see_text_date">2021.08.12</span> -->
+							<!-- 									</div> -->
+							<!-- 									<div>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용</div> -->
+							<!-- 								</div> -->
+							<!-- 							</div> -->
+							<!-- 							<hr style="color: black; width: 100%; margin-bottom: 50px;"> -->
 						</div>
 					</div>
 				</div>
+
+
 				<div class="board_right_pan">
-					<div class="board_user_info">
-						<img id="board_mainimg" src="<%=request.getContextPath()%>/resources/files/null.jpg"
+					<div id="board_user_info" class="board_user_info">
+						<img id="board_mainimg"
+							src="<%=request.getContextPath()%>/resources/files/null.jpg"
 							alt="">
 					</div>
-					<div class="board_user_name">닉네임</div>
+					<div id="board_user_name" class="board_user_name">닉네임</div>
 
+					<div id="board_content_id" class="board_content_id"></div>
 					<div id="board_title" class="board_title"></div>
 					<div class="board_sub_info">
 						<div class="board_sub_info2">
@@ -254,12 +263,12 @@ highMap.init();
 									favorite </span>
 								<div>스크랩</div>
 							</div>
-							<div>0</div>
+							<div id="board_scarp_cnt">0</div>
 						</div>
 					</div>
 
 					<div>
-						<div class="board_scrap_btn">
+						<div id="board_scrap_btn" class="board_scrap_btn">
 							<span class="material-icons-outlined board_like_img">
 								favorite </span>
 							<div>스크랩</div>
@@ -267,17 +276,16 @@ highMap.init();
 					</div>
 
 					<div class="board_travelPlans">
-						<div class="singo">
+						<div id="singo" class="singo" >
 							<span class="material-icons singo_img"> lightbulb </span> <span
 								class="board_singo">신고하기</span>
 						</div>
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-   	<script src="<%=request.getContextPath()%>/resources/js/main_ajax.js?ver=1.08"></script>
-    <script src="<%=request.getContextPath()%>/resources/js/main_app.js?ver=5.19"></script>
+   	<script src="<%=request.getContextPath()%>/resources/js/main_ajax.js?ver=1.11"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/main_app.js?ver=5.23"></script>
 </body>
 </html>

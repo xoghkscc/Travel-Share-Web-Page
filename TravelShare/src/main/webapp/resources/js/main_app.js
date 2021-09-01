@@ -4,8 +4,12 @@ const main_map_app = document.querySelector('.main_map_app');
 const main_cellphone_list = document.getElementsByClassName('main_cellphone_list');
 const main_sticky_text = document.getElementsByClassName('main_sticky_text');
 const main_sticky_container2 = document.querySelector('.main_sticky_container2');
+const main_textInput = document.querySelector('.main_textInput');
+const main_textSearch = document.querySelector('#main_textSearch');
+
 
 main_start.addEventListener('click', main_start_click);
+main_textSearch.addEventListener('click', findRightLocation);
 
 for(let i=0; i < main_bottomMenu.length; i++){
     main_bottomMenu[i].addEventListener('mouseover', main_bottomMenu_mouseover);
@@ -93,3 +97,43 @@ function resize(){
     }
 }
 resize();
+
+function findRightLocation(e){
+	console.log(main_textInput.value);
+//	const xhttp = new XMLHttpRequest();
+//	
+//	xhttp.addEventListener('readystatechange', (e) =>{
+//		const target = e.target;
+//		const status = target.status;
+//		const readyState = target.readyState;
+//		
+//		if(status == 200 && readyState == 4){
+//			//자바스크립트에서는 아주 쉽게 JSON형식의 문자열을 Object로 변환할 수 있다
+//			myobj = JSON.parse(target.responseText);
+//
+//			console.log(myobj.sido);
+//			console.log(myobj.sigungu);
+//			
+//			if(sigungucode == 0 && selectOptionSido != 0){
+//				location.href = "./mainBoardFilter2?sidocode="+selectOptionSido+"&sidoName="+selectOptionSidoName+"&sidogunName="+selectOptionSidogunName;
+//			} else if(selectOptionSido == 0){
+//				location.href = "./mainBoard"
+//			} else{
+//				location.href = "./mainBoardFilter?sigungucode="+sigungucode+"&sidoName="+selectOptionSidoName+"&sidogunName="+selectOptionSidogunName;
+//			}
+//
+//		}
+//	});
+//
+//
+//	xhttp.open('GET', `/travelShare/rest/MainBoard_MapSearching?Searching_content=${main_textInput.value}`, true);	
+//
+//	xhttp.send();
+//	
+	
+//	xhttp.open('POST', '/travelShare/rest/MainBoard_MapSearching/', true);
+//	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
+//	xhttp.send(main_textInput.value);
+	
+	location.href = "/travelShare/site/MainBoard_MapSearching?Searching_content="+main_textInput.value;
+}

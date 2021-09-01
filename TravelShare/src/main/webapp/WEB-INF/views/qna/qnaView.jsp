@@ -1,54 +1,95 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>°Ô½Ã¹° Á¶È¸</title>
+<meta charset="UTF-8">
+<title>ê²Œì‹œë¬¼ ì¡°íšŒ</title>
 </head>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resources/css/main_board.css">
+	
+<link
+	href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+	rel="stylesheet">
 <body>
-	
-	<div class="qna_Popup">
-		   <div class="qna_cancel">
-			   <span class="material-icons-outlined "> close </span>
-		   </div>
-		   <div class="qna_textContainer">
-		       <div>°øÁö»çÇ× °Ô½ÃÆÇ</div>
-		       <div class="qna_PopupTitle">Á¦¸ñ~~~</div>
-		       <hr>
-		       <div class="qna_PopupTop">
-		           <div class="qna_PopupImg">user_img</div>
-		           <div>
-		               <div class="qna_PopupId">user_id</div>
-<!-- 		               <hr> -->
-		               <div class="qna_PopupDate">date</div>
-		           </div>
-		           <div class="qna_cntBoard">
-			           <span class="material-icons-outlined">
-							visibility
-					   </span>
-			           <span class="qna_PopupCnt">viewcnt</span>
-		           </div>
-		       </div>
-		       <hr>
-		       <div class="qna_PopupText"></div>
-		  	</div>
-		  </div>
-      	<script src="<%=request.getContextPath()%>/resources/js/notice_app.js?ver=1.23"></script>
-	
 
-	<label>Á¦¸ñ</label>
-	${view.title } <br>
-	
-	<label>ÀÛ¼ºÀÚ</label>
-	${view.writer } <br>
-	
-	<label>³»¿ë</label>
-	${view.content } <br>
-	
-	<div>
-		<a href="/qna/modify?qno=${view.qno }">°Ô½Ã¹° ¼öÁ¤</a>
-		<a href="/qna/delete?qno=${view.qno }">°Ô½Ã¹° »èÁ¦</a>
+
+		  
+<!-- 	<label>ê¸€ë²ˆí˜¸</label> -->
+	<div class="qna_view_qno">${QnaViewModel.qno }</div>
+	<div class="qna_user_position">${QnaViewModel.user_position }</div>
+
+	<div id="board_clickPan">
+		<div onclick="imgClickRollback()" class="x_box">
+			<span class="material-icons-outlined "> close </span>
+		</div>
+		<div id="board_detailContent">
+			<div class="board_detailPan">
+				<div class="board_left_pan">
+					<div>
+						<label style="font-size: 30px;">${QnaViewModel.title }</label>
+					</div>
+					<hr style="color: black; width: 100%; margin-bottom: 50px;">
+					<div id="board_main_content" class="board_main_content">
+						${QnaViewModel.content }
+					</div>
+					<div class="board_comment">
+						<div id="board_comment_tit" class="board_comment_tit">
+							<p>í•œì¤„ëŒ“ê¸€</p>
+						</div>
+						<div class="board_comment_write">
+							<form action="#" id="board_commentId">
+								<input type="text" id="board_commnet" name="board_commnet"
+									placeholder="í•œ ì¤„ ëŒ“ê¸€ì„ ë‚¨ê²¨ì£¼ì„¸ìš”." autocomplete="off"> <input type="hidden"
+									id="user_id" name="user_id" value="${id }"> <input
+									type="submit" name="board_commnet_submit" value="ëŒ“ê¸€ë‚¨ê¸°ê¸°">
+							</form>
+						</div>
+						<div id="board_comment_show" class="board_comment_show"></div>
+					</div>
+				</div>
+
+
+				<div class="board_right_pan">
+					<div id="board_user_info" class="board_user_info">
+						<img id="board_mainimg"
+							src="<%=request.getContextPath()%>${QnaViewModel.user_imgurl }"
+							alt="">
+					</div>
+					<div id="board_user_name" class="board_user_name">${QnaViewModel.user_nickName }</div>
+
+					<div id="board_content_id" class="board_content_id"></div>
+					<div id="board_title" class="board_title"></div>
+					<div class="board_sub_info">
+						<div class="board_sub_info2">
+							<div>
+								<span class="material-icons-outlined">visibility</span>
+								<div>ì¡°íšŒìˆ˜</div>
+							</div>
+							<div id="board_bestplace">${QnaViewModel.viewcnt }</div>
+						</div>
+						<div class="board_sub_info2">
+							<div>
+								<span class="material-icons-outlined">event</span>
+								<div>ìž‘ì„±ë‚ ì§œ</div>
+							</div>
+							<div id="board_besteat">${QnaViewModel.regdate }</div>
+						</div>
+						<div style="width: 300px; height: 20px;"><a href="./qnaModify?qno=${QnaViewModel.qno }">ê²Œì‹œë¬¼ ìˆ˜ì •</a></div>
+						<div style="width: 300px; height: 20px;"><a href="./qnaDelete?qno=${QnaViewModel.qno }">ê²Œì‹œë¬¼ ì‚­ì œ</a></div>
+					</div>
+					<div class="board_travelPlans">
+						<div id="singo" class="singo" >
+							<span class="material-icons singo_img"> lightbulb </span> <span
+								class="board_singo">ì‹ ê³ í•˜ê¸°</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
+	<script src="<%=request.getContextPath()%>/resources/js/qna_view.js?ver=1.13"></script>
 </body>
 </html>

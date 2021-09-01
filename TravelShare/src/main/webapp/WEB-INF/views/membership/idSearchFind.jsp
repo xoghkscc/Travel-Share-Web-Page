@@ -32,7 +32,7 @@
 	</div>
 	<jsp:include page="../footer/footer.jsp"></jsp:include>
 	<script>
-      $('.id_search_box').css('border','3px solid skyblue');
+    
       $('.id_search_box').css('width','350px');
       $('.id_search_box').css('height','300px');
       $('.id_search_box').css('margin','auto');
