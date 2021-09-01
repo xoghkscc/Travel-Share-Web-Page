@@ -77,14 +77,19 @@ public class MemberShipController {
 		}
 	
 	@PostMapping("/membershipUpdate")
-	public String membershipUpdate(UserInfo userinfo, HttpSession session) {
+	public void membershipUpdate(UserInfo userinfo, HttpSession session, HttpServletResponse resp) {
 		
 		userinfo.setUser_birth(userinfo.getUser_year() + "/" + userinfo.getUser_month() + "/" + userinfo.getUser_day());
 		userinfo.setUser_id(Integer.valueOf((String) session.getAttribute("id")));
 		System.out.println("왔음");
 		user_info.updateUserinfo15(userinfo);
 		
-		return "/membership/userinfo";
+		try {
+			resp.sendRedirect("./userinfo");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		}
 	
 	@GetMapping("/idsearch")
