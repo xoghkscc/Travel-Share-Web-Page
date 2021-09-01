@@ -29,7 +29,7 @@ function boardSort(){
 }
 
 function pagingRest(click_number, sigungucode, sidocode) {
-	var order = document.getElementById("board_tit_area").options[document.getElementById("board_tit_area").selectedIndex].value;
+//	var order = document.getElementById("board_tit_area").options[document.getElementById("board_tit_area").selectedIndex].value;
 	const board_list_travel = document.querySelector(".board_list_travel");
 	board_list_travel.innerHTML = "";
 	const xhttp = new XMLHttpRequest();
@@ -79,7 +79,7 @@ function pagingRest(click_number, sigungucode, sidocode) {
 		click_number : click_number,
 		sigungucode : sigungucode,
 		sidocode : sidocode,
-		order : order
+		order : 'like_cnt'
 	}
 	
 	xhttp.open('POST', '/travelShare/boardrest/paging/', true);
@@ -209,7 +209,7 @@ var sigungucode = getParameterByName("sigungucode");
 window.onload =  () => {
 	var sel = document.getElementById("h_area2");
 	var key = document.getElementById("board_sido");
-	cat1_change(key.value);
+//	cat1_change(key.value);
 	var sidogunName = getParameterByName("sidogunName");
 	if(sidogunName == '전체'){
 		sel.options[1].selected = true;
