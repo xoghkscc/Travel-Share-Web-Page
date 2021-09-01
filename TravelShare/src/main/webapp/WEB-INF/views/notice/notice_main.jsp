@@ -8,19 +8,16 @@
 <title>게시물 목록</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/resources/css/notice_list.css?ver=1.33">
+	href="<%=request.getContextPath()%>/resources/css/notice_list.css?ver=1.45">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Two+Tone|Material+Icons+Sharp|Material+Icons+Outlined" rel="stylesheet">
 </head>
 
 <body>
 	<jsp:include page="../header/top.jsp"></jsp:include>
-		<div class="loing_container" style="width: 100%; height: 100vh"></div>
+		<div class="notice_background"></div>
 	  	<div class="notice_container">
 	  		<div>공지사항 게시판</div>
-		    <div>
-				<input type="text" class="notice_searchText" placeholder="제목을 검색하세요."/>
-				<button class="notice_searchBtn" type="submit">검색</button>
-			</div>
+
 		    <table id="notice_table" class="table table-hover">
 		        <thead class=qna_head>
 		          <tr>
@@ -33,7 +30,13 @@
 		        </thead>
 		        <tbody class="notice_tbody"></tbody>
 	        </table>
-		    <div class="notice_paging"></div>	
+	        <div class="notice_bottomBox">
+			    <div class="notice_paging"></div>	
+			    <div>
+					<input type="text" class="notice_searchText" placeholder="제목을 검색하세요."/>
+					<button class="notice_searchBtn" type="submit">검색</button>
+				</div>
+	        </div>
 	  	</div>
 	  	
 		<div class="notice_Popup">
@@ -63,7 +66,7 @@
 		  	</div>
 		  </div>
 		  <jsp:include page="../footer/footer.jsp"></jsp:include>
-      	<script src="<%=request.getContextPath()%>/resources/js/notice_app.js?ver=1.37"></script>
+      	<script src="<%=request.getContextPath()%>/resources/js/notice_app.js?ver=1.45"></script>
 <!--       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 </body>
 </html>

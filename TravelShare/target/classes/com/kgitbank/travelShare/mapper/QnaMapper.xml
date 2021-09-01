@@ -8,26 +8,31 @@
 	<select id="qna_list" resultType="com.kgitbank.travelShare.model.QnaVO">
 		SELECT * FROM qna_guide order by qno desc
 	</select>
-	<select id="getQnaId" resultType="int">
-		SELECT max(qno) FROM qna_guide;
+	<select id="getQno" resultType="int">
+		SELECT max(qno) FROM qna_guide
+	</select>
+	
+	<select id="getWriter" resultType="com.kgitbank.travelShare.model.User">
+		SELECT user_nickname FROM user_info WHERE user_id = ${userid}
 	</select>
 	
 	<insert id="qna_write" parameterType="com.kgitbank.travelShare.model.QnaVO">
-		INSERT INTO qna_guide VALUES(#{title}, #{writer}, #{content})
+		INSERT INTO qna_guide(qno,title,writer, content,regdate, user_id, cs_open) VALUES(#{qno}, #{title}, #{writer}, #{content},CURRENT_DATE, #{user_id},#{cs_open})
 	</insert>
 	
-	<select id="qna_view" parameterType="int" resultType="com.kgitbank.travelShare.model.QnaVO">
-		SELECT qno, title, content, regdate, viewcnt FROM qna_guide WHERE qno = #{qno}
+	<select id="qna_view" parameterType="int" resultType="com.kgitbank.travelShare.model.QnaViewModel">
+		SELECT qno, title,writer, content, regdate, user_id, user_nickName, user_imgurl, user_position, 
+		viewcnt FROM qna_guide INNER JOIN user_info USING ( user_id ) WHERE qno = #{qno}
 	</select>
 	
 	<!-- 게시물 수정 -->
 	<update id="qna_modify" parameterType="com.kgitbank.travelShare.model.QnaVO">
-		UPDATE qna_guied SET title = #{title}, content = #{content}, writer = #{writer}
+		UPDATE qna_guide SET title = #{title}, content = #{content}, cs_open = #{cs_open}
 		WHERE qno = #{qno}
 	</update>
 	<!-- 게시물 삭제 -->
 	<delete id="qna_delete" parameterType="int">
-		DELETE * FROM qna_guide WHERE qno = #{qno}
+		DELETE FROM qna_guide WHERE qno = #{qno}
 	</delete>
 	
 	<!-- 게시물 총 개수 -->
@@ -41,4 +46,21 @@
 		ORDER BY qno desc
 			limit #{displayPost}, #{postNum}
 	</select>
+	
+
+	<!-- 조회수 올리기 -->
+	<update id="qna_viewcntup">
+		UPDATE qna_guide SET viewcnt = '${viewcnt}' where qno=${qno}
+	</update>
+	<!-- qna 댓글 삽입 및 조회 -->
+	<insert id="qna_insertComment">
+		INSERT INTO board_comment(comment_id, user_id, comment_text, comment_date, qna_id) VALUES (comment_seq.nextval, #{user_id}, #{comment_text}, CURRENT_DATE, #{qna_id})
+	</insert>
+	<select id="qna_selectComment" resultType="com.kgitbank.travelShare.model.CommentInfo">
+		SELECT * FROM board_comment INNER JOIN user_info USING(user_id) WHERE qna_id = #{qna_id} ORDER BY board_comment.comment_date desc
+	</select>
+	<select id="qna_getUserPosition" resultType="com.kgitbank.travelShare.model.User">
+		SELECT * FROM user_info WHERE user_id = #{user_id}
+	</select>
+
 </mapper>

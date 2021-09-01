@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/administer_main.css?ver=2.87">
+	href="<%=request.getContextPath()%>/resources/css/administer_main.css?ver=2.88">
 	
 	<!-- CKEDITOR -->
 	<link rel="stylesheet" type="text/css"
@@ -276,7 +276,7 @@
 	</section>
 
 	<script
-		src="<%=request.getContextPath()%>/resources/js/administer_ajax.js?ver=2.90"></script>
+		src="<%=request.getContextPath()%>/resources/js/administer_ajax.js?ver=2.91"></script>
 <!-- 	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 
 </body>

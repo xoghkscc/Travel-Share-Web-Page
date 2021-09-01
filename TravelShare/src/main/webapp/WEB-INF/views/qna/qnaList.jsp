@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>°Ô½Ã¹° ¸ñ·Ï</title>
+<meta charset="UTF-8">
+<title>ê²Œì‹œë¬¼ ëª©ë¡</title>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/css/qna_list2.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -16,68 +16,76 @@
 <jsp:include page="../header/top.jsp"></jsp:include>
 	<div class="loing_container" style="width: 100%; height: 100vh"></div>
 	<div class="qna_container">
-		<div>QNA °Ô½ÃÆÇ</div>
-		<div>
-			<input type="text" class="qna_searchText" placeholder="Á¦¸ñÀ» °Ë»öÇÏ¼¼¿ä."/>
-			<button class="qna_searchBtn" type="submit">°Ë»ö</button>
-		</div>
+		<div>QNA ê²Œì‹œíŒ</div>
 		    <table id="qnaTable" class="table table-hover">
 		        <thead class=qna_head>
 		          <tr>
-		            <th class="text-center">¹øÈ£</th>
-		            <th class="text-center">Á¦¸ñ</th>
-		            <th class="text-center">ÀÛ¼ºÀÚ</th>
-		            <th class="text-center">ÀÛ¼ºÀÏ</th>
-		            <th class="text-center">Á¶È¸¼ö</th>
+		            <th class="text-center">ë²ˆí˜¸</th>
+		            <th class="text-center">ì œëª©</th>
+		            <th class="text-center">ì‘ì„±ì</th>
+		            <th class="text-center">ì‘ì„±ì¼</th>
+		            <th class="text-center">ì¡°íšŒìˆ˜</th>
 		          </tr>
 		        </thead>
 		        <tbody class="qna_tbody">
 		        	  
 		        	<c:forEach items="${qna_list }" var="list">
-				          <tr>
-				           	<td>${list.qno}</td>
-				           	<td>
-				           		<a href="./qnaView?qno=${list.qno }">${list.title }</a>
-				           	</td>
-				           	<td>${list.writer }</td>
-				           	<td>${list.regdate }</td>
-				           	<td>${list.viewcnt }</td>
-				          </tr>
+		        		<c:if test="${list.cs_open eq 'N' }">
+		        		<c:choose>	
+		        			<c:when test="${list.user_id eq sessionScope.id || (sessionScope.manager ne 'member' && not empty sessionScope.id) }">
+				         	 <tr>
+				           		<td>${list.qno}</td>
+				           		<td>
+				           			<a href="./qnaView?qno=${list.qno }">${list.title }</a>
+				           		</td>
+				           		<td>${list.writer }</td>
+				           		<td>${list.regdate }</td>
+				           		<td>${list.viewcnt }</td>
+				          	</tr>
+				          	</c:when>
+				          	<c:otherwise>
+				          		<tr>
+				           		<td>${list.qno}</td>
+				           		<td>
+				           		<span class="material-icons-outlined" style="font-size: 20px;">lock</span>
+				           		ë¹„ë°€ê¸€ì€ ì‘ì„±ìì™€ ê´€ë¦¬ìë§Œ ë³¼ ìˆ˜ ìˆìŠµë‹ˆë‹¤.</td>
+				           		<td>${list.writer }</td>
+				           		<td>${list.regdate }</td>
+				           		<td>${list.viewcnt }</td>
+				          	</tr>
+				          	</c:otherwise>
+				          </c:choose>
+				        </c:if>
+				        <c:if test="${list.cs_open eq 'Y' }">
+				        	<tr>
+				           		<td>${list.qno}</td>
+				           		<td>
+				           			<a href="./qnaView?qno=${list.qno }">${list.title }</a>
+				           		</td>
+				           		<td>${list.writer }</td>
+				           		<td>${list.regdate }</td>
+				           		<td>${list.viewcnt }</td>
+				          	</tr>
+				        </c:if>
 		          	</c:forEach>
 		          	
 		        </tbody>
 		      </table>
-		      	<a class="write_btn btn btn-default" href="./qnaWrite">±Û¾²±â</a>
-      	</div>
-      	<div class="qna_Popup">
-		   <div class="qna_cancel">
-			   <span class="material-icons-outlined "> close </span>
-		   </div>
-		   <div class="qna_textContainer">
-		       <div>°øÁö»çÇ× °Ô½ÃÆÇ</div>
-		       <div class="qna_PopupTitle">Á¦¸ñ~~~</div>
-		       <hr>
-		       <div class="qna_PopupTop">
-		           <div class="qna_PopupImg">user_img</div>
-		           <div>
-		               <div class="qna_PopupId">user_id</div>
-<!-- 		               <hr> -->
-		               <div class="qna_PopupDate">date</div>
-		           </div>
-		           <div class="qna_cntBoard">
-			           <span class="material-icons-outlined">
-							visibility
-					   </span>
-			           <span class="qna_PopupCnt">viewcnt</span>
-		           </div>
-		       </div>
-		       <hr>
-		       <div class="qna_PopupText"></div>
-		  	</div>
-		  </div>
+		      <div class="qna_bottomBox">
+			    <div class="qna_paging"></div>	
+			    <div>
+					<input type="text" class="qna_searchText" placeholder="ì œëª©ì„ ê²€ìƒ‰í•˜ì„¸ìš”."/>
+					<button class="qna_searchBtn" type="submit">ê²€ìƒ‰</button>
+				</div>
+	        </div>
+		      <c:if test="${not empty sessionScope.id }">
+		      	<a class="write_btn btn btn-default" href="./qnaWrite">
+		      	<span class="material-icons-outlined" style="font-size: 16px;">edit</span>ê¸€ì“°ê¸°</a>
+      		 </c:if>
+      		</div>
 		  <jsp:include page="../footer/footer.jsp"></jsp:include>
-      	<script src="<%=request.getContextPath()%>/resources/js/notice_app.js?ver=1.23"></script>
-      	     
+       <!--  	<script src="<%=request.getContextPath()%>/resources/js/qna_paging.js?ver=1.23"></script> -->
+          
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>

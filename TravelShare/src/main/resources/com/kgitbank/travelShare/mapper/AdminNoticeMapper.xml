@@ -11,7 +11,7 @@
 	</select>
 	
 	<select id="getBoardsAll" resultType="com.kgitbank.travelShare.model.BoardModel">
-		SELECT * FROM main_board order by board_id
+		SELECT * FROM main_board order by board_id desc
 	</select>
 	
 	<select id="getNoticeOne" resultType="com.kgitbank.travelShare.model.NoticeModel">
@@ -29,11 +29,11 @@
 	
 	<select id="getNoticesAllSearching" resultType="com.kgitbank.travelShare.model.NoticeModel">
 		SELECT notice_id, user_nickName, user_imgurl, notice_title, notice_text, notice_lookupcnt, notice_date 
-		FROM notices INNER JOIN user_info USING ( user_id ) WHERE notice_title like '%${name}%' order by notice_id
+		FROM notices INNER JOIN user_info USING ( user_id ) WHERE notice_title like '%${name}%' order by notice_id desc
 	</select>
 	
 	<select id="getBoardsAllSearching" resultType="com.kgitbank.travelShare.model.BoardModel">
-		SELECT * FROM main_board WHERE board_title like '%${boardName}%' order by board_id
+		SELECT * FROM main_board WHERE board_title like '%${boardName}%' order by board_id desc
 	</select>
 
     <insert id="insertAdminNotice">
@@ -52,6 +52,10 @@
   	  UPDATE notices SET notice_title = '${notice_title}',notice_text = '${notice_text}' where notice_id=${notice_id}
 	</update>
 	
+	<update id="updateNoticeLookup">
+  	  UPDATE notices SET notice_lookupcnt = '${notice_lookupcnt}' where notice_id=${notice_id}
+	</update>
+	
 	<select id="getBoardsamplePaging" resultType="com.kgitbank.travelShare.model.AdminNotice">
 		SELECT board_id, user_name, board_name, area 
 		FROM (SELECT ROWNUM AS RNUM, board_id.*
@@ -60,5 +64,12 @@
 	
 	<select id="getMainBestPlace" resultType="com.kgitbank.travelShare.model.LikeViewModel">
 		select * from (SELECT * FROM like_view order by LIKE_CNT DESC) where rownum <![CDATA[<]]> 5
+	</select>
+
+	<select id="findSido" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT * FROM main_board WHERE SIDO = '${Searching_content}'
+	</select>
+	<select id="findGungu" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT * FROM main_board WHERE SIGUNGU like '${Searching_content}'
 	</select>
 </mapper>

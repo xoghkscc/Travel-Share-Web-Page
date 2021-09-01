@@ -53,7 +53,6 @@ function tableMemberTrClick(e) {
 	const admin_changeName = e.target.parentNode.children[0].innerText;
 	const adminUserEmail = e.target.parentNode.children[4].innerText;
         if (!confirm(`${admin_changeName}님을 회원탈퇴 하시겠습니까?`)) {
-            alert("취소(아니오)를 누르셨습니다.");
         } else {
 			location.href = `/travelShare/site/admin_user_delete?adminUserEmail=${adminUserEmail}`;
             alert(`${admin_changeName}님을 회원탈퇴하였습니다.`);
@@ -67,7 +66,6 @@ function tableAdminTrClick(e) {
 	const AdminPositionValue = e.target.value;
 
 	if (!confirm(`${notice_changeName}님의 직책을 ${AdminPositionValue}로 변경하시겠습니까?`)) {
-        alert("변경을 취소하셨습니다.");
     } else {
         alert("변경이 완료되었습니다.");
 		location.href = `/travelShare/site/admin_position_update?AdminNickName=${AdminNickName}&AdminPositionValue=${AdminPositionValue}`;	
@@ -121,13 +119,12 @@ let adminPresentPage2 = 1;
 let declareNickName = "";
 admin_hiddenBtn[0].addEventListener('click', function(e){
 	admin_hiddenAlarm.style.display = "none";
-	alert("삭제를 누르셨습니다.");	
+	alert("삭제 되었습니다.");	
 	admin_hiddenInnerText.innerHTML = "";
 	location.href = `/travelShare/site/admin_delete?noticeId=${noticeId}`;	
 });
 admin_hiddenBtn[1].addEventListener('click', function(e){
 	admin_hiddenAlarm.style.display = "none";
-	alert("수정을 누르셨습니다.");	
 	admin_hiddenInnerText.innerHTML = "";
 	admin_allContainer[4].style.display = "none";
 	updateDivForm.style.display = "block";	
@@ -242,14 +239,12 @@ function admin_ajax_func(e){
 				if(targetIndex == 0 || searchChecking == 1){
 					td5.appendChild(emailAppend);		
 				}else if(targetIndex == 1 || searchChecking == 2){
-//					td5.appendChild(positionAppend);
-					console.log(`${position}`);
 					td5.innerHTML = `<select id="admin_selector">
-                <option value="nothing">현재: ${position}</option>
-                <option value="★master">★master</option>
-                <option value="☆manager">☆manager</option>
-                <option value="member">member</option>
-                </select>`;
+					                <option value="nothing">현재: ${position}</option>
+					                <option value="★master">★master</option>
+					                <option value="☆manager">☆manager</option>
+					                <option value="member">member</option>
+					                </select>`;
 				}else if(targetIndex == 3 || searchChecking == 3){
 					td5.appendChild(warningAppend);
 				}
@@ -289,23 +284,16 @@ function admin_ajax_func(e){
 		}
 	});
 	if(searchChecking == 1){
-		console.log('searching open');
 		xhttp.open('GET', `/travelShare/rest/admin_searching?noticeName=${searchValue}`, true);	
 	}else if(searchChecking == 2 || searchChecking == 3){
-		console.log('searching2 open');
-		console.log(searchValue);
 		xhttp.open('GET', `/travelShare/rest/admin_position_searching?noticeName=${searchValue}`, true);	
 	}else if(targetIndex == 0){
-		console.log('1번 open');
 		xhttp.open('GET', '/travelShare/rest/searching', true);		
 	}else if(targetIndex == 1){
-		console.log('2번 open');
 		xhttp.open('GET', '/travelShare/rest/admin_position', true);	
 	}else if(targetIndex == 3){
-		console.log("4번 open");
 		xhttp.open('GET', '/travelShare/rest/admin_warning', true);
 	}else if(targetIndex == 4){
-		console.log("5번 open");
 		xhttp.open('GET', '/travelShare/rest/admin_notice', true);
 	}
 	
@@ -315,18 +303,7 @@ function admin_ajax_func(e){
 
 //3번 5번 ajax(게시판 등록을 위한 ajax)
 function admin_ajax_func4(e){
-//	console.log("searchValue : ",searchValue);
-//	console.log("searchNoticeValue : ",searchNoticeValue);
-//	console.log("searchChecking : ",searchChecking);
-//	console.log("pagingChecking : ",pagingChecking);
-//	console.log("noticePaging : ",noticePaging);
-//	console.log("noticeId : ",noticeId);
-//	console.log("pagingNumBtn : ",pagingNumBtn);
-//	console.log("targetIndex : ",targetIndex);
-//	console.log("pageNextBtn : ",pageNextBtn);
-//	console.log("adminPresentPage : ",adminPresentPage);
-	
-	
+
 	noticePaging=0;
 	let pagingNumber = 0;
 	
@@ -360,15 +337,6 @@ function admin_ajax_func4(e){
 			tbodyclass_notice.innerHTML = "";
 			admin_notice_paging.innerHTML = "";
 			
-			
-//			let admin_arrLength = myobj.length;
-//			console.log(admin_arrLength);
-//			for(let i=0; admin_arrLength >= 1; i++){
-//				admin_arrLength /= 10;
-//				noticePaging++;
-//			}
-//			console.log("페이징",noticePaging);
-			
 			for(i=0; i < myobj.length; i++){
 				
 				//만들어야할 페이지버튼의 갯수를 알아보기위함
@@ -377,7 +345,7 @@ function admin_ajax_func4(e){
 				if(noticePaging % 50 == 1){
 					pageNextBtn++;
 				}
-				console.log(myobj.length);
+
 				//adminPresentPage로 지금 보길원하는 페이지 번호를 바꾸게됨
 				if(pageNextBtn == adminPresentPage){
 					if(noticePaging % 10 == 1){
@@ -468,13 +436,10 @@ function admin_ajax_func4(e){
 	}
 	
 	if(searchChecking == 5){
-		console.log('searching5 open');
 		xhttp.open('GET', `/travelShare/rest/admin_notice_searching?noticeName=${searchNoticeValue}`, true);	
 	}else if(targetIndex == 2){
-		console.log('3번 open');
 		xhttp.open('GET', '/travelShare/rest/admin_board', true);		
 	}else if(targetIndex == 4){
-		console.log("5번 open");
 		xhttp.open('GET', '/travelShare/rest/admin_notice', true);
 	}
 	
@@ -524,7 +489,6 @@ function admin_ajax_func5(e){
 				
 				//만들어야할 페이지버튼의 갯수를 알아보기위함
 				noticePaging++;
-				console.log(noticePaging);
 				if(noticePaging % 50 == 1){
 					pageNextBtn++;
 				}
@@ -610,14 +574,11 @@ function admin_ajax_func5(e){
 		}
 	});
 	//나갓다가 다시들어왔을때 무슨버전으로 할것인지 확인
-	console.log("searchBoardValue : ",searchBoardValue);
-	console.log("searchChecking : ",searchChecking);
 	if(searchBoardValue != ""){
 		searchChecking = 6;
 	}
 	
 	if(searchChecking == 6){
-		console.log('searching5 open');
 		xhttp.open('GET', `/travelShare/rest/admin_board_searching?boardName=${searchBoardValue}`, true);	
 	}else{
 		xhttp.open('GET', '/travelShare/rest/admin_board', true);		
@@ -727,14 +688,12 @@ function admin_notic_pagingFunc(e){
 	if(pagingNumBtn == "←"){
 		adminPresentPage--;
 		pagingNumBtn = (adminPresentPage-1)*5 + 1;
-		console.log("pagingNumBtn : ",pagingNumBtn);
 		admin_ajax_func4();
 	}
 	
 	if(pagingNumBtn == "→"){
 		adminPresentPage++;
 		pagingNumBtn = (adminPresentPage-1)*5 + 1;
-		console.log("pagingNumBtn : ",pagingNumBtn);
 		admin_ajax_func4();
 	}
 }
