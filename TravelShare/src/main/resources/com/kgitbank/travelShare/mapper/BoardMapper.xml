@@ -8,6 +8,14 @@
 		SELECT * FROM like_view INNER JOIN user_info USING(user_id) ORDER BY board_id DESC
 	</select>
 	
+	<select id="getBoardLike" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT * FROM like_view INNER JOIN user_info USING(user_id) WHERE user_id = #{user_id} ORDER BY board_id DESC
+	</select>
+	
+	<select id="getMyLike" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT * FROM like_view INNER JOIN user_info USING(user_id)INNER JOIN board_like USING(board_id) WHERE board_like.user_id = #{user_id } ORDER BY board_id DESC
+	</select>
+	
 	<select id="getBoardFilter1" resultType="com.kgitbank.travelShare.model.BoardModel">
 		SELECT * FROM like_view  INNER JOIN user_info USING(user_id) WHERE sigungucode = #{sigungucode} ORDER BY board_date DESC
 	</select>

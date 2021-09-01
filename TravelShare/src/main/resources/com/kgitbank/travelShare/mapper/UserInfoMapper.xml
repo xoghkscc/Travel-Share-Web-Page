@@ -3,8 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kgitbank.travelShare.mapper.UserInfoMapper">
-        
-              
+       
        <insert id="adduserinfo">
        		INSERT INTO user_info(user_id, user_email, user_password, user_name, user_nickname, user_phonenumber, user_date, user_gender, user_address, user_rank, user_position, user_imgurl, user_birth, user_sido, user_sigungu, user_roadname, user_zonecode) 
        		VALUES(user_info_seq.nextval, #{user_email },  #{user_password }, #{user_name }, #{user_nickname }, #{user_phonenumber }, #{user_date }, #{user_gender }, #{user_address }, #{user_rank }, #{user_position }, #{user_imgurl }, #{user_birth }, #{user_sido }, #{user_sigungu }, #{user_roadname }, #{user_zonecode }
@@ -19,17 +18,46 @@
         	SELECT COUNT(user_nickname) FROM user_info WHERE user_nickname=#{user_nickname }
         </select>
         
-         <select id="getUserEmail" resultType="com.kgitbank.travelShare.model.UserInfo">
+        <select id="getUserEmail" resultType="com.kgitbank.travelShare.model.UserInfo">
         	SELECT user_email FROM user_info WHERE user_name=#{user_name } AND user_phonenumber= #{user_phonenumber }
+        </select>
+        
+         <select id="getUserNickname" resultType="String">
+        	SELECT user_nickname FROM user_info WHERE user_id=#{user_id } 
         </select>
         
          <select id="checkPassword" resultType="com.kgitbank.travelShare.model.UserInfo">
         	SELECT user_id FROM user_info WHERE user_email=#{user_email } AND user_phonenumber= #{user_phonenumber }
         </select>
          
-         <update id="changePassword">
+        <update id="changePassword">
         	UPDATE user_info SET user_password = #{user_password } WHERE user_id = #{user_id }
         </update>
+         
+        <select id="getUserInfo" resultType="com.kgitbank.travelShare.model.UserInfo">
+        	SELECT * FROM user_info WHERE user_id=#{object }
+        </select>
+        
+        <select id="getUserLike" resultType="int">
+        	SELECT COUNT(DISTINCT likeid) FROM like_view_user WHERE mainid =#{user_id }
+        </select>
+        
+      <update id="updateUserImgurl">
+        	UPDATE user_info SET user_imgurl = #{user_imgurl } WHERE user_id = #{user_id }
+       </update>
+        
+        <select id="getUserInfo2" resultType="com.kgitbank.travelShare.model.UserInfo">
+        	SELECT * FROM user_info WHERE user_id=#{user_id }
+        </select>
+        
+         <update id="updateUserinfo15">
+        	UPDATE user_info SET
+        	user_nickname=#{user_nickname }, user_name=#{user_name }, user_phonenumber=#{user_phonenumber }, 
+        	user_birth=#{user_birth }, user_year=#{user_year }, user_month=#{user_month }, user_day=#{user_day }, 
+        	user_zonecode=#{user_zonecode }, user_sido=#{user_sido }, user_sigungu=#{user_sigungu }, 
+        	user_roadname=#{user_roadname }, user_address=#{user_address }, user_gender=#{user_gender }
+        	WHERE user_id=#{user_id }
+       	 </update>
          
 </mapper>
 

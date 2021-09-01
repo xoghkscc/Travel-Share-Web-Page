@@ -41,42 +41,42 @@ a {
 }
 
 #member_email {
-	width: 325px;
+	width: 265px;
 	height:50px;
 }
 
 #member_password1{
-	width: 325px;
+	width: 355px;
 	height:50px
 }
 
 #member_password2{
-	width: 325px;
+	width: 265px;
 	height:50px;
 }
 
 
 #member_nickname {
-	width: 325px;
+	width: 265px;
 	height:50px;
 
 }
 
 #member_name {
-	width: 325px;
+	width: 265px;
 	height:50px;
 
 }
 
 #member_phone {
-	width: 235px;
+	width: 265px;
 	height:50px;
 	
 	
 }
 
 #phoneCheckInput {
-	width: 325px;
+	width: 265px;
 	height:50px;
 	
 }
@@ -84,7 +84,7 @@ a {
 
 
 #member_gender {
-	width: 325px;
+	width: 265px;
 	height:50px;
 }
 
@@ -95,42 +95,54 @@ a {
     border: 0px;
     height: 50px;
     color: white;
-    width: 325px;
+    width: 265px;
     font-size: 15px;
     margin-bottom: 15px;
     cursor : pointer;
+    padding-left: 15px;
 }
 
 #member_year{
 	height:50px;
-	width: 104px;
+	width: 84px;
 	
+}
+
+.button{
+	height: 50px;
+    width: 70px;
+    border: 0;
+    background-color: rgb(255, 109, 0);  
+    font-size: 13px;
+    color: white;
+    border-radius: 4px 4px 4px 4xp;
+    margin-left: 20px;
+    cursor : pointer;
 }
 
 #member_month{
 	height: 50px;
-	width: 104px;	
+	width: 84px;	
 	
 }
 
 #member_day{
 	height:50px;
-	width: 104px;
+	width: 84px;
 	
 }
 
 #user_add_code{
 	height:45px;
-	width: 240px;
+	width: 270px;
 	font-size:20px;	
 	border: 0.5px solid rgb(225, 225, 225);
-	padding-left: 15px;
 }
 
 #user_add_city{
-	padding-left: 15px;
+	
 	height:50px;
-	width: 325px;
+	width: 355px;
 	font-size:20px;	
     border: 0.5px solid rgb(225, 225, 225);
 	
@@ -139,7 +151,7 @@ a {
 #user_add_detail{
 	
 	height:50px;
-	width: 325px;
+	width: 265px;
 	
 }
 
@@ -173,7 +185,6 @@ a {
 inputbox:focus {
     outline: 2px solid black;
 }
-
 
 
 

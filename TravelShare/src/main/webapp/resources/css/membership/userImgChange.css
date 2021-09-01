@@ -6,7 +6,6 @@ a {
     color: gray;
 }
 
-
 html{
     width: 100%;
     height: 100%;
@@ -18,7 +17,7 @@ body{
 }
 
 
-.id_search_box{
+.profile_change_box{
     background-color: rgb(243, 243, 243);
     text-align: center;
     position: absolute;
@@ -26,7 +25,13 @@ body{
     top: calc(40% - 150px);
 }
 
-#id_search1 {
+#basic {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    background-color: rgb(243, 243, 243);
+}
+
+#profile_change1 {
     font-family: 'Ubuntu', sans-serif;
     font-size: 20px;
     padding-top: 13px;
@@ -35,22 +40,33 @@ body{
     background-color: white;
 }
 
-#name_text {
-    margin-top: 60px;
-    font-size: 22px;
-    color : rgb(255, 109, 0);
+#output {
+    margin-top: 30px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 100px;
 }
 
-#login {
-	margin-left : 100px;
-	
+#user_img{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    width: 265px;
 }
 
-.search_text{
-	color : gray;
-	cursor : pointer;
+
+#profile_sub {
+    padding: 6px 25px;
+    background-color: #FF6600;
+    border-radius: 4px;
+    width: 265px;
+    height: 50px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    
 }
 
-#password_search {
-    margin-top: 80px;
-}
+
+

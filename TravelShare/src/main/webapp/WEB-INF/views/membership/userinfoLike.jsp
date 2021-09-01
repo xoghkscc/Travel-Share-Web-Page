@@ -40,11 +40,12 @@
 				
 			</div>
 		</div>
-		
-			<div id="board_name">
+
+		<div id="board_name">
 			<div id="my_travel"><a href="./userinfo">나의 여행</a></div>
 			<div id="my_zim"><a href="./userinfoLike">나의 찜</a></div>
 		</div>
+		
 		<div id="board_main">
 		<div class="board_list_travel">
 			<c:forEach items="${boardDB }" var="board" begin="0" end="11">
@@ -234,16 +235,11 @@
 					</div>
 				</div>
 			</div>
-			</div>
 		</div>
 	</div>
+		</div>
 		<script src="<%=request.getContextPath()%>/resources/membershipJS/membershipBoard.js" charset="UTF-8"></script>
 		
 	<jsp:include page="../footer/footer.jsp"></jsp:include>
 </body>
 </html>
-		
-		
-		
-
-	

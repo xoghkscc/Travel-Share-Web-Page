@@ -90,7 +90,9 @@ a:visited {
     width: 265px;
     height: 50px;
     border: 0;
-    border-radius: 4px 4px 4px 4px
+    border-radius: 4px 4px 4px 4px;
+    cursor : pointer;
+    
 
 }
 
@@ -120,6 +122,7 @@ a:visited {
 
 #membership_text {
 	 color: gray;
+	 cursor : pointer;
 }
 
 input:focus {

@@ -614,3 +614,13 @@ function createBoardLocation(id){
 
 
 
+
+
+
+
+
+
+
+
+
+
