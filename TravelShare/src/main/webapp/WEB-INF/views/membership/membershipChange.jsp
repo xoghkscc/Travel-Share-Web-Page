@@ -8,14 +8,14 @@
 <title>회원 정보 수정</title>
  <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/membership/membership_main.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/membership/membershipChange.css">
 <link
 	href="https://fonts.googleapis.com/icon?family=Material+Icons%7CMaterial+Icons+Two+Tone%7CMaterial+Icons+Sharp%7CMaterial+Icons+Outlined"
 	rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../header/top2.jsp"></jsp:include>
-	<div class="loing_container" style="width: 100%; height: 150vh"></div>
+	<div class="loing_container">
 	<form id="membership" action="./membershipUpdate" method="POST" autocomplete='off'></form>
 	<form id="phoneCheck" action="./phoneCheck" method="POST" autocomplete='off'></form>
 	<div class="membership_box">
@@ -124,6 +124,7 @@
 				</tr>
 				
 			</table> 
+		</div>
 		</div>
 		</div>
 		<jsp:include page="../footer/footer.jsp"></jsp:include>

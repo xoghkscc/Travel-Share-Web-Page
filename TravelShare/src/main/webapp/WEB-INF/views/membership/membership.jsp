@@ -12,7 +12,7 @@
 </head>
 <body>
 	<jsp:include page="../header/top2.jsp"></jsp:include>
-	<div class="loing_container" style="width: 100%; height: 150vh"></div>
+	<div class="loing_container">
 	<form id="membership" action="./membership" method="POST" autocomplete='off'></form>
 	<form id="phoneCheck" action="./phoneCheck" method="POST" autocomplete='off'></form>
 	<div class="membership_box">
@@ -144,6 +144,7 @@
 				</tr>
 				
 			</table> 
+		</div>
 		</div>
 		</div>
 		<jsp:include page="../footer/footer.jsp"></jsp:include>

@@ -21,7 +21,7 @@
 </head>
 <body>
 	<jsp:include page="../header/top2.jsp"></jsp:include>
-	<div class="loing_container" style="width: 100%; height: 100vh"></div>
+	<div class="loing_container">
 	<form id="profile_change" enctype="multipart/form-data" action="./profileChange" method="POST" autocomplete='off'></form>
 		<div class="profile_change_box">
 		<div id="basic">
@@ -35,6 +35,7 @@
 				<input id="profile_sub" form="profile_change" type="submit" value="프로필 바꾸기">
 			</div>
 		</div>
+	</div>
 	</div>
 	<jsp:include page="../footer/footer.jsp"></jsp:include>
 	<script>

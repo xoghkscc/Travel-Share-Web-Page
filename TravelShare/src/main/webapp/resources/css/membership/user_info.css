@@ -1,13 +1,12 @@
-html{
-    width: 100%;
-    height: auto;
+html {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+}
+body {
+    min-height: 100%;
 }
 
-body{
-    width: 100%;
-    height: auto;
- 
-}
 
 a {
     text-decoration: none;
@@ -117,4 +116,10 @@ a:visited {
 #my_zim {
     margin-top: 10px;
     width: 150px;
+}
+
+.loing_container{
+	width: 100%;
+	height: 200vh;
+	min-height: 1000px;;
 }

@@ -21,7 +21,7 @@
 <body>
 
 	<jsp:include page="../header/top2.jsp"></jsp:include>
-	<div class="loing_container" style="width: 100%; height: 200vh"></div>
+	<div class="loing_container">
 	<div id="main">
 
 		<div id="user_info">
@@ -236,6 +236,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 		</div>
 		<script src="<%=request.getContextPath()%>/resources/membershipJS/membershipBoard.js" charset="UTF-8"></script>

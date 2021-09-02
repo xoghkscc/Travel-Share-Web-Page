@@ -53,8 +53,7 @@ public class MemberShipRestController {
 	@PostMapping(value="/nicknamechange", produces="text/plain; charset=utf-8")
 	public String getnicknamechange(@RequestBody String user_nickname, HttpSession session) {
 		
-		System.out.println(user_nickname);
-		System.out.println(user_info.getUserNickname(Integer.valueOf((String) session.getAttribute("id"))));
+		
 		
 		if(user_info.checkNickname(user_nickname) == 0 || user_info.getUserNickname(Integer.valueOf((String) session.getAttribute("id"))).equals(user_nickname)) {
 			return "";
