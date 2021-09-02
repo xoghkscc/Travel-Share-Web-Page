@@ -193,6 +193,7 @@ public class MemberShipController {
 			if(session.getAttribute("id") != null) {
 				model.addAttribute("id", session.getAttribute("id"));
 			} 
+			
 			return "/membership/profile";
 		
 	}
