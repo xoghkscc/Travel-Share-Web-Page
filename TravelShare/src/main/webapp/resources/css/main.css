@@ -322,6 +322,9 @@ main{
     font-family: 'Cute Font', cursive;
     font-weight: bold;
 }
+
+
+
 /*******************************
 	last word섹션
 ********************************/
@@ -330,6 +333,41 @@ main{
 }
 .main_lastWord > div{
     margin-top: 20px;
+}
+.imgbox{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.imgbox>:first-child{
+	width: 234px;
+    height: 234px;
+    margin-top: 5px;
+    position: absolute;
+    cursor: pointer;
+    overflow: hidden;
+}
+.imgbox>:nth-child(2){
+    width: 61px;
+    height: 61px;
+    border-radius: 50%;
+    position: absolute;
+    top: 206px;
+    cursor: pointer;
+}
+.imgbox > div > img{
+	width: 100%;
+	height: 100%;
+	transition: 0.3s;
+}
+
+.imgbox:hover > div > img{
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    overflow: hidden;
 }
 /*********************************
 게시판

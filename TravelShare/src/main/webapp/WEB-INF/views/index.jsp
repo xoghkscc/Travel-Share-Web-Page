@@ -16,7 +16,7 @@
 var highMap = new highMaps();
 highMap.init();
 </script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css?ver=5.17">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main.css?ver=5.18">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/main_board.css?ver=1.00">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Two+Tone|Material+Icons+Sharp|Material+Icons+Outlined" rel="stylesheet">
 <link rel="shortcut icon" href="#">
@@ -69,8 +69,8 @@ highMap.init();
                     <div class="main_recommend">
                         <div class="board_content" id="board_content">
                             <div class="board_imgContent">
-                                <img alt=""
-                                    src="<%=request.getContextPath()%>/resources/files/back1.jpg">
+                                <div><img alt=""
+                                    src="<%=request.getContextPath()%>/resources/files/back1.jpg"></div>
                                 <img alt=""
                                     src="<%=request.getContextPath()%>/resources/files/back2.jpg">
                             </div>
@@ -285,7 +285,7 @@ highMap.init();
 			</div>
 		</div>
 	</div>
-   	<script src="<%=request.getContextPath()%>/resources/js/main_ajax.js?ver=1.11"></script>
+   	<script src="<%=request.getContextPath()%>/resources/js/main_ajax.js?ver=1.12"></script>
     <script src="<%=request.getContextPath()%>/resources/js/main_app.js?ver=5.23"></script>
 </body>
 </html>

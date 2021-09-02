@@ -35,8 +35,8 @@ function getNotices(e){
 				board_content.setAttribute("id", "board_content");
 
 				const board_imgContent = document.createElement("div");
-				board_imgContent.setAttribute("class", "board_imgContent");
-				board_imgContent.innerHTML = "<img onclick='imgClick("+myobj[key].board_id+")' alt='' src='"+myobj[key].board_mainimg+"'> <img alt='' src='/travelShare/resources/files/null.jpg'>";
+				board_imgContent.setAttribute("class", "imgbox");
+				board_imgContent.innerHTML = "<div><img onclick='imgClick("+myobj[key].board_id+")' alt='' src='"+myobj[key].board_mainimg+"'></div> <img alt='' src='/travelShare/resources/files/null.jpg'>";
 
 				const board_textContent = document.createElement("div");
 				board_textContent.setAttribute("class", "board_textContent");
