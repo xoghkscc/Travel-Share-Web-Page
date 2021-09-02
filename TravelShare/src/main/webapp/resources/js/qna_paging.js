@@ -5,7 +5,7 @@ const qna_tbody = document.querySelector('.qna_tbody');
 const qna_paging = document.querySelector('.qna_paging');
 const qna_searchText = document.querySelector('.qna_searchText');
 const qna_searchBtn = document.querySelector('.qna_searchBtn');
-
+const qna_list_id = document.querySelector('.qna_list_id');
 //필요한 변수
 let searchQnaValue = ""; //검색칸에 무슨 내용을 적었는지 꺼내기 위한 변수
 let searchChecking = 0; //검색을 하는 중인지 아닌지 체크하기 위한 변수
@@ -18,12 +18,39 @@ let adminPresentPage = 1; //현재 페이지를 저장하기 위한 변수
 qna_paging.addEventListener('click', qna_pagingFunc); //페이징기능
 qna_searchBtn.addEventListener('click', qna_searchFunc); //검색기능
 
-
 //시작하자마자 함수실행
-getList();
+getIdPosition();
+
+//id, position 가져오기
+function getIdPosition(e){
+	const xhttp = new XMLHttpRequest();
+		xhttp.addEventListener('readystatechange', (e) =>{
+			const target = e.target;
+			const status = target.status;
+			const readyState = target.readyState;
+			console.log("욥스스스");
+			if(status == 200 && readyState == 4){
+				//자바스크립트에서는 아주 쉽게 JSON형식의 문자열을 Object로 변환할 수 있다
+				console.log(target.responseText);
+				if(target.responseText != ""){
+					myobj = JSON.parse(target.responseText);					
+					const userId = myobj.user_id;
+					const userPosition = myobj.user_position;
+					console.log("id : ",userId," position : ",userPosition);
+					getList(userId, userPosition);				
+				}else{
+					getList(0, "member");
+				}
+			
+			}
+		});
+	xhttp.open('GET', '/travelShare/qnaRest/qna_getSession', true);	
+	xhttp.send();
+}
+
 
 //게시판 db 꺼내오기(처음실행, 검색)
-function getList(e){
+function getList(userId, userPosition){
 
 	qnaPaging=0;
 	let pagingNumber = 0;
@@ -35,6 +62,8 @@ function getList(e){
 		const target = e.target;
 		const status = target.status;
 		const readyState = target.readyState;
+		
+//		let checkId = qna_list_id.innerText;
 		
 		if(status == 200 && readyState == 4){
 			//자바스크립트에서는 아주 쉽게 JSON형식의 문자열을 Object로 변환할 수 있다
@@ -86,11 +115,13 @@ function getList(e){
 					//누른 페이지번호에 따라서 10개씩 출력하기위함 (처음에는 앞 10개출력)
 					if((pagingNumBtn*10)-10 <= i && i < pagingNumBtn*10){
 						let qno = myobj[i].qno;
-						let title = myobj[i].user_nickName;
+						let title = myobj[i].title;
 						let content = myobj[i].content;
 						let user_nickName = myobj[i].user_nickName;
 						let regdate = myobj[i].regdate;
 						let viewcnt = myobj[i].viewcnt;
+						let user_id = myobj[i].user_id;
+						let cs_open = myobj[i].cs_open;
 						
 						var date = new Date(regdate);
 						
@@ -110,19 +141,39 @@ function getList(e){
 						const regdate_Append = document.createTextNode(date.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }));
 						const viewcnt_Append = document.createTextNode(viewcnt);
 						
-						td1.appendChild(qno_Append);
-						td2.appendChild(title_Append);
-						td3.appendChild(user_nickName_Append);
-						td4.appendChild(regdate_Append);
-						td5.appendChild(viewcnt_Append);
+							td1.appendChild(qno_Append);
+						console.log(cs_open);
+						if(cs_open == "N"){
+							
+							if(userPosition != "member" || userId == user_id){
+								td2.appendChild(title_Append);	
+							}else{
+								td2.innerHTML = `<span class="material-icons-outlined" style="font-size: 20px;">lock</span>비밀글은 작성자와 관리자만 볼 수 있습니다.`;	
+							}
+						}else{
+							td2.appendChild(title_Append);	
+						}
 						
-						tr.appendChild(td1);
-						tr.appendChild(td2);
-						tr.appendChild(td3);
-						tr.appendChild(td4);
-						tr.appendChild(td5);
+//						if(userPosition != "member"){
+//							td2.appendChild(title_Append);							
+//						}else if(userId == user_id){
+//							td2.appendChild(title_Append);														
+//						}else if(cs_open == "Y"){
+//							td2.appendChild(title_Append);			
+//						}else{
+//							td2.innerHTML = `<span class="material-icons-outlined" style="font-size: 20px;">lock</span>비밀글은 작성자와 관리자만 볼 수 있습니다.`;	
+//						}
+							td3.appendChild(user_nickName_Append);
+							td4.appendChild(regdate_Append);
+							td5.appendChild(viewcnt_Append);
+							
+							tr.appendChild(td1);
+							tr.appendChild(td2);
+							tr.appendChild(td3);
+							tr.appendChild(td4);
+							tr.appendChild(td5);
 						
-						qna_tbody.appendChild(tr);	
+							qna_tbody.appendChild(tr);	
 						
 						if(searchChecking == 5){
 							searchChecking = 0;
@@ -142,9 +193,10 @@ function getList(e){
 	}
 	
 	if(searchChecking == 5){
-		xhttp.open('GET', `/travelShare/rest/admin_notice_searching?noticeName=${searchNoticeValue}`, true);	
+		xhttp.open('GET', `/travelShare/qnaRest/qna_paging_searching?qnaTitle=${searchQnaValue}`, true);	
 	}else{
-		xhttp.open('GET', '/travelShare/rest/admin_notice', true);		
+		console.log("욥!");
+		xhttp.open('GET', '/travelShare/qnaRest/qna_paging', true);		
 	}
 	
 	xhttp.send();
@@ -159,27 +211,27 @@ function qna_pagingFunc(e){
 		searchChecking = 5;
 	}
 
-	isNaN(pagingNumBtn)? console.log("제대로선택해") : getList();
+	isNaN(pagingNumBtn)? console.log("제대로선택해") : getIdPosition();
 
 	if(pagingNumBtn == "←"){
 		adminPresentPage--;
 		pagingNumBtn = (adminPresentPage-1)*5 + 1;
-		getList();
+		getIdPosition();
 	}
 	
 	if(pagingNumBtn == "→"){
 		adminPresentPage++;
 		pagingNumBtn = (adminPresentPage-1)*5 + 1;
-		getList();
+		getIdPosition();
 	}
 }
 
 
 function qna_searchFunc(e){
 	searchQnaValue = qna_searchText.value;
-	
+	console.log(searchQnaValue);
 	adminPresentPage = 1;
 	pagingNumBtn = 1;
 	searchChecking = 5;
-	getList();
+	getIdPosition();
 }
