@@ -21,4 +21,5 @@ public class BoardModel {
 	private String board_date;
 	private Integer like_cnt;
 	private String user_nickname;
+	private String user_imgurl;
 }
