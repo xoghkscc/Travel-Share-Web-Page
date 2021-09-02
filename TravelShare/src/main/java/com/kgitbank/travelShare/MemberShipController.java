@@ -180,6 +180,40 @@ public class MemberShipController {
 
 	}
 	
+	@GetMapping("/profile")
+	public String profile(HttpSession session, HttpServletRequest request, UserInfo userinfo, Model model) {
+		 
+
+			UserInfo userif = user_info.getUserInfo(request.getParameter("user_id"));	
+			model.addAttribute("user_name", userif.getUser_name());
+			model.addAttribute("user_like", user_info.getUserLike(userif.getUser_id()));
+			model.addAttribute("user_img", userif.getUser_imgurl());
+			model.addAttribute("boardDB", boardMapper.getBoardLike(Integer.valueOf((String) request.getParameter("user_id"))));
+			
+			if(session.getAttribute("id") != null) {
+				model.addAttribute("id", session.getAttribute("id"));
+			} 
+			return "/membership/profile";
+		
+	}
+	
+	@GetMapping("/profileLike")
+	public String profileLike(HttpSession session, HttpServletRequest request, UserInfo userinfo, Model model) {
+		 
+
+			UserInfo userif = user_info.getUserInfo(request.getParameter("user_id"));	
+			model.addAttribute("user_name", userif.getUser_name());
+			model.addAttribute("user_like", user_info.getUserLike(userif.getUser_id()));
+			model.addAttribute("user_img", userif.getUser_imgurl());
+			model.addAttribute("boardDB", boardMapper.getMyLike(Integer.valueOf((String) request.getParameter("user_id"))));
+			
+			if(session.getAttribute("id") != null) {
+				model.addAttribute("id", session.getAttribute("id"));
+			} 
+			return "/membership/profileLike";
+		
+	}
+	
 	@GetMapping("/userImgChange")
 	public String profileChange(HttpSession session, UserInfo userinfo, Model model) {
 	
