@@ -17,6 +17,7 @@ let adminPresentPage = 1; //현재 페이지를 저장하기 위한 변수
 //필요한 이벤트
 qna_paging.addEventListener('click', qna_pagingFunc); //페이징기능
 qna_searchBtn.addEventListener('click', qna_searchFunc); //검색기능
+qna_tbody.addEventListener('click', tableQnaTrClick);
 
 //시작하자마자 함수실행
 getIdPosition();
@@ -28,15 +29,14 @@ function getIdPosition(e){
 			const target = e.target;
 			const status = target.status;
 			const readyState = target.readyState;
-			console.log("욥스스스");
+
 			if(status == 200 && readyState == 4){
 				//자바스크립트에서는 아주 쉽게 JSON형식의 문자열을 Object로 변환할 수 있다
-				console.log(target.responseText);
 				if(target.responseText != ""){
 					myobj = JSON.parse(target.responseText);					
 					const userId = myobj.user_id;
 					const userPosition = myobj.user_position;
-					console.log("id : ",userId," position : ",userPosition);
+//					console.log("id : ",userId," position : ",userPosition);
 					getList(userId, userPosition);				
 				}else{
 					getList(0, "member");
@@ -142,13 +142,13 @@ function getList(userId, userPosition){
 						const viewcnt_Append = document.createTextNode(viewcnt);
 						
 							td1.appendChild(qno_Append);
-						console.log(cs_open);
+
 						if(cs_open == "N"){
 							
 							if(userPosition != "member" || userId == user_id){
 								td2.appendChild(title_Append);	
 							}else{
-								td2.innerHTML = `<span class="material-icons-outlined" style="font-size: 20px;">lock</span>비밀글은 작성자와 관리자만 볼 수 있습니다.`;	
+								td2.innerHTML = `<span class="material-icons-outlined secretWriting" style="font-size: 20px;">lock</span>비밀글은 작성자와 관리자만 볼 수 있습니다.`;	
 							}
 						}else{
 							td2.appendChild(title_Append);	
@@ -195,7 +195,6 @@ function getList(userId, userPosition){
 	if(searchChecking == 5){
 		xhttp.open('GET', `/travelShare/qnaRest/qna_paging_searching?qnaTitle=${searchQnaValue}`, true);	
 	}else{
-		console.log("욥!");
 		xhttp.open('GET', '/travelShare/qnaRest/qna_paging', true);		
 	}
 	
@@ -229,9 +228,20 @@ function qna_pagingFunc(e){
 
 function qna_searchFunc(e){
 	searchQnaValue = qna_searchText.value;
-	console.log(searchQnaValue);
+
 	adminPresentPage = 1;
 	pagingNumBtn = 1;
 	searchChecking = 5;
 	getIdPosition();
+}
+
+function tableQnaTrClick(e){
+
+	if(e.target.parentNode.children[1].children[0] === undefined){
+		console.log(e.target.parentNode.children[0].innerText);
+		location.href = `/travelShare/qna/qnaView?qno=${e.target.parentNode.children[0].innerText}`;
+	}else{
+		alert("비밀글 입니다.");
+	}
+
 }

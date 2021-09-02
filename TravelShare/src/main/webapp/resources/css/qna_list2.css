@@ -48,7 +48,11 @@ td > a {
 tr {
   text-align: center;
 }
-
+#qnaTable:hover tbody tr:hover td {
+    background-color: rgba(240, 240, 240, 0.3);
+    cursor: pointer;
+    text-decoration: underline;
+}
 .qna_tbody > tr:hover{
 	background-color: orangered;	
 }
