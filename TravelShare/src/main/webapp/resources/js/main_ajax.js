@@ -36,12 +36,12 @@ function getNotices(e){
 
 				const board_imgContent = document.createElement("div");
 				board_imgContent.setAttribute("class", "imgbox");
-				console.log(myobj[key].user_imgurl);
 				board_imgContent.innerHTML = "<div><img onclick='imgClick("+myobj[key].board_id+")' alt='' src='"+myobj[key].board_mainimg+"'></div> <img alt='' onclick='profileClick("+myobj[key].user_id+")' src='/travelShare"+myobj[key].user_imgurl+"'>";
 
 				const board_textContent = document.createElement("div");
 				board_textContent.setAttribute("class", "board_textContent");
-				board_textContent.innerHTML = "<div class='board_text1'>" + myobj[key].user_id + "</div> <div class='board_textTit'>" + myobj[key].board_title + "</div>";
+				console.log("myobj[key] : "+ myobj[key]);
+				board_textContent.innerHTML = "<div class='board_text1'>" + myobj[key].user_nickName + "</div> <div class='board_textTit'>" + myobj[key].board_title + "</div>";
 
 				const board_option = document.createElement("div");
 				board_option.setAttribute("class", "board_option");

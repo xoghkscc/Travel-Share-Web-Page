@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 public class QnaVO {
 	
-	private Integer qno;
+	private Integer qna_id;
 	private String title;
 	private String content;	
 	private String writer;	

@@ -16,7 +16,7 @@
 <body>
 	<jsp:include page="../header/top2.jsp"></jsp:include>
 	
-	<div class="qna_view_qno">${QnaViewModel.qno }</div>
+	<div class="qna_view_qno">${QnaViewModel.qna_id }</div>
 	<div class="qna_user_position">${QnaViewModel.user_position }</div>
 	
 	<div id="board_main">

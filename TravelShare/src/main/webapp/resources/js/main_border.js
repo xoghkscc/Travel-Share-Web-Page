@@ -49,7 +49,7 @@ function pagingRest(click_number, sigungucode, sidocode) {
 
 				var board_imgContent = document.createElement("div");
 				board_imgContent.setAttribute("class", "board_imgContent");
-				board_imgContent.innerHTML = "<img class="+myobj[key].board_id+" onclick='imgClick("+myobj[key].board_id+")' alt='' src='"+myobj[key].board_mainimg+"'> <img alt='' onclick='profileClick("+myobj[key].user_id+")' src='/travelShare"+myobj[key].user_imgurl+"'>";
+				board_imgContent.innerHTML = "<div><img class="+myobj[key].board_id+" onclick='imgClick("+myobj[key].board_id+")' alt='' src='"+myobj[key].board_mainimg+"'></div> <img alt='' onclick='profileClick("+myobj[key].user_id+")' src='/travelShare"+myobj[key].user_imgurl+"'>";
 
 				var board_textContent = document.createElement("div");
 				board_textContent.setAttribute("class", "board_textContent");
@@ -246,6 +246,8 @@ function imgClick(board_id, user_id) {
 	getBoardUser(board_id);
 	getBoardContent(board_id);
 	getBoardCommnet(board_id);
+	console.log(user_id);
+	console.log(board_id);
 	shwoRD(user_id, board_id);
 	warning(board_id, user_id);
 	document.getElementById("board_clickPan").setAttribute("class", "board_show");

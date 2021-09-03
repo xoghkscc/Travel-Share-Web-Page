@@ -104,10 +104,10 @@ function getQnaCommnet(value) {
 }
 
 document.getElementById("qna_button_modify").addEventListener('click', () => {
-	location.href = "./qnaModify?qno="+qna_view_qno.innerText;
+	location.href = "./qnaModify?qna_id="+qna_view_qno.innerText;
 });
 
 document.getElementById("qna_button_delete").addEventListener('click', () => {
-	location.href = "./qnaDelete?qno="+qna_view_qno.innerText;
+	location.href = "./qnaDelete?qna_id="+qna_view_qno.innerText;
 });
 

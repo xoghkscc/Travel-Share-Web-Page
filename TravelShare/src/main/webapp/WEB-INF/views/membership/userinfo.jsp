@@ -50,9 +50,9 @@
 			<c:forEach items="${boardDB }" var="board" begin="0" end="11">
 				<div class="board_content" id="board_content">
 					<div class="board_imgContent">
-						<img class="${board.board_id }"
+						<div><img class="${board.board_id }"
 							onclick='imgClick(${board.board_id}, ${board.user_id})' alt=""
-							src="${board.board_mainimg }"> 
+							src="${board.board_mainimg }"></div> 
 							<img alt="" onclick='profileClick(${board.user_id})'
 							src="/travelShare${board.user_imgurl }">
 					</div>

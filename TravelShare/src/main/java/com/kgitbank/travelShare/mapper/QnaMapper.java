@@ -24,16 +24,13 @@ public interface QnaMapper {
 	//게시물 작성
 	public void qna_write(QnaVO vo) throws Exception;
 	//게시물 조회
-	public QnaViewModel qna_view(int qno) throws Exception;
+	public QnaViewModel qna_view(int qna_id) throws Exception;
 	//게시물 수정
 	public void qna_modify(QnaVO vo) throws Exception;
 	//게시물 삭제
-	public void qna_delete(int qno) throws Exception;
+	public void qna_delete(int qna_id) throws Exception;
 	//게시물 총 개수
 	public int qna_count() throws Exception;
-	//게시물 목록 + 페이징
-	public List listPage(int displayPost, int postNum) throws Exception;
-	
 
 	//조회수
 	public int qna_viewcntup(QnaViewModel qnaViewModel);

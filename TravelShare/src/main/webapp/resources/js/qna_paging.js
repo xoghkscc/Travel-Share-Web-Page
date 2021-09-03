@@ -114,7 +114,7 @@ function getList(userId, userPosition){
 						
 					//누른 페이지번호에 따라서 10개씩 출력하기위함 (처음에는 앞 10개출력)
 					if((pagingNumBtn*10)-10 <= i && i < pagingNumBtn*10){
-						let qno = myobj[i].qno;
+						let qno = myobj[i].qna_id;
 						let title = myobj[i].title;
 						let content = myobj[i].content;
 						let user_nickName = myobj[i].user_nickName;
@@ -239,7 +239,7 @@ function tableQnaTrClick(e){
 
 	if(e.target.parentNode.children[1].children[0] === undefined){
 		console.log(e.target.parentNode.children[0].innerText);
-		location.href = `/travelShare/qna/qnaView?qno=${e.target.parentNode.children[0].innerText}`;
+		location.href = `/travelShare/qna/qnaView?qna_id=${e.target.parentNode.children[0].innerText}`;
 	}else{
 		alert("비밀글 입니다.");
 	}

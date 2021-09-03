@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 public class QnaViewModel {
 	@NonNull
-	private Integer qno;
+	private Integer qna_id;
 	private String title;
 	private String content;	
 	private String writer;	
