@@ -57,14 +57,14 @@ a:visited {
 }
 
 #user_name {
-    min-width: 230px;
+    min-width: 200px;
 }
 
 
 #user_zim {
     margin-top: 50px;
     color: black;
-    
+    min-width: 200px;
 }
 
 
