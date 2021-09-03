@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Cute+Font&family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+body {
+	height: 100vh;
+    background-image: url(../files/back3.jpg);
+    background-size: cover;
+    overflow-x: hidden; 
+}
+
+.qna_container{
+	position: absolute;
+	left: 0;
+	top: 80px;
+	width: 94vw;
+    margin-left: 3vw;
+	height: calc(100vh - 100px);
+	font-family: 'Jua', sans-serif;
+}
+
+.qna_container > :first-child{
+	font-size: 25px;
+	margin-left: 15px;
+    color: blanchedalmond;
+/* 	border-bottom: 3px solid orangered; */
+}
+.qna_container > :nth-child(2){
+	margin-left: 15px;
+	margin-top : 15px
+}
+.qna_searchText{
+	width: 250px;
+	height: 30px;
+}
+.qna_searchBtn {
+	width: 50px;
+	height: 30px;
+}
+
+td{
+	background-color: white;
+	margin-top:5px;	
+}
+
+td > a {
+	color: black;
+	text-decoration: none;
+}
+
+tr {
+  text-align: center;
+}
+#qnaTable:hover tbody tr:hover td {
+    background-color: rgba(240, 240, 240, 0.3);
+    cursor: pointer;
+    text-decoration: underline;
+}
+.qna_tbody > tr:hover{
+	background-color: orangered;	
+}
+
+
+table {
+	border-bottom: 1px solid gray;
+}
+
+
+.qna_head {
+  background-color: rgb(255, 124, 62);
+}
+
+
+
+.qna_paging{
+    margin: auto;
+    margin-top: 15px;
+    width: 200px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+}
+.qna_paging > span{
+    text-align: center;
+    line-height: 210%;
+    margin-left: 3px;
+	border: rgb(209, 209, 209) solid 1px;
+    background-color: white;
+    color: black;
+    border-radius: 20%;
+    width: 25px;
+    height: 30px;
+}
+.qna_paging > span:hover{
+	background-color: white;
+    color: orangered;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.qna_bottomBox{
+    border: 1px solid silver;
+    background-color: #e6e6e6;
+    width: 400px;
+    height: 100px;
+
+    display: grid;
+    justify-content: center;
+    /* text-align: center; */
+    align-items: center;
+    grid-template-rows: 1fr 1fr;
+    /* align-content: center; */
+    margin: auto;
+}
+
+.write_btn{
+	float: right;
+}

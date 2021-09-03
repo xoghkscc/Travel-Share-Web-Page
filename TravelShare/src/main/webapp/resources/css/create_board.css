@@ -1,0 +1,115 @@
+.board_create{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+    width: 100vw;
+}
+
+.board_create>*{
+    width: 1024px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.boardtit{
+    margin-top: 80px;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.board_input{
+    display: grid;
+    grid-template-columns: 25% auto;
+    margin-bottom: 100px;
+}
+
+
+.board_input>div>label{
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 45px;
+    margin-right: 30px;
+}
+
+.board_input>div:first-child{
+    margin-bottom: 40px;
+}
+
+
+
+.board_input>div>input{
+    background-color: #dad8d8;
+    width: 600px;
+    height: 32px;
+    margin-top: 7px;
+    border: 1px solid #b3b2b2;
+    text-indent: 20px;
+}
+
+.board_input>div:first-child>input{
+    margin-left: 30px;
+    text-indent: 20px;
+    font-size: 16px;
+}
+.board_input_suggestion{
+    margin-top: 50px;
+}
+
+.board_travel_route{
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 100%;
+    margin-bottom: 20px;
+}
+
+.board_travel_route>div{
+    width: 306px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.pulsBtn{
+    font-size: 40px;
+    color: #747373;
+    cursor: pointer;
+}
+
+
+.board_travel_mainPicture{
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.board_travel_file{
+    margin-top: 15px;
+}
+
+#board_mainimg{
+	background-color: white;
+	border: none;
+}
+
+.board_btn-default{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e36113;
+    color: #fff;
+    width: 167px;
+    height: 52px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    border: none;
+}

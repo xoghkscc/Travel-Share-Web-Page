@@ -3,7 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
@@ -11,7 +13,7 @@
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@3.35.52.40:1521:xe"></property>
-		<property name="username" value="java1"></property>
+		<property name="username" value="TravelShareAwsDb"></property>
 		<property name="password" value="1234"></property>
 	</bean>
 
@@ -27,9 +29,7 @@
 
 	<mybatis-spring:scan
 		base-package="com.kgitbank.travelShare.mapper" />
-	
-	
 		
-	<context:component-scan
-		base-package="com.kgitbank.*" />
+	<context:component-scan base-package="com.kgitbank.*" />
+	
 </beans>

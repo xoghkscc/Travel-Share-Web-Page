@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Cute+Font&family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+.qna_write{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+    width: 100vw;
+}
+
+#qnaTitle {
+	width: 700px;
+	height: 30px;
+	margin-bottom: 15px;
+	font-size: 23px;
+    padding-left: 10px;	
+}
+
+.qna_write>*{
+    width: 1024px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+}
+.qna_input{
+    display: grid;
+    grid-template-columns: 25% auto;
+    margin-bottom: 100px;
+}
+.qna_input>div>label{
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 45px;
+    margin-right: 30px;
+}
+
+
+.qna_input>div>input{
+    background-color: #dad8d8;
+    width: 600px;
+    height: 32px;
+    margin-top: 7px;
+    border: 1px solid #b3b2b2;
+    text-indent: 20px;
+}
+
+.qna_input>div:first-child>input{
+    margin-left: 30px;
+    text-indent: 20px;
+    font-size: 16px;
+}
+.qna_input_suggestion{
+    margin-top: 50px;
+}
+
+
+.qna_travel_mainPicture{
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.qna_travel_file{
+    margin-top: 15px;
+}
+
+#qna_mainimg{
+	background-color: white;
+	border: none;
+}
+
+.qna_btn-default{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e36113;
+    color: #fff;
+    width: 167px;
+    height: 52px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    border: none;
+}
+
+
+

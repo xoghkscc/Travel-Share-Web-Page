@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Cute+Font&family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+body{
+	height: 100vh;
+    background-image: url(../files/back4.jpg);
+    background-size: cover;
+}
+.admin{
+    width: 97vw;
+    height: 90vh;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Jua', sans-serif;
+    
+}
+#admin_title{
+    position: absolute;
+    left: 12vw;
+    top:70px;
+    font-size: 30px;
+}
+
+.admin_container{
+	margin-top: 90px;
+    background-color: blanchedalmond;
+    border: 3px black solid;
+    border-radius: 2%;
+    /* background-color: bisque; */
+    box-shadow: 3px 3px 0px 0px black;
+    width: 80%;
+    height: 80%;
+
+    display: grid;
+    grid-template-columns: 13% auto;
+}
+
+.admin_menu{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    margin-right: 3px;
+    align-items: center;
+    /* justify-content: center; */
+    text-align: center;
+}
+
+.admin_menu > *{
+    /* border: 1px red solid; */
+    background-color: orangered;
+    color: white;
+    font-size: 17px;
+    height: 90px;
+    width: 95%;
+    line-height: 600%;
+    border-radius: 10%;
+}
+.admin_menu > *:hover{
+    /* border: 1px red solid; */
+    background-color: rgb(100, 28, 2);
+    box-shadow: 0 0 5px rgba(105, 105, 105, 0.829) inset,
+    0 0 15px rgba(143, 143, 143, 0.829) inset,   
+    0 0 30px rgba(255, 255, 255, 0.856) inset,
+    0 0 5px rgba(255, 255, 255, 0.952);
+    cursor: pointer;
+}
+
+.admin_main{
+    margin: 5px;
+    position: relative;
+}
+
+
+table{
+    border-spacing: 0;
+}
+
+.admin_member_container, .admin_admin_container, .admin_board_container, 
+.admin_notice_container, .admin_declare_container{
+    position: absolute;
+    left: 3%;
+    top: 3%;
+    width: calc(100% - 30px);
+    height: 90%;
+    display: none;
+    overflow: scroll;
+    overflow-x: scroll;
+}
+.admin_fixTh{
+    /* top: 100px; */
+    top: 0;
+    position: sticky;
+} 
+.admin_member_count{
+    border-bottom: 3px orangered solid;
+    width: 150px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.admin_member_table{
+    border: 1px red solid;
+}
+
+.admin_notice_paging, .admin_board_paging{
+    margin: auto;
+    margin-top: 15px;
+    width: 200px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+}
+.admin_notice_paging > span, .admin_board_paging > span{
+    text-align: center;
+    line-height: 210%;
+    margin-left: 3px;
+	border: black solid 1px;
+    background-color: orangered;
+    color: blanchedalmond;
+    border-radius: 20%;
+    width: 25px;
+    height: 30px;
+}
+.admin_notice_paging > span:hover, .admin_board_paging > span:hover{
+	background-color: black;
+    color: orangered;
+}
+
+/******************************
+	확인창 관련 css
+******************************/
+.admin_hiddenAlarm, .admin_hiddenAlarm2, .admin_hiddenAlarm3{
+	z-index: 1000;
+	position: absolute;
+	border-radius: 3%;
+	left: calc(50% - 225px);
+	top: -30px;
+	height: 130px;
+	width: 450px;
+	/* border: 1px black solid; */
+    box-shadow: 1px 1px 2px rgb(180, 180, 180),
+                2px 2px 4px rgb(105, 105, 105);
+	background-color: white;
+	display: none;
+
+    transform: translateY(30px);
+    transition: 0.5s;
+}
+.admin_hiddenAlarm > :first-child, .admin_hiddenAlarm2 > :first-child{
+    /* border: 1px solid red; */
+    width: 300px;
+    position: absolute;
+    top: 83px;
+    left: 200px;
+}
+.admin_hiddenInnerText, .admin_hiddenInnerText2{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 250px;
+	font-size: 18px;
+}
+
+.admin_hiddenAlarm > :first-child > button, .admin_hiddenAlarm2 > :first-child > button{
+    background-color: rgb(36, 125, 242);
+    color: white;
+    width: 67px;
+    height: 33px;
+    border-radius: 10%;
+    border: none;
+    margin-left: 7px;
+    transition: 1s;
+    /* box-shadow: 1px 1px 2px rgb(255, 255, 255) inset; */
+}
+.admin_hiddenAlarm > :first-child > :nth-child(3){
+    background-color: white;
+    border: 1px rgb(205, 205, 205) solid;
+    color: rgb(36, 125, 242);
+}
+.admin_hiddenAlarm > :first-child > button:hover{
+    background-color: rgb(66, 165, 255);
+    box-shadow: 1px 1px 2px rgb(255, 255, 255) inset;
+}
+.admin_hiddenAlarm > :first-child > :nth-child(3):hover{
+    background-color: rgba(66, 165, 255, 0.2);
+}
+
+.admin_hiddenAlarm2 > :first-child > :nth-child(1){
+	background-color: rgb(150,255,255);
+	color: black;
+}
+.admin_hiddenAlarm2 > :first-child > :nth-child(3){
+	background-color: rgb(255,150,255);
+	color: black;
+}
+.admin_hiddenAlarm2 > :first-child > :nth-child(2){
+	background-color: rgb(255,255,150);
+	color: black;
+}
+.admin_hiddenAlarm2 > :first-child > button:hover{
+    background-color: rgb(66, 165, 255);
+    box-shadow: 1px 1px 2px rgb(255, 255, 255) inset;
+}
+.admin_hiddenAlarm2 > :first-child > :nth-child(3):hover{
+    background-color: rgba(66, 165, 255, 0.2);
+}
+
+.admin_hiddenAlarm3 > input{
+	border: black 1px solid;
+	width: 300px;
+	height: 30px;
+    position: absolute;
+    top: 45px;
+    left: 20px;
+}
+.admin_hiddenAlarm3 > :nth-child(2){
+	width: 50px;
+	height: 30px;
+    position: absolute;
+    top: 90px;
+    left: 20px;
+}
+.admin_hiddenAlarm3 > :nth-child(3){
+	width: 50px;
+	height: 30px;
+    position: absolute;
+    top: 90px;
+    left: 100px;
+}
+
+.notice_hiddenId{
+	display: none;
+}
+
+.updateDivForm{
+	position: absolute;
+    left: 3%;
+    top: 3%;
+    width: calc(100% - 30px);
+    height: 90%;
+    display: none;
+    overflow: scroll;
+    overflow-x: scroll;
+}
+
+/********************************
+	테이블 css
+********************************/
+.tbodyclass > tr{
+     border: 1px black solid;
+}
+.tbodyclass > tr:hover, .tbodyclass_admin > tr:hover, .tbodyclass_notice > tr:hover,
+.tbodyclass_board > tr:hover, .tbodyclass_declare > tr:hover{
+     border: 1px black solid;
+     background-color: rgba(50,50,250,0.3);
+}
+
+.tbodyclass > tr > td{
+	    border: 1px black solid;
+}
+
+
+
+
+
+.admin_admin_count, .admin_board_count, .admin_declare_count{
+    border-bottom: 3px orangered solid;
+    width: 92px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.admin_notice_mebuBar{
+    color: rgb(105, 105, 105);
+
+}
+
+.admin_notice_mebuBar > span{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+    display: inline-block;
+    margin-bottom: 6px;
+    width: 200px;
+    font-size: 25px;
+    text-align: center;
+    /* pointer-events: none; */
+}
+
+.admin_notice_mebuBar > span:hover{
+    cursor: pointer;
+}
+
+.admin_notice_menuBarAccept{
+    margin-bottom: 0px;
+    color: black;
+    border-bottom: 4px solid orangered;
+}
+
+/***************************
+	반응형
+****************************/
+@media (max-width: 900px){
+    .admin_menu > *{
+        line-height: 850%;
+        font-size: 11px;
+        width: 60px;
+    }
+}
+
+@media (max-width: 700px){
+    .admin_notice_mebuBar > span{
+        width: 100px;
+        font-size: 15px;
+    }
+}

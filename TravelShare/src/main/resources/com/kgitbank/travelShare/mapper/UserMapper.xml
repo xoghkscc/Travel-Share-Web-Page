@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.kgitbank.travelShare.mapper.UserMapper">
+  
+  <!-- 여러 줄 꺼낼 때 -->
+  <select id="getAdmin_SearchingList" resultType="com.kgitbank.travelShare.model.User">
+        SELECT * FROM user_info where user_name = '${name}'
+  </select>
+  
+  <!-- 한줄 꺼낼 때 -->
+  <select id="getAdmin_User" resultType="com.kgitbank.travelShare.model.User">
+        SELECT * FROM user_info where user_nickname = '${noticeNickName}'
+  </select>
+  
+
+  <select id="getAdminUsersId" resultType="int">
+		SELECT max(user_id) FROM users
+  </select>
+  
+  <update id="getAdmin_position_update">
+		UPDATE user_info SET user_position = '${AdminPositionValue}' where user_nickname = '${AdminNickName}'
+  </update>
+  
+  <update id="getAdmin_declare_update">
+		UPDATE user_info SET user_warning = '${declareCnt}' where user_nickname = '${AdminNickName}'
+  </update>
+  
+  <delete id="deleteAdminUser">
+		DELETE FROM user_info where user_email = '${adminUserEmail}'
+  </delete>
+  
+  
+  
+</mapper>

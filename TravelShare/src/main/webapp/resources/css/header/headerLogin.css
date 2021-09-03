@@ -1,0 +1,36 @@
+@charset "EUC-KR";
+a {
+   color: white;
+   text-decoration: none;
+}
+
+#popupmenu-item ul.popupmenu-menu
+        {
+            display: none;
+            position: absolute;
+            top: 36px;
+            margin: 0;
+            padding: .4em;
+            list-style: none;
+            background: gray;
+            opacity: 0.7;
+            border: solid 1px #CCCCCC;
+   
+        }
+        #popupmenu-item ul.popupmenu-menu li
+        {
+            padding: .1em .5em;
+        }
+        #popupmenu-item ul.popupmenu-menu li a
+        {
+            display: block;
+            font-size: 12px;
+        }
+        #popupmenu-item:hover
+        {
+            cursor: pointer;
+        }
+        #popupmenu-item:hover ul.popupmenu-menu
+        {
+            display: block;
+        }

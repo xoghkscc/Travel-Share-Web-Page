@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.kgitbank.travelShare.mapper.BoardMapper">
+	<select id="getBoardAll" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT * FROM like_view INNER JOIN user_info USING(user_id) ORDER BY board_id DESC
+	</select>
+	
+	<select id="getBoardLike" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT * FROM like_view INNER JOIN user_info USING(user_id) WHERE user_id = #{user_id} ORDER BY board_id DESC
+	</select>
+	
+	<select id="getMyLike" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT * FROM like_view INNER JOIN user_info USING(user_id)INNER JOIN board_like USING(board_id) WHERE board_like.user_id = #{user_id } ORDER BY board_id DESC
+	</select>
+	
+	<select id="getBoardFilter1" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT * FROM like_view  INNER JOIN user_info USING(user_id) WHERE sigungucode = #{sigungucode} ORDER BY board_date DESC
+	</select>
+	
+	<select id="getBoardFilter2" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT * FROM like_view  INNER JOIN user_info USING(user_id) WHERE sigungucode LIKE #{sidocode} || '%' ORDER BY board_date DESC
+	</select>
+	
+	<select id="getBoardChoice" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT * FROM like_view  INNER JOIN user_info USING(user_id) WHERE board_id = #{board_id} ORDER BY board_date DESC
+	</select>
+	
+	<select id="getBoardPaging" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY <if test="order == 'board_id'">board_date</if> <if test="order == 'board_lookupcnt'">board_lookupcnt</if> <if test="order == 'like_cnt'">like_cnt</if> DESC) AS rnum,  board_id, user_id, board_title, board_lookupcnt, board_bestplace, board_besteat, board_mainimg, board_content, sigungucode, sido, sigungu,
+    	addr, board_date, like_cnt FROM like_view ORDER BY <if test="order == 'board_id'">board_date</if> <if test="order == 'board_lookupcnt'">board_lookupcnt</if> <if test="order == 'like_cnt'">like_cnt</if> DESC) INNER JOIN user_info USING ( user_id ) WHERE rnum BETWEEN #{startnum }+1 AND #{endnum }  ORDER BY <if test="order == 'board_id'">board_date</if> <if test="order == 'board_lookupcnt'">board_lookupcnt</if> <if test="order == 'like_cnt'">like_cnt</if> DESC
+	</select>
+	
+	<select id="getBoardPaging1" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY <if test="order == 'board_id'">board_date</if> <if test="order == 'board_lookupcnt'">board_lookupcnt</if> <if test="order == 'like_cnt'">like_cnt</if> DESC) AS rnum,  board_id, user_id, board_title, board_lookupcnt, board_bestplace, board_besteat, board_mainimg, board_content, sigungucode, sido, sigungu,
+    	addr, board_date, like_cnt FROM like_view WHERE sigungucode = #{sigungucode} ORDER BY <if test="order == 'board_id'">board_date</if> <if test="order == 'board_lookupcnt'">board_lookupcnt</if> <if test="order == 'like_cnt'">like_cnt</if> DESC) INNER JOIN user_info USING ( user_id ) WHERE rnum BETWEEN #{startnum }+1 AND #{endnum }  ORDER BY <if test="order == 'board_id'">board_date</if> <if test="order == 'board_lookupcnt'">board_lookupcnt</if> <if test="order == 'like_cnt'">like_cnt</if> DESC
+	</select>
+	
+	<select id="getBoardPaging2" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY <if test="order == 'board_id'">board_date</if> <if test="order == 'board_lookupcnt'">board_lookupcnt</if> <if test="order == 'like_cnt'">like_cnt</if> DESC) AS rnum,  board_id, user_id, board_title, board_lookupcnt, board_bestplace, board_besteat, board_mainimg, board_content, sigungucode, sido, sigungu,
+    	addr, board_date, like_cnt FROM like_view WHERE sigungucode LIKE #{sidocode} || '%' ORDER BY <if test="order == 'board_id'">board_date</if> <if test="order == 'board_lookupcnt'">board_lookupcnt</if> <if test="order == 'like_cnt'">like_cnt</if> DESC) INNER JOIN user_info USING ( user_id ) WHERE rnum BETWEEN #{startnum }+1 AND #{endnum }  ORDER BY <if test="order == 'board_id'">board_date</if> <if test="order == 'board_lookupcnt'">board_lookupcnt</if> <if test="order == 'like_cnt'">like_cnt</if> DESC
+	</select>
+	
+	<insert id="insertBoard">
+		INSERT INTO main_board VALUES (board_seq.nextval, #{user_id}, #{board_title},#{board_lookupcnt},
+		#{board_bestplace},#{board_besteat},#{board_mainimg},#{board_content},#{sigungucode},#{sido},#{sigungu}, #{addr}, CURRENT_DATE, #{zipcode}, #{detailaddr})
+	</insert>
+	
+	<update id="lookupCntPlus">
+		UPDATE main_board SET board_lookupcnt = board_lookupcnt + 1 WHERE board_id = #{board_id}
+	</update>
+	
+	<insert id="insertComment">
+		INSERT INTO board_comment(comment_id, user_id, board_id, comment_text, comment_date) VALUES (comment_seq.nextval, #{user_id}, #{board_id}, #{comment_text}, CURRENT_DATE)
+	</insert>
+	
+	<select id="selectComment" resultType="com.kgitbank.travelShare.model.CommentInfo">
+		SELECT * FROM board_comment INNER JOIN user_info USING(user_id) WHERE board_id = #{board_id} ORDER BY board_comment.comment_date desc
+	</select>
+	
+	<select id="selectLike" resultType="com.kgitbank.travelShare.model.BoardLikeModel">
+		SELECT * FROM board_like WHERE board_id = #{board_id } and user_id = #{user_id }
+	</select>
+	
+	<delete id="deleteLike">
+		DELETE FROM board_like WHERE board_id = #{board_id} and user_id = #{user_id}
+	</delete>
+	
+	<insert id="insertLike">
+		INSERT INTO board_like VALUES(like_seq.nextval, #{user_id}, #{board_id})
+	</insert>
+	
+	<select id="selectLikeCnt" resultType="int">
+		SELECT like_cnt FROM like_view WHERE board_id = #{board_id}
+	</select>
+	
+	<delete id="deleteBoard">
+		DELETE FROM main_board WHERE board_id = #{board_id}
+	</delete>
+	
+	<select id="selectBoardSearch" resultType="com.kgitbank.travelShare.model.BoardModel">
+		SELECT * FROM main_board WHERE board_id = #{board_id}
+	</select>
+	
+	<update id="updateBoard1">
+		UPDATE main_board SET board_title = #{board_title}, board_bestplace = #{board_bestplace}, board_besteat = #{board_besteat}, board_mainimg = #{board_mainimg}, 
+		board_content = #{board_content}, sigungucode = #{sigungucode}, sido = #{sido}, sigungu = #{sigungu}, addr = #{addr} WHERE board_id = #{board_id}
+	</update>
+	
+	<update id="updateBoard2">
+		UPDATE main_board SET board_title = #{board_title}, board_bestplace = #{board_bestplace}, board_besteat = #{board_besteat},
+		board_content = #{board_content}, sigungucode = #{sigungucode}, sido = #{sido}, sigungu = #{sigungu}, addr = #{addr} WHERE board_id = #{board_id}
+	</update>
+	
+	<select id="selectWarning" resultType="com.kgitbank.travelShare.model.WarningModel">
+		SELECT * FROM warning WHERE board_id = #{board_id} and singo_id = #{singo_id}
+	</select>
+	
+	<insert id="insertWaring">
+		INSERT INTO warning VALUES(warning_seq.nextval, #{board_id}, #{singo_id})
+	</insert>
+	
+	<update id="userInfoWarning">
+		UPDATE user_info SET user_warning = user_warning + 1 WHERE user_id = #{user_id}
+	</update>
+	
+	<select id="alramContent" resultType="com.kgitbank.travelShare.model.CommentInfo">
+		SELECT board_id, comment_id, main_board.user_id, comment_text, board_comment.comment_date, board_comment.comment_lookcheck, board_mainimg, main_board.board_title
+		FROM board_comment INNER JOIN main_board USING ( board_id ) WHERE main_board.user_id = ${user_id} AND comment_lookcheck = 'N' ORDER by comment_date DESC
+	</select>
+	
+	<update id="alramLookChange" >
+		UPDATE board_comment SET comment_lookcheck = 'Y' WHERE board_id = #{board_id}
+	</update>
+	
+</mapper>
