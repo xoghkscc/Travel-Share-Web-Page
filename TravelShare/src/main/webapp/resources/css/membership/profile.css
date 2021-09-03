@@ -102,5 +102,6 @@ a:visited {
 
 .loing_container{
 	width: 100vw;
-	margin-left: -70px
+	margin-left: -70px;
+	min-height: 600px;
 }
