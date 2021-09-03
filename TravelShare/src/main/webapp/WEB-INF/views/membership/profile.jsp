@@ -37,8 +37,8 @@
 		</div>
 		
 		<div id="board_name">
-			<div id="my_travel" style="border-bottom: 2px rgb(255, 109, 0) solid;"><a href="./profile"	style="color : black;">나의 여행</a></div>
-			<div id="my_zim"><a href="./profileLike">나의 찜</a></div>
+			<div id="my_travel" style="border-bottom: 2px rgb(255, 109, 0) solid;"><a href="./profile?user_id=${sessionScope.profile_id}"	style="color : black;">나의 여행</a></div>
+			<div id="my_zim"><a href="./profileLike?user_id=${sessionScope.profile_id}">나의 찜</a></div>
 		</div>
 		<div id="board_main">
 		<div class="board_list_travel">
@@ -47,8 +47,9 @@
 					<div class="board_imgContent">
 						<img class="${board.board_id }"
 							onclick='imgClick(${board.board_id}, ${board.user_id})' alt=""
-							src="${board.board_mainimg }"> <img alt=""
-							src="<%=request.getContextPath()%>/resources/files/null.jpg">
+							src="${board.board_mainimg }"> 
+							<img alt="" onclick='profileClick(${board.user_id})'
+							src="/travelShare${board.user_imgurl }">
 					</div>
 					<div class="board_textContent">
 						<div class="board_text1">${board.user_nickname }</div>

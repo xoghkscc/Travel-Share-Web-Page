@@ -49,7 +49,7 @@ function pagingRest(click_number, sigungucode, sidocode) {
 
 				var board_imgContent = document.createElement("div");
 				board_imgContent.setAttribute("class", "board_imgContent");
-				board_imgContent.innerHTML = "<img onclick='imgClick("+myobj[key].board_id+", "+myobj[key].user_id+")' alt='' src='"+myobj[key].board_mainimg+"'> <img alt='' src='/travelShare/resources/files/null.jpg'>";
+				board_imgContent.innerHTML = "<img class="+myobj[key].board_id+" onclick='imgClick("+myobj[key].board_id+")' alt='' src='"+myobj[key].board_mainimg+"'> <img alt='' onclick='profileClick("+myobj[key].user_id+")' src='/travelShare"+myobj[key].user_imgurl+"'>";
 
 				var board_textContent = document.createElement("div");
 				board_textContent.setAttribute("class", "board_textContent");
@@ -249,6 +249,7 @@ function imgClick(board_id, user_id) {
 	shwoRD(user_id, board_id);
 	warning(board_id, user_id);
 	document.getElementById("board_clickPan").setAttribute("class", "board_show");
+
 	
 	const xhttp = new XMLHttpRequest();
 	
@@ -470,7 +471,8 @@ function getBoardContent(value) {
 
 			Object.keys(myobj).forEach((key) => {
 				document.getElementById("board_googleMap").setAttribute("src", "https://www.google.com/maps?q= "+myobj[key].addr+" &output=embed");
-//				document.getElementById("board_mainimg").setAttribute("src", myobj[key].board_mainimg);
+				document.getElementById("board_mainimg").setAttribute("src", "/travelShare"+myobj[key].user_imgurl);
+				document.getElementById("board_mainimg").setAttribute("class", myobj[key].user_id);
 				document.getElementById("board_content_id").innerHTML = myobj[key].board_id;
 				document.getElementById("board_title").innerHTML = myobj[key].board_title;
 				document.getElementById("board_bestplace").innerHTML = myobj[key].board_bestplace;
@@ -482,7 +484,6 @@ function getBoardContent(value) {
 					value2.style.width = "40vw";
 					value2.style.height = "auto";
 				});
-				
 			});
 	});
 
@@ -598,6 +599,16 @@ function createBoardLocation(id){
 		location.href = "../site/login";
 	}
 }
+
+document.getElementById("board_mainimg").addEventListener('click', (e) => {
+	var user_id = e.target.classList.value;
+	profileClick(user_id);
+})
+
+function profileClick (user_id){
+	location.href = "../membership/profile?user_id="+user_id;
+}
+
 
 
 

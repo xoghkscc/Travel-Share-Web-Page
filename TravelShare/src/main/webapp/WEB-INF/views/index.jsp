@@ -71,7 +71,7 @@ highMap.init();
                             <div class="board_imgContent">
                                 <div><img alt=""
                                     src="<%=request.getContextPath()%>/resources/files/back1.jpg"></div>
-                                <img alt=""
+                                <img alt="" 
                                     src="<%=request.getContextPath()%>/resources/files/back2.jpg">
                             </div>
                             <div class="board_textContent">

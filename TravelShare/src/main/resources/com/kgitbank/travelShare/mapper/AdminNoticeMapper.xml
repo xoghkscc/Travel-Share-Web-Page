@@ -63,7 +63,7 @@
 	</select>
 	
 	<select id="getMainBestPlace" resultType="com.kgitbank.travelShare.model.LikeViewModel">
-		select * from (SELECT * FROM like_view order by LIKE_CNT DESC) where rownum <![CDATA[<]]> 5
+		select * from (SELECT * FROM like_view order by LIKE_CNT DESC) INNER JOIN user_info USING(user_id) where rownum <![CDATA[<]]> 5
 	</select>
 
 	<select id="findSido" resultType="com.kgitbank.travelShare.model.BoardModel">

@@ -81,8 +81,9 @@
 					<div class="board_imgContent">
 						<img class="${board.board_id }"
 							onclick='imgClick(${board.board_id}, ${board.user_id})' alt=""
-							src="${board.board_mainimg }"> <img alt=""
-							src="<%=request.getContextPath()%>/resources/files/null.jpg">
+							src="${board.board_mainimg }"> 
+							<img alt="" onclick='profileClick(${board.user_id})'
+							src="/travelShare${board.user_imgurl }">
 					</div>
 					<div class="board_textContent">
 						<div class="board_text1">${board.user_nickname }</div>

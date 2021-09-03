@@ -185,6 +185,7 @@ public class MemberShipController {
 		 
 
 			UserInfo userif = user_info.getUserInfo(request.getParameter("user_id"));	
+			session.setAttribute("profile_id", request.getParameter("user_id"));
 			model.addAttribute("user_name", userif.getUser_name());
 			model.addAttribute("user_like", user_info.getUserLike(userif.getUser_id()));
 			model.addAttribute("user_img", userif.getUser_imgurl());

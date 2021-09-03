@@ -1,4 +1,4 @@
-@charset "EUC-KR";
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Cute+Font&family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
 .qna_write{
     display: flex;
     flex-direction: column;
@@ -6,14 +6,14 @@
     align-items: center;
     align-content: space-between;
     width: 100vw;
-    margin-top: 60px;
 }
 
 #qnaTitle {
 	width: 700px;
 	height: 30px;
 	margin-bottom: 15px;
-	font-size: 30px;	
+	font-size: 23px;
+    padding-left: 10px;	
 }
 
 .qna_write>*{
@@ -22,6 +22,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 150px;
 }
 .qna_input{
     display: grid;

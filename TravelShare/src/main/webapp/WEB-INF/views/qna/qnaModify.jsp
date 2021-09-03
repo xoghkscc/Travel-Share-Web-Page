@@ -15,6 +15,7 @@
 	src="<%=request.getContextPath()%>/resources/ckeditor/ckeditor.js"></script>
 </head>
 <body>
+	<jsp:include page="../header/top2.jsp"></jsp:include>
 	<div class="qna_write">
 		<div class="qna_write_form">
 		<h2>카페 글수정</h2>
@@ -28,8 +29,6 @@
 							<label for="even">비공개</label>
 						</div>
 	                    <div class="board_travel_mainPicture board_img">
-							<label>첨부할 사진</label>
-							<input type="file" id="noticeImg" style="width: 200px;" />
 						</div>
 						<textarea rows="30" cols="30" id="noticeContent" name="content">
 						${qna_view.content }
@@ -57,10 +56,11 @@
 								}
 							});
 						</script>
-				<input type="submit" class="qna_btn-default" value="작성완료"/>
+				<input type="submit" class="qna_btn-default" value="수정완료"/>
 			</form>		
 		</div>
 	</div>
+		<jsp:include page="../footer/footer.jsp"></jsp:include>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>	
 </body>
 </html>
