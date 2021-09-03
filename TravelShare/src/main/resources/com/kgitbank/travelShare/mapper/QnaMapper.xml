@@ -47,6 +47,8 @@
 			limit #{displayPost}, #{postNum}
 	</select>
 	
+	
+	
 
 	<!-- 조회수 올리기 -->
 	<update id="qna_viewcntup">
