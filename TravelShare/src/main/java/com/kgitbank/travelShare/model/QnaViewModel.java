@@ -21,6 +21,7 @@ public class QnaViewModel {
 	private Date regdate;
 	private Integer viewcnt;
 	private int user_id;
+	private String cs_open;
 	private String user_imgurl;
 	private String user_nickName;
 	private String user_position;

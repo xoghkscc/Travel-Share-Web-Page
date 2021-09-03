@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.kgitbank.travelShare.model.CommentInfo;
+import com.kgitbank.travelShare.model.NoticeModel;
 import com.kgitbank.travelShare.model.QnaVO;
 
 import com.kgitbank.travelShare.model.QnaViewModel;
@@ -40,5 +41,10 @@ public interface QnaMapper {
 	public int qna_insertComment(CommentInfo commentInfo);
 	public ArrayList<CommentInfo> qna_selectComment(@Param("qna_id") Integer qna_id);
 	public User qna_getUserPosition(@Param("user_id") Integer user_id);
+	
+	//페이징
+	public ArrayList<QnaViewModel> getQnaPaging();
 
+	//검색
+	public ArrayList<QnaViewModel> getQnaSearching(@Param("qnaTitle") String qnaTitle);
 }

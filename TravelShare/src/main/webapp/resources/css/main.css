@@ -295,7 +295,9 @@ main{
     flex-direction: column;
     align-items: center;
 }
-
+#main_sev3_container1 > :first-child{
+    margin-top: 30px;
+}
 .main_recommend{
     /* margin-left: 2vw; */
     /* border: 2px red solid; */
@@ -303,6 +305,7 @@ main{
     text-align: center;
 	display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-bottom: 50px;
 }
 
 .main_recommend > div{
@@ -322,6 +325,43 @@ main{
     font-family: 'Cute Font', cursive;
     font-weight: bold;
 }
+
+.imgbox{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.imgbox>:first-child{
+	width: 234px;
+    height: 234px;
+    margin-top: 5px;
+    position: absolute;
+    cursor: pointer;
+    overflow: hidden;
+}
+.imgbox>:nth-child(2){
+    width: 61px;
+    height: 61px;
+    border-radius: 50%;
+    position: absolute;
+    top: 206px;
+    cursor: pointer;
+}
+.imgbox > div > img{
+	width: 100%;
+	height: 100%;
+	transition: 0.3s;
+}
+
+.imgbox:hover > div > img{
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    overflow: hidden;
+}
+
 /*******************************
 	last word섹션
 ********************************/
@@ -330,6 +370,54 @@ main{
 }
 .main_lastWord > div{
     margin-top: 20px;
+}
+
+.main_last{
+    margin-bottom: 150px;
+}
+.main_lastWord{
+    text-align: center;
+}
+.main_lastContainer{
+    display: grid;
+	grid-template-columns: 1fr 1fr;
+    column-gap: 100px;
+	
+}
+.main_lastContainer > *{
+    margin-top: 120px;
+	
+}
+.main_lastwordText{
+    display: flex;
+    align-items: center;
+}
+
+.main_lastwordImg{
+	width: 500px;
+	height: 300px;
+    
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
+}
+#main_lastImg1{background-image: url("../files/cap2.JPG"); background-size: cover;}
+#main_lastImg2{background-image: url("../files/cap3.JPG"); background-size: cover;}
+#main_lastImg3{background-image: url("../files/cap1.JPG"); background-size: cover;}
+
+.global-widthBig{
+	max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+.main_lastwordText > div > h2 {
+    line-height: 45px;
+}
+.main_lastwordText > div > h4 {
+    line-height: 30px;
+    color: rgba(105, 105, 105, 0.829);
+}
+.main_lastwordText > div > :nth-child(2) {
+    line-height: 30px;
+    color: orangered;
 }
 /*********************************
 게시판

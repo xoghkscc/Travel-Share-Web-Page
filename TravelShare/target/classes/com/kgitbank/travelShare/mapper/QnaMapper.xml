@@ -62,5 +62,17 @@
 	<select id="qna_getUserPosition" resultType="com.kgitbank.travelShare.model.User">
 		SELECT * FROM user_info WHERE user_id = #{user_id}
 	</select>
+	
+	<!-- 페이징 -->
+	<select id="getQnaPaging" resultType="com.kgitbank.travelShare.model.QnaViewModel">
+		SELECT qno, title,writer, content, regdate, cs_open, user_id, user_nickName, user_imgurl, user_position, 
+		viewcnt FROM qna_guide INNER JOIN user_info USING ( user_id ) order by qno desc
+	</select>
+	
+	<!-- 검색 -->
+	<select id="getQnaSearching" resultType="com.kgitbank.travelShare.model.QnaViewModel">
+		SELECT qno, title,writer, content, regdate, cs_open, user_id, user_nickName, user_imgurl, user_position, 
+		viewcnt FROM qna_guide INNER JOIN user_info USING ( user_id ) where title like '%${qnaTitle}%' order by qno desc
+	</select>
 
 </mapper>
