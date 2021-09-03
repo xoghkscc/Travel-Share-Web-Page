@@ -19,7 +19,7 @@
 		<div class="qna_write_form">
 		<h2>카페 글수정</h2>
 		<hr>
-			<form id="qna_form" action="/travelShare/qna/qnaModify" method="POST" enctype="multipart/form-data">
+			<form id="qna_form" action="./qnaModify?qno=${qna_view.qno }" method="POST" enctype="multipart/form-data">
                     	<div>
 							<input id="qnaTitle" type="text" name="title" value="${qna_view.title }">
 							<input type="radio" id="cs_open" name="cs_open" value="Y" checked>

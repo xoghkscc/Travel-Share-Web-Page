@@ -12,10 +12,8 @@
 <header id="guide_header">
 	<nav>
 		<div class="logo">
-			<h1>
-				<a class="guide_link" href="../site/index"> Travel<span
+				<a class="guide_link" href="../site/index" style="font-weight: bold"> Travel<span
 					style="color: #e56c23; font-size: 35px;">ers</span></a>
-			</h1>
 
 		</div>
 		<ul class="nav-links">

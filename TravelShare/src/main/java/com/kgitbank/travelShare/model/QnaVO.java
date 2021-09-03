@@ -18,4 +18,6 @@ public class QnaVO {
 	private Integer viewcnt;
 	private Integer user_id;
 	private String cs_open;
+	private String type;
+	private String[] typeArr;
 }
