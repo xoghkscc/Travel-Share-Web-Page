@@ -81,9 +81,8 @@ public class MemberShipController {
 		
 		userinfo.setUser_birth(userinfo.getUser_year() + "/" + userinfo.getUser_month() + "/" + userinfo.getUser_day());
 		userinfo.setUser_id(Integer.valueOf((String) session.getAttribute("id")));
-		System.out.println("왔음");
 		user_info.updateUserinfo15(userinfo);
-		
+		session.setAttribute("name", userinfo.getUser_name());
 		try {
 			resp.sendRedirect("./userinfo");
 		} catch (IOException e) {
@@ -100,8 +99,6 @@ public class MemberShipController {
 	@PostMapping("/idSearch")
 	public String idSearchFind(UserInfo userinfo, Model model) {
 		
-		System.out.println(userinfo.getUser_phonenumber());
-		System.out.println(userinfo.getUser_name());
 		
   		if(user_info.getUserEmail(userinfo) == null) {
   			userinfo.setUser_email("등록된 정보가 없습니다");
@@ -183,6 +180,42 @@ public class MemberShipController {
 
 	}
 	
+	@GetMapping("/profile")
+	public String profile(HttpSession session, HttpServletRequest request, UserInfo userinfo, Model model) {
+		 
+
+			UserInfo userif = user_info.getUserInfo(request.getParameter("user_id"));	
+			session.setAttribute("profile_id", request.getParameter("user_id"));
+			model.addAttribute("user_name", userif.getUser_name());
+			model.addAttribute("user_like", user_info.getUserLike(userif.getUser_id()));
+			model.addAttribute("user_img", userif.getUser_imgurl());
+			model.addAttribute("boardDB", boardMapper.getBoardLike(Integer.valueOf((String) request.getParameter("user_id"))));
+			
+			if(session.getAttribute("id") != null) {
+				model.addAttribute("id", session.getAttribute("id"));
+			} 
+			
+			return "/membership/profile";
+		
+	}
+	
+	@GetMapping("/profileLike")
+	public String profileLike(HttpSession session, HttpServletRequest request, UserInfo userinfo, Model model) {
+		 
+
+			UserInfo userif = user_info.getUserInfo(request.getParameter("user_id"));	
+			model.addAttribute("user_name", userif.getUser_name());
+			model.addAttribute("user_like", user_info.getUserLike(userif.getUser_id()));
+			model.addAttribute("user_img", userif.getUser_imgurl());
+			model.addAttribute("boardDB", boardMapper.getMyLike(Integer.valueOf((String) request.getParameter("user_id"))));
+			
+			if(session.getAttribute("id") != null) {
+				model.addAttribute("id", session.getAttribute("id"));
+			} 
+			return "/membership/profileLike";
+		
+	}
+	
 	@GetMapping("/userImgChange")
 	public String profileChange(HttpSession session, UserInfo userinfo, Model model) {
 	
@@ -200,7 +233,7 @@ public class MemberShipController {
 	
 
 	@RequestMapping(value = "profileChange", method = RequestMethod.POST)
-	public String profileChange(HttpServletRequest request, HttpServletResponse response, 
+	public void profileChange(HttpServletRequest request, HttpServletResponse response, 
 								HttpSession session, @RequestParam("userImgurl") MultipartFile upload, UserInfo userinfo) {
 		
 
@@ -226,8 +259,12 @@ public class MemberShipController {
 		user_info.updateUserImgurl(userinfo);
 		
 	
-		
-		return "/membership/userinfo";
+		try {
+			response.sendRedirect("./userinfo");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@GetMapping("/membershipChange")
@@ -244,9 +281,6 @@ public class MemberShipController {
 		
 	
 		model.addAttribute("userinfo", userif);
-		
-		System.out.println(model.getAttribute("userinfo"));
-	
 		
 		return "/membership/membershipChange";
 		}
@@ -270,6 +304,37 @@ public class MemberShipController {
 		BoardModel bm = boardMapper.selectBoardSearch(Integer.parseInt(board_id));
 		model.addAttribute("updateBoardInfo", bm);
 		return "/board/update_board";
+	}
+	
+	@RequestMapping(value = "updateBoard", method = RequestMethod.POST)
+	public void updateBoard(HttpServletRequest request, HttpServletResponse response, BoardModel boardModel,
+			@RequestParam("board_mainimgReal") MultipartFile upload) {
+		OutputStream out = null;
+		if(!upload.isEmpty()) {
+			try {
+				byte[] bytes = upload.getBytes();
+				UUID uuid = UUID.randomUUID();
+				String fileRanName = uuid.toString();
+				
+				String uploadPath = request.getSession().getServletContext().getRealPath("/resources/files/user_img/") + fileRanName+".jpg";// 저장경로
+				out = new FileOutputStream(new File(uploadPath));
+				out.write(bytes);
+				boardModel.setBoard_mainimg(request.getContextPath()+"/resources/files/board_img/" + fileRanName+".jpg");
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			boardMapper.updateBoard1(boardModel);
+		}else {
+			boardMapper.updateBoard2(boardModel);
+		}
+		
+		try {
+			response.sendRedirect("./userinfo");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 		
 }

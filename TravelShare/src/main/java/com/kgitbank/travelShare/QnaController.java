@@ -39,7 +39,6 @@ public class QnaController {
 		
 		List<QnaVO> list = null;
 		list = service.qna_list();
-//		d
 		model.addAttribute("qna_list",list);
 	}
 	
@@ -58,7 +57,7 @@ public class QnaController {
 		int userid = Integer.parseInt(user.toString());
 		User nick = service.getWriter(userid);
 		
-		vo.setQno(qnacnt +1);
+		vo.setQna_id(qnacnt +1);
 		vo.setUser_id(userid);
 		vo.setWriter(nick.getUser_nickName());
 		service.qna_write(vo);
@@ -67,8 +66,8 @@ public class QnaController {
 	
 	//게시물 조회
 	@RequestMapping(value = "/qnaView", method = RequestMethod.GET)
-	public void getView(@RequestParam("qno") int qno, Model model, HttpSession session) throws Exception {
-		QnaViewModel vo = service.qna_view(qno);
+	public void getView(@RequestParam("qna_id") int qna_id, Model model, HttpSession session) throws Exception {
+		QnaViewModel vo = service.qna_view(qna_id);
 		
 		vo.setViewcnt(vo.getViewcnt() + 1);
 		service.qna_viewcntup(vo);
@@ -86,10 +85,10 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value = "/qnaModify", method = RequestMethod.GET)
-	public void getModify(@RequestParam("qno") int qno, Model model) throws Exception {
+	public void getModify(@RequestParam("qna_id") int qna_id, Model model) throws Exception {
 		
 
-		QnaViewModel vo = service.qna_view(qno);
+		QnaViewModel vo = service.qna_view(qna_id);
 		
 		model.addAttribute("qna_view", vo);
 	}
@@ -97,30 +96,29 @@ public class QnaController {
 	@RequestMapping(value = "/qnaModify", method = RequestMethod.POST)
 	public String postModify(QnaVO vo) throws Exception {
 		service.qna_modify(vo);
-		System.out.println("왔음");
 		return "redirect:/qna/qnaList";
 	}
 	
 	@RequestMapping(value = "/qnaDelete", method = RequestMethod.GET)
-	public String getDelete(@RequestParam("qno") int qno) throws Exception {
-		service.qna_delete(qno);
+	public String getDelete(@RequestParam("qna_id") int qna_id) throws Exception {
+		service.qna_delete(qna_id);
 		return "redirect:/qna/qnaList";
 	}
 	
-	//게시물 목록 + 페이징 추가
-	@RequestMapping(value = "/listpage", method = RequestMethod.GET)
-	public void getListPage(Model model, @RequestParam("name") int num) throws Exception {
-		Page page = new Page();
-		
-		page.setNum(num);
-		page.setCount(service.qna_count());
-		
-		List list = null;
-		list = service.listPage(page.getDisplayPost(), page.getPostNum());
-		
-		model.addAttribute("list", list);
-		
-		model.addAttribute("page", page);
-		model.addAttribute("select", num);
-	}
+//	//게시물 목록 + 페이징 추가
+//	@RequestMapping(value = "/listpage", method = RequestMethod.GET)
+//	public void getListPage(Model model, @RequestParam("name") int num) throws Exception {
+//		Page page = new Page();
+//		
+//		page.setNum(num);
+//		page.setCount(service.qna_count());
+//		
+//		List list = null;
+//		list = service.listPage(page.getDisplayPost(), page.getPostNum());
+//		
+//		model.addAttribute("list", list);
+//		
+//		model.addAttribute("page", page);
+//		model.addAttribute("select", num);
+//	}
 }

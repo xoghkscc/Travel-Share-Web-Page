@@ -31,7 +31,7 @@ window.onload = checkphone();
 function checkphone() {
 
 	phone_warning.innerHTML = "인증되었습니다";
-	 
+	checkNum.value = "1234";
 }
 
 function getgender() {
@@ -126,6 +126,10 @@ member_phone.addEventListener('blur', () => {
 		phone_warning.innerHTML = "필수 정보입니다";
 	} else if(phone_val == hiddenphone.value){
 		phone_warning.innerHTML = "인증되었습니다";
+		checkNum.value = "1234";
+	} else if(phone_val != hiddenphone.value){
+		checkNum.value = "";
+		phone_warning.innerHTML = "";
 	} else {
 		phone_warning.innerHTML = "";
 	} 
@@ -316,9 +320,13 @@ phone_check.addEventListener('click', () => {
 phoneCheckInput.addEventListener('blur', () => {
 		
 	const member_phone_val = member_phone.value;
-		
-	if((checkNum.value != phoneCheckInput.value && member_phone_val.value != "") || member_phone_val != hiddenphone.value){
-		phone_warning.innerHTML = "휴대폰인증 하셔야합니다";
+	if(phone_val == hiddenphone.value) {
+		phone_warning.innerHTML = "인증되었습니다";
+	} else if(phone_val != hiddenphone.value){
+		checkNum.value = "";
+		phone_warning.innerHTML = "휴대폰인증 하셔야합니다";	
+	} else if((checkNum.value != phoneCheckInput.value && member_phone_val.value != "") || member_phone_val != hiddenphone.value){
+		phone_warning.innerHTML = "휴대폰인증 하셔야합니다";	
 	} else {
 		phone_warning.innerHTML = "인증되었습니다";
 	} 
@@ -337,9 +345,10 @@ member_sub2.addEventListener('click', (event) => {
 	const user_add_detail_val = user_add_detail.value;
 	
 	
-	if(nickname_warning.innerHTML != "" ||
-	   name_warning.innerHTML != "" || phone_warning.innerHTML != "인증되었습니다" || checkNum.value != "" ||
-	   birth_warning.innerHTML != "" || adderss_warning.innerHTML != "" || gender_val == "-- 성별 --" 
+	if(nickname_warning.innerHTML != "" || name_warning.innerHTML != "" || phone_warning.innerHTML != "인증되었습니다" || checkNum.value == "" ||
+	   birth_warning.innerHTML != "" || adderss_warning.innerHTML != "" || gender_val == "-- 성별 --" || nickname_val == "" ||
+	   name_val == ""	|| phone_val == "" || year_val == "" || month_val == "-- 월 --" || day_val == "" || 
+	   user_add_code_val == "" || user_add_detail_val == ""
 	){	
 		event.preventDefault();
 	} else {
@@ -363,11 +372,13 @@ member_sub2.addEventListener('click', (event) => {
 	
 	if (phone_val == "") {
 		phone_warning.innerHTML = "필수입력 정보입니다";
+	} else if(phone_val == hiddenphone.value) {
+		phone_warning.innerHTML = "인증되었습니다";
 	} else if(phone_warning.innerHTML == "올바른 전화번호 양식를 입력해주세요" || phone_warning.innerHTML == "9자리 이상 입력해주세요" || phone_warning.innerHTML == "숫자만 입력해주세요") {
 		phone_warning.innerHTML = "올바른 전화번호 양식를 입력해주세요";	
 	} else if(phone_warning.innerHTML == "인증번호가 틀립니다" || checkNum.value =="" || phone_warning.innerHTML == "휴대폰 인증하셔야 합니다") {
 		phone_warning.innerHTML = "휴대폰인증 하셔야합니다";
-	} else {
+	}  else {
 		phone_warning.innerHTML = "인증되었습니다";
 	} 
 	

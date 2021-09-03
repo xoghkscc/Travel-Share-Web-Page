@@ -28,4 +28,6 @@ public class LikeViewModel {
 	private String addr;
 	private Date board_date;
 	private Integer like_cnt;
+	private String user_imgurl;
+	private String user_nickName;
 }

@@ -10,7 +10,7 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/membership/user_info.css">
+	href="<%=request.getContextPath()%>/resources/css/membership/profile.css">
 <link
 	href="https://fonts.googleapis.com/icon?family=Material+Icons%7CMaterial+Icons+Two+Tone%7CMaterial+Icons+Sharp%7CMaterial+Icons+Outlined"
 	rel="stylesheet">
@@ -33,17 +33,12 @@
 					<strong id="name">${user_name } </strong> | <span
 						style="color: rgb(255, 109, 0);">${user_like }</span>명 찜한사람
 				</div>
-				<div id="user_zim"><a href="./userImgChange">[프로필 사진 바꾸기]</a> </div>
-			</div>
-			<div id="user_profile">
-				<a href="./membershipChange"><button id="user_button">프로필설정></button></a>
-				
 			</div>
 		</div>
 		
 		<div id="board_name">
-			<div id="my_travel" style="border-bottom: 2px rgb(255, 109, 0) solid;"><a href="./userinfo"	style="color : black;">나의 여행</a></div>
-			<div id="my_zim"><a href="./userinfoLike">나의 찜</a></div>
+			<div id="my_travel" style="border-bottom: 2px rgb(255, 109, 0) solid;"><a href="./profile?user_id=${sessionScope.profile_id}"	style="color : black;">나의 여행</a></div>
+			<div id="my_zim"><a href="./profileLike?user_id=${sessionScope.profile_id}">나의 찜</a></div>
 		</div>
 		<div id="board_main">
 		<div class="board_list_travel">
@@ -246,7 +241,3 @@
 </body>
 </html>
 		
-		
-		
-
-	

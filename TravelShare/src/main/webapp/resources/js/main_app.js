@@ -17,10 +17,8 @@ for(let i=0; i < main_bottomMenu.length; i++){
 }
 
 function main_start_click(e){
-    console.log("나옴");
-    console.log(main_map.style.display);
-    
-    window.scrollTo(0, 800);
+    const vh = Math.max(document.documentElement.clientHeight ||  0, window.innerHeight || 0);
+    window.scrollTo( 0, vh );
 }
 
 //스크롤에 따른 이미지 바꾸기

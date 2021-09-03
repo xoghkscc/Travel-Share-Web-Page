@@ -36,19 +36,25 @@ function getNotices(e){
 
 				const board_imgContent = document.createElement("div");
 				board_imgContent.setAttribute("class", "imgbox");
-				board_imgContent.innerHTML = "<div><img onclick='imgClick("+myobj[key].board_id+")' alt='' src='"+myobj[key].board_mainimg+"'></div> <img alt='' src='/travelShare/resources/files/null.jpg'>";
+				board_imgContent.innerHTML = "<div><img onclick='imgClick("+myobj[key].board_id+")' alt='' src='"+myobj[key].board_mainimg+"'></div> <img alt='' onclick='profileClick("+myobj[key].user_id+")' src='/travelShare"+myobj[key].user_imgurl+"'>";
 
 				const board_textContent = document.createElement("div");
 				board_textContent.setAttribute("class", "board_textContent");
-				board_textContent.innerHTML = "<div class='board_text1'>" + myobj[key].user_id + "</div> <div class='board_textTit'>" + myobj[key].board_title + "</div>";
+				console.log("myobj[key] : "+ myobj[key]);
+				board_textContent.innerHTML = "<div class='board_text1'>" + myobj[key].user_nickName + "</div> <div class='board_textTit'>" + myobj[key].board_title + "</div>";
 
 				const board_option = document.createElement("div");
 				board_option.setAttribute("class", "board_option");
 				board_option.innerHTML = "<div class='board_areaPan'>" +
 					"<span class='material-icons-outlined board_area_img'> location_on </span>" +
-					"<div class='board_area'>" + myobj[key].sigungu + " </div> </div>" +
-					"<div class='board_likePan'> <span class='material-icons-outlined board_like_img'> favorite </span> <div class='like'>" +myobj[key].like_cnt+"명</div> </div>";
-				
+					"<div class='board_area'>" + myobj[key].sigungu + " </div> </div>" 
+					if(myobj[key].like_cnt >=10){
+					board_option.innerHTML += "<div id='board_likePan' class='board_likePan board_top'> <span class='material-icons-outlined board_like_img'> favorite </span> <div id="+myobj[key].board_id+" class='like'>"+myobj[key].like_cnt+"명</div> </div>";
+					}else if(myobj[key].like_cnt <10 && myobj[key].like_cnt >=5){
+					board_option.innerHTML += "<div id='board_likePan' class='board_likePan board_middle'> <span class='material-icons-outlined board_like_img'> favorite </span> <div id="+myobj[key].board_id+" class='like'>"+myobj[key].like_cnt+"명</div> </div>";
+					} else {
+					board_option.innerHTML += "<div id='board_likePan' class='board_likePan'> <span class='material-icons-outlined board_like_img'> favorite </span> <div id="+myobj[key].board_id+" class='like'>"+myobj[key].like_cnt+"명</div> </div>";
+					}
 				board_content.appendChild(board_imgContent);
 				board_content.appendChild(board_textContent);
 				board_content.appendChild(board_option);
@@ -80,34 +86,37 @@ function imgClick(value) {
 }
 
 
-function getBoardContent(value) {
-	const xhttp = new XMLHttpRequest();
-	
-	xhttp.addEventListener('readystatechange', (e) => {
-		const target = e.target;
-
-		myobj = JSON.parse(target.responseText);
-
-			Object.keys(myobj).forEach((key) => {
-				document.getElementById("board_googleMap").setAttribute("src", "https://www.google.com/maps?q= "+myobj[key].addr+" &output=embed");
+//function getBoardContent(value) {
+//	const xhttp = new XMLHttpRequest();
+//	
+//	xhttp.addEventListener('readystatechange', (e) => {
+//		const target = e.target;
+//
+//		myobj = JSON.parse(target.responseText);
+//				console.log("myobj : "+myobj);
+//
+//			Object.keys(myobj).forEach((key) => {
+//				document.getElementById("board_googleMap").setAttribute("src", "https://www.google.com/maps?q= "+myobj[key].addr+" &output=embed");
 //				document.getElementById("board_mainimg").setAttribute("src", myobj[key].board_mainimg);
-				document.getElementById("board_title").innerHTML = myobj[key].board_title;
-				document.getElementById("board_bestplace").innerHTML = myobj[key].board_bestplace;
-				document.getElementById("board_besteat").innerHTML = myobj[key].board_besteat;
-				document.getElementById("board_main_content").innerHTML = myobj[key].board_content;
-				
-				Array.from(document.querySelectorAll("#board_main_content>img")).forEach((value2) => {
-					value2.style.width = "40vw";
-					value2.style.height = "auto";
-				});
-				
-			});
-	});
-
-	xhttp.open('POST', '/travelShare/boardrest/choiceBoardInfo/', true);
-	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
-	xhttp.send(value);
-}
+//				console.log("myobj[key].user_id : "+myobj[key].user_id);
+//				document.getElementById("board_mainimg").setAttribute("class", myobj[key].user_id);
+//				document.getElementById("board_title").innerHTML = myobj[key].board_title;
+//				document.getElementById("board_bestplace").innerHTML = myobj[key].board_bestplace;
+//				document.getElementById("board_besteat").innerHTML = myobj[key].board_besteat;
+//				document.getElementById("board_main_content").innerHTML = myobj[key].board_content;
+//				
+//				Array.from(document.querySelectorAll("#board_main_content>img")).forEach((value2) => {
+//					value2.style.width = "40vw";
+//					value2.style.height = "auto";
+//				});
+//				
+//			});
+//	});
+//
+//	xhttp.open('POST', '/travelShare/boardrest/choiceBoardInfo/', true);
+//	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
+//	xhttp.send(value);
+//}
 
 x_box.addEventListener('click', function(e){
 	document.getElementsByTagName("body")[0].style.overflow = "scroll";
@@ -361,7 +370,8 @@ function getBoardContent(value) {
 
 			Object.keys(myobj).forEach((key) => {
 				document.getElementById("board_googleMap").setAttribute("src", "https://www.google.com/maps?q= "+myobj[key].addr+" &output=embed");
-//				document.getElementById("board_mainimg").setAttribute("src", myobj[key].board_mainimg);
+				document.getElementById("board_mainimg").setAttribute("src", "/travelShare"+myobj[key].user_imgurl);
+				document.getElementById("board_mainimg").setAttribute("class", myobj[key].user_id);
 				document.getElementById("board_content_id").innerHTML = myobj[key].board_id;
 				document.getElementById("board_title").innerHTML = myobj[key].board_title;
 				document.getElementById("board_bestplace").innerHTML = myobj[key].board_bestplace;
@@ -488,5 +498,14 @@ function createBoardLocation(id){
 		alert("로그인이 필요한 서비스입니다.");
 		location.href = "../site/login";
 	}
+}
+
+document.getElementById("board_mainimg").addEventListener('click', (e) => {
+	var user_id = e.target.classList.value;
+	profileClick(user_id);
+})
+
+function profileClick (user_id){
+	location.href = "../membership/profile?user_id="+user_id;
 }
 

@@ -10,9 +10,6 @@ window.onload = (e) => {
 	var board_comment = this.board_commnet.value;
 	var user_id = this.user_id.value;
 	var qna_id = qna_view_qno.innerText;
-	console.log(board_comment);
-	console.log(user_id);
-	console.log(qna_id);
 
 	this.board_commnet.value = '';
 	getQnaCommnet(qna_id);
@@ -24,10 +21,6 @@ board_commentId.onsubmit = (e) => {
 	var user_id = this.user_id.value;
 	var qna_id = qna_view_qno.innerText;
 	var user_position = qna_user_position.innerText;
-	console.log(board_comment);
-	console.log(user_id);
-	console.log(qna_id);
-	console.log(user_position);
 	if(user_id == ''){
 		alert("로그인이 필요한 서비스입니다.");
 //		location.href = "../site/login";
@@ -110,7 +103,11 @@ function getQnaCommnet(value) {
 	xhttp.send(value);
 }
 
-function imgClickRollback() {
-//	window.history.back();
-	location.href = `/travelShare/qna/qnaList`;
-}
+document.getElementById("qna_button_modify").addEventListener('click', () => {
+	location.href = "./qnaModify?qna_id="+qna_view_qno.innerText;
+});
+
+document.getElementById("qna_button_delete").addEventListener('click', () => {
+	location.href = "./qnaDelete?qna_id="+qna_view_qno.innerText;
+});
+

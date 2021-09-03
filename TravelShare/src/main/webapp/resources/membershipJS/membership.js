@@ -355,10 +355,12 @@ member_sub2.addEventListener('click', (event) => {
 	
 	if(email_warning.innerHTML != "" || password_warning.innerHTML != "적합한 비밀번호입니다" ||
 	   password_check_warning.innerHTML != "비밀번호가 일치합니다" || nickname_warning.innerHTML != "" ||
-	   name_warning.innerHTML != "" || phone_warning.innerHTML != "인증되었습니다" || checkNum.value != "" ||
-	   birth_warning.innerHTML != "" || adderss_warning.innerHTML != "" || gender_val == "-- 성별 --"	
+	   name_warning.innerHTML != "" || phone_warning.innerHTML != "인증되었습니다" || checkNum.value == "" ||
+	   birth_warning.innerHTML != "" || adderss_warning.innerHTML != "" || gender_val == "-- 성별 --"
+	||  nickname_val == "" ||	name_val == ""	|| phone_val == "" || year_val == "" || month_val == "-- 월 --" || 
+		day_val == "" || email_val == "" || password1_val == "" || password2_val == "" ||
+	    user_add_code_val == "" || user_add_detail_val == ""	
 	){	
-		console.log("무언가 조건에걸림");
 		event.preventDefault();
 	} else {
 		alert("회원가입이 완료되었습니다");

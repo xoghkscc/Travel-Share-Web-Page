@@ -13,7 +13,7 @@ function alramAjax(){
 		const readyState = target.readyState;
 		const myobj = JSON.parse(target.responseText);
 		
-//		console.log("myobj1 :" +myobj);
+		console.log("myobj :" +myobj);
 		
 		if(status == 200 & readyState == 4){
 			var alramcontent = document.createElement("div");
@@ -23,8 +23,9 @@ function alramAjax(){
 				contentCnt++;
 			});
 		alramcontent.innerHTML = contentCnt;
-			
-		alramCount.appendChild(alramcontent);
+		if(contentCnt != 0){
+			alramCount.appendChild(alramcontent);
+		}
 			
 		document.body.onclick = ((e) => {
 			if(e.target.id !== 'alramClick'){

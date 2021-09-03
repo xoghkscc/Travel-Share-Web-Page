@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Cute+Font&family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
 #board_main{
     display: flex;
     flex-direction: column;
@@ -135,6 +135,7 @@ select{
     margin-top: 5px;
     position: absolute;
     cursor: pointer;
+    overflow: hidden;
 }
 .board_imgContent>:nth-child(2){
     width: 61px;
@@ -143,6 +144,15 @@ select{
     position: absolute;
     top: 206px;
     cursor: pointer;
+}
+.board_imgContent > div > img{
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+}
+.board_imgContent:hover > div > img{
+    transform: scale(1.2);
+    overflow: hidden;
 }
 .board_textContent{
     width: 234px;

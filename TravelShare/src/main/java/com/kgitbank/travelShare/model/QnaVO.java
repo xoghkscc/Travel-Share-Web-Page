@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 public class QnaVO {
 	
-	private Integer qno;
+	private Integer qna_id;
 	private String title;
 	private String content;	
 	private String writer;	
@@ -18,4 +18,6 @@ public class QnaVO {
 	private Integer viewcnt;
 	private Integer user_id;
 	private String cs_open;
+	private String type;
+	private String[] typeArr;
 }
