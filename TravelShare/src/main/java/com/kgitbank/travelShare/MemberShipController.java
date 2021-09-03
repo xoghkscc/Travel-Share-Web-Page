@@ -82,7 +82,7 @@ public class MemberShipController {
 		userinfo.setUser_birth(userinfo.getUser_year() + "/" + userinfo.getUser_month() + "/" + userinfo.getUser_day());
 		userinfo.setUser_id(Integer.valueOf((String) session.getAttribute("id")));
 		user_info.updateUserinfo15(userinfo);
-		
+		session.setAttribute("name", userinfo.getUser_name());
 		try {
 			resp.sendRedirect("./userinfo");
 		} catch (IOException e) {
