@@ -18,7 +18,7 @@
 	<jsp:include page="../header/top2.jsp"></jsp:include>
 	<!-- 네이버아이디로로그인 버튼 노출 영역 -->
 	<form id="login" action="../login" method="POST" autocomplete='off'></form>
-	<div class="loing_container"></div>
+	<div class="loing_container">
 	<div class="loginBox">
 		<div id="basic_login">
 			<div id="login_text">
@@ -42,6 +42,7 @@
 				<a href="../membership/membership" id="membership_text"> 회원 가입 </a>
 			</div>
 
+	</div>
 	</div>
 	<jsp:include page="../footer/footer.jsp"></jsp:include>
 	

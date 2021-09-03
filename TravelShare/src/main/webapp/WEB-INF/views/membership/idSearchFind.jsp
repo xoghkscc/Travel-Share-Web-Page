@@ -17,7 +17,7 @@
 </head>
 <body>
 	<jsp:include page="../header/top2.jsp"></jsp:include>
-	<div class="loing_container" style="width: 100%; height: 100vh"></div>
+	<div class="loing_container">
 	<form id="id_search" action="./idSearch" method="POST" autocomplete='off'></form>
 		<div class="id_search_box">
 		<div>
@@ -29,6 +29,7 @@
 				<a href="./passwordsearch" class="search_text">비밀번호찾기</a> / <a href="../site/login" class="search_text">로그인하기</a>
 			</div>
 		</div>
+	</div>
 	</div>
 	<jsp:include page="../footer/footer.jsp"></jsp:include>
 	<script>

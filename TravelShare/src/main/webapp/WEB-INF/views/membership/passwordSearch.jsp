@@ -16,7 +16,7 @@
 </head>
 <body>
 	<jsp:include page="../header/top2.jsp"></jsp:include>
-	<div class="loing_container" style="width: 100%; height: 100vh"></div>
+	<div class="loing_container">
 	<form id="password_search" action="./passwordsearch" method="POST" autocomplete='off'></form>
 	<div class="password_search_box">
 		<div>
@@ -41,7 +41,7 @@
 			<div>
 				<a href="./idsearch" id="id_search">아이디 찾기</a>
 			</div>
-
+		</div>
 	</div>
 	<jsp:include page="../footer/footer.jsp"></jsp:include>
 	<script>

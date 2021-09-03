@@ -21,7 +21,7 @@
 <body>
 
 	<jsp:include page="../header/top2.jsp"></jsp:include>
-	<div class="loing_container" style="width: 100%; height: 200vh"></div>
+	<div class="loing_container">
 	<div id="main">
 
 		<div id="user_info">
@@ -43,7 +43,7 @@
 
 		<div id="board_name">
 			<div id="my_travel"><a href="./userinfo">나의 여행</a></div>
-			<div id="my_zim"><a href="./userinfoLike">나의 찜</a></div>
+			<div id="my_zim"  style="border-bottom: 2px rgb(255, 109, 0) solid;"><a href="./userinfoLike" style="color : black;">나의 찜</a></div>
 		</div>
 		
 		<div id="board_main">
@@ -93,6 +93,7 @@
 				</div>
 			</c:forEach>
 		</div>
+		
 		<div class="board_paging">
 			<c:forEach begin="1"
 				end="${boardDB.size()/12+1>=6 ? 5 : (boardDB.size() % 12)==0 ? (boardDB.size() / 12) : (boardDB.size() / 12)+1 }"
@@ -116,6 +117,7 @@
 			</c:choose>
 		</div>
 	</div>
+	<jsp:include page="../footer/footer.jsp"></jsp:include>
 	<div id="board_clickPan" class="board_hide">
 		<div onclick="imgClickRollback()" class="x_box">
 			<span class="material-icons-outlined "> close </span>
@@ -237,9 +239,10 @@
 			</div>
 		</div>
 	</div>
+	</div>
 		</div>
 		<script src="<%=request.getContextPath()%>/resources/membershipJS/membershipBoard.js" charset="UTF-8"></script>
 		
-	<jsp:include page="../footer/footer.jsp"></jsp:include>
+
 </body>
 </html>

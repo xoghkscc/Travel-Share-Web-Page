@@ -6,14 +6,13 @@ a {
     color: gray;
 }
 
-html{
-    width: 100%;
-    height: 100%;
+html {
+    position: relative;
+    min-height: 100%;
+    margin: 0;
 }
-
-body{
-    width: 100%;
-    height: 100%;
+body {
+    min-height: 100%;
 }
 
 
@@ -22,7 +21,7 @@ body{
     text-align: center;
     position: absolute;
     left: calc(48% - 160px);
-    top: calc(40% - 150px);
+    top: calc(30% - 150px);
 }
 
 #basic {
@@ -66,6 +65,12 @@ body{
     color: white;
     cursor: pointer;
     
+}
+
+.loing_container{
+	width: 100%;
+	height: 100vh;
+	min-height: 600px;;
 }
 
 

@@ -15,8 +15,8 @@
 	href="<%=request.getContextPath()%>/resources/css/membership/id_search.css">
 </head>
 <body>
-	<jsp:include page="../header/top.jsp"></jsp:include>
-	<div class="loing_container" style="width: 100%; height: 100vh"></div>
+	<jsp:include page="../header/top2.jsp"></jsp:include>
+	<div class="loing_container">
 	<form id="id_search" action="./idSearch" method="POST" autocomplete='off'></form>
 	<div class="id_search_box">
 		<div id="basic">
@@ -41,6 +41,7 @@
             <div>
                 <a href="./passwordsearch" id="password_search">비밀번호찾기</a>
             </div>
+	</div>
 	</div>
 	<jsp:include page="../footer/footer.jsp"></jsp:include>
 	<script>

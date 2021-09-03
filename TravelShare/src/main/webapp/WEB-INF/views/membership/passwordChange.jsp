@@ -18,7 +18,7 @@
 </head>
 <body>
 	<jsp:include page="../header/top2.jsp"></jsp:include>
-	<div class="loing_container" style="width: 100%; height: 100vh"></div>
+	<div class="loing_container">
 	<form id="password_change" action="./passwordchange" method="POST" autocomplete='off'></form>
 	<div class="password_change_box">
 		<div>
@@ -37,6 +37,7 @@
 			<div id="id_search">
 				<input type="submit" form="password_change" id="passwordchange_sub" value="비밀번호 변경하기">
 			</div>
+	</div>
 	</div>
 	<jsp:include page="../footer/footer.jsp"></jsp:include>
 	<script>
