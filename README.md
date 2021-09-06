@@ -12,7 +12,12 @@
   * 외부 API : hihgmaps API, coolSMS API, googleMaps API, 카카오 주소 API , ckEditor 등
 ## 2_Usecase Diagram
 ## 3_ER Diagram
-## 4_화면
+## 4_Server
+AWS EC2에 아파치 톰캣을 설치하고 개발한 프로젝트를 배포하였음
+
+http://3.35.52.40:8000/travelShare/site/index
+로 개발된 프로젝트를 확인할 수 있음
+## 5_화면
 ### 5.1_메인화면
 ![image](https://user-images.githubusercontent.com/82793713/132148330-334a5d6d-4a31-439f-8bba-13ba3753577f.png)
   * START 버튼을 클릭하면 여행지를 검색할 수 있는 지도화면으로 이동
@@ -92,12 +97,29 @@ UPDATE user_info SET user_position = '${AdminPositionValue}' where user_nickname
   * 게시글 작성 화면
   * 검색 버튼을 누르면 카카오 주소 API를 통해 주소를 검색할 수 있음
   * 게시글 내용 작성란은 ckEditor API를 통해 글과 사진을 업로드할 수 있음
-  
-
-
-
-
-
+![image](https://user-images.githubusercontent.com/82793713/132150859-d86201e2-3acf-4e25-87e0-d944308c0089.png)  
+  * 게시글 수정 및 삭제 버튼은 본인이 올린 게시글에만 보이도록 구현
+### 5.5_알람
+![image](https://user-images.githubusercontent.com/82793713/132151014-faf743a9-d705-45b7-bf06-6b09d63cc9b2.png)
+  * 게시글에 댓글이 달리면 알람이 뜨며 클릭하면 댓글이 달린 게시글로 이동
+### 5.6_Q&A
+![image](https://user-images.githubusercontent.com/82793713/132151231-cfd3ce1c-fba0-462f-a05c-5b02b92346da.png)
+  * Q&A 게시판을 작성, 조회, 수정, 삭제할 수 있음
+  * 게시글을 본인과 관리자만 볼 수 있게 설정가능
+  * 조회수를 볼 수 있음
+  * 페이징 및 검색 기능
+  * Q&A 게시판도 댓글이 달리면 알람이 뜸
+### 5.7_공지사항
+![image](https://user-images.githubusercontent.com/82793713/132151395-9198ab52-4bd7-44a4-8c9b-38cf2ef8d614.png)
+  * 공지사항 게시판은 관리자 외에 일반 회원들 또는 비회원들이 접근하고 확인할 수 있도록 구현
+  * 페이징 및 검색 기능
+ ![image](https://user-images.githubusercontent.com/82793713/132151585-5b5283e2-c4ef-4db1-8025-60745394a2d8.png)
+  * 게시글을 클릭하면 팝업으로 게시글 내용을 확인할 수 있게끔 구현
+  * 게시글 정보들을 sql문으로 데이터를 받아 innerHtml로 뿌려주는 방식으로 구현
+```C
+SELECT notice_id, user_nickName, user_imgurl, notice_title, notice_text, notice_lookupcnt, notice_date 
+	      FROM notices INNER JOIN user_info USING ( user_id ) WHERE notice_id=${num})
+```
 
 
 
