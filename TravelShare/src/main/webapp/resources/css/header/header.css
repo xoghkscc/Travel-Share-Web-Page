@@ -84,14 +84,15 @@ nav {
 }
 @media screen and (max-width: 1024px) {
   .nav-links { 
-    width: 60%; 
+    width: 60%;
+    
   } 
 }
 @media screen and (max-width: 768px) { 
   body { 
     overflow-x: hidden; 
   } 
-  .nav-links {
+ .nav-links  {
     position: absolute; 
     top: 53px; 
     right: 0; 
@@ -101,9 +102,10 @@ nav {
     align-items: center; 
     width: 30%; 
     transform: translateX(100%); 
-    box-shadow: 0 0 5px rgb(0 0 0 / 50%);
      padding-right: 0px;padding-right: 0px;
   }
+  
+
   .nav-links a {
   	color: black;
   }
@@ -115,7 +117,8 @@ nav {
     display: block; 
   } .nav-active { 
     transform: translateX(0%); 
-  } 
+  }
+ 
   @keyframes navLinkFade { 
     from { 
       opacity: 0; 
