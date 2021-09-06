@@ -185,7 +185,7 @@ function getNoticePopup(num){
 			notice_PopupCnt.innerHTML = "";
 			notice_PopupText.innerHTML = "";
 			notice_PopupText.innerHTML = "";
-			notice_PopupImg.innerHTML = "";
+//			notice_PopupImg.innerHTML = "";
 			
 			let notice_id = myobj.notice_id;
 			let user_nickName = myobj.user_nickName;
@@ -203,10 +203,10 @@ function getNoticePopup(num){
 			notice_PopupCnt.innerHTML = notice_lookupcnt;
 			notice_PopupText.innerHTML = notice_text;
 			
-			var x = document.createElement('img');
+//			var x = document.createElement('img');
 
-			notice_PopupImg.style.backgroundImage = `url(${getContextPath()}${user_imgurl}`;
-			notice_PopupImg.style.backgroundSize = "100%, 100%";
+//			notice_PopupImg.style.backgroundImage = `url(${getContextPath()}${user_imgurl}`;
+//			notice_PopupImg.style.backgroundSize = "100%, 100%";
 
 		}
 	});
