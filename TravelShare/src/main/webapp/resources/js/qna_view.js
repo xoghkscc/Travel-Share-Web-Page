@@ -23,7 +23,7 @@ board_commentId.onsubmit = (e) => {
 	var user_position = qna_user_position.innerText;
 	if(user_id == ''){
 		alert("로그인이 필요한 서비스입니다.");
-//		location.href = "../site/login";
+		location.href = "../site/login";
 	} else{
 		if(user_position == "member"){
 			console.log(user_position);
