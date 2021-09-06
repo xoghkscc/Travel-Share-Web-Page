@@ -71,8 +71,10 @@
 		          	
 		        </tbody>
 		      </table>
-		      <a class="write_btn btn btn-default" href="./qnaWrite">
-		      <span class="material-icons-outlined" style="font-size: 16px;">edit</span>글쓰기</a>
+		      <c:if test="${not empty sessionScope.id}">
+			      <a class="write_btn btn btn-default" href="./qnaWrite">
+			      <span class="material-icons-outlined" style="font-size: 16px;">edit</span>글쓰기</a>
+		      </c:if>
 		      <div class="qna_bottomBox">
 			     <div class="qna_paging"></div>	
 			     <div>

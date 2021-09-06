@@ -23,8 +23,9 @@
 	<jsp:include page="../header/top2.jsp"></jsp:include>
 	<div class="loing_container" >
 	<div id="main">
-
+	
 		<div id="user_info">
+			<div id="user_container">
 			<div id="user_img_div">
 				<img src="<%=request.getContextPath()%>${user_img }" id="user_img">
 			</div>
@@ -35,10 +36,13 @@
 				</div>
 			</div>
 		</div>
+		</div>
 		
 		<div id="board_name">
+			<div id="board_name_container">
 			<div id="my_travel"><a href="./profile?user_id=${sessionScope.profile_id}"	>나의 여행</a></div>
 			<div id="my_zim"  style="border-bottom: 2px rgb(255, 109, 0) solid;"><a href="./profileLike?user_id=${sessionScope.profile_id}" style="color : black;">나의 찜</a></div>
+			</div>
 		</div>
 		<div id="board_main">
 		<div class="board_list_travel">

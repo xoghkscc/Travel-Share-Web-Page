@@ -38,35 +38,36 @@
 				</div>
 	        </div>
 	  	</div>
-	  	
-		<div class="notice_Popup">
-		   <div class="notice_cancel">
+
+	<div class="notice_Popup">  
+		<div class="notice_cancel">
 			   <span class="material-icons-outlined "> close </span>
-		   </div>
-		   <div class="notice_textContainer">
-		       <div>공지사항 게시판</div>
-		       <div class="notice_PopupTitle">제목~~~</div>
-		       <hr>
-		       <div class="notice_PopupTop">
-		           <div class="notice_PopupImg">user_img</div>
-		           <div>
-		               <div class="notice_PopupId">user_id</div>
-<!-- 		               <hr> -->
-		               <div class="notice_PopupDate">date</div>
-		           </div>
-		           <div class="notice_cntBoard">
-			           <span class="material-icons-outlined">
-							visibility
-					   </span>
-			           <span class="notice_PopupCnt">viewcnt</span>
-		           </div>
-		       </div>
-		       <hr>
-		       <div class="notice_PopupText"></div>
-		  	</div>
-		  </div>
+		</div>
+		<div id="board_main">
+			<div class="notice_tit">
+				<div class="notice_tit_pan">
+					<h1>공지사항 게시판</h1>
+					<div class="sub">공지사항은 관리자만이 글쓰기를 할 수 있습니다.</div>
+				</div>
+				<div class="notice_content">
+					<div class="notice_color">제목</div>
+					<div class="notice_title_text notice_PopupTitle"></div>
+					<div class="notice_color">작성자</div>
+					<div class="notice_title_text notice_PopupId"></div>
+					<div class="notice_color">작성일</div>
+					<div class="notice_title_text notice_title_last">
+						<div class="notice_PopupDate"></div>
+						<div class="notice_color">조회수</div>
+						<div class="notice_cntContent notice_PopupCnt"></div>
+					</div>
+				</div>
+				<div class="notice_mainContent notice_PopupText"></div>
+
+			</div>
+		</div>
+	</div>
 		  <jsp:include page="../footer/footer.jsp"></jsp:include>
-      	<script src="<%=request.getContextPath()%>/resources/js/notice_app.js?ver=1.45"></script>
+      	<script src="<%=request.getContextPath()%>/resources/js/notice_app.js?ver=1.46"></script>
 <!--       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 </body>
 </html>

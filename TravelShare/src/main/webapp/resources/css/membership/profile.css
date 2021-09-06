@@ -28,56 +28,79 @@ a:visited {
 
 
 #user_info{
-    height: 200px;
-    display: grid;
-    grid-template-columns: repeat(2, 0.3fr); grid-gap: 2px;
+   height: 200px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
     border-top: rgb(232, 233, 233) 1px solid;
     border-bottom: rgb(232, 233, 233) 1px solid;
     background-color: rgb(245, 245, 245);
-  
 }
+
+#user_container {
+	display: flex;
+    align-items: center;
+    background-color: rgb(245, 245, 245);
+    width: 1080px;
+    margin: auto;
+}
+
 
 #user_img_div {
 	width: 200px;
- 
+    min-width: 200px;
+    display: flex;
 }
 
 #user_img {
 	width: 150px;
     height: 150px;
-    object-fit: cover;
+    margin-left: auto;
     border-radius: 100px;
-    margin-top: 20px;
-    margin-left: 497px;
 }
 
 
 .user_name{
-	margin-top: 50px;
-	margin-left: 487px;
+	margin-top: 30px;
+	width: 500px;
+	margin-left:20px;
+
 }
 
 #user_name {
-    width: 70vw;
- 
- 
+    min-width: 200px;
 }
 
 
-#user_zim {
-    margin-top: 50px;
-    color: black;
-    
+#user_button {
+    color: rgb(125, 136, 53);
+    border-radius: 30px 30px 30px 30px;
+    border: solid 2px rgb(163, 170, 112);
+    background-color: rgb(245, 245, 245);
+    width: 110px;
+    font-size: 15px;
+    height: 40px;
+    margin-top: 130px;
+    margin-left: 180px;
+    cursor : pointer;
+   
 }
-
-
 
 #board_name {
-    display: grid;
-    grid-template-columns: repeat(2, 0.2fr); grid-gap: 2px;
+  	display: flex;
+    align-items: center;
     height: 65px;
     border-top: rgb(232, 233, 233) 1px solid;
     border-bottom: rgb(232, 233, 233) 1px solid;
+}
+
+#board_name_container {
+	display: flex;
+    align-items: center;
+    height: 65px;
+    justify-content: space-between;
+    width : 1080px;
+    margin: auto;
 }
 
 #board_name > div {
@@ -87,20 +110,15 @@ a:visited {
 
 #my_travel {
     width: 300px;
-    margin-left: 495px;
-    margin-top: 10px;
     text-align: center;
  
 }
 
 #my_zim {
-    margin-top: 10px;
-    margin-left: 200px;
     width: 300px;
     text-align: center;
 }
 
 .loing_container{
 	width: 100vw;
-	margin-left: -70px
 }

@@ -38,15 +38,19 @@
 				</div>
 			</div>
 			<div class="qna_mainContent">${QnaViewModel.content}</div>
-
-			<div class="qna_button_pan">
-				<div></div>
-				<div class="qna_button">
-					<button id="qna_button_modify">수정</button>
-					<button id="qna_button_delete">삭제</button>
+			
+				
+			<c:if test="${QnaViewModel.user_id eq sessionScope.id}">
+				<div class="qna_button_pan">
+					<div></div>
+					
+					<div class="qna_button">
+						<button id="qna_button_modify">수정</button>
+						<button id="qna_button_delete">삭제</button>
+					</div>
+					
 				</div>
-			</div>
-
+			</c:if>
 			<div class="board_comment_write">
 				<form action="#" id="board_commentId">
 					<input type="text" id="board_commnet" name="board_commnet"

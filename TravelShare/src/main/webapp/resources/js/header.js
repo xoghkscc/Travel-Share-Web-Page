@@ -1,4 +1,4 @@
-const burger = document.querySelectorAll("burger");
+const burger = document.querySelector(".burger");
 const navlinks = document.querySelectorAll(".nav-links li");
 const nav = document.querySelector(".nav-links"); 
 const guide_header = document.querySelector("#guide_header");
@@ -20,6 +20,7 @@ window.addEventListener('scroll', function(e){
 	}
 });
 
+
 const navAnimation = () => { 
   navlinks.forEach((link, index) => {
     // 애니메이션이 있을 때 
@@ -35,14 +36,15 @@ const navAnimation = () => {
     }); 
   };
 
-  function navSlide() { 
-    burger.onclick= () => {
-	    nav.classList.toggle("nav-active"); 
-	    //nav Animation 
-	    navAnimation(); 
-	    //burger Animation 
-	    burger.classList.toggle("toggle"); 
-	};
+  const handleNav = () => { 
+    nav.classList.toggle("nav-active"); 
+    //nav Animation 
+    navAnimation(); 
+    //burger Animation 
+    burger.classList.toggle("toggle"); 
+  }; 
+  const navSlide = () => { 
+    burger.addEventListener("click", handleNav); 
   };
   const setNavTransition = (width) => { 
     if (width > 768) { 

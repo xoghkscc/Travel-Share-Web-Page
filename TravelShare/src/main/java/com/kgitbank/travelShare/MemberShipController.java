@@ -86,7 +86,6 @@ public class MemberShipController {
 		try {
 			resp.sendRedirect("./userinfo");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		}
@@ -262,7 +261,6 @@ public class MemberShipController {
 		try {
 			response.sendRedirect("./userinfo");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -278,8 +276,11 @@ public class MemberShipController {
 		
 		
 		String str = userif.getUser_birth();
+		String[] array = str.split("/");
+		userif.setUser_year(array[0]);
+		userif.setUser_month(array[1]);
+		userif.setUser_day(array[2]);
 		
-	
 		model.addAttribute("userinfo", userif);
 		
 		return "/membership/membershipChange";
@@ -293,7 +294,6 @@ public class MemberShipController {
 		try {
 			resp.sendRedirect("./userinfo");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -322,7 +322,6 @@ public class MemberShipController {
 				boardModel.setBoard_mainimg(request.getContextPath()+"/resources/files/board_img/" + fileRanName+".jpg");
 				out.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			boardMapper.updateBoard1(boardModel);
