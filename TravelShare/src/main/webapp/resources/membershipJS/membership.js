@@ -329,7 +329,7 @@ phone_check.addEventListener('click', () => {
 
 phoneCheckInput.addEventListener('blur', () => {
 		
-	if(checkNum.value != phoneCheckInput.value && member_phone.value != ""){
+	if(checkNum.value != phoneCheckInput.value && member_phone.value != "" || checkNum.value == ""){
 		phone_warning.innerHTML = "휴대폰인증 하셔야합니다";
 	} else {
 		phone_warning.innerHTML = "인증되었습니다";
@@ -411,7 +411,7 @@ member_sub2.addEventListener('click', (event) => {
 		phone_warning.innerHTML = "필수입력 정보입니다";
 	} else if(phone_warning.innerHTML == "올바른 전화번호 양식를 입력해주세요" || phone_warning.innerHTML == "9자리 이상 입력해주세요" || phone_warning.innerHTML == "숫자만 입력해주세요") {
 		phone_warning.innerHTML = "올바른 전화번호 양식를 입력해주세요";	
-	} else if(phone_warning.innerHTML == "인증번호가 틀립니다" || checkNum.value =="" || phone_warning.innerHTML == "휴대폰 인증하셔야 합니다") {
+	} else if(checkNum.value != phoneCheckInput.value && member_phone.value != "" || checkNum.value == "") {
 		phone_warning.innerHTML = "휴대폰인증 하셔야합니다";
 	} else {
 		phone_warning.innerHTML = "인증되었습니다";

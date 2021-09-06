@@ -53,9 +53,8 @@
          <update id="updateUserinfo15">
         	UPDATE user_info SET
         	user_nickname=#{user_nickname }, user_name=#{user_name }, user_phonenumber=#{user_phonenumber }, 
-        	user_birth=#{user_birth }, user_year=#{user_year }, user_month=#{user_month }, user_day=#{user_day }, 
-        	user_zonecode=#{user_zonecode }, user_sido=#{user_sido }, user_sigungu=#{user_sigungu }, 
-        	user_roadname=#{user_roadname }, user_address=#{user_address }, user_gender=#{user_gender }
+        	user_birth=#{user_birth },  user_zonecode=#{user_zonecode }, user_sido=#{user_sido }, 
+        	user_sigungu=#{user_sigungu }, user_roadname=#{user_roadname }, user_address=#{user_address }, user_gender=#{user_gender }
         	WHERE user_id=#{user_id }
        	 </update>
          
