@@ -48,7 +48,7 @@ check_button.addEventListener('click', () => {
 
 phone_check.addEventListener('blur', () => {
 		
-	if(checkNum.value != phone_check.value && user_phone.value != ""){
+	if(checkNum.value != phone_check.value && user_phone.value != "" || checkNum.value == ""){
 		phone_warning.innerHTML = "휴대전화 인증을 해주세요";
 	} else {
 		phone_warning.innerHTML = "인증되었습니다";

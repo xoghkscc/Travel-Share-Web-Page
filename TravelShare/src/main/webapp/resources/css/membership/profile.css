@@ -29,7 +29,7 @@ a:visited {
 
 #user_info{
    height: 200px;
-    width: 100%;
+    width: 100vw;
     display: flex;
     align-items: center;
     border-top: rgb(232, 233, 233) 1px solid;
@@ -37,8 +37,17 @@ a:visited {
     background-color: rgb(245, 245, 245);
 }
 
+#user_container {
+	display: flex;
+    align-items: center;
+    background-color: rgb(245, 245, 245);
+    width: 1080px;
+    margin: auto;
+}
+
+
 #user_img_div {
-	width: 33vw;
+	width: 200px;
     min-width: 200px;
     display: flex;
 }
@@ -46,18 +55,20 @@ a:visited {
 #user_img {
 	width: 150px;
     height: 150px;
-    min-width: 200px;
     margin-left: auto;
+    border-radius: 100px;
 }
 
 
 .user_name{
 	margin-top: 30px;
-	width: 67vw;
+	width: 500px;
+	margin-left:20px;
+
 }
 
 #user_name {
-    min-width: 230px;
+    min-width: 200px;
 }
 
 
@@ -81,7 +92,15 @@ a:visited {
     height: 65px;
     border-top: rgb(232, 233, 233) 1px solid;
     border-bottom: rgb(232, 233, 233) 1px solid;
-    justify-content: space-evenly;
+}
+
+#board_name_container {
+	display: flex;
+    align-items: center;
+    height: 65px;
+    justify-content: space-between;
+    width : 1080px;
+    margin: auto;
 }
 
 #board_name > div {

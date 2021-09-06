@@ -25,6 +25,7 @@
 	<div id="main">
 
 		<div id="user_info">
+			<div id="user_container">
 			<div id="user_img_div">
 				<img src="<%=request.getContextPath()%>${user_img }" id="user_img">
 			</div>
@@ -40,10 +41,12 @@
 				
 			</div>
 		</div>
-		
+		</div>
 		<div id="board_name">
+			<div id="board_name_container">
 			<div id="my_travel" style="border-bottom: 2px rgb(255, 109, 0) solid;"><a href="./userinfo"	style="color : black;">나의 여행</a></div>
 			<div id="my_zim"><a href="./userinfoLike">나의 찜</a></div>
+			</div>
 		</div>
 		<div id="board_main">
 		<div class="board_list_travel">
