@@ -88,9 +88,10 @@ public class AdministerController {
 			UUID uuid = UUID.randomUUID();
 			String fileRanName = uuid.toString();
 			
-			String path = request.getSession().getServletContext().getRealPath("./");
-			Pattern regex = Pattern.compile("\\.metadata");
-			String uploadPath2 = regex.split(path)[0]+"TravelShare\\src\\main\\webapp\\resources\\files\\board_img\\"+fileRanName+".jpg";// 저장경로
+//			String path = request.getSession().getServletContext().getRealPath("./");
+//			Pattern regex = Pattern.compile("\\.metadata");
+//			String uploadPath2 = regex.split(path)[0]+"TravelShare\\src\\main\\webapp\\resources\\files\\board_img\\"+fileRanName+".jpg";// 저장경로
+			String uploadPath2 = request.getContextPath()+"/resources/files/board_img/" + fileRanName+".jpg";// 저장경로
 			out = new FileOutputStream(new File(uploadPath2));
 			out.write(bytes);
 			out.close();

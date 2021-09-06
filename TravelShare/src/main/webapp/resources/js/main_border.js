@@ -513,7 +513,7 @@ function getBoardCommnet(value) {
 				
 				var board_comment_see_img = document.createElement("div");
 				board_comment_see_img.setAttribute("class", "board_comment_see_img");
-				board_comment_see_img.innerHTML = "<img src='/travelShare/resources/files/null.jpg' alt=''>"
+				board_comment_see_img.innerHTML = "<img src='/travelShare"+myobj[key].user_imgurl+"' alt=''>"
 				
 				var board_comment_see_text = document.createElement("div");
 				board_comment_see_text.setAttribute("class", "board_comment_see_text");
