@@ -245,6 +245,7 @@ public class MemberShipController {
 			UUID uuid = UUID.randomUUID();
 			String fileRanName = uuid.toString();
 			
+//			String uploadPath = request.getContextPath()+"/resources/files/user_img/" + fileRanName+".jpg";// 저장경로
 			String uploadPath = request.getSession().getServletContext().getRealPath("/resources/files/user_img/") + fileRanName+".jpg";// 저장경로
 			out = new FileOutputStream(new File(uploadPath));
 			out.write(bytes);
@@ -316,6 +317,7 @@ public class MemberShipController {
 				UUID uuid = UUID.randomUUID();
 				String fileRanName = uuid.toString();
 				
+//				String uploadPath = request.getSession().getServletContext().getRealPath("/resources/files/user_img/") + fileRanName+".jpg";// 저장경로
 				String uploadPath = request.getSession().getServletContext().getRealPath("/resources/files/user_img/") + fileRanName+".jpg";// 저장경로
 				out = new FileOutputStream(new File(uploadPath));
 				out.write(bytes);
