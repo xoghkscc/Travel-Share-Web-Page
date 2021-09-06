@@ -11,6 +11,9 @@
   * 외부 라이브러리 : jdbc, jdatepicker, HikariCP, commons-fileupload 등
   * 외부 API : hihgmaps API, coolSMS API, googleMaps API, 카카오 주소 API , ckEditor 등
 ## 2_Usecase Diagram
+![image](https://user-images.githubusercontent.com/82793713/132162796-36e42c8f-da58-404b-9156-37b5685c0a97.png)
+![image](https://user-images.githubusercontent.com/82793713/132162808-1ec31994-d4f7-4973-8fd4-95c41507f8ea.png)
+
 ## 3_ER Diagram
 ## 4_Server
 AWS EC2에 아파치 톰캣을 설치하고 개발한 프로젝트를 배포하였음
