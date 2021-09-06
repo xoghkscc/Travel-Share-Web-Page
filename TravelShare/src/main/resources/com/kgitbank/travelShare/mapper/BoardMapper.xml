@@ -111,8 +111,17 @@
 		FROM board_comment INNER JOIN main_board USING ( board_id ) WHERE main_board.user_id = ${user_id} AND comment_lookcheck = 'N' ORDER by comment_date DESC
 	</select>
 	
+	<select id="alramContent2" resultType="com.kgitbank.travelShare.model.CommentInfo">
+		SELECT qna_id, comment_id, qna_guide.user_id, comment_text, board_comment.comment_date, board_comment.comment_lookcheck, qna_guide.title as board_title, board_mainimg
+		FROM board_comment INNER JOIN qna_guide USING ( qna_id ) WHERE qna_guide.user_id = ${user_id} AND comment_lookcheck = 'N' order by comment_date DESC
+	</select>
+	
 	<update id="alramLookChange" >
 		UPDATE board_comment SET comment_lookcheck = 'Y' WHERE board_id = #{board_id}
+	</update>
+	
+	<update id="alramLookChange2" >
+		UPDATE board_comment SET comment_lookcheck = 'Y' WHERE qna_id = #{qna_id}
 	</update>
 	
 </mapper>

@@ -13,7 +13,6 @@ function alramAjax(){
 		const readyState = target.readyState;
 		const myobj = JSON.parse(target.responseText);
 		
-		console.log("myobj :" +myobj);
 		
 		if(status == 200 & readyState == 4){
 			var alramcontent = document.createElement("div");
@@ -88,15 +87,29 @@ function alramContent(content){
 			showDifference = minutesDifference+"분 전";
 		}
 		
+		if(content[key].board_id !== null ){
+			alramText.innerHTML= "\'"+content[key].board_title+"\' 게시글에 댓글이 달렸습니다. <div class='alramTime'>"+showDifference+"</div>"
+		}
 		
-		alramText.innerHTML= "\'"+content[key].board_title+"\' 게시글에 댓글이 달렸습니다. <div class='alramTime'>"+showDifference+"</div>"
+		if(content[key].qna_id !== null ){
+			alramText.innerHTML= "\'"+content[key].board_title+"\' QNA에 댓글이 달렸습니다. <div class='alramTime'>"+showDifference+"</div>"
+		}
+		
 		
 		alramcontent.appendChild(alramImg);
 		alramcontent.appendChild(alramText);
 		
 		alramcontent.addEventListener('click', () => {
-			alramLookChange(content[key].board_id);
-			location.href = "../board/mainBoard?board_id="+content[key].board_id+"&user_id="+content[key].user_id;
+			if(content[key].board_id !== null ){
+				alramLookChange(content[key].board_id);
+				location.href = "../board/mainBoard?board_id="+content[key].board_id+"&user_id="+content[key].user_id;
+			}
+			
+			if(content[key].qna_id !== null ){
+				alramLookChange2(content[key].qna_id);
+				location.href = "../qna/qnaView?qna_id="+content[key].qna_id;
+			}
+			
 		})
 		
 		alramContentText.appendChild(alramcontent);
@@ -111,6 +124,14 @@ function alramLookChange(board_id){
 	xhttp.open('POST', '/travelShare/loginrest/alramLookChange/', true);
 	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
 	xhttp.send(board_id);
+}
+
+function alramLookChange2(qna_id){
+	const xhttp = new XMLHttpRequest();
+	
+	xhttp.open('POST', '/travelShare/loginrest/alramLookChange2/', true);
+	xhttp.setRequestHeader('content-type', 'application/json;charset=utf-8')
+	xhttp.send(qna_id);
 }
 
 

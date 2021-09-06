@@ -48,14 +48,20 @@ public class LoginRestController {
 			return null;
 		} else {
 			Integer user_id =Integer.parseInt((String) session.getAttribute(("id")));
-			
-			return boardMapper.alramContent(user_id);
+			ArrayList<CommentInfo> ci = boardMapper.alramContent(user_id);
+			ci.addAll(boardMapper.alramContent2(user_id));
+			return ci;
 		}
 	}
 	
 	@PostMapping(value="/alramLookChange", produces= MediaType.APPLICATION_JSON_VALUE)
 	public void alramLookChange(@RequestBody Integer board_id, HttpSession session) {
 		boardMapper.alramLookChange(board_id);
+	}
+	
+	@PostMapping(value="/alramLookChange2", produces= MediaType.APPLICATION_JSON_VALUE)
+	public void alramLookChange2(@RequestBody Integer qna_id, HttpSession session) {
+		boardMapper.alramLookChange2(qna_id);
 	}
 	
 }
