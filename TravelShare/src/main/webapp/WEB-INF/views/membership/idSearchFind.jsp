@@ -34,6 +34,7 @@
 	<jsp:include page="../footer/footer.jsp"></jsp:include>
 	<script>
     
+	$('.id_search_box').css('border','1px solid black');
       $('.id_search_box').css('width','350px');
       $('.id_search_box').css('height','300px');
       $('.id_search_box').css('margin','auto');
