@@ -3,6 +3,8 @@ package com.kgitbank.travelShare;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,8 +57,8 @@ public class LoginController {
 
 	
 	@RequestMapping("/login/goIndex")
-	public String loginProcess2(HttpSession session, @RequestParam("user_email") String user_email) {
-
+	public String loginProcess2(HttpServletRequest request ,@RequestParam("user_email") String user_email) {
+		HttpSession session = request.getSession();
 		LoginInfo loginfo = loginService.getUserName(user_email);
 		session.setAttribute("loginCheck", true);
 		session.setAttribute("id", loginfo.getUser_id());

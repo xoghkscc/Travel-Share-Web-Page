@@ -399,9 +399,9 @@ main{
     
     box-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
 }
-#main_lastImg1{background-image: url("../files/cap2.JPG"); background-size: cover;}
-#main_lastImg2{background-image: url("../files/cap3.JPG"); background-size: cover;}
-#main_lastImg3{background-image: url("../files/cap1.JPG"); background-size: cover;}
+#main_lastImg1{background-image: url("../files/cap2.PNG"); background-size: cover;}
+#main_lastImg2{background-image: url("../files/cap3.PNG"); background-size: cover;}
+#main_lastImg3{background-image: url("../files/cap1.PNG"); background-size: cover;}
 
 .global-widthBig{
 	max-width: 1100px;
