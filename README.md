@@ -15,6 +15,7 @@
 ![image](https://user-images.githubusercontent.com/82793713/132162808-1ec31994-d4f7-4973-8fd4-95c41507f8ea.png)
 
 ## 3_ER Diagram
+![ER_](https://user-images.githubusercontent.com/82793713/132268457-cbcd0294-47fe-42e2-a918-126ae3f43e71.PNG)
 ## 4_Server
 AWS EC2에 아파치 톰캣을 설치하고 개발한 프로젝트를 배포하였음
 
